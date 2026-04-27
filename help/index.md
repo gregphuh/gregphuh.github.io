@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Help & How-To
-description: Walk through Milely the way you'll actually use it — track your first trip, run a tax-time report, back up your data.
+description: Walk through Milely the way you'll actually use it — track your first trip, run a year-end report, back up your data.
 permalink: /help/
 ---
 
@@ -11,11 +11,11 @@ permalink: /help/
 
 Quick, friendly walkthroughs for the things you'll actually do. If you get stuck, hit **Contact Support** below — that's a real human (a small Texas LLC running this app), not a ticket queue.
 
-<div class="page-intro">New to Milely? The fastest path: skim the <a href="#track-trip">first section</a>, log a trip, and you'll have everything you need by lunch.</div>
+<div class="page-intro">New to Milely? The fastest path: skim <a href="#start">section 1</a>, log a trip, and you'll have everything you need by lunch.</div>
 
 ---
 
-<h2 id="track-trip">1. Record a trip</h2>
+<h2 id="start">1. Start a trip</h2>
 
 <div class="how-row">
 <div class="how-text">
@@ -34,23 +34,40 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 ---
 
-<h2 id="classify">2. Classify trips for the IRS</h2>
+<h2 id="live-map">2. Watch the live map</h2>
 
 <div class="how-row">
 <div class="how-text">
-<p>The IRS wants a <em>contemporaneous record</em> with a stated business purpose for each trip. The Classify screen makes that happen in 5 seconds.</p>
+<p>Once a trip is recording, the <strong>Trip</strong> tab becomes a live map. Your route draws as a polyline as you drive — pinch, pan, and zoom like Apple Maps because it <em>is</em> Apple Maps.</p>
 
-<p>Tap a business chip, hit a recent purpose chip (or type a new one — "Showing 1428 Maple St" beats "Real Estate"), confirm the miles, and Save. That's the audit-ready entry done.</p>
+<p>The card at the top shows live <strong>Distance</strong>, <strong>Time</strong>, and <strong>Deduction</strong> — the dollar amount ticks up in real time so you can see exactly what you're earning back in business deductions.</p>
 
-<p><strong>Round trip?</strong> Flip the Round Trip toggle — Milely doubles the miles and saves it as one record.<br>
-<strong>Wasn't actually driving?</strong> The "Was I driving?" toggle discards the trip cleanly.</p>
+<p>You can switch to other tabs while a trip is recording — the polyline keeps drawing in the background and the live stats keep updating. iOS keeps everything running cleanly even with the phone locked.</p>
+
+<p>Hit <strong>End Trip</strong> when you arrive and the Classify screen takes over.</p>
 </div>
-<div class="how-img"><img src="/assets/screenshots/trip-idle.png" alt="Trip tab idle view with Start Trip prompt" /></div>
+<div class="how-img"><img src="/assets/screenshots/active-trip.png" alt="Live trip recording with route polyline on the map and live distance, time, and deduction stats" /></div>
 </div>
 
 ---
 
-<h2 id="logs">3. Browse and edit your logs</h2>
+<h2 id="classify">3. Classify the trip</h2>
+
+<div class="how-row">
+<div class="how-text">
+<p>When a trip ends, the <strong>Review &amp; save</strong> sheet shows up automatically with the route, distance, duration, and addresses already filled in.</p>
+
+<p>Tap a business chip, hit a recent purpose chip (or type a new one — "Showing 1428 Maple St" beats "Real Estate"), confirm the miles, and Save. That's the audit-ready entry done in 5 seconds.</p>
+
+<p><strong>Round trip?</strong> Flip the Round Trip toggle — Milely doubles the miles and saves it as one record.<br>
+<strong>Wasn't actually driving?</strong> The "Was I driving?" toggle discards the trip cleanly.</p>
+</div>
+<div class="how-img"><img src="/assets/screenshots/classify-trip.png" alt="Review and save sheet with map, distance, duration, time, business chips, and trip facts" /></div>
+</div>
+
+---
+
+<h2 id="logs">4. Browse and edit your logs</h2>
 
 <div class="how-row">
 <div class="how-text">
@@ -65,7 +82,7 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 ---
 
-<h2 id="report">4. Run your annual tax report</h2>
+<h2 id="report">5. Run your annual report</h2>
 
 <div class="how-row">
 <div class="how-text">
@@ -86,7 +103,7 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 ---
 
-<h2 id="backup">5. Back up your data</h2>
+<h2 id="backup">6. Back up your data</h2>
 
 <div class="how-row">
 <div class="how-text">
@@ -94,28 +111,35 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 <p><strong>Manual export</strong> ships with the base app: <em>Settings → Manual Export</em> gives you a JSON backup file via the iOS share sheet — email it, AirDrop it, drop it in Files. Free, any time.</p>
 
-<p>Want backups to be automatic? That's a <strong>Milely+</strong> add-on (see section 6).</p>
+<p>Want backups to be automatic? That's a <strong>Milely+</strong> add-on (see section 7).</p>
 
 <p><strong>Restoring on a new iPhone:</strong> reinstall Milely → open the backup file from Files → tap "Open in Milely". Done. (One-tap restore is on the roadmap.)</p>
 </div>
-<div class="how-img"><img src="/assets/screenshots/settings.png" alt="Settings screen with Cloud Backup and Manual Export options" /></div>
+<div class="how-img"><img src="/assets/screenshots/backup.png" alt="Settings screen showing the Backup section with Cloud Backup (Plus) and Manual Export options" /></div>
 </div>
 
 ---
 
-<h2 id="customize">6. Milely+ — the optional $0.99/yr add-on</h2>
+<h2 id="customize">7. Milely+ — the optional $0.99/yr add-on</h2>
 
-The base app at **$4.99** has everything you need to track miles and run an annual report. **Milely+** is a separate, optional **$0.99/year** subscription that adds the following — *only* if you want them:
+<div class="how-row">
+<div class="how-text">
+<p>The base app at <strong>$4.99</strong> has everything you need to track miles and run an annual report. <strong>Milely+</strong> is a separate, optional <strong>$0.99/year</strong> subscription that adds the following on top of the base app — only if you want them:</p>
 
-- **Receipts.** Scan receipts with VisionKit's document camera (edge detection, perspective correction, multi-page) or attach existing photos from your camera roll. Receipts surface alongside each trip and on the PDF report.
-- **Branded PDFs.** Your business logo on every cover, accent colors auto-matched to your brand, your firm name + contact info in the footer of every page.
-- **Five extra themes + Brand mode.** Adds Light, Forest, Mint, Sky, and Slate. Brand mode paints the whole app in colors derived from a business logo.
-- **Automatic cloud backup.** iCloud Drive or any Files-app cloud (Google Drive, Dropbox, OneDrive). Hands-off after setup. *(Base app does manual JSON export.)*
-- **Branded map route.** Trip route renders in Milely's signature gradient instead of Apple's default blue.
-- **Priority support.** Front of the queue at [milely@smileycreative.io](mailto:milely@smileycreative.io).
-- **Every update as soon as it ships** — no extra purchases.
+<ul>
+<li><strong>Receipts.</strong> Scan receipts with VisionKit's document camera (edge detection, perspective correction, multi-page) or attach existing photos from your camera roll. Receipts surface alongside each trip and on the PDF report.</li>
+<li><strong>Branded PDFs.</strong> Your business logo on every cover, accent colors auto-matched to your brand, your firm name + contact info in the footer of every page.</li>
+<li><strong>Five extra themes + Brand mode.</strong> Adds Light, Forest, Mint, Sky, and Slate. Brand mode paints the whole app in colors derived from a business logo.</li>
+<li><strong>Automatic cloud backup.</strong> iCloud Drive or any Files-app cloud (Google Drive, Dropbox, OneDrive). Hands-off after setup.</li>
+<li><strong>Branded map route.</strong> Trip route renders in Milely's signature gradient instead of Apple's default blue.</li>
+<li><strong>Priority support.</strong> Front of the queue at <a href="mailto:milely@smileycreative.io">milely@smileycreative.io</a>.</li>
+<li><strong>All future Plus features, automatic</strong> — while your subscription is active. The base app does not receive new features.</li>
+</ul>
 
-Subscribe in **Settings → Milely+**. Cancel any time in Apple's subscription management — your subscription stays active through the end of the period you paid for.
+<p>Subscribe in <strong>Settings → Milely+</strong>. Cancel any time in Apple's subscription management — your subscription stays active through the end of the period you paid for.</p>
+</div>
+<div class="how-img"><img src="/assets/screenshots/settings.png" alt="Settings screen with the Milely+ row at the top showing the upgrade prompt" /></div>
+</div>
 
 ---
 
@@ -137,8 +161,8 @@ Settings → Detection mode → switch to <strong>Automatic</strong>. Milely use
 </details>
 
 <details>
-<summary><strong>Why is the IRS rate adjustable?</strong></summary>
-The IRS publishes a new standard mileage rate annually, sometimes mid-year. <strong>Settings → IRS Rate</strong> lets you confirm or update what Milely uses. We pre-load defaults but you should verify at <a href="https://www.irs.gov">irs.gov</a> before filing.
+<summary><strong>Why is the mileage rate adjustable?</strong></summary>
+The standard mileage rate is updated annually, sometimes mid-year. <strong>Settings → Mileage Rate</strong> lets you confirm or update what Milely uses. We pre-load defaults but you can always edit the rate per year.
 </details>
 
 <details>
