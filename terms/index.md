@@ -12,7 +12,7 @@ permalink: /terms/
 **Effective:** April 26, 2026
 **Last updated:** April 26, 2026
 
-These Terms of Service (the "**Terms**") govern your use of the Milely iOS application (the "**App**") published by **Milely, LLC** (the "**Company**," "we," "us," or "our"). By downloading, installing, or using the App, you agree to these Terms.
+These Terms of Service (the "**Terms**") govern your use of the Milely iOS application (the "**App**") published by **SmileyCreative LLC** (the "**Company**," "we," "us," or "our"). By downloading, installing, or using the App, you agree to these Terms.
 
 ---
 
@@ -84,7 +84,7 @@ You agree to defend, indemnify, and hold harmless the Company, its officers, dir
 
 ## 10. Trademarks
 
-"Milely" and the Milely logo are trademarks of Milely, LLC. References to "IRS," "Schedule C," "Apple Maps," "Google Maps," "Waze," and other third-party marks are the property of their respective owners and are used for descriptive purposes only.
+"Milely" and the Milely logo are trademarks of SmileyCreative LLC. References to "IRS," "Apple Maps," "Google Maps," "Waze," and other third-party marks are the property of their respective owners and are used for descriptive purposes only.
 
 ---
 
@@ -103,10 +103,10 @@ We may update these Terms from time to time. The updated version will be posted 
 ## 13. Contact
 
 Questions about these Terms:
-**legal@milely.io** *(Replace this placeholder once your email is set up.)*
+**legal@smileycreative.io**
 
 ---
 
-*© 2026 Milely, LLC. All rights reserved.*
+*© 2026 SmileyCreative LLC. All rights reserved.*
 
 </main>

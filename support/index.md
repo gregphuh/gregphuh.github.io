@@ -9,7 +9,7 @@ permalink: /support/
 
 # Support
 
-Help with Milely. If your question isn't answered below, email **support@milely.io** and we'll get back within a few business days.
+Help with Milely. If your question isn't answered below, email **support@smileycreative.io** and we'll get back within a few business days.
 
 <div class="page-intro">If you're new to the app, start with the <a href="/help/">Help & How-To</a> guide.</div>
 
@@ -19,9 +19,16 @@ Help with Milely. If your question isn't answered below, email **support@milely.
 
 ### How much does Milely cost?
 
-$3.99 one-time for the base app — fully functional forever, no subscription required.
+**$4.99** one-time for the base app — fully functional forever, no subscription required.
 
-Optional **Milely+** subscription at **$0.99/year** includes all updates as they're released. Cancel any time in Apple's subscription management. Subscribe in **Settings → Milely+**.
+Optional **Milely+** at **$0.99/year** does four things:
+
+- **Branded PDF reports.** Per-business logos auto-matched to your brand colors, plus a firm footer on every page.
+- **A personalized app.** Six color themes, a Brand theme that paints the whole app in your business's colors, and a route-style toggle on the map.
+- **Automatic cloud backup.** iCloud Drive, or any Files-app cloud (Google Drive, Dropbox, OneDrive). One-tap restore on a new iPhone.
+- **Priority email support** + every update as soon as it ships.
+
+Cancel any time in Apple's subscription management. Subscribe in **Settings → Milely+**.
 
 ### Does Milely work without internet?
 
@@ -54,7 +61,7 @@ Not currently. Milely is iOS-only.
 
 ### Can I import data from MileIQ / Everlance / [other app]?
 
-Not directly in v1.0. If you have a CSV export from another app, send it to **support@milely.io** and we'll see if we can help — and consider building an importer for a future update.
+Not directly in v1.0. If you have a CSV export from another app, send it to **support@smileycreative.io** and we'll see if we can help — and consider building an importer for a future update.
 
 ### How do I delete a single trip?
 
@@ -88,12 +95,12 @@ Refunds for App Store purchases are handled by Apple, not Milely. Request a refu
 
 For everything not in the FAQ:
 
-- **General support / how-to questions:** [support@milely.io](mailto:support@milely.io)
-- **Privacy questions:** [privacy@milely.io](mailto:privacy@milely.io)
-- **Legal / DMCA / takedowns:** [legal@milely.io](mailto:legal@milely.io)
-- **Security disclosures:** [security@milely.io](mailto:security@milely.io)
+- **General support / how-to questions:** [support@smileycreative.io](mailto:support@smileycreative.io)
+- **Privacy questions:** [privacy@smileycreative.io](mailto:privacy@smileycreative.io)
+- **Legal / DMCA / takedowns:** [legal@smileycreative.io](mailto:legal@smileycreative.io)
+- **Security disclosures:** [security@smileycreative.io](mailto:security@smileycreative.io)
 
-We aim to respond within 2 business days. Milely, LLC is a small operation — please be patient if it takes a touch longer during tax season.
+We aim to respond within 2 business days. SmileyCreative LLC is a small operation — please be patient if it takes a touch longer during tax season.
 
 ---
 

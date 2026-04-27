@@ -11,7 +11,7 @@ permalink: /help/
 
 Everything you need to know to use Milely. Roughly in the order you'll need it.
 
-<div class="page-intro">If you can't find what you need here, email <a href="mailto:support@milely.io">support@milely.io</a>.</div>
+<div class="page-intro">If you can't find what you need here, email <a href="mailto:support@smileycreative.io">support@smileycreative.io</a>.</div>
 
 ---
 
@@ -113,14 +113,14 @@ From then on, when your phone is connected to that car, Milely defaults the trip
 
 ## Reports & exports
 
-### Annual report (Schedule C)
+### Annual report
 
 **Reports tab → pick a year → Export PDF**. The PDF has:
 - A **cover page** with totals (trips, miles, IRS rate, deduction)
 - **By-business breakdown** with each business's miles + dollar amount
 - **Per-trip log** — date, business, purpose, miles, deduction
 
-This is the document you (or your CPA) reference when filling out Schedule C.
+Hand it to your CPA or use it as your contemporaneous mileage record at tax time.
 
 ### CSV export
 
@@ -164,11 +164,31 @@ The full privacy policy is at [milely.io/privacy](/privacy/).
 
 ## Milely+
 
-**$0.99/year, optional.** The base app is fully functional forever after your one-time $3.99 purchase.
+### The app, dressed up.
 
-Milely+ is an annual auto-renewing subscription that **includes all updates** as they're released — new features, improvements, and bug fixes that ship after your original purchase. It also helps fund continued development.
+Hand your CPA a PDF and it should look like it came from your firm — not from ours.
 
-Subscribe in **Settings → Milely+** when you're ready. Cancel any time in Apple's subscription management — you keep Milely+ access through the end of the period you paid for. Apple manages all billing.
+**Look the part.**
+- Your logo on every PDF cover
+- Auto-matched accent colors throughout the report
+- Your firm name + contact info in the footer of every page
+- Two businesses, two reports — never confused
+
+**Make the app yours.**
+- Six color themes — **Light · Forest · Mint · Midnight · Slate · Warm**
+- **Brand mode** — pick a business and the entire app picks up its color
+- Toggle the trip route on the map between Milely's gradient and Apple's native blue
+
+**Never lose a record.**
+- Automatic backup to iCloud Drive
+- Or any Files-app cloud — Google Drive, Dropbox, OneDrive
+- One-tap restore on a new iPhone
+
+**Skip the queue.**
+- Priority email support — front of the line
+- Every update as soon as it ships
+
+**$0.99 / year.** Subscribe in **Settings → Milely+**. Cancel any time in Apple's subscription management — Milely+ stays active through the end of the period you paid for. Apple handles all billing.
 
 ---
 
@@ -200,6 +220,6 @@ To prevent accidental edits to past tax records, Milely auto-locks any trip date
 
 ## Still stuck?
 
-Email **support@milely.io** with a brief description of what you're trying to do. We'll get back within a few business days.
+Email **support@smileycreative.io** with a brief description of what you're trying to do. We'll get back within a few business days.
 
 </main>

@@ -119,10 +119,10 @@ If this policy changes, the updated version will be posted at this URL with a ne
 ## Contact
 
 Questions about this policy:
-**privacy@milely.io** *(Replace this placeholder once your email is set up via your milely.io domain.)*
+**privacy@smileycreative.io**
 
 ---
 
-*Milely is published by Milely, LLC, a Texas limited liability company. © 2026 Milely, LLC. All rights reserved.*
+*Milely is published by SmileyCreative LLC, a Texas limited liability company. © 2026 SmileyCreative LLC. All rights reserved.*
 
 </main>
