@@ -109,36 +109,38 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 <div class="how-text">
 <p>Milely stores everything on your phone — no servers, no us. So <strong>your backups are your responsibility</strong> (we make it easy).</p>
 
-<p><strong>Manual export</strong> ships with the base app: <em>Settings → Manual Export</em> gives you a JSON backup file via the iOS share sheet — email it, AirDrop it, drop it in Files. Free, any time.</p>
+<p><strong>Manual export</strong> is always free: <em>Settings → Manual Export</em> gives you a JSON backup file via the iOS share sheet — email it, AirDrop it, drop it in Files. Any time, no subscription needed.</p>
 
-<p>Want backups to be automatic? That's a <strong>Milely+</strong> add-on (see section 7).</p>
+<p>Want backups to be automatic? Subscribers get <strong>iCloud / Google Drive / Dropbox / OneDrive</strong> auto-backup — see section 7.</p>
 
 <p><strong>Restoring on a new iPhone:</strong> reinstall Milely → open the backup file from Files → tap "Open in Milely". Done. (One-tap restore is on the roadmap.)</p>
 </div>
-<div class="how-img"><img src="/assets/screenshots/backup.png" alt="Settings screen showing the Backup section with Cloud Backup (Plus) and Manual Export options" /></div>
+<div class="how-img"><img src="/assets/screenshots/backup.png" alt="Settings screen showing the Backup section with Cloud Backup (subscription) and Manual Export options" /></div>
 </div>
 
 ---
 
-<h2 id="customize">7. Milely+ — the optional $0.99/yr add-on</h2>
+<h2 id="customize">7. Subscribe</h2>
 
 <div class="how-row">
 <div class="how-text">
-<p>The base app at <strong>$4.99</strong> has everything you need to track miles and run an annual report. <strong>Milely+</strong> is a separate, optional <strong>$0.99/year</strong> subscription that adds the following on top of the base app — only if you want them:</p>
+<p>Milely is free to try for 7 days, then a single subscription: <strong>$2.99/month</strong> or <strong>$19.99/year</strong> (saves about 44%). Subscribing unlocks:</p>
 
 <ul>
-<li><strong>Receipts.</strong> Scan receipts with VisionKit's document camera (edge detection, perspective correction, multi-page) or attach existing photos from your camera roll. Receipts surface alongside each trip and on the PDF report.</li>
-<li><strong>Branded PDFs.</strong> Your business logo on every cover, accent colors auto-matched to your brand, your firm name + contact info in the footer of every page.</li>
-<li><strong>Five extra themes + Brand mode.</strong> Adds Light, Forest, Mint, Sky, and Slate. Brand mode paints the whole app in colors derived from a business logo.</li>
-<li><strong>Automatic cloud backup.</strong> iCloud Drive or any Files-app cloud (Google Drive, Dropbox, OneDrive). Hands-off after setup.</li>
+<li><strong>Unlimited trips.</strong> The free tier records up to 25 trips per calendar month. Subscribers track every drive, no cap.</li>
+<li><strong>Receipts.</strong> VisionKit scanner (edge detection, perspective correction, multi-page) plus camera-roll attach. Receipts surface alongside each trip and on the PDF report.</li>
+<li><strong>Branded PDFs.</strong> Your business logo on every cover, accent colors auto-matched to your brand, your firm footer on every page.</li>
+<li><strong>Six themes + Brand mode.</strong> Warm, Light, Forest, Mint, Sky, Slate. Brand mode paints the whole app in colors derived from a business logo.</li>
+<li><strong>Automatic cloud backup.</strong> iCloud Drive, Google Drive, Dropbox, OneDrive. Hands-off after setup.</li>
 <li><strong>Branded map route.</strong> Trip route renders in Milely's signature gradient instead of Apple's default blue.</li>
 <li><strong>Priority support.</strong> Front of the queue at <a href="mailto:milely@smileycreative.io">milely@smileycreative.io</a>.</li>
-<li><strong>All future Plus features, automatic</strong> — while your subscription is active. The base app does not receive new features.</li>
 </ul>
 
-<p>Subscribe in <strong>Settings → Milely+</strong>. Cancel any time in Apple's subscription management — your subscription stays active through the end of the period you paid for.</p>
+<p>Subscribe in <strong>Settings → Subscribe</strong>. Cancel any time in Apple's subscription management — your subscription stays active through the end of the period you paid for.</p>
+
+<p><strong>Don't want a subscription?</strong> An optional <strong>Milely Lifetime</strong> at $49.99 one-time is available behind <em>Settings → Subscribe → Other options</em>. Unlocks everything forever, no recurring charge. We don't promote it because subscriptions fund ongoing development, but it's available for the minority who refuse subscriptions on principle.</p>
 </div>
-<div class="how-img"><img src="/assets/screenshots/settings.png" alt="Settings screen with the Milely+ row at the top showing the upgrade prompt" /></div>
+<div class="how-img"><img src="/assets/screenshots/settings.png" alt="Settings screen with the Subscribe row at the top" /></div>
 </div>
 
 ---

@@ -32,16 +32,21 @@ The App is distributed through the Apple App Store. Your use of the App is also 
 
 ## 3. Pricing & purchases
 
-The App is offered for a **one-time purchase** price set on the App Store. The base App is fully functional forever with no subscription required.
+The App is offered as a **subscription** with a free trial period, plus an optional one-time **Lifetime** purchase as an alternative.
 
-The App also offers an **optional auto-renewing subscription**, "Milely+," which unlocks additional features (e.g., branded reports, premium themes, automatic cloud backup, priority support). Subscription details:
+**Free tier.** The App may be installed and used at no charge, subject to a usage cap (e.g., a maximum number of trips recorded per calendar month) and reduced feature set as described in the App.
 
+**Free trial.** When you start a subscription, you may receive an introductory free trial period (typically 7 days). You may cancel during the trial at no charge. If you do not cancel before the trial ends, your subscription begins automatically and Apple charges your iTunes account.
+
+**Subscription details.**
+- **Plans** offered: monthly and annual auto-renewing subscriptions in a shared subscription group ("Milely").
 - **Price** is set in the App Store and may vary by territory.
-- **Billing period** is annual unless otherwise indicated at the point of sale.
-- **Auto-renewal** occurs at the end of each billing period unless you cancel at least 24 hours before period-end. Apple charges your iTunes account at confirmation of purchase and on each renewal.
-- **Manage or cancel** your subscription via your Apple ID account settings (Settings → [your name] → Subscriptions on iOS, or in the App Store).
+- **Auto-renewal** occurs at the end of each billing period unless you cancel at least 24 hours before period-end.
+- **Manage or cancel** via your Apple ID account settings (Settings → [your name] → Subscriptions on iOS, or in the App Store). Cancellation takes effect at the end of the current paid period; you keep access until then.
 
-Apple handles all billing and refunds for both the one-time purchase and the subscription. Refund requests should be directed to Apple at [reportaproblem.apple.com](https://reportaproblem.apple.com).
+**Lifetime purchase.** As an optional alternative, the App offers a one-time, non-consumable purchase ("Milely Lifetime"). This is a single charge — no recurring billing — that unlocks all subscription features for the lifetime of the App.
+
+**Billing & refunds.** Apple handles all billing and refunds for the App, the free trial, the subscriptions, and the Lifetime purchase. Refund requests should be directed to Apple at [reportaproblem.apple.com](https://reportaproblem.apple.com). The Company does not process refunds directly.
 
 ---
 

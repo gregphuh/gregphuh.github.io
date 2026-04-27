@@ -19,20 +19,20 @@ Help with Milely. If your question isn't answered below, email **milely@smileycr
 
 ### How much does Milely cost?
 
-There are two separate purchases — the base app and an optional add-on:
+**Try it free for 7 days, then a single subscription: $2.99/month or $19.99/year (annual saves ~44%).** That's it — one plan, all features.
 
-**Base — $4.99 one-time.** Buys the app forever. Trip recording (manual + auto), live route map, annual PDF + CSV reports, per-business tagging, Trip Templates, calendar suggestions, Apple Watch / Widget / Live Activity, vehicle auto-detect, manual JSON export, the Warm theme. Standard email support. No subscription, no servers.
+What the subscription unlocks:
+- Unlimited trips (free tier records up to 25 trips/month)
+- Receipts (VisionKit scanner + camera-roll attach + on PDF)
+- Branded PDF reports (your logo + colors + firm footer)
+- Six color themes (Warm, Light, Forest, Mint, Sky, Slate) + Brand mode
+- Automatic cloud backup (iCloud, Google Drive, Dropbox, OneDrive)
+- Branded map route (Milely's gradient instead of Apple's blue)
+- Priority email support
 
-**Milely+ — $0.99/year (optional add-on).** A separate auto-renewing subscription that adds the following on top of the base app:
+Cancel any time in Apple's subscription management.
 
-- **Receipts** — VisionKit scanner (edge detection, perspective correction, multi-page) plus camera-roll attachments. Receipts surface alongside each trip and on the PDF.
-- **Branded PDF reports** — your logo, your brand colors, your firm footer.
-- **Five extra themes + Brand mode** — Light, Forest, Mint, Sky, Slate, plus a mode that paints the app in your business's colors.
-- **Automatic cloud backup** — iCloud Drive or any Files-app cloud (Google Drive, Dropbox, OneDrive).
-- **Branded map route** — Milely's gradient instead of Apple's default blue.
-- **Priority email support** + every update as soon as it ships.
-
-The base app is never required to upgrade — Milely+ is purely optional. Subscribe in **Settings → Milely+**. Cancel any time in Apple's subscription management.
+**Don't want a subscription?** A separate **Milely Lifetime** purchase ($49.99 one-time) is available inside the app at **Settings → Subscribe → Other options**. Unlocks everything forever — no recurring charge. We don't promote it, because subscriptions fund ongoing development, but it's there for the minority who refuse subscriptions on principle.
 
 ### Does Milely work without internet?
 
