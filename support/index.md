@@ -21,7 +21,7 @@ Help with Milely. If your question isn't answered below, email **support@milely.
 
 $3.99 one-time for the base app — fully functional forever, no subscription required.
 
-Optional **Milely+** subscription at **$0.99/year** unlocks priority support, early access to new features, and premium add-ons released throughout the year. Cancel any time in Apple's subscription management. Subscribe in **Settings → Milely+**.
+Optional **Milely+** subscription at **$0.99/year** includes all updates as they're released. Cancel any time in Apple's subscription management. Subscribe in **Settings → Milely+**.
 
 ### Does Milely work without internet?
 

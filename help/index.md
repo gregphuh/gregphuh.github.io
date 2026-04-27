@@ -164,14 +164,11 @@ The full privacy policy is at [milely.io/privacy](/privacy/).
 
 ## Milely+
 
-**$0.99/year, optional.** The base app is fully functional forever after your one-time $3.99 purchase. Milely+ is an annual auto-renewing subscription that adds:
+**$0.99/year, optional.** The base app is fully functional forever after your one-time $3.99 purchase.
 
-- **Priority support** — bumped to the front of the queue at support@milely.io
-- **Early access** to new features in beta
-- **Premium add-ons** released throughout the year (additional themes, advanced report templates, alternate icons)
-- **Helps fund development** — supports continued work on Milely
+Milely+ is an annual auto-renewing subscription that **includes all updates** as they're released — new features, improvements, and bug fixes that ship after your original purchase. It also helps fund continued development.
 
-Subscribe in **Settings → Milely+** when you're ready. Cancel any time in Apple's subscription management — you keep Milely+ features through the end of the period you paid for. Apple manages all billing.
+Subscribe in **Settings → Milely+** when you're ready. Cancel any time in Apple's subscription management — you keep Milely+ access through the end of the period you paid for. Apple manages all billing.
 
 ---
 

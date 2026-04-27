@@ -1,6 +1,6 @@
 # Jekyll config for milely.io — hosted free on GitHub Pages.
 title: Milely
-description: Track business mileage for IRS deductions. On-device, private, no subscription.
+description: Track business mileage for business deductions. On-device, private, no subscription.
 url: https://milely.io
 baseurl: ""
 
