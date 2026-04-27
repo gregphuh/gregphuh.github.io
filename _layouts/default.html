@@ -459,6 +459,83 @@
   }
   .compare td.cell-no { color: var(--muted); }
 
+  /* Themes showcase — labeled grid making Plus value obvious */
+  .themes-showcase {
+    margin: 48px 0;
+  }
+  .themes-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    letter-spacing: -1px;
+    font-size: 28px;
+    margin: 0 0 8px;
+    color: var(--text);
+  }
+  .themes-sub {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.55;
+    margin: 0 0 24px;
+    max-width: 720px;
+  }
+  .themes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+  }
+  .theme-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 12px 12px 0;
+    margin: 0;
+    overflow: hidden;
+    transition: transform 0.15s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .theme-card:hover { transform: translateY(-2px); }
+  .theme-card-base {
+    border-color: var(--brand-orange);
+    box-shadow: 0 0 0 1px rgba(194, 65, 12, 0.18);
+  }
+  .theme-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 12px;
+  }
+  .theme-card figcaption {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 4px 4px 12px;
+  }
+  .theme-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--text);
+  }
+  .theme-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    border-radius: 999px;
+  }
+  .theme-badge-base {
+    background: rgba(194, 65, 12, 0.18);
+    color: var(--brand-orange);
+  }
+  .theme-badge-plus {
+    background: linear-gradient(135deg, var(--brand-yellow), var(--brand-orange));
+    color: #1c1917;
+  }
+
   /* Bucket separators (Included vs Plus) */
   .bucket-tag {
     display: inline-block;
