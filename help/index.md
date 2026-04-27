@@ -1,225 +1,158 @@
 ---
 layout: default
 title: Help & How-To
-description: Learn how to track trips, classify them, run reports, and back up your data with Milely.
+description: Walk through Milely the way you'll actually use it — track your first trip, run a tax-time report, back up your data.
 permalink: /help/
 ---
 
 <main>
 
-# Help & How-To
+# How to Milely
 
-Everything you need to know to use Milely. Roughly in the order you'll need it.
+Quick, friendly walkthroughs for the things you'll actually do. If you get stuck, hit **Contact Support** below — that's a real human (a small Texas LLC running this app), not a ticket queue.
 
-<div class="page-intro">If you can't find what you need here, email <a href="mailto:milely@smileycreative.io">milely@smileycreative.io</a>.</div>
-
----
-
-## Getting started
-
-### First launch
-
-When you first open Milely, a 7-step onboarding walks you through:
-
-1. **Welcome** — a quick overview.
-2. **How it works** — a short explainer.
-3. **Your business name** — type the name of the business you'll track miles for. You can add more later in Settings.
-4. **Backup choice** — pick **iCloud Drive** (recommended), **Google Drive**, or **This iPhone only**.
-5. **Location access** — Milely needs this to record the route and distance of trips. Tap "Allow While Using App."
-6. **Notifications** — optional. Lets Milely remind you to classify trips and surface the weekly review.
-7. **Done** — straight into the Dashboard.
-
-You can re-run any of these steps later from **Settings**.
+<div class="page-intro">New to Milely? The fastest path: skim the <a href="#track-trip">first section</a>, log a trip, and you'll have everything you need by lunch.</div>
 
 ---
 
-## Recording trips
+<h2 id="track-trip">1. Record a trip</h2>
 
-### Manual mode (the default)
+<div class="how-row">
+<div class="how-text">
+<p>This is the whole app, in three taps:</p>
 
-1. From the **Dashboard** or **Trip** tab, tap **Start Trip**. Milely begins recording.
-2. The Dashboard's brand header morphs to show live miles, time, and an **End** button.
-3. Switch to the **Trip** tab to see your route drawing on a live map.
-4. When you arrive, tap **End Trip**.
-5. The **Classify** view opens — review/edit anything (miles, addresses, business, purpose), then tap **Save Trip**.
+<ol>
+<li>Open the <strong>Dashboard</strong> or <strong>Trip</strong> tab and hit <strong>Start Trip</strong>.</li>
+<li>Drive. Milely records the route, miles, and time in the background — switch apps, lock your phone, doesn't matter.</li>
+<li>When you arrive, hit <strong>End Trip</strong>. The Classify screen pops up so you can pick a business, type a purpose, and save.</li>
+</ol>
 
-### Quick Start (faster)
-
-On the Dashboard, the "By Business · Quick Start" section shows your top 3 businesses plus a "Repeat last trip" row. Tap any one and a new trip starts with that business pre-selected and your last-used purpose pre-filled.
-
-Tip: build up your list of common purposes by just using the app. The Classify view shows recent purposes for each business as tappable chips.
-
-### Automatic mode
-
-In **Settings → Detection mode**, switch to **Automatic**. Milely will:
-
-- Use motion + GPS to detect when you start driving
-- Record the route in the background
-- Notify you after the trip ends so you can classify it
-
-Auto mode requires **Always Allow** location and Motion & Fitness permissions. If you decline, Manual mode still works.
+<p><strong>Faster way:</strong> on the Dashboard, the <em>Quick Start</em> rows show your top businesses + a "Repeat last trip" shortcut. One tap and the trip starts pre-filled with that business and your last-used purpose.</p>
+</div>
+<div class="how-img"><img src="/assets/screenshots/dashboard.png" alt="Dashboard with Quick Start chips and Start Trip button" /></div>
+</div>
 
 ---
 
-## Classifying trips
+<h2 id="classify">2. Classify trips for the IRS</h2>
 
-When a trip ends, the Classify view shows:
+<div class="how-row">
+<div class="how-text">
+<p>The IRS wants a <em>contemporaneous record</em> with a stated business purpose for each trip. The Classify screen makes that happen in 5 seconds.</p>
 
-- **The route map** with a polyline of your drive
-- **Trip facts** — miles, date, from/to addresses (all editable)
-- **Business chips** — pick the business this trip belongs to
-- **Recent purposes** — tappable chips that fill the purpose field with one of your past entries
-- **Purpose field** — type the specific business purpose (required for IRS Pub. 463)
-- **Vehicle chips** — pick which car you drove (auto-detected if paired)
-- **"Was I driving?" toggle** — turn off if you were a passenger; trip is discarded
-- **Round trip toggle** — doubles the miles for the return leg, saves as one record
-- **Ready to save summary** — final preview of everything that will be saved
-- **Save Trip · $X.XX** — shows the deduction you'll lock in
+<p>Tap a business chip, hit a recent purpose chip (or type a new one — "Showing 1428 Maple St" beats "Real Estate"), confirm the miles, and Save. That's the audit-ready entry done.</p>
 
-Before you tap Save, double-check the **purpose** field. The IRS expects a stated business purpose, not just a category — e.g., "Showing 1428 Maple St" rather than just "Real Estate."
+<p><strong>Round trip?</strong> Flip the Round Trip toggle — Milely doubles the miles and saves it as one record.<br>
+<strong>Wasn't actually driving?</strong> The "Was I driving?" toggle discards the trip cleanly.</p>
+</div>
+<div class="how-img"><img src="/assets/screenshots/trip-idle.png" alt="Trip tab idle view with Start Trip prompt" /></div>
+</div>
 
 ---
 
-## Trip Templates
+<h2 id="logs">3. Browse and edit your logs</h2>
 
-For routes you do over and over (e.g., "McKinney → Killeen Next Storage round trip"), create a template:
+<div class="how-row">
+<div class="how-text">
+<p>The <strong>Logs</strong> tab shows every trip, grouped by date with a search bar across purposes, addresses, and businesses. Tap any trip to see its full route on a map and edit anything (miles, purpose, business, vehicle).</p>
 
-1. **Settings → Trip Templates → +**
-2. Give it a name, set the business, fill in the purpose, optional addresses and estimated miles
-3. Save
+<p>Forgot to start a trip? Hit <strong>Log Past Trip Manually</strong> and enter the date, miles, addresses, and purpose by hand — same audit-ready record.</p>
 
-To start a templated trip: pull up the templates list in Settings, swipe right on the row, tap **Start**. Or tap the **▶︎** button next to the template name.
-
----
-
-## Vehicles
-
-### Adding a vehicle
-
-**Settings → Vehicles → +**. Enter a name, optional make/model, and current odometer. Set as default if it's your primary.
-
-### Pairing a vehicle to your car
-
-Milely can auto-pick the right vehicle when you start a trip if you pair it to your car's CarPlay or Bluetooth:
-
-1. Connect your phone to your car (CarPlay or Bluetooth)
-2. **Settings → Vehicles → tap the vehicle**
-3. In the "Auto-detect this vehicle" section, tap **Pair to currently connected device**
-4. Save
-
-From then on, when your phone is connected to that car, Milely defaults the trip to that vehicle.
+<p><strong>Year-locking:</strong> on January 31, Milely automatically locks the previous year's trips so you can't accidentally edit them mid-audit. Tap a trip and hit <strong>Unlock for editing</strong> if you need to amend a return.</p>
+</div>
+<div class="how-img"><img src="/assets/screenshots/logs.png" alt="Logs tab with searchable list of trips" /></div>
+</div>
 
 ---
 
-## Reports & exports
+<h2 id="report">4. Run your annual tax report</h2>
 
-### Annual report
+<div class="how-row">
+<div class="how-text">
+<p>Come tax time, the <strong>Reports</strong> tab is the only place you need.</p>
 
-**Reports tab → pick a year → Export PDF**. The PDF has:
-- A **cover page** with totals (trips, miles, IRS rate, deduction)
-- **By-business breakdown** with each business's miles + dollar amount
-- **Per-trip log** — date, business, purpose, miles, deduction
+<ol>
+<li>Pick the year.</li>
+<li>Tap <strong>Export PDF</strong> — cover page with totals, by-business breakdown, every trip on its own line.</li>
+<li>Hit Share. Email it to your CPA or save it to Files.</li>
+</ol>
 
-Hand it to your CPA or use it as your contemporaneous mileage record at tax time.
+<p>Need raw data for QuickBooks or a spreadsheet? <strong>Export CSV</strong> instead — one row per trip with full details.</p>
 
-### CSV export
-
-**Reports tab → Export CSV**. One row per trip with date, time, business, purpose, addresses, miles, vehicle, deduction. Opens in Excel, Numbers, or Google Sheets.
-
-### Sharing
-
-The share sheet appears after both PDF and CSV exports. Send via email, AirDrop, save to Files, or upload anywhere.
-
----
-
-## Backups & restore
-
-### iCloud Drive backup
-
-**Settings → Backup & Restore → toggle iCloud Drive on**. Then tap **Back up now**. Backups appear in `iCloud Drive → Milely-Backups/`. Free, encrypted by Apple, automatic.
-
-### Google Drive (or any cloud) via Files
-
-**Settings → Backup & Restore → Choose backup folder**. iOS opens the Files picker. Navigate to **Google Drive** (you must have the Google Drive app installed and signed in) or any other Files provider — Dropbox, OneDrive, Box. Pick a folder.
-
-Milely creates a `Milely Backups/` subfolder inside and saves your first backup there. Future backups write to that same folder with one tap.
-
-### Manual export
-
-**Settings → Backup & Restore → Export & share JSON**. Generates a backup file and opens the iOS share sheet. Send it anywhere.
-
-### Tax bracket → real savings
-
-**Settings → Tax Bracket**. Pick your federal marginal tax bracket. The dashboard's deduction card now shows an additional line "≈ $X saved" — your actual estimated tax savings (deduction × bracket).
+<p><strong>Real tax savings:</strong> set your federal bracket in <em>Settings → Tax Bracket</em> and the Dashboard's deduction card adds a "≈ $X saved" line — actual estimated tax savings, not just the deduction.</p>
+</div>
+<div class="how-img"><img src="/assets/screenshots/reports.png" alt="Reports tab with year-over-year deduction summary and Export PDF button" /></div>
+</div>
 
 ---
 
-## Privacy & data
+<h2 id="backup">5. Back up your data</h2>
 
-Milely never transmits your data to Milely-controlled servers. There are no Milely servers. Backups go to **your** iCloud, **your** Google Drive — Milely just generates the file and hands it off.
+<div class="how-row">
+<div class="how-text">
+<p>Milely stores everything on your phone — no servers, no us. So <strong>your backups are your responsibility</strong> (we make it easy).</p>
 
-The full privacy policy is at [milely.io/privacy](/privacy/).
+<p><strong>Settings → Cloud Backup</strong> (Milely+) flips on automatic backups to <strong>iCloud Drive</strong> or any Files-app cloud (<em>Google Drive, Dropbox, OneDrive, Box</em>). Pick once, forget. Your data writes directly from your phone to your cloud — Milely never sees it.</p>
 
----
+<p>Without Milely+? <strong>Settings → Manual Export</strong> gives you a JSON backup file via the share sheet, free, any time.</p>
 
-## Milely+
-
-### The app, dressed up.
-
-Hand your CPA a PDF and it should look like it came from your firm — not from ours.
-
-**Look the part.**
-- Your logo on every PDF cover
-- Auto-matched accent colors throughout the report
-- Your firm name + contact info in the footer of every page
-- Two businesses, two reports — never confused
-
-**Make the app yours.**
-- Six color themes — **Light · Forest · Mint · Midnight · Slate · Warm**
-- **Brand mode** — pick a business and the entire app picks up its color
-- Toggle the trip route on the map between Milely's gradient and Apple's native blue
-
-**Never lose a record.**
-- Automatic backup to iCloud Drive
-- Or any Files-app cloud — Google Drive, Dropbox, OneDrive
-- One-tap restore on a new iPhone
-
-**Skip the queue.**
-- Priority email support — front of the line
-- Every update as soon as it ships
-
-**$0.99 / year.** Subscribe in **Settings → Milely+**. Cancel any time in Apple's subscription management — Milely+ stays active through the end of the period you paid for. Apple handles all billing.
+<p><strong>Restoring on a new iPhone:</strong> reinstall Milely → open the backup file from Files → tap "Open in Milely". Done. (One-tap restore is on the roadmap.)</p>
+</div>
+<div class="how-img"><img src="/assets/screenshots/settings.png" alt="Settings screen with Cloud Backup and Manual Export options" /></div>
+</div>
 
 ---
 
-## Common questions
+<h2 id="customize">6. Make it yours (Milely+)</h2>
 
-### Does Milely work without internet?
+The base app is fully functional forever for $4.99. **Milely+** at **$0.99/yr** unlocks:
 
-Yes. The only thing internet enables is uploading backups to cloud storage. Recording, classifying, viewing, exporting, reports — all work offline.
+- **Branded PDFs.** Per-business logo + auto-matched accent colors + your firm's footer on every page. Hand a CPA a PDF that looks like it came from your firm — not from ours.
+- **Color themes.** Six palettes — Warm, Light, Forest, Mint, Sky, Slate — plus a **Brand mode** that paints the whole app in your business's colors (drop in a logo, Milely picks the palette).
+- **Automatic cloud backup.** iCloud Drive or any Files-app cloud, hands-off after setup.
+- **Priority support.** Bumped to the front of the queue at [milely@smileycreative.io](mailto:milely@smileycreative.io).
+- **Every update as soon as it ships.**
 
-### Will it drain my battery?
+Subscribe in **Settings → Milely+**. Cancel any time in Apple's subscription management.
 
-In Manual mode, only while a trip is recording. We use sparse GPS sampling (one waypoint per 0.1 mi or 30 seconds, whichever first) to keep drain low.
+---
 
-In Automatic mode, the app uses iOS's significant-location-changes API when idle (negligible drain), then ramps up only when motion suggests driving.
+## Quick answers
 
-### Why is the year-over-year IRS rate adjustable?
+<details>
+<summary><strong>Does Milely work without internet?</strong></summary>
+Yes — recording, classifying, browsing, exporting, and reports all work fully offline. The only thing internet enables is uploading backups to your cloud.
+</details>
 
-The IRS publishes a new standard mileage rate annually, sometimes with mid-year adjustments. **Settings → IRS Rate** lets you confirm or update the rate Milely uses. We pre-load defaults but you should verify at [irs.gov](https://www.irs.gov) before filing.
+<details>
+<summary><strong>Will it drain my battery?</strong></summary>
+Manual mode only consumes battery while a trip is recording (~3% per hour). Automatic mode uses iOS's significant-location-changes API when idle (negligible drain) and only ramps up GPS when motion suggests driving.
+</details>
 
-### Can I delete a trip after saving?
+<details>
+<summary><strong>How does Automatic mode work?</strong></summary>
+Settings → Detection mode → switch to <strong>Automatic</strong>. Milely uses motion + GPS to detect when you start driving, records the route in the background, and notifies you to classify after the trip ends. Requires "Always Allow" location and Motion & Fitness permissions.
+</details>
 
-Yes — open the trip in the Trips tab, tap **Delete Trip** at the bottom. If you locked the year (auto-locks on January 31 of the following year), unlock the trip first.
+<details>
+<summary><strong>Why is the IRS rate adjustable?</strong></summary>
+The IRS publishes a new standard mileage rate annually, sometimes mid-year. <strong>Settings → IRS Rate</strong> lets you confirm or update what Milely uses. We pre-load defaults but you should verify at <a href="https://www.irs.gov">irs.gov</a> before filing.
+</details>
 
-### How does year-locking work?
+<details>
+<summary><strong>Can I use Milely on multiple devices?</strong></summary>
+Today: back up on Device A, restore manually on Device B. Real multi-device sync is on the roadmap.
+</details>
 
-To prevent accidental edits to past tax records, Milely auto-locks any trip dated in a previous tax year on January 31 of the current year. Open the trip and tap **Unlock for editing** if you need to amend.
+<details>
+<summary><strong>What about Android?</strong></summary>
+Milely is iOS-only and likely staying that way. We're a tiny team and iOS is what we know.
+</details>
 
 ---
 
 ## Still stuck?
 
-Email **milely@smileycreative.io** with a brief description of what you're trying to do. We'll get back within a few business days.
+Email [**milely@smileycreative.io**](mailto:milely@smileycreative.io) with what you were trying to do, what you expected, and what happened. Screenshots help. We answer within a couple business days (and we read every email).
 
 </main>

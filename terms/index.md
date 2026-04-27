@@ -32,7 +32,16 @@ The App is distributed through the Apple App Store. Your use of the App is also 
 
 ## 3. Pricing & purchases
 
-The App is offered for a one-time purchase price set on the App Store. There are no subscriptions, no in-app purchases, and no recurring charges. Apple handles all billing and refunds; refund requests should be directed to Apple.
+The App is offered for a **one-time purchase** price set on the App Store. The base App is fully functional forever with no subscription required.
+
+The App also offers an **optional auto-renewing subscription**, "Milely+," which unlocks additional features (e.g., branded reports, premium themes, automatic cloud backup, priority support). Subscription details:
+
+- **Price** is set in the App Store and may vary by territory.
+- **Billing period** is annual unless otherwise indicated at the point of sale.
+- **Auto-renewal** occurs at the end of each billing period unless you cancel at least 24 hours before period-end. Apple charges your iTunes account at confirmation of purchase and on each renewal.
+- **Manage or cancel** your subscription via your Apple ID account settings (Settings → [your name] → Subscriptions on iOS, or in the App Store).
+
+Apple handles all billing and refunds for both the one-time purchase and the subscription. Refund requests should be directed to Apple at [reportaproblem.apple.com](https://reportaproblem.apple.com).
 
 ---
 

@@ -206,7 +206,79 @@
     margin: 32px 0;
   }
 
+  /* Two-column "how-to" rows: copy on the left, phone screenshot on the right. */
+  .how-row {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 36px;
+    align-items: start;
+    margin: 24px 0 8px;
+  }
+  .how-text :first-child { margin-top: 0; }
+  .how-text ol, .how-text ul { padding-left: 20px; }
+  .how-text li { margin-bottom: 6px; }
+  .how-img {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    padding: 10px;
+  }
+  .how-img img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+  }
+
+  /* Accordion FAQ */
+  details {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin: 8px 0;
+  }
+  details summary {
+    cursor: pointer;
+    list-style: none;
+    color: var(--text);
+    padding-right: 24px;
+    position: relative;
+  }
+  details summary::-webkit-details-marker { display: none; }
+  details summary::after {
+    content: "＋";
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: var(--muted);
+    font-weight: 400;
+  }
+  details[open] summary::after { content: "－"; }
+  details > p, details > ul, details > ol {
+    margin-top: 10px;
+    color: var(--muted);
+  }
+
+  /* Sticky header CTA */
+  .header-cta {
+    background: linear-gradient(135deg, var(--brand-yellow), var(--brand-orange));
+    color: #1c1917;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    margin-left: auto;
+  }
+  .header-cta:hover { transform: translateY(-1px); transition: transform 0.15s; }
+
   /* Mobile */
+  @media (max-width: 700px) {
+    .how-row { grid-template-columns: 1fr; gap: 16px; }
+    .how-img { max-width: 320px; margin: 0 auto; }
+    .header-cta { display: none; }
+  }
   @media (max-width: 600px) {
     h1 { font-size: 28px; }
     .hero h1 { font-size: 38px; }
@@ -229,6 +301,7 @@
       <a href="/privacy/">Privacy</a>
       <a href="/terms/">Terms</a>
     </nav>
+    <a class="header-cta" href="https://apps.apple.com/app/milely/idTBD" rel="noopener">Get on App Store · $4.99</a>
   </div>
 </header>
 
