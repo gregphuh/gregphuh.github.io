@@ -260,6 +260,103 @@
     color: var(--muted);
   }
 
+  /* Plus showcase section */
+  .plus-section {
+    margin: 56px 0 24px;
+    padding: 40px 28px;
+    background: linear-gradient(135deg, rgba(234, 179, 8, 0.08), rgba(194, 65, 12, 0.05));
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    position: relative;
+    overflow: hidden;
+  }
+  .plus-eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--brand-yellow);
+    margin-bottom: 8px;
+  }
+  .plus-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    letter-spacing: -1.2px;
+    font-size: 38px;
+    margin: 0 0 12px;
+    color: var(--text);
+  }
+  .plus-sub {
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.55;
+    max-width: 640px;
+    margin: 0 0 32px;
+  }
+  .plus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .plus-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+  }
+  .plus-card .plus-icon {
+    font-size: 26px;
+    margin-bottom: 8px;
+  }
+  .plus-card h3 {
+    font-size: 16px;
+    margin: 0 0 6px;
+    color: var(--text);
+  }
+  .plus-card p {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+  .plus-pricing {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 24px;
+  }
+  .plus-price-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .plus-price-amount {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    letter-spacing: -1px;
+    color: var(--text);
+  }
+  .plus-price-amount span {
+    font-size: 16px;
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: 0;
+  }
+  .plus-price-detail {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .plus-fineprint {
+    font-size: 12px;
+    color: var(--muted);
+    margin: 16px 0 0;
+    line-height: 1.55;
+  }
+
   /* Sticky header CTA */
   .header-cta {
     background: linear-gradient(135deg, var(--brand-yellow), var(--brand-orange));
