@@ -19,16 +19,20 @@ Help with Milely. If your question isn't answered below, email **milely@smileycr
 
 ### How much does Milely cost?
 
-**$4.99** one-time for the base app — fully functional forever, no subscription required.
+There are two separate purchases — the base app and an optional add-on:
 
-Optional **Milely+** at **$0.99/year** does four things:
+**Base — $4.99 one-time.** Buys the app forever. Trip recording (manual + auto), live route map, annual PDF + CSV reports, per-business tagging, Trip Templates, calendar suggestions, Apple Watch / Widget / Live Activity, vehicle auto-detect, manual JSON export, the Warm theme. Standard email support. No subscription, no servers.
 
-- **Branded PDF reports.** Per-business logos auto-matched to your brand colors, plus a firm footer on every page.
-- **A personalized app.** Six color themes, a Brand theme that paints the whole app in your business's colors, and a route-style toggle on the map.
-- **Automatic cloud backup.** iCloud Drive, or any Files-app cloud (Google Drive, Dropbox, OneDrive). One-tap restore on a new iPhone.
+**Milely+ — $0.99/year (optional add-on).** A separate auto-renewing subscription that adds the following on top of the base app:
+
+- **Receipts** — VisionKit scanner (edge detection, perspective correction, multi-page) plus camera-roll attachments. Receipts surface alongside each trip and on the PDF.
+- **Branded PDF reports** — your logo, your brand colors, your firm footer.
+- **Five extra themes + Brand mode** — Light, Forest, Mint, Sky, Slate, plus a mode that paints the app in your business's colors.
+- **Automatic cloud backup** — iCloud Drive or any Files-app cloud (Google Drive, Dropbox, OneDrive).
+- **Branded map route** — Milely's gradient instead of Apple's default blue.
 - **Priority email support** + every update as soon as it ships.
 
-Cancel any time in Apple's subscription management. Subscribe in **Settings → Milely+**.
+The base app is never required to upgrade — Milely+ is purely optional. Subscribe in **Settings → Milely+**. Cancel any time in Apple's subscription management.
 
 ### Does Milely work without internet?
 

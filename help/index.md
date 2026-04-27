@@ -92,9 +92,9 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 <div class="how-text">
 <p>Milely stores everything on your phone — no servers, no us. So <strong>your backups are your responsibility</strong> (we make it easy).</p>
 
-<p><strong>Settings → Cloud Backup</strong> (Milely+) flips on automatic backups to <strong>iCloud Drive</strong> or any Files-app cloud (<em>Google Drive, Dropbox, OneDrive, Box</em>). Pick once, forget. Your data writes directly from your phone to your cloud — Milely never sees it.</p>
+<p><strong>Manual export</strong> ships with the base app: <em>Settings → Manual Export</em> gives you a JSON backup file via the iOS share sheet — email it, AirDrop it, drop it in Files. Free, any time.</p>
 
-<p>Without Milely+? <strong>Settings → Manual Export</strong> gives you a JSON backup file via the share sheet, free, any time.</p>
+<p>Want backups to be automatic? That's a <strong>Milely+</strong> add-on (see section 6).</p>
 
 <p><strong>Restoring on a new iPhone:</strong> reinstall Milely → open the backup file from Files → tap "Open in Milely". Done. (One-tap restore is on the roadmap.)</p>
 </div>
@@ -103,17 +103,19 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 ---
 
-<h2 id="customize">6. Make it yours (Milely+)</h2>
+<h2 id="customize">6. Milely+ — the optional $0.99/yr add-on</h2>
 
-The base app is fully functional forever for $4.99. **Milely+** at **$0.99/yr** unlocks:
+The base app at **$4.99** has everything you need to track miles and run an annual report. **Milely+** is a separate, optional **$0.99/year** subscription that adds the following — *only* if you want them:
 
-- **Branded PDFs.** Per-business logo + auto-matched accent colors + your firm's footer on every page. Hand a CPA a PDF that looks like it came from your firm — not from ours.
-- **Color themes.** Six palettes — Warm, Light, Forest, Mint, Sky, Slate — plus a **Brand mode** that paints the whole app in your business's colors (drop in a logo, Milely picks the palette).
-- **Automatic cloud backup.** iCloud Drive or any Files-app cloud, hands-off after setup.
-- **Priority support.** Bumped to the front of the queue at [milely@smileycreative.io](mailto:milely@smileycreative.io).
-- **Every update as soon as it ships.**
+- **Receipts.** Scan receipts with VisionKit's document camera (edge detection, perspective correction, multi-page) or attach existing photos from your camera roll. Receipts surface alongside each trip and on the PDF report.
+- **Branded PDFs.** Your business logo on every cover, accent colors auto-matched to your brand, your firm name + contact info in the footer of every page.
+- **Five extra themes + Brand mode.** Adds Light, Forest, Mint, Sky, and Slate. Brand mode paints the whole app in colors derived from a business logo.
+- **Automatic cloud backup.** iCloud Drive or any Files-app cloud (Google Drive, Dropbox, OneDrive). Hands-off after setup. *(Base app does manual JSON export.)*
+- **Branded map route.** Trip route renders in Milely's signature gradient instead of Apple's default blue.
+- **Priority support.** Front of the queue at [milely@smileycreative.io](mailto:milely@smileycreative.io).
+- **Every update as soon as it ships** — no extra purchases.
 
-Subscribe in **Settings → Milely+**. Cancel any time in Apple's subscription management.
+Subscribe in **Settings → Milely+**. Cancel any time in Apple's subscription management — your subscription stays active through the end of the period you paid for.
 
 ---
 
