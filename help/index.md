@@ -11,7 +11,7 @@ permalink: /help/
 
 Everything you need to know to use Milely. Roughly in the order you'll need it.
 
-<div class="page-intro">If you can't find what you need here, email <a href="mailto:support@smileycreative.io">support@smileycreative.io</a>.</div>
+<div class="page-intro">If you can't find what you need here, email <a href="mailto:milely@smileycreative.io">milely@smileycreative.io</a>.</div>
 
 ---
 
@@ -220,6 +220,6 @@ To prevent accidental edits to past tax records, Milely auto-locks any trip date
 
 ## Still stuck?
 
-Email **support@smileycreative.io** with a brief description of what you're trying to do. We'll get back within a few business days.
+Email **milely@smileycreative.io** with a brief description of what you're trying to do. We'll get back within a few business days.
 
 </main>

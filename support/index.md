@@ -9,7 +9,7 @@ permalink: /support/
 
 # Support
 
-Help with Milely. If your question isn't answered below, email **support@smileycreative.io** and we'll get back within a few business days.
+Help with Milely. If your question isn't answered below, email **milely@smileycreative.io** and we'll get back within a few business days.
 
 <div class="page-intro">If you're new to the app, start with the <a href="/help/">Help & How-To</a> guide.</div>
 
@@ -61,7 +61,7 @@ Not currently. Milely is iOS-only.
 
 ### Can I import data from MileIQ / Everlance / [other app]?
 
-Not directly in v1.0. If you have a CSV export from another app, send it to **support@smileycreative.io** and we'll see if we can help — and consider building an importer for a future update.
+Not directly in v1.0. If you have a CSV export from another app, send it to **milely@smileycreative.io** and we'll see if we can help — and consider building an importer for a future update.
 
 ### How do I delete a single trip?
 
@@ -93,12 +93,9 @@ Refunds for App Store purchases are handled by Apple, not Milely. Request a refu
 
 ## Contact
 
-For everything not in the FAQ:
+For everything not in the FAQ — support, privacy, legal, security disclosures:
 
-- **General support / how-to questions:** [support@smileycreative.io](mailto:support@smileycreative.io)
-- **Privacy questions:** [privacy@smileycreative.io](mailto:privacy@smileycreative.io)
-- **Legal / DMCA / takedowns:** [legal@smileycreative.io](mailto:legal@smileycreative.io)
-- **Security disclosures:** [security@smileycreative.io](mailto:security@smileycreative.io)
+[**milely@smileycreative.io**](mailto:milely@smileycreative.io)
 
 We aim to respond within 2 business days. SmileyCreative LLC is a small operation — please be patient if it takes a touch longer during tax season.
 

@@ -103,7 +103,7 @@ We may update these Terms from time to time. The updated version will be posted 
 ## 13. Contact
 
 Questions about these Terms:
-**legal@smileycreative.io**
+**milely@smileycreative.io**
 
 ---
 
