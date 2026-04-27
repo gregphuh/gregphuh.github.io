@@ -9,6 +9,7 @@ baseurl: ""
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-sitemap
 
 # Defaults for pages
 defaults:
