@@ -1,0 +1,39 @@
+# Jekyll config for milely.io — hosted free on GitHub Pages.
+title: Milely
+description: Track business mileage for IRS deductions. On-device, private, no subscription.
+url: https://milely.io
+baseurl: ""
+
+# Use the `minima` theme (free, ships with GitHub Pages) overridden by our brand CSS.
+# Or remove this line and use a custom layout. We're using a custom layout below.
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Defaults for pages
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+
+# Don't process these
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+
+# Permalink format
+permalink: /:path/
+
+# Brand colors (used in CSS via Sass variables — optional)
+sass:
+  style: compressed
+
+# SEO
+twitter:
+  card: summary_large_image
+social:
+  name: Milely
+  links:
+    - https://apps.apple.com/app/milely/idTBD
