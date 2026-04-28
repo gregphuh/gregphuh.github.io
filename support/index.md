@@ -22,13 +22,21 @@ Help with Milely. If your question isn't answered below, email **milely@smileycr
 **Try it free for 7 days, then a single subscription: $2.99/month or $19.99/year (annual saves ~44%).** That's it — one plan, all features.
 
 What the subscription unlocks:
-- Unlimited trips (free tier records up to 25 trips/month)
-- Receipts (VisionKit scanner + camera-roll attach + on PDF)
-- Branded PDF reports (your logo + colors + firm footer)
-- Six color themes (Warm, Light, Forest, Mint, Sky, Slate) + Brand mode
-- Automatic cloud backup (iCloud, Google Drive, Dropbox, OneDrive)
-- Branded map route (Milely's gradient instead of Apple's blue)
-- Priority email support
+- **Unlimited trips** — free tier records up to 25 trips/month
+- **Smart Suggestions** — on-device CoreML pattern learning that pre-fills business + purpose based on your past classifications (never leaves your phone)
+- **Auto-classify rules** — "Always business at this address" / "Always personal" one-tap rules
+- **Favorite trips** — save recurring drives as one-tap shortcuts on the Dashboard
+- **Receipts** — VisionKit scanner + camera-roll attach + on the PDF report
+- **Branded PDF reports** — your logo, colors, and firm footer
+- **Eight color themes** — Warm, Light, Night, Day, Slate, Sky, Forest, Mint, plus Brand mode (paints the app from your business logo)
+- **Cloud backup** — automatic exports to a Files folder you pick (iCloud Drive, Google Drive, Dropbox, OneDrive)
+- **Excel and QuickBooks Online exports** — drop-in mileage import alongside the PDF / Milely CSV options
+- **Calendar past-trip recovery** — pulls past calendar events with locations and proposes them as trips
+- **Project / client tagging** — sub-classify within a business for billing and reporting
+- **Year-end odometer reconciliation** — IRS Form 2106 / Schedule C-aligned beginning-of-year and end-of-year readings
+- **Audit Lock and edit history** — last year's records lock automatically January 31; every edit is timestamped for audit defense
+- **Sunday review reminder** — gentle nudge when you have unclassified trips waiting
+- **Priority email support**
 
 Cancel any time in Apple's subscription management.
 
@@ -48,20 +56,24 @@ The app's data is wiped when you uninstall. If you set up iCloud Drive or Google
 
 ### How do I restore from a backup?
 
-Currently, restore is performed manually:
-1. Reinstall Milely on your new device
-2. Open the backup JSON file from iCloud Drive or Google Drive (use the iOS Files app)
-3. Tap **Open in Milely** when prompted
+Backups are **JSON snapshot files** written to whichever cloud folder you picked under **Settings → Backup** (iCloud Drive, Google Drive, Dropbox, OneDrive — anything that shows up in the iOS Files app). The same JSON format is also produced by **Settings → Manual Export** when you want a one-off backup.
 
-We're working on a one-tap restore flow for a future update.
+To restore on a new device:
+1. Reinstall Milely on the new device.
+2. Open the backup `milely-*.json` file from the Files app → choose **Open in Milely** when prompted.
+3. Trips, businesses, vehicles, and templates import in place.
+
+(CSV and Excel exports are separate from backups — those are *reports* for accountants, not import-restore files.)
+
+A true multi-device sync (no manual export/import) is planned for v1.3 via Apple's CloudKit — see the next answer.
 
 ### Can I use Milely on multiple devices?
 
-The app stores data locally on each device. If you want the same data on multiple devices, the simplest path today is to back up to iCloud Drive on Device A and manually restore on Device B. Multi-device sync is a planned future update.
+The app stores data locally on each device. Today, the cleanest path is the manual backup-and-restore above. The next major release (v1.3) is planned around Apple's CloudKit sync — your data syncs through your private iCloud, end-to-end encrypted with Advanced Data Protection, never through a Milely server. Until that ships, we recommend treating one device as the primary recorder.
 
 ### Does Milely support Android?
 
-Not currently. Milely is iOS-only.
+Not currently — and likely staying that way. Milely is iOS-only by design; building Android would mean either a parallel codebase to maintain or a cross-platform framework that compromises the privacy posture and native feel.
 
 ### Can I import data from MileIQ / Everlance / [other app]?
 
@@ -69,17 +81,45 @@ Not directly in v1.0. If you have a CSV export from another app, send it to **mi
 
 ### How do I delete a single trip?
 
-Open the trip from the Trips tab → tap **Delete Trip** at the bottom → confirm.
+Three ways, pick whichever fits the moment:
+
+- **Swipe left** on a row in the **Logs** tab → tap the red **Delete** button. Quick and quiet.
+- **Long-press** a row in **Logs** → confirm-style alert. Use this when you want an "are you sure?" check.
+- Open the trip detail screen → tap **Delete Trip** at the bottom → confirm.
 
 ### How do I delete ALL my data?
 
-Two ways:
-- Delete the app from your iPhone
-- (Coming soon — Settings → Reset for in-app reset)
+Delete the app from your iPhone — that wipes the local SwiftData store, UserDefaults, and the trained Smart Suggestions model. (Reinstalling gets you a clean first-launch.)
 
 ### What if I forgot to start a trip?
 
-Tap **Trips → Log Past Trip Manually**. Enter the date, miles, addresses, business, and purpose by hand.
+Two paths depending on the gap:
+
+- **One or two trips?** **Logs → Log Past Trip Manually**. Enter the date, miles, addresses, business, and purpose by hand.
+- **A whole stretch (a week, a month)?** **Settings → Setup → Recover from calendar**. Milely reads your past calendar events with locations (on-device, never transmitted), dedupes against trips you already saved, and lets you bulk-create the rest.
+
+### What is Smart Suggestions, and why is Milely guessing?
+
+After you've classified about ten trips, Milely starts pre-filling business + purpose on the Classify screen based on patterns it has learned from those classifications. The training is a small Apple CoreML model (`LogisticRegressionClassifier` trained on `NLEmbedding` features of your end addresses). It runs entirely on-device — Milely has no server, no analytics pipeline, no shared model. Tap a suggestion chip to accept it whole, or just classify normally and the model keeps learning. Uninstall the app and the model goes with it.
+
+### What is Audit Lock?
+
+On **January 31 each year**, Milely automatically locks the previous year's trips so you can't accidentally edit them mid-audit. A small lock icon shows on locked trips. If you legitimately need to amend a return, open the trip from the Logs tab → tap **Unlock for editing** → make the change. The unlock and any edits that follow are written to the trip's **Edit history** with timestamps, so even when you reopen a closed year there's a clean paper trail showing exactly what changed and when.
+
+### How do I export to QuickBooks Online or Excel?
+
+Reports tab → **Export** button (top of the page) → menu opens with four formats:
+
+- **PDF** — IRS Pub. 463-formatted trip log
+- **Excel (.xls)** — opens in Excel, Numbers, Google Sheets, or LibreOffice
+- **CSV — Milely (full)** — every column we track (date, time, business, project, purpose, vehicle, miles, deduction)
+- **CSV — QuickBooks Online** — drop-in mileage importer; MM/DD/YYYY date format, no deduction column (QBO computes that itself based on its own rate)
+
+Pick the format → iOS share sheet opens → email it, AirDrop it, or save to Files.
+
+### Why does Milely ask my age on first launch?
+
+App Store policy and EU/EEA child-protection law require an age check (13+ globally, 16+ in the EEA). The confirmation is a single tap and is stored locally on your device — never transmitted. You'll only see the welcome screen again if our Terms or Privacy Policy materially change in a future update.
 
 ### What's the IRS standard mileage rate?
 
