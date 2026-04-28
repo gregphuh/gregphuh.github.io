@@ -66,8 +66,20 @@ description: Track mileage for business deductions. On-device, private, no serve
     </svg>
   </div>
 
-  <span class="hero-eyebrow">The privacy-first mileage app</span>
-  <h1>Milely</h1>
+  <!--
+    Editorial-cover h1: dramatic italic Fraunces "#1" with the
+    brand gradient, confident Inter Black caps for the categorical
+    claim, and an italic lowercase coda for "for privacy." — three
+    typographic moments that read as a magazine cover splash, not
+    a SaaS template. Brand wordmark "Milely" stays in the sticky
+    header + the footer; the hero h1 is now the positioning
+    statement.
+  -->
+  <h1>
+    <span class="hero-rank">#1</span>
+    <span class="hero-claim">Small-Company Mileage App</span>
+    <span class="hero-coda">for privacy.</span>
+  </h1>
   <p class="tagline">Track mileage for business deductions.<br/>On your iPhone. Never on our servers.</p>
   <a class="badge-link" href="https://apps.apple.com/app/milely/id__APPSTORE_ID_PENDING__" rel="noopener">Try free for 7 days</a>
   <p style="font-size: 14px; margin-top: 14px;">Then $2.99 / month or $19.99 / year. Cancel anytime.</p>
@@ -97,102 +109,161 @@ description: Track mileage for business deductions. On-device, private, no serve
   </div>
 </section>
 
+<!--
+  Stat strip: hard numbers under the hero. Lives outside <main>
+  so the dark band can be full-bleed without fighting main's
+  max-width constraint. Four credibility signals: 2025 IRS rate,
+  zero servers, weekly cadence, monthly price.
+-->
+<section class="stat-strip">
+  <div class="stat-strip-inner">
+    <div class="stat">
+      <div class="stat-num">70¢</div>
+      <div class="stat-label">Per business mile<br/>(2025 IRS rate)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">0</div>
+      <div class="stat-label">Servers Milely runs.<br/>Your data stays on your phone.</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">5 min</div>
+      <div class="stat-label">Weekly Sunday review<br/>keeps you tax-ready year-round.</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">$2.99</div>
+      <div class="stat-label">/ month after the<br/>7-day free trial.</div>
+    </div>
+  </div>
+</section>
+
 <main>
 
-<section class="features">
-  <div class="feature">
-    <h3>Watch your tax savings tick up as you drive</h3>
-    <p>Set your federal bracket once. Then every mile shows up as a real dollar value in real time — not just a deduction line, but the actual tax saved at your bracket. The Dashboard ticker turns "I drove 14 miles" into "I just saved $3.24."</p>
+<!--
+  Spotlight 1 — Tax savings ticker (warm).
+  Anchors the page on the differentiator: real-time tax savings
+  at the user's bracket, not just a generic deduction count.
+-->
+<section class="spot spot-warm">
+  <div class="spot-inner">
+    <div class="spot-text">
+      <span class="spot-eyebrow">Live tax ticker</span>
+      <h2>Watch your tax savings tick up as you drive.</h2>
+      <p>Set your federal bracket once. Every business mile becomes a real dollar at <em>your</em> bracket — not a generic deduction line, the actual tax saved.</p>
+      <p>The Dashboard ticker turns <em>"I drove 14 miles"</em> into <strong>"I just saved $3.24."</strong> Annoyingly motivating.</p>
+    </div>
+    <div class="spot-art">
+      <img class="spot-shot" src="/assets/screenshots/hero-1-dashboard.png" alt="Milely Dashboard with monthly deduction, donut breakdown, and Quick Start row" />
+    </div>
   </div>
-  <div class="feature">
-    <h3>Tap. Drive. Save.</h3>
-    <p>Tap Start, drive, tap End. Milely captures your route on a live map, calculates the miles, and asks you to classify the trip when you're done.</p>
+</section>
+
+<!--
+  Spotlight 2 — Smart Suggestions / on-device CoreML (blue, reverse).
+  The privacy story told concretely: a real on-device model name,
+  trained against the user's own classifications.
+-->
+<section class="spot spot-blue spot-reverse">
+  <div class="spot-inner">
+    <div class="spot-text">
+      <span class="spot-eyebrow">On-device CoreML</span>
+      <h2>Milely learns from you. On-device.</h2>
+      <p>The third time you classify a trip from your office to <em>Acme Realty's</em> listing as <em>"showing,"</em> Milely starts pre-filling that purpose for you.</p>
+      <p>The model — Apple's <strong>NLEmbedding</strong> stacked with a <strong>CreateML logistic-regression classifier</strong> — trains <strong>locally on your device</strong> against your classifications. No Milely account. No Milely server. There can't be a leak because the training data never leaves your phone.</p>
+    </div>
+    <div class="spot-art">
+      <img class="spot-shot" src="/assets/screenshots/hero-3-classify.png" alt="Milely Review and Save screen with on-device Smart Suggestions chips for the trip's business" />
+    </div>
   </div>
-  <div class="feature">
-    <h3>Or fully automatic</h3>
-    <p>Opt into auto-detect and Milely uses CoreMotion + GPS to recognize when you start driving — no manual taps, no missed trips.</p>
+</section>
+
+<!--
+  Spotlight 3 — Audit-defensive by design (green).
+  Three sub-features (Audit Lock, edit history, year-end odometer)
+  surfaced as in-panel bullets — kept inside one panel so the
+  audit story reads as a single coherent claim, not three claims.
+-->
+<section class="spot spot-green">
+  <div class="spot-inner">
+    <div class="spot-text">
+      <span class="spot-eyebrow">Audit-defensive by design</span>
+      <h2>Make your life boring if the IRS ever wants to see.</h2>
+      <p>Three audit-trail features, on by default, no add-on tier:</p>
+      <ul class="spot-bullets">
+        <li><strong>Audit Lock</strong>January 31 each year, last year's records lock automatically. Unlocking writes a timestamp.</li>
+        <li><strong>Per-trip edit history</strong>Every field-level change records a <em>TripEditEvent</em> with timestamp, old value, and new value.</li>
+        <li><strong>Year-end odometer reconciliation</strong>IRS Form 2106 / Schedule C-aligned readings, reconciled against actual miles logged.</li>
+      </ul>
+    </div>
+    <div class="spot-art">
+      <img class="spot-shot" src="/assets/screenshots/hero-4-reports.png" alt="Milely Reports tab with yearly stacked-bar deduction breakdown and year-at-a-glance stats" />
+    </div>
   </div>
-  <div class="feature">
-    <h3>Receipt OCR via Vision</h3>
-    <p>Snap a parking stub or toll receipt. On-device Vision OCR pulls the total and attaches it to the trip — no cloud upload, no third-party service.</p>
+</section>
+
+<!--
+  Spotlight 4 — Export to anywhere (slate, reverse).
+  Closes the workflow loop: from "I drove" to "here's what to
+  hand the CPA." Four formats listed inline with the screenshot
+  showing the actual menu.
+-->
+<section class="spot spot-slate spot-reverse">
+  <div class="spot-inner">
+    <div class="spot-text">
+      <span class="spot-eyebrow">Export to anywhere</span>
+      <h2>Export wherever your accountant wants it.</h2>
+      <p>One Export button. Four formats:</p>
+      <ul class="spot-bullets">
+        <li><strong>PDF</strong>IRS Pub. 463-formatted trip log. Hand it to your CPA.</li>
+        <li><strong>Excel (.xls)</strong>Opens in Excel, Numbers, Google Sheets, or LibreOffice.</li>
+        <li><strong>CSV — Milely (full)</strong>Every column we track, ready for your spreadsheet stack.</li>
+        <li><strong>CSV — QuickBooks Online</strong>Drop-in mileage import. No manual entry.</li>
+      </ul>
+      <p>Same source of truth: trip data on your phone. No "sync first, then export" dance.</p>
+    </div>
+    <div class="spot-art">
+      <img class="spot-shot" src="/assets/screenshots/hero-6-export.png" alt="Milely Export menu showing PDF, Excel, CSV — Milely, and CSV — QuickBooks Online options" />
+    </div>
   </div>
 </section>
 
 <hr/>
 
-<section>
-  <h2>Milely learns from you — on your phone, never on our servers.</h2>
-  <p>The third time you classify a trip from your office to <em>Acme Realty's</em> listing as "showing," Milely starts pre-filling that purpose for you. The model that does it — Apple's NLEmbedding stacked with a CreateML logistic-regression classifier — is trained <strong>locally on your device</strong>, against <em>your</em> classification history. No data ever leaves your phone. There's no Milely account. There's no Milely server. There can't be a leak of training data because the training data never goes anywhere.</p>
-  <p>That's the whole privacy story in one paragraph: <strong>your driving habits are not the product</strong>. We sell software, not signals.</p>
-</section>
-
-<hr/>
-
-<section>
-  <h2>Audit-defensive by design.</h2>
-  <p>If the IRS ever wants to see your records, Milely's job is to make your life boring.</p>
-
-  <div class="features">
-    <div class="feature">
-      <h3>Audit Lock</h3>
-      <p>January 31 each year, last year's records lock automatically. Unlocking is logged with a timestamp. Your CPA stops worrying about mid-audit edits — and if you do need to amend a return, there's a clean paper trail showing exactly what changed and when.</p>
-    </div>
-    <div class="feature">
-      <h3>Per-trip edit history</h3>
-      <p>Every field-level change to a saved trip — miles, purpose, business, vehicle, anything — records a <strong>TripEditEvent</strong> with timestamp plus old and new value. Tap any trip and the "Edit history" section shows the full audit trail. CPA-defensive, IRS-defensive, ex-spouse-defensive.</p>
-    </div>
-    <div class="feature">
-      <h3>Year-end odometer reconciliation</h3>
-      <p>IRS Form 2106 and Schedule C want beginning- and end-of-year odometer readings per vehicle. Milely captures them, prints them on the annual PDF, and reconciles them against the miles you actually logged. No more guessing in April.</p>
-    </div>
-  </div>
-</section>
-
-<hr/>
-
+<!--
+  Secondary feature grid — colored-accent cards for the "everything
+  else" surface area. Each card pulls a distinct accent color so
+  the row reads as deliberately varied (the prior all-white
+  hairline-card grid read like a placeholder template).
+-->
 <section>
   <h2>Built for the way you actually work.</h2>
-  <p>You don't classify trips at your desk. You classify them at a stoplight, between showings, on the way to the next job. Milely is built for that.</p>
+  <p>You don't classify trips at your desk. You classify them at a stoplight, between showings, on the way to the next job. Milely's smaller features are built for that.</p>
 
   <div class="features">
-    <div class="feature">
-      <h3>Auto-classify smart presets</h3>
-      <p>Tap a trip and hit "Always business at 1428 Maple St" or "Always personal" — Milely creates a rule. Future trips through that address auto-pre-fill so you never have to think about them again.</p>
+    <div class="feature feature-warm">
+      <h3>Auto-classify presets</h3>
+      <p>Tap "Always business at 1428 Maple St" or "Always personal" — Milely creates a rule. Future trips through that address auto-pre-fill.</p>
     </div>
-    <div class="feature">
+    <div class="feature feature-blue">
       <h3>Favorite trips, one tap</h3>
-      <p>Save your common drives as templates — "Office to listing," "Home to job site," "Costco run." They surface as a Quick Start row on the Dashboard. One tap, you're recording, pre-classified.</p>
+      <p>Save common drives as templates — Office to listing, Home to job site, Costco run. Surface as Quick Start on the Dashboard.</p>
     </div>
-    <div class="feature">
+    <div class="feature feature-green">
       <h3>Sunday review reminder</h3>
-      <p>Sunday at 6 PM, if you have unclassified trips, Milely pings you with a home-screen badge and a quiet notification. If everything's already classified, it stays silent. Five-minute weekly habit, year-end stress gone.</p>
+      <p>Sunday 6 PM, if you have unclassified trips, Milely pings you. If everything's classified, it stays silent. Five minutes a week.</p>
     </div>
-    <div class="feature">
-      <h3>"I forgot to use the app for three weeks."</h3>
-      <p>It happens. Milely's calendar-based recovery reads your recent calendar events with locations — <strong>on-device, never transmitted</strong> — and proposes them as trips you can log retroactively. Each one becomes a normal audit-trailed entry.</p>
+    <div class="feature feature-purple">
+      <h3>"I forgot for three weeks."</h3>
+      <p>Calendar-based recovery reads recent events with locations — <strong>on-device, never transmitted</strong> — and proposes them as trips.</p>
     </div>
-    <div class="feature">
+    <div class="feature feature-rose">
       <h3>Project &amp; client tagging</h3>
-      <p>Within a Business, tag each trip with a project or client — "1428 Maple listing," "Dallas job," "Smith matter." Free-text per trip, surfaces on the CSV and the PDF report. Real-estate agents, contractors, and consultants all asked for this; it's there.</p>
+      <p>Within a Business, tag each trip with a project — "1428 Maple," "Smith matter." Surfaces on the CSV and the PDF.</p>
     </div>
-    <div class="feature">
-      <h3>Live tax ticker</h3>
-      <p>Dashboard card shows year-to-date deduction <em>and</em> estimated tax savings at your bracket, ticking up as you drive. The "I just saved $3.24" effect is annoyingly motivating.</p>
+    <div class="feature feature-teal">
+      <h3>Receipt OCR via Vision</h3>
+      <p>Snap a parking stub or toll receipt. On-device Vision OCR pulls the total — no cloud, no third-party service.</p>
     </div>
   </div>
-</section>
-
-<hr/>
-
-<section>
-  <h2>Export wherever your accountant wants it.</h2>
-  <p>One <strong>Export</strong> button on the Reports tab opens a menu with three formats — pick whichever your CPA, your bookkeeper, or your spreadsheet brain prefers:</p>
-  <ul>
-    <li><strong>PDF</strong> — IRS Pub. 463-formatted trip log with cover page, by-business breakdown, and per-trip details. Hand it to your CPA.</li>
-    <li><strong>Excel (.xls)</strong> — opens in Excel, Numbers, or Google Sheets with formatting intact. For when your bookkeeper says "send me a spreadsheet."</li>
-    <li><strong>CSV</strong> — full Milely export <em>plus</em> a QuickBooks Online drop-in import variant. Mileage straight into QBO with no manual entry.</li>
-  </ul>
-  <p>Every export uses the same source of truth: the trip data on your phone. No "sync first, then export" dance.</p>
 </section>
 
 <hr/>
