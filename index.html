@@ -266,11 +266,40 @@ description: Track mileage for business deductions. On-device, private, no serve
   </div>
 </section>
 
-<hr/>
-
-<section>
-  <h2>Backups your way — your data, your cloud.</h2>
-  <p>Milely backs up to <strong>iCloud Drive, Google Drive, Dropbox, or OneDrive</strong> — whichever folder you point it at via the iOS Files picker. The backup is the user's data going to the user's storage. Milely doesn't see it, doesn't proxy it, doesn't index it. Manual JSON export is also free and always available, no subscription needed.</p>
+<!--
+  Privacy panel — replaces the prior plain Backups paragraph.
+  Three pillars Greg explicitly wants foregrounded:
+    1. Stays on your phone (no Milely server)
+    2. Backed up to your cloud of choice (iCloud Drive, Google
+       Drive, Dropbox, OneDrive — never through Milely)
+    3. Delete at any time (per-trip from Logs, or uninstall to
+       wipe everything — there's no server-side data to request
+       deletion of)
+  Full-bleed purple-tinted spot panel since privacy is the closing
+  argument before the buy decision below.
+-->
+<section class="spot spot-purple spot-full">
+  <div class="spot-inner">
+    <div class="spot-text">
+      <span class="spot-eyebrow">The privacy promise</span>
+      <h2>Your data. Your phone. Your call.</h2>
+      <p>Privacy isn't a footnote — it's the architecture. Three non-negotiables, built in from day one and on by default for every user.</p>
+      <div class="spot-pillars">
+        <div class="spot-pillar">
+          <h3>Stays on your phone</h3>
+          <p>No Milely server. No analytics pipeline. No telemetry. No account to create. The only network call Milely makes is the one <em>you</em> trigger when you save a backup to your cloud.</p>
+        </div>
+        <div class="spot-pillar">
+          <h3>Backed up to your cloud</h3>
+          <p>iCloud Drive, Google Drive, Dropbox, OneDrive — pick whichever folder you want via the iOS Files picker. The backup file lives in your account, under your control. We don't see it, proxy it, or index it.</p>
+        </div>
+        <div class="spot-pillar">
+          <h3>Delete at any time</h3>
+          <p>Swipe a single trip out of Logs, or uninstall the app to wipe everything — local SwiftData, settings, and the on-device CoreML model all go with it. Nothing on a server means nothing to "request deletion" of.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <hr/>
