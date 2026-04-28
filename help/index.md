@@ -123,7 +123,7 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 <p>If you legitimately need to amend a return or fix a typo in a closed year:</p>
 <ol>
-<li>Tap the locked trip.</li>
+<li>Open the <strong>Logs</strong> tab and tap the locked trip.</li>
 <li>Hit <strong>Unlock for editing</strong>.</li>
 <li>Make the change and save.</li>
 </ol>
@@ -138,7 +138,7 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 <div class="how-row">
 <div class="how-text">
-<p>Tap any saved trip and scroll to the <strong>Edit history</strong> section at the bottom of the detail view. You'll see every field-level change — miles, purpose, business, vehicle, project, anything — with the old value, the new value, and a timestamp.</p>
+<p>Open the <strong>Logs</strong> tab, tap any saved trip, and scroll to the <strong>Edit history</strong> section at the bottom of the detail screen. (The "Trip" tab in the bottom bar is for <em>active</em> trips — saved ones live in <strong>Logs</strong>.) You'll see every field-level change — miles, purpose, business, vehicle, project, anything — with the old value, the new value, and a timestamp.</p>
 
 <p>You don't have to do anything to turn this on. Every save writes to history automatically. It's there if the IRS, your CPA, or you-six-months-from-now ever needs to know what changed.</p>
 
@@ -156,7 +156,7 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 <p><strong>Two ways to create a rule:</strong></p>
 <ol>
-<li><strong>From a trip detail.</strong> Tap any trip, scroll to <em>Auto-classify future trips here</em>, and tap either <strong>Always business: [Business]</strong> or <strong>Always personal</strong>. Done.</li>
+<li><strong>From a saved trip's detail screen.</strong> Open the <strong>Logs</strong> tab, tap any saved trip to open its detail screen, scroll to <em>Auto-classify future trips here</em>, and tap either <strong>Always business: [Business]</strong> or <strong>Always personal</strong>. Done.</li>
 <li><strong>From Settings.</strong> Settings → <em>Auto-classify rules</em> shows every rule you have. Swipe left on a row to delete.</li>
 </ol>
 
@@ -189,7 +189,7 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 <div class="how-row">
 <div class="how-text">
-<p>On any trip detail, scroll to <strong>Project / Client</strong> — it's a free-text field. Type the listing address, the matter name, the job number, whatever your industry uses:</p>
+<p>From the <strong>Logs</strong> tab, tap any saved trip to open its detail screen and scroll to <strong>Project / Client</strong> — it's a free-text field. Type the listing address, the matter name, the job number, whatever your industry uses:</p>
 
 <ul>
 <li>Real-estate agents: <em>"1428 Maple listing"</em></li>
