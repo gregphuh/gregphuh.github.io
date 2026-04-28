@@ -221,6 +221,7 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 <p><strong>What it never does:</strong> upload your trips, your addresses, or your classifications anywhere. There's no Milely server, no analytics pipeline, no shared model. The training data is yours and stays yours. If you uninstall the app, the model goes with it.</p>
 </div>
+<div class="how-img"><img src="/assets/screenshots/smart-suggestions.png" alt="Classify screen with the Smart Suggestions row above the business chips" /></div>
 </div>
 
 ---
@@ -364,6 +365,7 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 <p>Subscribers also get <strong>Brand mode</strong>, which paints the entire app in colors derived from a business logo you've uploaded. Pick a theme in <strong>Settings → Theme</strong>.</p>
 </div>
+<div class="how-img"><img src="/assets/screenshots/themes.png" alt="Settings Theme picker showing all eight color themes" /></div>
 </div>
 
 ---
