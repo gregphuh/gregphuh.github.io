@@ -980,6 +980,46 @@
     border-color: var(--brand-yellow);
     background: linear-gradient(180deg, rgba(234, 179, 8, 0.06), rgba(234, 179, 8, 0.02) 60%, var(--surface));
   }
+  /* "Selected" treatment for the top-pick (Annual) card — a 2px
+     burnt-orange border, a brand-gradient halo shadow, a subtle
+     translate-up, and a ribbon badge overlapping the top edge.
+     Together they read as "this one is pre-selected / the obvious
+     choice" instead of "two equal options, pick one." */
+  .pricing-card-selected {
+    position: relative;
+    border-width: 2px;
+    border-color: var(--burnt);
+    background: linear-gradient(180deg, rgba(234, 179, 8, 0.12), rgba(194, 65, 12, 0.04) 60%, var(--surface));
+    box-shadow:
+      0 1px 0 rgba(0, 0, 0, 0.04),
+      0 20px 40px rgba(194, 65, 12, 0.16),
+      0 56px 112px rgba(194, 65, 12, 0.08);
+    transform: translateY(-6px);
+    z-index: 2;
+  }
+  .pricing-card-ribbon {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--yellow), var(--burnt));
+    color: #1c1917;
+    padding: 7px 18px;
+    border-radius: 999px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    box-shadow: 0 8px 20px rgba(194, 65, 12, 0.30);
+    z-index: 3;
+  }
+  /* On mobile when cards stack, drop the lift so the ribbon
+     doesn't overlap the card above unpleasantly. */
+  @media (max-width: 820px) {
+    .pricing-card-selected { transform: none; }
+  }
   .pricing-card-tag {
     display: inline-block;
     align-self: flex-start;
