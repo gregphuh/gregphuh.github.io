@@ -81,6 +81,14 @@
     --text: #1c1917;        /* near-black, warm-tinted */
     --muted: #57534e;       /* slate gray for secondary text */
 
+    /* Primary CTA blue — moved from warm cream pill to a vibrant
+       SaaS-blue fill so the buy button has the same "obvious next
+       step" weight as MileIQ / Hurdlr / Stride / Everlance. Tailwind
+       blue-600 family — confident without being neon. */
+    --blue:        #2563eb;   /* primary CTA fill */
+    --blue-hover:  #1d4ed8;   /* hover/pressed state */
+    --blue-soft:   #dbeafe;   /* soft accent — stat strips, callouts */
+
     /* Header keeps the original dark warm aesthetic so the brand wordmark
        still has its glow + the gradient logo reads correctly. Exposed as
        its own vars so the .site-header rules below don't need to hardcode. */
@@ -217,24 +225,32 @@
     z-index: 2;
   }
   .hero h1 {
-    font-size: 48px;
+    /* Bigger + tighter line-height for MileIQ-like dramatic weight.
+       The gradient warm-yellow → burnt-orange stays as our brand
+       identity even with the new blue CTA underneath; two accents
+       reads as confident, not muddled. */
+    font-size: 64px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
     background: linear-gradient(135deg, var(--yellow), var(--burnt));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
     position: relative;
     z-index: 2;
   }
   .hero .tagline {
-    font-size: 19px;
-    /* Hero band is dark-warm-brown; the global --muted slate-gray
-       (intended for the white body background) reads as invisible
-       on that backdrop. Use a soft near-white instead so the
-       tagline stays legible without competing with the gradient
-       wordmark above. */
-    color: rgba(255, 255, 255, 0.88);
+    /* Banner is hidden by default (see .hero-banner rule below);
+       text sits on the white body background so back to slate gray.
+       If the banner is re-enabled, restore the white-text overrides
+       that lived here previously. */
+    font-size: 21px;
+    color: var(--muted);
     margin-bottom: 32px;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
     position: relative;
     z-index: 2;
   }
@@ -243,13 +259,25 @@
     position: relative;
     z-index: 2;
   }
-  /* Same reasoning as .hero .tagline — the small "Then $2.99/mo"
-     subtext sat on dark in muted gray and read as invisible. The
-     inline `style` attribute on that <p> wins normally; bump
-     specificity here so the cascade flips it to near-white. */
-  .hero p:not(.tagline)[style*="muted"],
   .hero p:not(.tagline) {
-    color: rgba(255, 255, 255, 0.75) !important;
+    color: var(--muted);
+  }
+  /* Phone screenshot showcase below the CTA — gives visitors an
+     immediate "what does this look like" hit, MileIQ-style.
+     The Day theme is the cleanest white/Azure variant, the
+     closest match to mainstream SaaS aesthetics, so it's the
+     right hook for the hero. */
+  .hero-shot {
+    margin: 56px auto 0;
+    max-width: 280px;
+    border-radius: 32px;
+    box-shadow:
+      0 1px 0 rgba(0, 0, 0, 0.04),
+      0 24px 48px rgba(37, 99, 235, 0.18),
+      0 60px 120px rgba(37, 99, 235, 0.10);
+    position: relative;
+    z-index: 2;
+    display: block;
   }
 
   /* Wavy-road animated banner — sits behind the hero content as
@@ -279,6 +307,12 @@
     z-index: 0;
     pointer-events: none;
     overflow: hidden;
+    /* Banner hidden for now — the page reads cleaner without it
+       while we lean into a MileIQ-style white background +
+       phone-shot hero. The wavy-road SVG markup + animations are
+       all preserved (see index.html); flip this back to `display:
+       block` to re-enable. */
+    display: none;
   }
   .hero-banner svg {
     width: 100%;
@@ -335,33 +369,49 @@
   }
   .badge-link {
     display: inline-block;
-    background: var(--surface);
-    padding: 14px 22px;
-    border-radius: 12px;
-    color: var(--text);
+    background: var(--blue);
+    padding: 16px 28px;
+    border-radius: 10px;
+    color: #ffffff;
     text-decoration: none;
     font-weight: 600;
-    border: 1px solid var(--border);
-    transition: transform 0.2s, box-shadow 0.2s;
+    font-size: 16px;
+    border: none;
+    box-shadow: 0 1px 2px rgba(37, 99, 235, 0.16),
+                0 6px 16px rgba(37, 99, 235, 0.20);
+    transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
   }
   .badge-link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(194, 65, 12, 0.2);
+    background: var(--blue-hover);
+    transform: translateY(-1px);
+    color: #ffffff;
+    box-shadow: 0 2px 4px rgba(37, 99, 235, 0.20),
+                0 12px 28px rgba(37, 99, 235, 0.30);
     text-decoration: none;
   }
 
-  /* Feature cards */
+  /* Feature cards — cleaner SaaS-card treatment: pure white
+     background, generous padding, soft shadow on hover instead of
+     the tan card fill. Reads as more "modern landing page" than
+     the warm-palette boxes the previous version used. */
   .features {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 18px;
+    gap: 20px;
     margin: 48px 0;
   }
   .feature {
-    background: var(--surface);
+    background: #ffffff;
     border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 22px;
+    border-radius: 16px;
+    padding: 28px 24px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+  }
+  .feature:hover {
+    border-color: #c7d2fe; /* indigo-200 — soft blue tint matches the CTA */
+    box-shadow: 0 1px 2px rgba(37, 99, 235, 0.06),
+                0 8px 24px rgba(37, 99, 235, 0.08);
+    transform: translateY(-1px);
   }
   .feature h3 { margin-top: 0; }
 
