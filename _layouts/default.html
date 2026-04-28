@@ -224,7 +224,12 @@
   }
   .hero .tagline {
     font-size: 19px;
-    color: var(--muted);
+    /* Hero band is dark-warm-brown; the global --muted slate-gray
+       (intended for the white body background) reads as invisible
+       on that backdrop. Use a soft near-white instead so the
+       tagline stays legible without competing with the gradient
+       wordmark above. */
+    color: rgba(255, 255, 255, 0.88);
     margin-bottom: 32px;
     position: relative;
     z-index: 2;
@@ -233,6 +238,14 @@
   .hero p:not(.tagline) {
     position: relative;
     z-index: 2;
+  }
+  /* Same reasoning as .hero .tagline — the small "Then $2.99/mo"
+     subtext sat on dark in muted gray and read as invisible. The
+     inline `style` attribute on that <p> wins normally; bump
+     specificity here so the cascade flips it to near-white. */
+  .hero p:not(.tagline)[style*="muted"],
+  .hero p:not(.tagline) {
+    color: rgba(255, 255, 255, 0.75) !important;
   }
 
   /* Wavy-road animated banner — sits behind the hero content as
