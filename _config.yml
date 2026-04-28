@@ -10,6 +10,7 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-redirect-from
 
 # Defaults for pages
 defaults:
@@ -37,4 +38,4 @@ twitter:
 social:
   name: Milely
   links:
-    - https://apps.apple.com/app/milely/idTBD
+    - https://apps.apple.com/app/milely/id__APPSTORE_ID_PENDING__
