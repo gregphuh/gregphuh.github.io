@@ -19,7 +19,7 @@ Help with Milely. If your question isn't answered below, email **milely@smileycr
 
 ### How much does Milely cost?
 
-**Try it free for 7 days, then a single subscription: $2.99/month or $19.99/year (annual saves ~44%).** That's it — one plan, all features.
+**Try it free for 7 days, then a single subscription: $3.99/month or $29.99/year (annual saves ~37%).** That's it — one plan, all features.
 
 What the subscription unlocks:
 - **Unlimited trips** — free tier records up to 25 trips/month
@@ -40,7 +40,7 @@ What the subscription unlocks:
 
 Cancel any time in Apple's subscription management.
 
-**Don't want a subscription?** A separate **Milely Lifetime** purchase ($49.99 one-time) is available inside the app at **Settings → Subscribe → Other options**. Unlocks everything forever — no recurring charge. We don't promote it, because subscriptions fund ongoing development, but it's there for the minority who refuse subscriptions on principle.
+**Don't want a subscription?** A separate **Milely Lifetime** purchase ($69.99 one-time) is available inside the app at **Settings → Subscribe → Other options**. Unlocks everything forever — no recurring charge. We don't promote it, because subscriptions fund ongoing development, but it's there for the minority who refuse subscriptions on principle.
 
 ### Does Milely work without internet?
 

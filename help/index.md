@@ -376,7 +376,7 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 <div class="how-row">
 <div class="how-text">
-<p>Milely is free to try for 7 days, then a single subscription: <strong>$2.99/month</strong> or <strong>$19.99/year</strong> (saves about 44%). Subscribing unlocks:</p>
+<p>Milely is free to try for 7 days, then a single subscription: <strong>$3.99/month</strong> or <strong>$29.99/year</strong> (saves about 37%). Subscribing unlocks:</p>
 
 <ul>
 <li><strong>Unlimited trips.</strong> The free tier records up to 25 trips per calendar month. Subscribers track every drive, no cap.</li>
@@ -390,7 +390,7 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 <p>Subscribe in <strong>Settings → Subscribe</strong>. Cancel any time in Apple's subscription management — your subscription stays active through the end of the period you paid for.</p>
 
-<p><strong>Don't want a subscription?</strong> An optional <strong>Milely Lifetime</strong> at $49.99 one-time is available behind <em>Settings → Subscribe → Other options</em>. Unlocks everything forever, no recurring charge. We don't promote it because subscriptions fund ongoing development, but it's available for the minority who refuse subscriptions on principle.</p>
+<p><strong>Don't want a subscription?</strong> An optional <strong>Milely Lifetime</strong> at $69.99 one-time is available behind <em>Settings → Subscribe → Other options</em>. Unlocks everything forever, no recurring charge. We don't promote it because subscriptions fund ongoing development, but it's available for the minority who refuse subscriptions on principle.</p>
 </div>
 <div class="how-img"><img src="/assets/screenshots/settings.png" alt="Settings screen with the Subscribe row at the top" /></div>
 </div>
