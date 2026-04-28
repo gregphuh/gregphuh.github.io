@@ -5,7 +5,7 @@ description: Milely Terms of Service.
 permalink: /terms/
 ---
 
-<main>
+<main markdown="1">
 
 # Terms of Service
 

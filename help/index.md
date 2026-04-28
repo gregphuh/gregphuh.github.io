@@ -5,7 +5,7 @@ description: Walk through Milely the way you'll actually use it — track your f
 permalink: /help/
 ---
 
-<main>
+<main markdown="1">
 
 # How to Milely
 

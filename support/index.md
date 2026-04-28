@@ -5,7 +5,7 @@ description: Get help with Milely — FAQ and contact info.
 permalink: /support/
 ---
 
-<main>
+<main markdown="1">
 
 # Support
 

@@ -5,7 +5,7 @@ description: Milely's privacy policy — how (and why) we don't collect your dat
 permalink: /privacy/
 ---
 
-<main>
+<main markdown="1">
 
 # Privacy Policy
 
