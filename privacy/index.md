@@ -86,7 +86,7 @@ If you pair a vehicle to a connected device (CarPlay or Bluetooth audio), Milely
 
 Milely contains **no** third-party analytics, advertising, attribution, or tracking SDKs. The only third-party services touched by the app are:
 
-- **Apple Maps / Google Maps / Waze** — only when you tap an "Open in Maps" link to navigate. The destination URL is opened in those apps via the iOS share/open API; Milely does not transmit data to them beyond the destination coordinates that the URL contains.
+- **Apple Maps** — only when you tap an "Open in Apple Maps" link to navigate. The destination URL is opened via the iOS share/open API; Milely does not transmit data beyond the destination coordinates that the URL contains.
 - **Google Drive / Dropbox / OneDrive (etc.)** — only if you choose to back up to one of them via the iOS Files app. Apple's Files framework handles the file save; Milely does not call those services' APIs directly.
 - **Apple iCloud** — if you enable iCloud Drive backup, files are written to your iCloud Drive via Apple's framework.
 

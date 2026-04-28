@@ -98,7 +98,7 @@ You agree to defend, indemnify, and hold harmless the Company, its officers, dir
 
 ## 10. Trademarks
 
-"Milely" and the Milely logo are trademarks of SmileyCreative LLC. References to "IRS," "Apple Maps," "Google Maps," "Waze," and other third-party marks are the property of their respective owners and are used for descriptive purposes only.
+"Milely" and the Milely logo are trademarks of SmileyCreative LLC. References to "IRS," "Apple Maps," and other third-party marks are the property of their respective owners and are used for descriptive purposes only.
 
 ---
 
