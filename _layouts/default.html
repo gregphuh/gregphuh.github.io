@@ -201,12 +201,16 @@
     padding: 64px 24px 48px;
     max-width: 760px;
     margin: 0 auto;
+    position: relative;
+    isolation: isolate;
   }
   .hero .icon {
     width: 110px; height: 110px;
     border-radius: 24px;
     margin: 0 auto 24px;
     box-shadow: 0 16px 50px rgba(194, 65, 12, 0.4);
+    position: relative;
+    z-index: 2;
   }
   .hero h1 {
     font-size: 48px;
@@ -215,11 +219,88 @@
     background-clip: text;
     color: transparent;
     margin-bottom: 12px;
+    position: relative;
+    z-index: 2;
   }
   .hero .tagline {
     font-size: 19px;
     color: var(--muted);
     margin-bottom: 32px;
+    position: relative;
+    z-index: 2;
+  }
+  .hero .badge-link,
+  .hero p:not(.tagline) {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Wavy-road animated banner — sits behind the hero content as
+     a chrome-feeling backdrop. Pure SVG + CSS animation, no JS,
+     sharp at any resolution. The dashed stroke paths simulate
+     lane stripes flowing past as you drive; the slow "shine"
+     gradient sweep gives the chrome / modern feel. */
+  .hero-banner {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+    border-radius: 24px;
+    margin: 8px 8px 0;
+  }
+  .hero-banner svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  /* "Shine" sweep — a thin bright vertical stripe that slowly
+     traverses the banner left-to-right, simulating light catching
+     a polished surface. */
+  .hero-banner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 0%,
+      transparent 40%,
+      rgba(234, 179, 8, 0.08) 49%,
+      rgba(255, 255, 255, 0.10) 50%,
+      rgba(234, 179, 8, 0.08) 51%,
+      transparent 60%,
+      transparent 100%
+    );
+    background-size: 220% 100%;
+    background-position: 200% 0;
+    animation: heroShine 9s ease-in-out infinite;
+    mix-blend-mode: screen;
+    pointer-events: none;
+  }
+  @keyframes heroShine {
+    0%   { background-position: 200% 0; }
+    55%  { background-position: -100% 0; }
+    100% { background-position: -100% 0; }
+  }
+
+  /* Animate the lane stripes to flow horizontally — gives the
+     "watching the road pass" sensation. Three layers at different
+     speeds + opacities create parallax depth. */
+  .hero-lane-fast { animation: laneFlow 3s linear infinite; }
+  .hero-lane-mid  { animation: laneFlow 5s linear infinite; }
+  .hero-lane-slow { animation: laneFlow 8s linear infinite; }
+  @keyframes laneFlow {
+    from { stroke-dashoffset: 0; }
+    to   { stroke-dashoffset: -200; }
+  }
+  /* Honor system motion preference — users who set
+     prefers-reduced-motion get a static banner instead of the
+     looping animations. Same visual, no movement. */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-banner::after,
+    .hero-lane-fast, .hero-lane-mid, .hero-lane-slow {
+      animation: none;
+    }
   }
   .badge-link {
     display: inline-block;

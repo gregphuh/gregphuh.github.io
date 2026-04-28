@@ -352,18 +352,20 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 <div class="how-text">
 <p>Milely ships with eight color themes. <strong>Warm</strong> (the default) is free for everyone. The other seven are subscriber perks:</p>
 
+<p>Listed in the same order as the in-app picker — dark and light siblings paired:</p>
+
 <ul>
-<li><strong>Warm</strong> — original Milely look, dark warm-brown with burnt-orange and amber accents (free)</li>
-<li><strong>Light</strong> — cream background, burnt-orange accents</li>
-<li><strong>Night</strong> — true OLED black</li>
-<li><strong>Day</strong> — high-contrast white</li>
-<li><strong>Slate</strong> — cool blue-gray with platinum accents</li>
-<li><strong>Sky</strong> — pale sky-blue throughout</li>
-<li><strong>Forest</strong> — deep forest greens with sage and wheat</li>
-<li><strong>Mint</strong> — Mint-Mobile-inspired soft mint and warm orange on white</li>
+<li><strong>Warm</strong> — the original Milely look. Dark warm-brown with burnt-orange accents. Friendly at any hour. <em>(free tier)</em></li>
+<li><strong>Light</strong> — daytime sibling of Warm. Toasted cream with burnt-orange accents. Reads great in sunlight.</li>
+<li><strong>Night</strong> — strict monochrome dark palette with crisp Azure-blue accent. The minimum-viable distraction.</li>
+<li><strong>Day</strong> — Night's daylight counterpart. Pure-white cards on soft neutral grey, same Azure accent. Office-clean.</li>
+<li><strong>Slate</strong> — cool blue-gray with platinum highlights. For when you want everything to feel level-headed.</li>
+<li><strong>Sky</strong> — pale sky-blue throughout, navy text, amber pop on the savings figure. Calm and airy.</li>
+<li><strong>Forest</strong> — deep forest greens with sage and wheat-gold accents. Outdoorsy without being twee.</li>
+<li><strong>Mint</strong> — minty fresh. Soft mint as the brand voice with warm orange accents on white. Crisp and professional.</li>
 </ul>
 
-<p>Subscribers also get <strong>Brand mode</strong>, which paints the entire app in colors derived from a business logo you've uploaded. Pick a theme in <strong>Settings → Theme</strong>.</p>
+<p>Pick a theme in <strong>Settings → Theme</strong>.</p>
 </div>
 <div class="how-img"><img src="/assets/screenshots/themes.png" alt="Settings Theme picker showing all eight color themes" /></div>
 </div>
@@ -380,7 +382,7 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 <li><strong>Unlimited trips.</strong> The free tier records up to 25 trips per calendar month. Subscribers track every drive, no cap.</li>
 <li><strong>Receipts.</strong> VisionKit scanner (edge detection, perspective correction, multi-page) plus camera-roll attach. Receipts surface alongside each trip and on the PDF report.</li>
 <li><strong>Branded PDFs.</strong> Your business logo on every cover, accent colors auto-matched to your brand, your firm footer on every page.</li>
-<li><strong>Eight themes + Brand mode.</strong> Warm, Light, Night, Day, Slate, Sky, Forest, Mint. Brand mode paints the whole app in colors derived from a business logo.</li>
+<li><strong>Eight color themes.</strong> Warm, Light, Night, Day, Slate, Sky, Forest, Mint — see <a href="#themes">section 18</a> for the full lineup.</li>
 <li><strong>Automatic cloud backup.</strong> iCloud Drive, Google Drive, Dropbox, OneDrive. Hands-off after setup.</li>
 <li><strong>Excel + QuickBooks Online exports.</strong> Free tier gets PDF and the standard Milely CSV; subscribers also get .xls and the QBO drop-in.</li>
 <li><strong>Priority support.</strong> Front of the queue at <a href="mailto:milely@smileycreative.io">milely@smileycreative.io</a>.</li>

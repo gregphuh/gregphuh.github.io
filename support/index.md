@@ -28,7 +28,7 @@ What the subscription unlocks:
 - **Favorite trips** — save recurring drives as one-tap shortcuts on the Dashboard
 - **Receipts** — VisionKit scanner + camera-roll attach + on the PDF report
 - **Branded PDF reports** — your logo, colors, and firm footer
-- **Eight color themes** — Warm, Light, Night, Day, Slate, Sky, Forest, Mint, plus Brand mode (paints the app from your business logo)
+- **Eight color themes** — Warm, Light, Night, Day, Slate, Sky, Forest, Mint (in picker order)
 - **Cloud backup** — automatic exports to a Files folder you pick (iCloud Drive, Google Drive, Dropbox, OneDrive)
 - **Excel and QuickBooks Online exports** — drop-in mileage import alongside the PDF / Milely CSV options
 - **Calendar past-trip recovery** — pulls past calendar events with locations and proposes them as trips
