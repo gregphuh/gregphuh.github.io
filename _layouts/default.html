@@ -100,6 +100,10 @@
     font-family: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     line-height: 1.6;
+    /* Clip horizontal overflow so the full-bleed hero banner's
+       100vw width doesn't introduce a horizontal scrollbar when a
+       vertical scrollbar narrows the viewport's effective width. */
+    overflow-x: hidden;
   }
   a { color: var(--burnt); text-decoration: none; }
   a:hover { text-decoration: underline; }
@@ -252,15 +256,29 @@
      a chrome-feeling backdrop. Pure SVG + CSS animation, no JS,
      sharp at any resolution. The dashed stroke paths simulate
      lane stripes flowing past as you drive; the slow "shine"
-     gradient sweep gives the chrome / modern feel. */
+     gradient sweep gives the chrome / modern feel.
+
+     Full-bleed: the parent `.hero` has max-width: 760px, but we
+     want the banner to span the full viewport width as a true
+     hero band. The `width: 100vw; left: 50%; transform: translateX(-50%)`
+     trick breaks out of the constrained parent, anchored at the
+     section's vertical extent. No border-radius / margin since
+     it's edge-to-edge.
+
+     Note on horizontal scrollbar: if the user's browser shows a
+     vertical scrollbar, `100vw` includes the scrollbar's width,
+     which can introduce a tiny horizontal scroll. The
+     `overflow-x: hidden` on `body` (added below) clips that. */
   .hero-banner {
     position: absolute;
-    inset: 0;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
     z-index: 0;
     pointer-events: none;
     overflow: hidden;
-    border-radius: 24px;
-    margin: 8px 8px 0;
   }
   .hero-banner svg {
     width: 100%;
