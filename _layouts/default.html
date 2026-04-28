@@ -545,8 +545,16 @@
   }
   .themes-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    /* 4 per row on desktop (8 themes → 2 clean rows of 4), 2 per row on
+       phone (8 themes → 4 rows of 2). Avoids the auto-fit "5 + 3" or
+       "6 + 2" awkwardness with 8 cards at intermediate widths. */
+    grid-template-columns: repeat(4, 1fr);
     gap: 16px;
+  }
+  @media (max-width: 720px) {
+    .themes-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
   .theme-card {
     background: var(--surface);
