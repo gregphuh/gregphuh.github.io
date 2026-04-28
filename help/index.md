@@ -130,6 +130,7 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 <p>Both the unlock action and any edits that follow are written to the trip's <strong>Edit history</strong> with timestamps. So even if you do reopen a closed year, there's a clean paper trail showing exactly what changed and when. That's the point.</p>
 </div>
+<div class="how-img"><img src="/assets/screenshots/audit-lock.png" alt="Trip detail showing the Audit Lock badge and Unlock for editing button" /></div>
 </div>
 
 ---
@@ -144,6 +145,7 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 <p>Edit history can't be wiped from inside the app. (You can delete the trip itself, which removes the history along with it — but you can't surgically erase a single edit event.)</p>
 </div>
+<div class="how-img"><img src="/assets/screenshots/edit-history.png" alt="Trip detail with the Edit history section showing field-level changes with timestamps" /></div>
 </div>
 
 ---
@@ -162,6 +164,7 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 <p>Once a rule exists, any future trip ending at the same address pre-fills with that business (or marks itself personal) automatically. You can still override it on the Classify screen — the rule just sets a smart default.</p>
 </div>
+<div class="how-img"><img src="/assets/screenshots/auto-classify.png" alt="Trip detail showing Auto-classify future trips here with Always business and Always personal options" /></div>
 </div>
 
 ---
@@ -181,6 +184,7 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 <p>To remove a favorite, tap the star again on the original trip (or any future trip created from it).</p>
 </div>
+<div class="how-img"><img src="/assets/screenshots/favorites.png" alt="Trip detail with the star button highlighted and the Favorite trip shortcut on the Dashboard" /></div>
 </div>
 
 ---
@@ -199,6 +203,7 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 <p>The tag surfaces as its own column in the <strong>Milely full CSV</strong> export, so you can sort, filter, or pivot by project in Excel or Numbers when you're billing or reconciling.</p>
 </div>
+<div class="how-img"><img src="/assets/screenshots/project-tag.png" alt="Trip detail showing the Project / Client free-text field" /></div>
 </div>
 
 ---
@@ -234,6 +239,7 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 <p>Calendar reading happens entirely on-device — Milely uses iOS's EventKit API and never transmits your calendar data anywhere. iOS will prompt you for Calendar permission the first time.</p>
 </div>
+<div class="how-img"><img src="/assets/screenshots/calendar-recovery.png" alt="Recover from calendar screen with lookback window picker and list of proposed trips" /></div>
 </div>
 
 ---
@@ -270,6 +276,7 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 <li><strong>CSV — QuickBooks Online</strong> — drop-in mileage importer. <em>MM/DD/YYYY</em> date format, no deduction column (QBO computes that itself based on its own mileage rate). Use this one if you're importing straight into QBO.</li>
 </ul>
 </div>
+<div class="how-img"><img src="/assets/screenshots/export-menu.png" alt="Reports tab Export button with menu showing PDF, Excel, CSV Milely, and CSV QuickBooks Online options" /></div>
 </div>
 
 ---
@@ -284,6 +291,7 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 <p><strong>Why it matters:</strong> IRS Form 2106 and Schedule C want both a <em>Jan 1</em> (year-start) and <em>Dec 31</em> (year-end) odometer reading per vehicle. Milely uses the readings to reconcile the miles you actually recorded against your real odometer. The PDF report prints them on the cover page, so your CPA sees the reconciliation without asking.</p>
 </div>
+<div class="how-img"><img src="/assets/screenshots/year-end-odometer.png" alt="Vehicle detail with the Year-end odometer section showing three year rows" /></div>
 </div>
 
 ---
@@ -296,6 +304,7 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 <p>You can also attach existing photos from your camera roll. Receipts surface alongside each trip in the Logs tab and on the PDF report. OCR runs on-device — nothing is uploaded.</p>
 </div>
+<div class="how-img"><img src="/assets/screenshots/receipts.png" alt="Trip detail with attached receipt thumbnail" /></div>
 </div>
 
 ---
