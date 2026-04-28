@@ -25,28 +25,96 @@ description: Track mileage for business deductions. On-device, private, no serve
   </div>
   <div class="feature">
     <h3>Or fully automatic</h3>
-    <p>Opt into auto-detect and Milely uses motion + GPS to recognize when you start driving — no manual taps.</p>
+    <p>Opt into auto-detect and Milely uses CoreMotion + GPS to recognize when you start driving — no manual taps, no missed trips.</p>
   </div>
   <div class="feature">
-    <h3>Audit Lock</h3>
-    <p>January 31 each year, last year's records lock automatically. Unlocking is logged. Your CPA stops worrying about mid-audit edits, and you have a clean paper trail if the IRS ever asks.</p>
+    <h3>Receipt OCR via Vision</h3>
+    <p>Snap a parking stub or toll receipt. On-device Vision OCR pulls the total and attaches it to the trip — no cloud upload, no third-party service.</p>
   </div>
-  <div class="feature">
-    <h3>Annual report, one tap</h3>
-    <p>One-tap PDF reports with cover page, by-business breakdown, and per-trip details. Hand to your CPA.</p>
+</section>
+
+<hr/>
+
+<section>
+  <h2>Milely learns from you — on your phone, never on our servers.</h2>
+  <p>The third time you classify a trip from your office to <em>Acme Realty's</em> listing as "showing," Milely starts pre-filling that purpose for you. The model that does it — Apple's NLEmbedding stacked with a CreateML logistic-regression classifier — is trained <strong>locally on your device</strong>, against <em>your</em> classification history. No data ever leaves your phone. There's no Milely account. There's no Milely server. There can't be a leak of training data because the training data never goes anywhere.</p>
+  <p>That's the whole privacy story in one paragraph: <strong>your driving habits are not the product</strong>. We sell software, not signals.</p>
+</section>
+
+<hr/>
+
+<section>
+  <h2>Audit-defensive by design.</h2>
+  <p>If the IRS ever wants to see your records, Milely's job is to make your life boring.</p>
+
+  <div class="features">
+    <div class="feature">
+      <h3>Audit Lock</h3>
+      <p>January 31 each year, last year's records lock automatically. Unlocking is logged with a timestamp. Your CPA stops worrying about mid-audit edits — and if you do need to amend a return, there's a clean paper trail showing exactly what changed and when.</p>
+    </div>
+    <div class="feature">
+      <h3>Per-trip edit history</h3>
+      <p>Every field-level change to a saved trip — miles, purpose, business, vehicle, anything — records a <strong>TripEditEvent</strong> with timestamp plus old and new value. Tap any trip and the "Edit history" section shows the full audit trail. CPA-defensive, IRS-defensive, ex-spouse-defensive.</p>
+    </div>
+    <div class="feature">
+      <h3>Year-end odometer reconciliation</h3>
+      <p>IRS Form 2106 and Schedule C want beginning- and end-of-year odometer readings per vehicle. Milely captures them, prints them on the annual PDF, and reconciles them against the miles you actually logged. No more guessing in April.</p>
+    </div>
   </div>
-  <div class="feature">
-    <h3>Receipt scanner</h3>
-    <p>VisionKit-powered scanner with edge detection, perspective correction, and multi-page support — same engine as Apple Notes.</p>
+</section>
+
+<hr/>
+
+<section>
+  <h2>Built for the way you actually work.</h2>
+  <p>You don't classify trips at your desk. You classify them at a stoplight, between showings, on the way to the next job. Milely is built for that.</p>
+
+  <div class="features">
+    <div class="feature">
+      <h3>Auto-classify smart presets</h3>
+      <p>Tap a trip and hit "Always business at 1428 Maple St" or "Always personal" — Milely creates a rule. Future trips through that address auto-pre-fill so you never have to think about them again.</p>
+    </div>
+    <div class="feature">
+      <h3>Favorite trips, one tap</h3>
+      <p>Save your common drives as templates — "Office to listing," "Home to job site," "Costco run." They surface as a Quick Start row on the Dashboard. One tap, you're recording, pre-classified.</p>
+    </div>
+    <div class="feature">
+      <h3>Sunday review reminder</h3>
+      <p>Sunday at 6 PM, if you have unclassified trips, Milely pings you with a home-screen badge and a quiet notification. If everything's already classified, it stays silent. Five-minute weekly habit, year-end stress gone.</p>
+    </div>
+    <div class="feature">
+      <h3>"I forgot to use the app for three weeks."</h3>
+      <p>It happens. Milely's calendar-based recovery reads your recent calendar events with locations — <strong>on-device, never transmitted</strong> — and proposes them as trips you can log retroactively. Each one becomes a normal audit-trailed entry.</p>
+    </div>
+    <div class="feature">
+      <h3>Project &amp; client tagging</h3>
+      <p>Within a Business, tag each trip with a project or client — "1428 Maple listing," "Dallas job," "Smith matter." Free-text per trip, surfaces on the CSV and the PDF report. Real-estate agents, contractors, and consultants all asked for this; it's there.</p>
+    </div>
+    <div class="feature">
+      <h3>Live tax ticker</h3>
+      <p>Dashboard card shows year-to-date deduction <em>and</em> estimated tax savings at your bracket, ticking up as you drive. The "I just saved $3.24" effect is annoyingly motivating.</p>
+    </div>
   </div>
-  <div class="feature">
-    <h3>Zero data collection</h3>
-    <p>No analytics. No third-party SDKs. No Milely servers. Your data stays on your iPhone — period.</p>
-  </div>
-  <div class="feature">
-    <h3>Backups your way</h3>
-    <p>Automatic to iCloud, Google Drive, Dropbox, OneDrive. Or manual JSON export. Your data, your cloud.</p>
-  </div>
+</section>
+
+<hr/>
+
+<section>
+  <h2>Export wherever your accountant wants it.</h2>
+  <p>One <strong>Export</strong> button on the Reports tab opens a menu with three formats — pick whichever your CPA, your bookkeeper, or your spreadsheet brain prefers:</p>
+  <ul>
+    <li><strong>PDF</strong> — IRS Pub. 463-formatted trip log with cover page, by-business breakdown, and per-trip details. Hand it to your CPA.</li>
+    <li><strong>Excel (.xls)</strong> — opens in Excel, Numbers, or Google Sheets with formatting intact. For when your bookkeeper says "send me a spreadsheet."</li>
+    <li><strong>CSV</strong> — full Milely export <em>plus</em> a QuickBooks Online drop-in import variant. Mileage straight into QBO with no manual entry.</li>
+  </ul>
+  <p>Every export uses the same source of truth: the trip data on your phone. No "sync first, then export" dance.</p>
+</section>
+
+<hr/>
+
+<section>
+  <h2>Backups your way — your data, your cloud.</h2>
+  <p>Milely backs up to <strong>iCloud Drive, Google Drive, Dropbox, or OneDrive</strong> — whichever folder you point it at via the iOS Files picker. The backup is the user's data going to the user's storage. Milely doesn't see it, doesn't proxy it, doesn't index it. Manual JSON export is also free and always available, no subscription needed.</p>
 </section>
 
 <hr/>
@@ -69,14 +137,16 @@ description: Track mileage for business deductions. On-device, private, no serve
         <h4>What's unlocked:</h4>
         <ul class="checklist">
           <li><span class="check">✓</span> Unlimited trips per month</li>
-          <li><span class="check">✓</span> Receipt scanner (VisionKit, multi-page) + camera-roll attach + on PDF</li>
+          <li><span class="check">✓</span> On-device pattern learning (CoreML auto-classify)</li>
+          <li><span class="check">✓</span> Receipt OCR (Vision, multi-page) + camera-roll attach + on PDF</li>
+          <li><span class="check">✓</span> PDF / Excel / CSV / QuickBooks Online exports</li>
           <li><span class="check">✓</span> Branded PDF reports with your logo + brand colors + firm footer</li>
-          <li><span class="check">✓</span> Six color themes — Warm · Light · Forest · Mint · Sky · Slate — plus Brand mode</li>
+          <li><span class="check">✓</span> Eight color themes — Warm, Light, Night, Day, Slate, Sky, Forest, Mint — plus Brand mode</li>
           <li><span class="check">✓</span> Automatic cloud backup (iCloud / Google Drive / Dropbox / OneDrive)</li>
           <li><span class="check">✓</span> Branded map route (Milely's gradient instead of Apple blue)</li>
           <li><span class="check">✓</span> Live Activity, Dynamic Island, Widget, Watch, Siri Shortcuts</li>
           <li><span class="check">✓</span> Trip Templates, calendar suggestions, vehicle auto-detect</li>
-          <li><span class="check">✓</span> Tax bracket setting → estimated savings</li>
+          <li><span class="check">✓</span> Tax bracket setting → estimated savings ticker</li>
           <li><span class="check">✓</span> Priority email support — front of the queue</li>
         </ul>
       </div>
@@ -116,8 +186,8 @@ description: Track mileage for business deductions. On-device, private, no serve
 <hr/>
 
 <section class="themes-showcase">
-  <h2 class="themes-title">Six themes. Pick the one that feels like you.</h2>
-  <p class="themes-sub">The free tier ships with the <strong>Warm</strong> palette — the original Milely look. Subscribe to unlock the rest, plus a <em>Brand mode</em> that paints the entire app in colors derived from your business logo.</p>
+  <h2 class="themes-title">Eight themes. Pick the one that feels like you.</h2>
+  <p class="themes-sub">The free tier ships with the <strong>Warm</strong> palette — the original Milely look. Subscribe to unlock the rest, plus a <em>Brand mode</em> that paints the entire app in colors derived from your business logo. Mint is Mint-Mobile-inspired (soft mint and warm orange on white). Night and Day are the OLED-friendly siblings.</p>
 
   <div class="themes-grid">
 
@@ -146,7 +216,7 @@ description: Track mileage for business deductions. On-device, private, no serve
     </figure>
 
     <figure class="theme-card">
-      <img src="/assets/screenshots/mint.png" alt="Milely Mint theme — saturated mint green with lime accents" />
+      <img src="/assets/screenshots/mint.png" alt="Milely Mint theme — Mint Mobile-inspired soft mint with warm orange accents on white" />
       <figcaption>
         <span class="theme-name">Mint</span>
         <span class="theme-badge theme-badge-plus">Subscriber</span>
@@ -170,12 +240,13 @@ description: Track mileage for business deductions. On-device, private, no serve
     </figure>
 
   </div>
+  <p class="themes-sub" style="margin-top: 18px; font-size: 14px;">Plus <strong>Night</strong> (true OLED black) and <strong>Day</strong> (high-contrast white) — both subscriber-only. Settings → Theme.</p>
 </section>
 
 <hr/>
 
 <h2>Built for…</h2>
-<p>Real-estate agents. Self-storage operators. Contractors. Freelancers. Anyone who drives their personal car for business and wants a clean mileage record — without giving up their privacy to an analytics-stuffed app.</p>
+<p>Real-estate agents. Self-storage operators. Contractors. Freelancers. Consultants. Anyone who drives their personal car for business and wants a clean mileage record — without giving up their privacy to an analytics-stuffed app.</p>
 
 <hr/>
 
@@ -195,3 +266,5 @@ description: Track mileage for business deductions. On-device, private, no serve
 </p>
 
 </main>
+</content>
+</invoke>
