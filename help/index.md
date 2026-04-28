@@ -9,7 +9,7 @@ permalink: /help/
 
 # How to Milely
 
-Quick, friendly walkthroughs for the things you'll actually do. If you get stuck, hit **Contact Support** below — that's a real human (a small Texas LLC running this app), not a ticket queue.
+Quick, friendly walkthroughs for the things you'll actually do. If you get stuck, hit **Contact Support** below — that's a real human (a small USA LLC running this app), not a ticket queue.
 
 <div class="page-intro">New to Milely? The fastest path: skim <a href="#start">section 1</a>, log a trip, and you'll have everything you need by lunch. The rest of the page covers the power features as you grow into them.</div>
 
