@@ -30,6 +30,7 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 <p>After that, Milely walks you through choosing a Detection Mode (Manual or Automatic), adding your first vehicle, and setting up at least one Business — and then you're ready to drive.</p>
 </div>
+<div class="how-img"><img src="/assets/screenshots/first-launch.png" alt="Welcome screen with age confirmation and Terms agreement checkboxes" /></div>
 </div>
 
 ---
