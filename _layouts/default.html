@@ -295,20 +295,29 @@
     font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
     font-style: italic;
     font-weight: 900;
-    font-size: clamp(96px, 18vw, 180px);
-    line-height: 0.85;
-    letter-spacing: -0.045em;
+    /* Slightly smaller upper bound so the giant italic glyph
+       doesn't fight the viewport on wide screens, and the
+       claim line below stays in proportion. */
+    font-size: clamp(88px, 14vw, 144px);
+    /* Looser line-height — italic Fraunces 900 has tall
+       ascenders/descenders that the 0.85 line box was clipping
+       against the parent's bounds. 1.0 gives the glyph room. */
+    line-height: 1.0;
+    letter-spacing: -0.04em;
     background: linear-gradient(135deg, var(--yellow) 0%, var(--burnt) 75%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    /* Award-seal tilt — small enough to read as deliberate, not
-       broken. */
-    transform: rotate(-4deg);
+    /* Subtler tilt + horizontal padding for the rotated glyph's
+       corners to live in. -4° + the italic shear was overflowing
+       the hero's max-width and getting clipped. */
+    transform: rotate(-3deg);
+    transform-origin: center;
     display: inline-block;
-    /* Drop-shadow on the gradient text for depth — the text-
-       shadow trick doesn't work with -webkit-background-clip,
-       so use a filter on the element. */
+    padding: 0.08em 0.18em;
+    /* Drop-shadow on the gradient text for depth — text-shadow
+       doesn't compose with -webkit-background-clip, so we use a
+       filter on the element instead. */
     filter: drop-shadow(0 8px 20px rgba(194, 65, 12, 0.20));
   }
   .hero-claim {
