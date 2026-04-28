@@ -66,22 +66,35 @@ description: Track mileage for business deductions. On-device, private, no serve
     </svg>
   </div>
 
+  <span class="hero-eyebrow">The privacy-first mileage app</span>
   <h1>Milely</h1>
   <p class="tagline">Track mileage for business deductions.<br/>On your iPhone. Never on our servers.</p>
   <a class="badge-link" href="https://apps.apple.com/app/milely/id__APPSTORE_ID_PENDING__" rel="noopener">Try free for 7 days</a>
   <p style="font-size: 14px; margin-top: 14px;">Then $2.99 / month or $19.99 / year. Cancel anytime.</p>
 
   <!--
-    Phone screenshot in the hero — gives visitors an immediate
-    "what does this look like" visual. Using the Day theme
-    (assets/screenshots/day.png) since it's the cleanest white +
-    Azure-blue variant and pairs visually with the new blue CTA
-    above. Greg can swap to a different theme later or add a
-    second screenshot beside it.
+    Slightly-overlapping fan of seven simulator screenshots in the
+    natural workflow order: dashboard → record → classify → reports
+    → settings → export → final PDF. Hover any phone to lift it
+    above the row for a closer look. Layout rules in default.html
+    under `.hero-shots`.
   -->
-  <img src="/assets/screenshots/day.png"
-       alt="Milely Day theme on iPhone — Dashboard with monthly deduction card, donut breakdown, and Quick Start row"
-       class="hero-shot" />
+  <div class="hero-shots" aria-label="Milely walkthrough — dashboard, recording a trip, classifying, reports, settings, export menu, and the final PDF">
+    <img src="/assets/screenshots/hero-1-dashboard.png"
+         alt="Milely Dashboard on iPhone — monthly deduction card with donut breakdown, Quick Start row, Repeat last trip, Favorite trip, and Start Trip button" />
+    <img src="/assets/screenshots/hero-2-recording.png"
+         alt="Milely recording a trip live — distance, duration, and live deduction tick up over a real-time map" />
+    <img src="/assets/screenshots/hero-3-classify.png"
+         alt="Milely Review &amp; Save screen — Smart Suggestions chips show on-device CoreML predictions for which business this trip belongs to" />
+    <img src="/assets/screenshots/hero-4-reports.png"
+         alt="Milely Reports tab — yearly estimated deduction with stacked-bar breakdown, year-at-a-glance stats, and monthly summaries" />
+    <img src="/assets/screenshots/hero-5-settings.png"
+         alt="Milely Settings — Trip Detection mode, Sunday review reminder, and Setup section with Businesses, Vehicles, Trip Templates, calendar recovery, auto-classify rules, mileage rate, and tax bracket" />
+    <img src="/assets/screenshots/hero-6-export.png"
+         alt="Milely Export menu — PDF, Excel (.xls), CSV — Milely (full), and CSV — QuickBooks Online options on the Reports tab" />
+    <img src="/assets/screenshots/hero-7-pdf.png"
+         alt="Milely 2026 Mileage Log PDF — IRS Pub. 463-formatted summary with totals, by-business breakdown, and per-trip details ready to hand to a CPA" />
+  </div>
 </section>
 
 <main>
