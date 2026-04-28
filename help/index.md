@@ -11,7 +11,7 @@ permalink: /help/
 
 Quick, friendly walkthroughs for the things you'll actually do. If you get stuck, hit **Contact Support** below — that's a real human (a small USA LLC running this app), not a ticket queue.
 
-<div class="page-intro">New to Milely? The fastest path: skim <a href="#start">section 1</a>, log a trip, and you'll have everything you need by lunch. The rest of the page covers the power features as you grow into them.</div>
+<div class="page-intro">New to Milely? The fastest path: skim <a href="#start">section 1</a>, record your first trip, and you'll have everything you need by lunch. The rest of the page covers the power features as you grow into them.</div>
 
 ---
 
@@ -94,7 +94,7 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 ---
 
-<h2 id="logs">4. Browse, search, and edit your logs</h2>
+<h2 id="logs">4. Browse, search, and edit your trips</h2>
 
 <div class="how-row">
 <div class="how-text">
@@ -108,7 +108,7 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 <li><strong>Long-press</strong> a row → confirm-style alert dialog. Use this when you want a "are you sure?" prompt before it goes.</li>
 </ul>
 
-<p><strong>Edit history is captured automatically.</strong> Every field-level change to a saved trip is logged. See <a href="#edit-history">section 6</a>.</p>
+<p><strong>Edit history is captured automatically.</strong> Every field-level change to a saved trip is recorded. See <a href="#edit-history">section 6</a>.</p>
 </div>
 <div class="how-img"><img src="/assets/screenshots/logs.png" alt="Logs tab with searchable list of trips and swipe-to-delete" /></div>
 </div>
@@ -228,7 +228,7 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 <ol>
 <li>Settings → <strong>Setup</strong> → <strong>Recover from calendar</strong>.</li>
 <li>Pick a lookback window — <strong>14, 30, 60, or 90 days</strong>.</li>
-<li>Milely reads your past calendar events that have a location, dedupes against trips you've already logged, and shows you what's left as proposed trips.</li>
+<li>Milely reads your past calendar events that have a location, dedupes against trips you've already saved, and shows you what's left as proposed trips.</li>
 <li>Review the list, uncheck anything that wasn't actually a drive, and tap <strong>Create trips</strong>. They become normal audit-trailed entries.</li>
 </ol>
 
@@ -282,7 +282,7 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 <p>Scroll to the <strong>Year-end odometer</strong> section. You'll see three rows: the current year and the previous two. For each, enter the odometer reading from December 31 of that year (or January 1 of the following year — they're the same number).</p>
 
-<p><strong>Why it matters:</strong> IRS Form 2106 and Schedule C want both a <em>Jan 1</em> (year-start) and <em>Dec 31</em> (year-end) odometer reading per vehicle. Milely uses the readings to reconcile the miles you actually logged against your real odometer. The PDF report prints them on the cover page, so your CPA sees the reconciliation without asking.</p>
+<p><strong>Why it matters:</strong> IRS Form 2106 and Schedule C want both a <em>Jan 1</em> (year-start) and <em>Dec 31</em> (year-end) odometer reading per vehicle. Milely uses the readings to reconcile the miles you actually recorded against your real odometer. The PDF report prints them on the cover page, so your CPA sees the reconciliation without asking.</p>
 </div>
 </div>
 
