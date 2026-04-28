@@ -323,12 +323,18 @@
   .hero-claim {
     font-family: 'Inter', -apple-system, sans-serif;
     font-weight: 900;
-    font-size: clamp(28px, 5.4vw, 52px);
+    /* Scaled down from 52px max so "SMALL-COMPANY MILEAGE APP"
+       fits on a single line across all viewports — was wrapping
+       MILEAGE APP underneath SMALL-COMPANY at intermediate widths.
+       4vw upper coefficient with a 44px ceiling fits the 24-char
+       claim in the available space at every breakpoint. */
+    font-size: clamp(20px, 4vw, 44px);
     line-height: 1.0;
     letter-spacing: -0.025em;
     text-transform: uppercase;
     color: #0c0a09;
     margin-top: 6px;
+    white-space: nowrap;
   }
   .hero-coda {
     font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
