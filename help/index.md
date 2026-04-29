@@ -103,15 +103,18 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 <p><strong>Forgot to start a trip?</strong> Hit <strong>Log Past Trip Manually</strong> at the top of the Logs tab and enter the date, miles, addresses, and purpose by hand — same audit-ready record.</p>
 
+<p><strong>Swipe-right</strong> on a trip row to lock or unlock it (locked trips can't be edited or deleted — handy for trips you've finalized for tax filing). <strong>Swipe-left</strong> toggles the trip between Business and Personal: a Personal trip stays in your Logs but is excluded from every deduction total (Reports, Dashboard, exports). Swipe left again to flip back to Business.</p>
+
 <p><strong>Delete a trip:</strong></p>
 <ul>
-<li><strong>Swipe left</strong> on a row → tap the red <strong>Delete</strong> button. Quick and quiet.</li>
-<li><strong>Long-press</strong> a row → confirm-style alert dialog. Use this when you want a "are you sure?" prompt before it goes.</li>
+<li><strong>Long-press</strong> a row → tap <strong>Delete trip</strong> in the menu → confirm. Quick path.</li>
+<li>Open the trip detail screen → tap <strong>Delete Trip</strong> at the bottom → confirm. Same outcome from inside the trip.</li>
 </ul>
+<p>Locked trips can't be deleted until you unlock them — that's the audit-trail safety net.</p>
 
-<p><strong>Edit history is captured automatically.</strong> Every field-level change to a saved trip is recorded. See <a href="#edit-history">section 6</a>.</p>
+<p><strong>Edit history is captured automatically.</strong> Every field-level change to a saved trip is recorded — including locking, unlocking, and Personal/Business toggles. See <a href="#edit-history">section 6</a>.</p>
 </div>
-<div class="how-img"><img src="/assets/screenshots/logs.png" alt="Logs tab with searchable list of trips and swipe-to-delete" /></div>
+<div class="how-img"><img src="/assets/screenshots/logs.png" alt="Logs tab with searchable list of trips, swipe-right to lock, swipe-left to mark personal" /></div>
 </div>
 
 ---

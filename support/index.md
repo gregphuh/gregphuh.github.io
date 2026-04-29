@@ -83,11 +83,16 @@ If you're coming from a different app and have a CSV that isn't one of those thr
 
 ### How do I delete a single trip?
 
-Three ways, pick whichever fits the moment:
+Two ways, pick whichever fits the moment:
 
-- **Swipe left** on a row in the **Logs** tab → tap the red **Delete** button. Quick and quiet.
-- **Long-press** a row in **Logs** → confirm-style alert. Use this when you want an "are you sure?" check.
-- Open the trip detail screen → tap **Delete Trip** at the bottom → confirm.
+- **Long-press** a row in the **Logs** tab → tap **Delete trip** in the menu → confirm. This is the quickest delete path.
+- Open the trip detail screen → tap **Delete Trip** at the bottom → confirm. Same outcome, just from inside the trip.
+
+(Swipe-left no longer deletes — it now toggles the trip between Business and Personal so you can dismiss a non-business trip with one motion. Locked trips can't be deleted at all until you unlock them.)
+
+### How do I mark a trip as personal (so it doesn't count toward my deduction)?
+
+**Swipe left** on a row in the **Logs** tab to flag the trip as Personal. Personal trips stay in your Logs for record-keeping but are excluded from every deduction total — Reports tab, Dashboard savings ticker, and PDF/CSV/Excel exports. Swipe left again on the same row to flip it back to Business.
 
 ### How do I delete ALL my data?
 
@@ -251,7 +256,7 @@ We read every email. We don't promise to build everything (we're keeping the app
       "name": "How do I delete a single trip?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Three ways: swipe left on a row in the Logs tab and tap the red Delete button (quick); long-press a row in Logs for a confirm-style alert (safer); or open the trip detail screen and tap Delete Trip at the bottom."
+        "text": "Two ways: long-press a row in the Logs tab and tap Delete trip in the menu (quickest); or open the trip detail screen and tap Delete Trip at the bottom. Swipe-left no longer deletes — it now toggles the trip between Business and Personal. Locked trips cannot be deleted until you unlock them."
       }
     },
     {
