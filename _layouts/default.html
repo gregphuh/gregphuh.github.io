@@ -3,6 +3,20 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!--
+  Content Security Policy — defense-in-depth for a static Jekyll site.
+  Locks the document to: own origin for everything except Google Fonts
+  (style + font subdomains), images from same-origin or inline data
+  URIs, no external scripts, no embedded frames, no form submission
+  anywhere. There's no JS or form on the site today, so this is a
+  belt-and-suspenders measure: any future XSS attempt would be
+  contained to the same-origin sandbox. Safe to enable as a meta tag
+  even though GitHub Pages doesn't allow custom HTTP headers — the
+  meta-equiv form is honored by all modern browsers (caveat:
+  frame-ancestors only works as a real header, so we use frame-src
+  + child-src locally).
+-->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data:; script-src 'self' 'unsafe-inline'; connect-src 'self'; frame-src 'none'; child-src 'none'; base-uri 'self'; form-action 'none'; object-src 'none'" />
 <title>{% if page.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }} · {{ site.description }}{% endif %}</title>
 <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
 <link rel="canonical" href="{{ page.url | absolute_url }}" />
@@ -1642,7 +1656,7 @@
       <a href="/privacy/">Privacy</a>
       <a href="/terms/">Terms</a>
     </nav>
-    <a class="header-cta" href="https://apps.apple.com/app/milely/id__APPSTORE_ID_PENDING__" rel="noopener">Try free for 7 days</a>
+    <a class="header-cta" href="https://apps.apple.com/app/milely/id__APPSTORE_ID_PENDING__" rel="noopener noreferrer">Try free for 7 days</a>
   </div>
 </header>
 
