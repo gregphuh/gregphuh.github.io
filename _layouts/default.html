@@ -323,32 +323,34 @@
   .hero-claim {
     font-family: 'Inter', -apple-system, sans-serif;
     font-weight: 900;
-    /* Scaled down from 52px max so "SMALL-COMPANY MILEAGE APP"
-       fits on a single line across all viewports — was wrapping
-       MILEAGE APP underneath SMALL-COMPANY at intermediate widths.
-       4vw upper coefficient with a 44px ceiling fits the 24-char
-       claim in the available space at every breakpoint. */
+    /* "SMALL-COMPANY MILEAGE TRACKING APP" is 33 chars — too long
+       to nowrap at narrow viewports without shrinking to illegible
+       sizes. Letting it wrap to 2 lines (typically "SMALL-COMPANY
+       MILEAGE / TRACKING APP" on phone) reads as deliberately
+       editorial. clamp keeps it punchy on desktop where it fits
+       in one line. */
     font-size: clamp(20px, 4vw, 44px);
-    line-height: 1.0;
+    line-height: 1.05;
     letter-spacing: -0.025em;
     text-transform: uppercase;
     color: #0c0a09;
     margin-top: 6px;
-    white-space: nowrap;
+    max-width: 760px;
   }
   .hero-coda {
     font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
     font-style: italic;
-    /* Bumped from 500 → 900 to bold "for privacy." — privacy is
-       the positioning, the lowercase italic should hit with the
-       same weight as the rank above it, not whisper. Slight size
-       bump too so the bolder weight reads at a confident scale. */
+    /* "for privacy." is the positioning hook — Greg explicitly
+       wanted it sized large. Bumped from 38px max → 64px max
+       (close to the rank's scale) so it lands as a co-equal
+       headline beat, not a whisper under the claim. Letter-
+       spacing tightened a hair to match the larger size. */
     font-weight: 900;
-    font-size: clamp(22px, 3.6vw, 38px);
-    line-height: 1.1;
-    letter-spacing: -0.01em;
+    font-size: clamp(30px, 5.6vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
     color: var(--burnt);
-    margin-top: 4px;
+    margin-top: 8px;
   }
   .hero .tagline {
     /* Banner is hidden by default (see .hero-banner rule below);
