@@ -117,34 +117,17 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
   </div>
 </section>
 
-<!--
-  Stat strip: hard numbers under the hero. Lives outside <main>
-  so the dark band can be full-bleed without fighting main's
-  max-width constraint. Four credibility signals: 2025 IRS rate,
-  zero servers, weekly cadence, monthly price.
--->
-<section class="stat-strip">
-  <div class="stat-strip-inner">
-    <div class="stat">
-      <div class="stat-num">70¢</div>
-      <div class="stat-label">Deduct per business mile<br/>(2025 IRS rate)</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">0</div>
-      <div class="stat-label">Servers Milely runs.<br/>Your data stays on your phone.</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">5 min</div>
-      <div class="stat-label">Weekly review keeps<br/>you tax-ready year-round.</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">$3.99</div>
-      <div class="stat-label">/ month after the<br/>7-day free trial.</div>
-    </div>
-  </div>
-</section>
-
 <main>
+
+<!--
+  Privacy-first banner — full-bleed orange strip introducing the
+  privacy panel. Added 2026-04 to give the privacy promise a
+  louder visual entry, since privacy is THE differentiator vs
+  MileIQ / Everlance / Stride.
+-->
+<section class="privacy-first-banner">
+  <div class="privacy-first-banner-inner">PRIVACY FIRST</div>
+</section>
 
 <!--
   Privacy panel — promoted to the top of <main> in 2026-04 because
@@ -152,9 +135,10 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
   burying it as the closing argument under five panels of feature
   copy meant most visitors bounced before reading it. New narrative:
     1. Hero: "#1 ... for privacy" — positioning headline
-    2. Stat strip: "0 servers Milely runs"
+    2. Orange "PRIVACY FIRST" banner — visual entry
     3. THIS panel: the architecture promise (3 pillars)
-    4. Four feature spots: how the privacy-first architecture
+    4. Stat strip: "0 servers Milely runs"
+    5. Four feature spots: how the privacy-first architecture
        still delivers the deduction / smart-suggestion / audit /
        export workflow.
   i.e., the four feature spots become evidence that the privacy
@@ -185,6 +169,34 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
           <p>Swipe a single trip out of Logs, or uninstall the app to wipe everything — local SwiftData, settings, and the on-device CoreML model all go with it. Nothing on a server means nothing to "request deletion" of.</p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!--
+  Stat strip: hard numbers reinforcing the privacy promise above.
+  Moved here in 2026-04 so the four credibility signals (2025 IRS
+  rate, zero servers, weekly cadence, monthly price) follow the
+  three-pillar manifesto — "0 servers" lands as proof of the claim
+  the panel just made.
+-->
+<section class="stat-strip">
+  <div class="stat-strip-inner">
+    <div class="stat">
+      <div class="stat-num">70¢</div>
+      <div class="stat-label">Deduct per business mile<br/>(2025 IRS rate)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">0</div>
+      <div class="stat-label">Servers Milely runs.<br/>Your data stays on your phone.</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">5 min</div>
+      <div class="stat-label">Weekly review keeps<br/>you tax-ready year-round.</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">$3.99</div>
+      <div class="stat-label">/ month after the<br/>7-day free trial.</div>
     </div>
   </div>
 </section>
