@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Milely favicon — bright web variant.
+  M-as-road motif (lane-stripe road bent into the letter M), tuned for
+  visibility in browser tab strips at 16/32 px. Uses the brand-spec
+  palette pushed toward its brightest values: cream background for
+  contrast, vermillion + yellow gradient on the road, with a yellow
+  dashed lane stripe on top so the icon reads as "road" even at
+  small sizes.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Milely">
+  <defs>
+    <linearGradient id="m-road" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#C03B14"/>
+      <stop offset="50%"  stop-color="#E54B1F"/>
+      <stop offset="100%" stop-color="#C03B14"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Bright cream rounded-square background. -->
+  <rect width="64" height="64" rx="14" ry="14" fill="#F4EFE6"/>
+
+  <!-- M-shaped road, vermillion gradient. -->
+  <path d="M 10 50 C 14 48, 14 18, 21 18 C 29 18, 29 46, 32 46 C 35 46, 35 18, 43 18 C 50 18, 50 48, 54 50"
+        fill="none" stroke="url(#m-road)" stroke-width="11" stroke-linecap="round"/>
+
+  <!-- Yellow dashed lane stripe down the centerline. -->
+  <path d="M 10 50 C 14 48, 14 18, 21 18 C 29 18, 29 46, 32 46 C 35 46, 35 18, 43 18 C 50 18, 50 48, 54 50"
+        fill="none" stroke="#F5C24B" stroke-width="1.6"
+        stroke-dasharray="3 2.4" stroke-linecap="round"/>
+</svg>
