@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Help & How-To
-description: Walk through Milely the way you'll actually use it — track your first trip, run a year-end report, back up your data.
+description: How to use Milely step-by-step — record your first trip, set up Smart Suggestions, run a year-end report, and back up your trip data to your own cloud.
 permalink: /help/
 ---
 

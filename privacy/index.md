@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Privacy Policy
-description: Milely's privacy policy — how (and why) we don't collect your data.
+description: Milely's privacy policy. The app runs no servers, collects no analytics, and stores trip data only on your iPhone. Plain-English summary of GDPR, CCPA, and TDPSA rights.
 permalink: /privacy/
 redirect_from:
   - /privacy.html

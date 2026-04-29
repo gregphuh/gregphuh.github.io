@@ -10,8 +10,16 @@
 <link rel="icon" type="image/png" href="/assets/icon.png" />
 <link rel="apple-touch-icon" href="/assets/icon.png" />
 
+{%- comment -%}
+  Network hints. preconnect: open the connection now (DNS + TLS) for
+  origins we definitely need on every page (Google Fonts). dns-prefetch
+  is the cheaper variant — just resolve DNS — for origins we link to
+  but don't fetch resources from on initial load (App Store badge link
+  goes to apps.apple.com).
+{%- endcomment -%}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://apps.apple.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&display=swap" rel="stylesheet">
 
 <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
@@ -19,24 +27,71 @@
 <meta property="og:image" content="{{ '/assets/og-image.png' | absolute_url }}" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Milely — privacy-first mileage tracking app for iPhone" />
 <meta property="og:url" content="{{ page.url | absolute_url }}" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Milely" />
+<meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
 <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
 <meta name="twitter:image" content="{{ '/assets/og-image.png' | absolute_url }}" />
+<meta name="twitter:image:alt" content="Milely — privacy-first mileage tracking app for iPhone" />
 
+{%- comment -%}
+  ============================================================
+  STRUCTURED DATA — JSON-LD
+  ============================================================
+  Three schemas on every page:
+    1. SoftwareApplication — the iOS app itself, with offers,
+       screenshots, feature list, version. Drives Google Knowledge
+       Panel + rich App-listing snippets.
+    2. Organization — the publisher (SmileyCreative LLC). Ties
+       the App publisher info back to a parent entity, plus a
+       same-as link for App Store. Helps with brand SERPs.
+    3. WebSite — sets the site name + a SearchAction (no real
+       site search, but Google still uses the entity).
+  Subpages additionally include a BreadcrumbList (rendered below
+  the per-page block). Homepage gets an extra FAQPage block from
+  index.html itself; /support/ injects its own FAQPage block at
+  the end of that page.
+
+  Pricing must match the actual App Store SKUs ($3.99/mo,
+  $29.99/yr, $69.99 lifetime) — wrong prices in JSON-LD show up
+  as misleading offers in Google's app rich card.
+{%- endcomment -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "Milely",
-  "description": "{{ site.description }}",
+  "description": "Privacy-first mileage tracking app for iPhone. Auto-detect drives, classify on-device, export audit-ready PDFs for business deductions. Your trips never leave your phone.",
   "applicationCategory": "FinanceApplication",
+  "applicationSubCategory": "MileageTracking",
   "operatingSystem": "iOS 17+",
+  "softwareVersion": "1.0.0",
   "url": "{{ site.url }}",
   "image": "{{ '/assets/og-image.png' | absolute_url }}",
+  "screenshot": [
+    "{{ '/assets/screenshots/hero-1-dashboard.png' | absolute_url }}",
+    "{{ '/assets/screenshots/hero-2-recording.png' | absolute_url }}",
+    "{{ '/assets/screenshots/hero-3-classify.png' | absolute_url }}",
+    "{{ '/assets/screenshots/hero-4-reports.png' | absolute_url }}",
+    "{{ '/assets/screenshots/hero-7-pdf.png' | absolute_url }}"
+  ],
+  "featureList": [
+    "Automatic and manual GPS trip detection",
+    "On-device CoreML Smart Suggestions for trip classification",
+    "Audit Lock and per-trip edit history",
+    "Year-end odometer reconciliation aligned to IRS Form 2106 / Schedule C",
+    "PDF, Excel, CSV, and QuickBooks Online export formats",
+    "Receipt scanning with on-device VisionKit OCR",
+    "Calendar-based past-trip recovery (on-device)",
+    "Eight color themes",
+    "Cloud backup to iCloud Drive, Google Drive, Dropbox, OneDrive",
+    "No servers — all data stays on your iPhone"
+  ],
+  "releaseNotes": "{{ site.url }}/help/",
   "publisher": {
     "@type": "Organization",
     "name": "SmileyCreative LLC",
@@ -46,27 +101,92 @@
     {
       "@type": "Offer",
       "name": "Milely Monthly",
-      "price": "2.99",
+      "price": "3.99",
       "priceCurrency": "USD",
       "category": "Subscription"
     },
     {
       "@type": "Offer",
       "name": "Milely Annual",
-      "price": "19.99",
+      "price": "29.99",
       "priceCurrency": "USD",
       "category": "Subscription"
     },
     {
       "@type": "Offer",
       "name": "Milely Lifetime",
-      "price": "49.99",
+      "price": "69.99",
       "priceCurrency": "USD",
       "category": "OneTimePurchase"
     }
   ]
 }
 </script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "SmileyCreative LLC",
+  "legalName": "SmileyCreative LLC",
+  "url": "{{ site.url }}",
+  "logo": "{{ '/assets/icon.png' | absolute_url }}",
+  "email": "milely@smileycreative.io",
+  "description": "Texas-registered LLC publishing privacy-first iOS apps. Maker of Milely.",
+  "foundingLocation": {
+    "@type": "Place",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "TX",
+      "addressCountry": "US"
+    }
+  },
+  "sameAs": [
+    "https://apps.apple.com/app/milely/id__APPSTORE_ID_PENDING__"
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Milely",
+  "url": "{{ site.url }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmileyCreative LLC"
+  }
+}
+</script>
+
+{%- comment -%}
+  BreadcrumbList for any non-root page. Subpages live one level
+  under the homepage (Home > Page), which is the actual IA. Tells
+  Google how to render the breadcrumb trail in SERP snippets.
+{%- endcomment -%}
+{%- if page.url != "/" and page.url != "/index.html" -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ site.url }}/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "{{ page.title }}",
+      "item": "{{ page.url | replace:'index.html','' | absolute_url }}"
+    }
+  ]
+}
+</script>
+{%- endif -%}
 
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }

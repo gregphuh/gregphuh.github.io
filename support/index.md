@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Support
-description: Get help with Milely — FAQ and contact info.
+description: Frequently asked questions about Milely — pricing, privacy, multi-device, exports, Audit Lock, refunds, and how to contact a real human at SmileyCreative LLC.
 permalink: /support/
 ---
 
@@ -162,3 +162,164 @@ If the bug involves a specific trip, screenshots help.
 We read every email. We don't promise to build everything (we're keeping the app simple on purpose), but we want to hear from real users about what's missing.
 
 </main>
+
+<!--
+  FAQPage schema for /support/ — wraps the 18 Q&As above as a single
+  structured-data block so Google can render rich-result FAQ snippets
+  in SERPs. Questions match the page H3s exactly; answers are
+  condensed to one paragraph each (Google's FAQ-rich-result UI clips
+  long answers). Wording avoids IRS-compliance claims per the brand
+  spec — "business deductions" / "audit-ready" instead.
+-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does Milely cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Try it free for 7 days, then a single subscription: $3.99/month or $29.99/year (annual saves about 37%). One plan, all features. The free tier records up to 25 trips per month with no time limit. A one-time $69.99 Lifetime option is available inside the app at Settings → Subscribe → Other options."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Milely work without internet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — recording, classifying, viewing, and exporting all work fully offline. The only thing that requires internet is uploading backups to cloud storage."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will Milely drain my battery?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Manual mode only consumes battery while a trip is recording. Automatic mode uses iOS's significant-location-changes API when idle (negligible drain) and ramps up GPS only when motion suggests driving. Typical drain: about 3% per hour while recording."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens to my data if I delete the app?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The app's data is wiped when you uninstall. If you set up iCloud Drive or Google Drive backup, your backup files remain in your cloud and you can restore from them on a new install."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I restore from a backup?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Backups are JSON snapshot files written to whichever cloud folder you picked under Settings → Backup (iCloud Drive, Google Drive, Dropbox, OneDrive). To restore on a new device: reinstall Milely, open the backup milely-*.json file from the Files app, and choose 'Open in Milely' when prompted. Trips, businesses, vehicles, and templates import in place."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use Milely on multiple devices?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The app stores data locally on each device. Today, the cleanest path is the manual backup-and-restore. The next major release (v1.3) is planned around Apple's CloudKit sync — your data syncs through your private iCloud, end-to-end encrypted with Advanced Data Protection, never through a Milely server."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Milely support Android?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not currently — and likely staying that way. Milely is iOS-only by design; building Android would mean either a parallel codebase to maintain or a cross-platform framework that compromises the privacy posture and native feel."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I import data from MileIQ, Everlance, or another app?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not directly in v1.0. If you have a CSV export from another app, send it to milely@smileycreative.io and we'll see if we can help — and consider building an importer for a future update."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I delete a single trip?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Three ways: swipe left on a row in the Logs tab and tap the red Delete button (quick); long-press a row in Logs for a confirm-style alert (safer); or open the trip detail screen and tap Delete Trip at the bottom."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I delete all my data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Delete the app from your iPhone — that wipes the local SwiftData store, UserDefaults, and the trained Smart Suggestions model. Reinstalling gets you a clean first-launch."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I forgot to start a trip?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Two paths. For one or two trips: Logs → Log Past Trip Manually, then enter the date, miles, addresses, business, and purpose by hand. For a longer stretch (a week or month): Settings → Setup → Recover from calendar — Milely reads your past calendar events with locations on-device, dedupes against trips you already saved, and lets you bulk-create the rest."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Smart Suggestions, and why is Milely guessing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "After you've classified about ten trips, Milely starts pre-filling business and purpose on the Classify screen based on patterns it has learned. The training is a small Apple CoreML model that runs entirely on-device — Milely has no server, no analytics pipeline, and no shared model. The training data is yours and stays yours; uninstall the app and the model goes with it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Audit Lock?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "On January 31 each year, Milely automatically locks the previous year's trips so you can't accidentally edit them mid-audit. A small lock icon shows on locked trips. If you legitimately need to amend a return, open the trip from the Logs tab, tap Unlock for editing, and make the change. The unlock and any edits that follow are written to the trip's Edit history with timestamps."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I export to QuickBooks Online or Excel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Reports tab → Export button (top of the page) → menu opens with four formats: PDF (audit-ready trip log), Excel (.xls), CSV — Milely (full), and CSV — QuickBooks Online (drop-in mileage importer with MM/DD/YYYY date format). Pick the format and the iOS share sheet opens — email it, AirDrop it, or save to Files."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does Milely ask my age on first launch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "App Store policy and EU/EEA child-protection law require an age check (13+ globally, 16+ in the EEA). The confirmation is a single tap and is stored locally on your device — never transmitted. You'll only see the welcome screen again if our Terms or Privacy Policy materially change in a future update."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the IRS standard mileage rate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The IRS publishes the standard mileage rate annually. Milely pre-loads recent years (2022–2026), but you should verify the current year's rate at irs.gov before filing. You can edit any year's rate in Settings → IRS Rate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need an LLC or business entity to use Milely?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Milely works for sole proprietors, single-member LLCs, multi-member LLCs, S-corps, or anyone who deducts business mileage on personal vehicle use."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I get a refund?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Refunds for App Store purchases are handled by Apple, not Milely. Request a refund at reportaproblem.apple.com."
+      }
+    }
+  ]
+}
+</script>

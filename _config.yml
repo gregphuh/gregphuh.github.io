@@ -1,11 +1,23 @@
 # Jekyll config for milely.io — hosted free on GitHub Pages.
 title: Milely
-description: Track mileage for business deductions. On-device, private, no subscription.
-url: https://milely.io
+# Tagline: under 160 chars, written for SERP snippets — leads with the
+# core value prop (mileage tracking) + the differentiator (private,
+# on-device, no servers). Used as the homepage <meta name="description">
+# fallback and as the OG description fallback.
+description: >-
+  Privacy-first mileage tracking app for iPhone. Auto-detect drives,
+  classify on-device, export audit-ready PDFs for business deductions.
+  No servers, no analytics — your trips never leave your phone.
+url: "https://milely.io"
 baseurl: ""
 
-# Use the `minima` theme (free, ships with GitHub Pages) overridden by our brand CSS.
-# Or remove this line and use a custom layout. We're using a custom layout below.
+# Author / publisher metadata — picked up by jekyll-seo-tag for richer
+# meta tags + JSON-LD Person/Organization schema.
+author:
+  name: SmileyCreative LLC
+  email: milely@smileycreative.io
+
+# GitHub Pages-supported plugins.
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
@@ -18,21 +30,23 @@ defaults:
       path: ""
     values:
       layout: default
+      image: /assets/og-image.png
 
 # Don't process these
 exclude:
   - README.md
   - Gemfile
   - Gemfile.lock
+  - vendor
 
-# Permalink format
+# Permalink format — clean trailing-slash URLs (no .html suffixes).
 permalink: /:path/
 
 # Brand colors (used in CSS via Sass variables — optional)
 sass:
   style: compressed
 
-# SEO
+# SEO / social
 twitter:
   card: summary_large_image
 social:

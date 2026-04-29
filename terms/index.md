@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Terms of Service
-description: Milely Terms of Service.
+description: Milely Terms of Service from SmileyCreative LLC — license, subscription terms, Lifetime purchase definition, Apple App Store provisions, arbitration, and Texas governing law.
 permalink: /terms/
 redirect_from:
   - /terms.html

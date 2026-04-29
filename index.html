@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Milely
-description: Track mileage for business deductions. On-device, private, no servers.
+description: Privacy-first iPhone mileage tracker for business deductions. Auto-detect drives, classify on-device with CoreML, export audit-ready PDFs. No servers, no analytics — your trips never leave your phone. Free 7-day trial.
 ---
 
 <section class="hero">
@@ -482,6 +482,64 @@ description: Track mileage for business deductions. On-device, private, no serve
 <p style="color: var(--muted); font-size: 13px; text-align: center; margin-top: 48px;">
   Milely is provided for informational and record-keeping purposes only. Nothing in the app constitutes tax, legal, or accounting advice. Eligibility for any deduction depends on your individual circumstances and applicable tax law. Consult a qualified tax professional.
 </p>
+
+<!--
+  FAQPage schema — only on the homepage. The four questions chosen are
+  the highest-intent buy-decision queries we'd want to win SERP rich
+  snippets for. Answers are pulled verbatim from /support/ to keep the
+  on-page text and the structured-data answer in sync (Google penalizes
+  divergence between visible content and JSON-LD claims). Avoid IRS-
+  compliance language per the brand spec — "business deductions" /
+  "audit-ready log" wording is used throughout.
+-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does Milely cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Milely is free to try for 7 days. After the trial it's a single subscription — $3.99 per month or $29.99 per year (annual saves about 37%). A one-time $69.99 Lifetime purchase is available inside the app for users who don't want a subscription. The free tier records up to 25 trips per month with no time limit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Milely send my trip data to a server?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Milely runs no servers. Every trip, address, vehicle, and business name lives on your iPhone. There is no Milely account, no analytics pipeline, and no shared model. Backups go directly from your device to your iCloud Drive, Google Drive, Dropbox, or OneDrive — never through us."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will Milely work for tax-time business mileage records?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Milely produces an audit-ready PDF log formatted along the lines of IRS Publication 463, plus Excel, CSV, and a drop-in QuickBooks Online import. Audit Lock automatically locks each prior year on January 31, every edit is captured in a per-trip edit history with timestamps, and year-end odometer readings reconcile recorded miles against your actual odometer. We don't provide tax advice — consult a qualified tax professional for your specific situation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Milely available on Android?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not currently, and likely staying that way. Milely is iOS-only by design — building Android would require a parallel codebase or a cross-platform framework that compromises the privacy posture and native feel."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Milely automatically detect when I'm driving?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — Automatic mode uses iOS motion and significant-location-changes APIs to detect trip start and end, then records the route in the background. Manual mode is also available if you'd rather start and stop trips yourself. Both modes work with the phone locked or in another app."
+      }
+    }
+  ]
+}
+</script>
 
 </main>
 </content>
