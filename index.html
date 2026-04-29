@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Milely
-description: Privacy-first iPhone mileage tracker for business deductions. Auto-detect drives, classify on-device with CoreML, export audit-ready PDFs. No servers, no analytics — your trips never leave your phone. Free 7-day trial.
+description: Privacy-first iPhone mileage tracker for business deductions. Auto-detect drives, on-device Smart Suggestions, audit-ready PDF exports. No servers, no analytics — your trips never leave your phone. Free 7-day trial.
 ---
 
 <section class="hero">
@@ -105,7 +105,7 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
     <img src="/assets/screenshots/hero-2-recording.png"
          alt="Milely recording a trip live — distance, duration, and live deduction tick up over a real-time map" />
     <img src="/assets/screenshots/hero-3-classify.png"
-         alt="Milely Review &amp; Save screen — Smart Suggestions chips show on-device CoreML predictions for which business this trip belongs to" />
+         alt="Milely Review and Save screen — Smart Suggestions chips show on-device predictions for which business this trip belongs to" />
     <img src="/assets/screenshots/hero-4-reports.png"
          alt="Milely Reports tab — yearly estimated deduction with stacked-bar breakdown, year-at-a-glance stats, and monthly summaries" />
     <img src="/assets/screenshots/hero-5-settings.png"
@@ -166,7 +166,7 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
         </div>
         <div class="spot-pillar">
           <h3>Delete at any time</h3>
-          <p>Swipe a single trip out of Logs, or uninstall the app to wipe everything — local SwiftData, settings, and the on-device CoreML model all go with it. Nothing on a server means nothing to "request deletion" of.</p>
+          <p>Long-press a trip in Logs and tap Delete, or uninstall the app to wipe everything — every trip, every setting, every receipt, and the pattern-learning model that lives on your phone all go with it. Nothing on a server means nothing to "request deletion" of.</p>
         </div>
       </div>
     </div>
@@ -226,17 +226,17 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
 </section>
 
 <!--
-  Spotlight 2 — Smart Suggestions / on-device CoreML (blue, reverse).
+  Spotlight 2 — Smart Suggestions / on-device pattern learning (blue, reverse).
   The privacy story told concretely: a real on-device model name,
   trained against the user's own classifications.
 -->
 <section class="spot spot-blue spot-reverse">
   <div class="spot-inner">
     <div class="spot-text">
-      <span class="spot-eyebrow">On-device CoreML</span>
-      <h2>Milely learns from you. On-device.</h2>
+      <span class="spot-eyebrow">Smart Suggestions</span>
+      <h2>Milely learns from you. On your phone.</h2>
       <p>The third time you classify a trip from your office to <em>Acme Realty's</em> listing as <em>"showing,"</em> Milely starts pre-filling that purpose for you.</p>
-      <p>The model — Apple's <strong>NLEmbedding</strong> stacked with a <strong>CreateML logistic-regression classifier</strong> — trains <strong>locally on your device</strong> against your classifications. No Milely account. No Milely server. There can't be a leak because the training data never leaves your phone.</p>
+      <p>The pattern-learning model trains <strong>locally on your device</strong> against your own past classifications — using Apple's standard on-device language tools, the same kind that power iPhone autocorrect and Siri suggestions. No Milely account. No Milely server. There can't be a leak because the training data never leaves your phone.</p>
     </div>
     <div class="spot-art">
       <img class="spot-shot" src="/assets/screenshots/hero-3-classify.png" alt="Milely Review and Save screen with on-device Smart Suggestions chips for the trip's business" />
@@ -259,6 +259,7 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
       <ul class="spot-bullets">
         <li><strong>Audit Lock (automatic)</strong>January 31 each year, the prior year's trips lock automatically so you can't accidentally edit them mid-audit. Unlocking is a deliberate two-tap action that writes a timestamped event to the trip's edit history.</li>
         <li><strong>Per-trip lock (manual)</strong>Lock individual trips the moment they're correct. Swipe right on a row in the Logs tab to lock or unlock — locked trips can't be edited or deleted, and every lock and unlock event is captured in the trip's edit history.</li>
+        <li><strong>Personal vs Business in one swipe</strong>Auto-detect can pick up the gym run, the school pickup, the Costco trip. Swipe left on a row in Logs to flag it Personal — the trip stays in your records but is excluded from every deduction total (Reports, Dashboard, exports). Swipe left again to flip back to Business. Locked trips have to be unlocked first.</li>
         <li><strong>Per-trip edit history</strong>Every field-level change records a <em>TripEditEvent</em> with timestamp, old value, and new value.</li>
         <li><strong>Year-end odometer reconciliation</strong>IRS Form 2106 / Schedule C-aligned readings, reconciled against actual miles logged.</li>
       </ul>
@@ -317,8 +318,8 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
       <p>Save common drives as templates — Office to listing, Home to job site, Costco run. Surface as Quick Start on the Dashboard.</p>
     </div>
     <div class="feature feature-green">
-      <h3>Sunday review reminder</h3>
-      <p>Sunday 6 PM, if you have unclassified trips, Milely pings you. If everything's classified, it stays silent. Five minutes a week.</p>
+      <h3>Weekly review reminder</h3>
+      <p>Pick a day in Settings (Sunday by default). At 6 PM that day, if you have unclassified trips, Milely pings you. If everything's classified, it stays silent. Five minutes a week.</p>
     </div>
     <div class="feature feature-purple">
       <h3>"I forgot for three weeks."</h3>
@@ -329,12 +330,16 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
       <p>Within a Business, tag each trip with a project — "1428 Maple," "Smith matter." Surfaces on the CSV and the PDF.</p>
     </div>
     <div class="feature feature-teal">
-      <h3>Receipt OCR via Vision</h3>
-      <p>Snap a parking stub or toll receipt. On-device Vision OCR pulls the total — no cloud, no third-party service.</p>
+      <h3>Receipt scanning, on-device</h3>
+      <p>Snap a parking stub or toll receipt. Milely reads the total on your phone — no cloud, no third-party service. The receipt prints with the trip on your PDF.</p>
     </div>
     <div class="feature feature-orange">
       <h3>CarPlay vehicle pairing</h3>
       <p>Pair each vehicle to its CarPlay or car Bluetooth. Auto-detect can be scoped to a specific car (so it doesn't fire when you're a passenger). On manual mode, pause GPS when you disconnect (do work between drives) and resume when you reconnect — connecting to a different paired car prompts you to stop or continue the trip.</p>
+    </div>
+    <div class="feature feature-sky">
+      <h3>Switching from MileIQ, Everlance, or TripLog?</h3>
+      <p>Drop in your CSV — Milely auto-detects the source format, brings every trip with you, and lets you preview before confirming. Settings → Setup → Import. Your history goes with you, so you don't lose deductions to "I'll set it up later."</p>
     </div>
   </div>
 </section>
@@ -362,8 +367,8 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
         <h4>What's unlocked:</h4>
         <ul class="checklist">
           <li><span class="check">✓</span> Unlimited trips per month</li>
-          <li><span class="check">✓</span> On-device pattern learning (CoreML auto-classify)</li>
-          <li><span class="check">✓</span> Receipt OCR (Vision, multi-page) + camera-roll attach + on PDF</li>
+          <li><span class="check">✓</span> Smart Suggestions — Milely learns your patterns, on your phone</li>
+          <li><span class="check">✓</span> Receipt scanning — multi-page, camera-roll attach, prints on the PDF</li>
           <li><span class="check">✓</span> PDF / Excel / CSV / QuickBooks Online exports</li>
           <li><span class="check">✓</span> Branded PDF reports with your logo + brand colors + firm footer</li>
           <li><span class="check">✓</span> Eight color themes — Warm, Light, Night, Day, Slate, Sky, Forest, Mint</li>
