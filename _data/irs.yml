@@ -5,14 +5,13 @@
 # site reads from this file via Liquid: {{ site.data.irs.year }}
 # and {{ site.data.irs.cents_per_mile }}.
 #
-# Last verified: 2026-04 from irs.gov/tax-professionals/standard-mileage-rates
+# Half-cent rates (e.g., 65.5¢ in 2023, 62.5¢ for 2022 H2) are
+# fine here — Liquid renders the float as-is, so "72.5" comes out
+# as "72.5¢" on the rendered page.
 #
-# NOTE: 2026 rate not yet verified by Greg. Using the last known
-# 2025 rate (70¢) as a placeholder. SANITY-CHECK BEFORE MERGE —
-# if the IRS has published a 2026 rate, swap cents_per_mile,
-# dollars_per_mile, and announced_in_notice to match.
+# Last verified: 2026-04-29 from Greg (confirmed 72.5¢/mile for 2026).
 year: 2026
-cents_per_mile: 70    # 70¢ per mile (placeholder if 2026 rate unconfirmed)
-dollars_per_mile: "0.70"
-announced_in_notice: "TBD"   # e.g., "Notice 2025-XX"
+cents_per_mile: 72.5
+dollars_per_mile: "0.725"
+announced_in_notice: "TBD"   # update when the official Notice number is known
 source_url: "https://www.irs.gov/tax-professionals/standard-mileage-rates"
