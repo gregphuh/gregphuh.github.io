@@ -88,11 +88,11 @@ Two ways, pick whichever fits the moment:
 - **Long-press** a row in the **Logs** tab → tap **Delete trip** in the menu → confirm. This is the quickest delete path.
 - Open the trip detail screen → tap **Delete Trip** at the bottom → confirm. Same outcome, just from inside the trip.
 
-(Swipe-left no longer deletes — it now toggles the trip between Business and Personal so you can dismiss a non-business trip with one motion. Locked trips can't be deleted at all until you unlock them.)
+(Swipe-left no longer deletes — it now locks the trip as Personal in one motion. Locked trips can't be deleted at all until you unlock them.)
 
 ### How do I mark a trip as personal (so it doesn't count toward my deduction)?
 
-**Swipe left** on a row in the **Logs** tab to flag the trip as Personal. Personal trips stay in your Logs for record-keeping but are excluded from every deduction total — Reports tab, Dashboard savings ticker, and PDF/CSV/Excel exports. Swipe left again on the same row to flip it back to Business.
+**Swipe left** on a row in the **Logs** tab to lock the trip as Personal — one swipe both flags it Personal and locks it down. Personal trips stay in your Logs for record-keeping but are excluded from every deduction total — Reports tab, Dashboard savings ticker, and PDF/CSV/Excel exports. To flip a Personal trip back to Business, tap the trip → **Unlock for editing** → **Mark as business** at the bottom of the detail page (you can re-lock from there too if you want).
 
 ### How do I delete ALL my data?
 
@@ -115,7 +115,7 @@ On **January 31 each year**, Milely automatically locks the previous year's trip
 
 ### Can I lock individual trips before the year ends?
 
-Yes. On the **Logs** tab, **swipe right** on any trip to lock or unlock it. Locked trips can't be edited or deleted — useful the moment a trip is correct and you don't want to fat-finger it later. Every lock and unlock event is recorded in the trip's **Edit history** alongside any field-level changes, so the full timeline is always there if your CPA or the IRS asks how a record evolved.
+Yes. On the **Logs** tab, **swipe right** on any active trip to lock it. Locked trips can't be edited or deleted — useful the moment a trip is correct and you don't want to fat-finger it later. To unlock, tap the trip and tap **Unlock for editing** at the bottom of the detail page. Every lock and unlock event is recorded in the trip's **Edit history** alongside any field-level changes, so the full timeline is always there if your CPA asks how a record evolved.
 
 ### How do I export to QuickBooks Online or Excel?
 
@@ -256,7 +256,7 @@ We read every email. We don't promise to build everything (we're keeping the app
       "name": "How do I delete a single trip?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Two ways: long-press a row in the Logs tab and tap Delete trip in the menu (quickest); or open the trip detail screen and tap Delete Trip at the bottom. Swipe-left no longer deletes — it now toggles the trip between Business and Personal. Locked trips cannot be deleted until you unlock them."
+        "text": "Two ways: long-press a row in the Logs tab and tap Delete trip in the menu (quickest); or open the trip detail screen and tap Delete Trip at the bottom. Swipe-left no longer deletes — it now locks the trip as Personal in one motion. Locked trips cannot be deleted until you unlock them."
       }
     },
     {
@@ -296,7 +296,7 @@ We read every email. We don't promise to build everything (we're keeping the app
       "name": "Can I lock individual trips before the year ends?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. On the Logs tab, swipe right on any trip to lock or unlock it. Locked trips can't be edited or deleted — useful the moment a trip is correct and you don't want to fat-finger it later. Every lock and unlock event is recorded in the trip's Edit history alongside any field-level changes, so the full timeline is always there if your CPA or the IRS asks how a record evolved."
+        "text": "Yes. On the Logs tab, swipe right on any active trip to lock it. Locked trips can't be edited or deleted — useful the moment a trip is correct and you don't want to fat-finger it later. To unlock, tap the trip and tap Unlock for editing at the bottom of the detail page. Every lock and unlock event is recorded in the trip's Edit history alongside any field-level changes, so the full timeline is always there if your CPA asks how a record evolved."
       }
     },
     {

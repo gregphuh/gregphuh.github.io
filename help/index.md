@@ -103,7 +103,7 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 <p><strong>Forgot to start a trip?</strong> Hit <strong>Log Past Trip Manually</strong> at the top of the Logs tab and enter the date, miles, addresses, and purpose by hand — same audit-ready record.</p>
 
-<p><strong>Swipe-right</strong> on a trip row to lock or unlock it (locked trips can't be edited or deleted — handy for trips you've finalized for tax filing). <strong>Swipe-left</strong> toggles the trip between Business and Personal: a Personal trip stays in your Logs but is excluded from every deduction total (Reports, Dashboard, exports). Swipe left again to flip back to Business.</p>
+<p><strong>Swipe right</strong> on an active trip row to lock it as business — locked trips can't be edited or deleted, handy when you've finalized a trip and don't want to fat-finger it later. <strong>Swipe left</strong> on an active trip locks it as Personal in one motion: the trip stays in your Logs but is excluded from every deduction total (Reports, Dashboard, exports). Both swipes only work on trips that aren't already locked or Personal — to undo either, tap the trip and use the bottom of the detail page (Unlock for editing → optional Mark as business → optional Lock again).</p>
 
 <p><strong>Delete a trip:</strong></p>
 <ul>
@@ -114,7 +114,7 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 <p><strong>Edit history is captured automatically.</strong> Every field-level change to a saved trip is recorded — including locking, unlocking, and Personal/Business toggles. See <a href="#edit-history">section 6</a>.</p>
 </div>
-<div class="how-img"><img src="/assets/screenshots/logs.png" alt="Logs tab with searchable list of trips, swipe-right to lock, swipe-left to mark personal" /></div>
+<div class="how-img"><img src="/assets/screenshots/logs.png" alt="Logs tab with searchable list of trips, swipe-right to lock as business, swipe-left to lock as personal" /></div>
 </div>
 
 ---
