@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Support
-description: Frequently asked questions about Milely — pricing, privacy, multi-device, exports, Audit Lock, refunds, and how to contact a real human at SmileyCreative LLC.
+description: Frequently asked questions about Milely — pricing, privacy, multi-device, MileIQ / Everlance / TripLog import, exports, Audit Lock, refunds, and how to contact a real human at SmileyCreative LLC.
 permalink: /support/
 ---
 
@@ -77,7 +77,9 @@ Not currently — and likely staying that way. Milely is iOS-only by design; bui
 
 ### Can I import data from MileIQ / Everlance / [other app]?
 
-Not directly in v1.0. If you have a CSV export from another app, send it to **milely@smileycreative.io** and we'll see if we can help — and consider building an importer for a future update.
+Yes — Milely imports CSV exports from **MileIQ**, **Everlance**, and **TripLog**. Export a CSV from your old app, then in Milely go to **Settings → Setup → Import from MileIQ / Everlance / TripLog**, pick the file, and confirm. Milely auto-detects the source format from the file's header row, shows a preview of detected trips, and applies your chosen default business / vehicle / purpose to every imported trip. Imported trips arrive in your Logs as personal/unclassified by default — bulk-reassign business in 30 seconds via the Logs multi-select.
+
+If you're coming from a different app and have a CSV that isn't one of those three formats, send it to **milely@smileycreative.io** and we'll see if we can help.
 
 ### How do I delete a single trip?
 
@@ -105,6 +107,10 @@ After you've classified about ten trips, Milely starts pre-filling business + pu
 ### What is Audit Lock?
 
 On **January 31 each year**, Milely automatically locks the previous year's trips so you can't accidentally edit them mid-audit. A small lock icon shows on locked trips. If you legitimately need to amend a return, open the trip from the Logs tab → tap **Unlock for editing** → make the change. The unlock and any edits that follow are written to the trip's **Edit history** with timestamps, so even when you reopen a closed year there's a clean paper trail showing exactly what changed and when.
+
+### Can I lock individual trips before the year ends?
+
+Yes. On the **Logs** tab, **swipe right** on any trip to lock or unlock it. Locked trips can't be edited or deleted — useful the moment a trip is correct and you don't want to fat-finger it later. Every lock and unlock event is recorded in the trip's **Edit history** alongside any field-level changes, so the full timeline is always there if your CPA or the IRS asks how a record evolved.
 
 ### How do I export to QuickBooks Online or Excel?
 
@@ -141,7 +147,7 @@ For everything not in the FAQ — support, privacy, legal, security disclosures:
 
 [**milely@smileycreative.io**](mailto:milely@smileycreative.io)
 
-We aim to respond within 2 business days. SmileyCreative LLC is a small operation — please be patient if it takes a touch longer during tax season.
+We aim to respond within 2 business days. We're a focused team — please be patient if it takes a touch longer during tax season.
 
 ---
 
@@ -164,7 +170,7 @@ We read every email. We don't promise to build everything (we're keeping the app
 </main>
 
 <!--
-  FAQPage schema for /support/ — wraps the 18 Q&As above as a single
+  FAQPage schema for /support/ — wraps the 19 Q&As above as a single
   structured-data block so Google can render rich-result FAQ snippets
   in SERPs. Questions match the page H3s exactly; answers are
   condensed to one paragraph each (Google's FAQ-rich-result UI clips
@@ -237,7 +243,7 @@ We read every email. We don't promise to build everything (we're keeping the app
       "name": "Can I import data from MileIQ, Everlance, or another app?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Not directly in v1.0. If you have a CSV export from another app, send it to milely@smileycreative.io and we'll see if we can help — and consider building an importer for a future update."
+        "text": "Yes. Milely imports CSV exports from MileIQ, Everlance, and TripLog. Export a CSV from your old app, then in Milely go to Settings → Setup → Import, pick the file, and confirm. Milely auto-detects the source format from the file's header row and shows a preview of detected trips before applying. Imported trips arrive as personal/unclassified by default — bulk-reassign business in the Logs tab."
       }
     },
     {
@@ -278,6 +284,14 @@ We read every email. We don't promise to build everything (we're keeping the app
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "On January 31 each year, Milely automatically locks the previous year's trips so you can't accidentally edit them mid-audit. A small lock icon shows on locked trips. If you legitimately need to amend a return, open the trip from the Logs tab, tap Unlock for editing, and make the change. The unlock and any edits that follow are written to the trip's Edit history with timestamps."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I lock individual trips before the year ends?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. On the Logs tab, swipe right on any trip to lock or unlock it. Locked trips can't be edited or deleted — useful the moment a trip is correct and you don't want to fat-finger it later. Every lock and unlock event is recorded in the trip's Edit history alongside any field-level changes, so the full timeline is always there if your CPA or the IRS asks how a record evolved."
       }
     },
     {
