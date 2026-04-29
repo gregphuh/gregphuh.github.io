@@ -1,0 +1,18 @@
+# IRS standard mileage rate for business use of a personal vehicle.
+# Update annually when the IRS publishes a new rate (typically
+# mid-December via a Notice — e.g., Notice 2024-83 set the 2025
+# rate). One source of truth — every "X¢ / 2026" mention on the
+# site reads from this file via Liquid: {{ site.data.irs.year }}
+# and {{ site.data.irs.cents_per_mile }}.
+#
+# Last verified: 2026-04 from irs.gov/tax-professionals/standard-mileage-rates
+#
+# NOTE: 2026 rate not yet verified by Greg. Using the last known
+# 2025 rate (70¢) as a placeholder. SANITY-CHECK BEFORE MERGE —
+# if the IRS has published a 2026 rate, swap cents_per_mile,
+# dollars_per_mile, and announced_in_notice to match.
+year: 2026
+cents_per_mile: 70    # 70¢ per mile (placeholder if 2026 rate unconfirmed)
+dollars_per_mile: "0.70"
+announced_in_notice: "TBD"   # e.g., "Notice 2025-XX"
+source_url: "https://www.irs.gov/tax-professionals/standard-mileage-rates"
