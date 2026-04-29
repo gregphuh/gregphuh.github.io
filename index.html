@@ -77,7 +77,15 @@ description: Track mileage for business deductions. On-device, private, no serve
   -->
   <h1>
     <span class="hero-rank">#1</span>
-    <span class="hero-claim">Small-Company Mileage Tracking App</span>
+    <!--
+      Non-breaking spaces (&nbsp;) lock "Small-Company Mileage" together
+      and "Tracking App" together. The only space the browser can break
+      on is between "Mileage" and "Tracking" — so on mobile the headline
+      always wraps cleanly to two lines (SMALL-COMPANY MILEAGE / TRACKING
+      APP), never mid-phrase or after "Tracking". On desktop where it
+      all fits on one line, no break happens.
+    -->
+    <span class="hero-claim">Small-Company&nbsp;Mileage Tracking&nbsp;App</span>
     <span class="hero-coda">for privacy.</span>
   </h1>
   <p class="tagline">Track mileage for business deductions.<br/>On your iPhone. Never on our servers.</p>
