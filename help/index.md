@@ -105,6 +105,8 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 <p><strong>Swipe right</strong> on an active trip row to lock it as business — locked trips can't be edited or deleted, handy when you've finalized a trip and don't want to fat-finger it later. <strong>Swipe left</strong> on an active trip locks it as Personal in one motion: the trip stays in your Logs but is excluded from every deduction total (Reports, Dashboard, exports). Both swipes only work on trips that aren't already locked or Personal — to undo either, tap the trip and use the bottom of the detail page (Unlock for editing → optional Mark as business → optional Lock again).</p>
 
+<p><strong>Personal trips are first-class, not an afterthought.</strong> The <strong>green Personal tile</strong> on the Dashboard's Quick Start row starts a Personal trip immediately — same one-tap path the business chips offer. Personal trips show with a <strong>green dot</strong> in the Logs list, alongside the colored chips you've assigned to each business, so the two streams are visually distinct at a glance. The Classify form for a Personal trip is also simplified: no business purpose required, no deduction shown — just a clean record that the drive happened.</p>
+
 <p><strong>Delete a trip:</strong></p>
 <ul>
 <li><strong>Long-press</strong> a row → tap <strong>Delete trip</strong> in the menu → confirm. Quick path.</li>
@@ -408,13 +410,18 @@ Yes — recording, classifying, browsing, exporting, and reports all work fully 
 </details>
 
 <details>
+<summary><strong>What happens if the app crashes or my phone dies during a trip?</strong></summary>
+Milely snapshots your in-progress trip (route, distance, and time so far) to disk every 30 seconds. If iOS evicts the app to free memory, the app force-quits, or your phone runs out of battery mid-drive, the next time you open Milely within 7 days you'll see a <strong>Recover trip in progress?</strong> prompt. Tap to resume — your route picks up from the last snapshot, nothing is lost.
+</details>
+
+<details>
 <summary><strong>Will it drain my battery?</strong></summary>
 Manual mode only consumes battery while a trip is recording (~3% per hour). Automatic mode uses iOS's significant-location-changes API when idle (negligible drain) and only ramps up GPS when motion suggests driving.
 </details>
 
 <details>
 <summary><strong>How does Automatic mode work?</strong></summary>
-Settings → Detection mode → switch to <strong>Automatic</strong>. Milely uses motion + GPS to detect when you start driving, records the route in the background, and notifies you to classify after the trip ends. Requires "Always Allow" location and Motion &amp; Fitness permissions.
+Settings → Detection mode → switch to <strong>Automatic</strong>. Milely uses motion + GPS to detect when you start driving, records the route in the background, and notifies you to classify after the trip ends. Requires "Always Allow" location and Motion &amp; Fitness permissions. Automatic mode and CarPlay-trigger detection both keep working even after iOS has shut Milely down to free memory: when your next drive begins, iOS wakes the app via a significant location change, Milely re-checks your CarPlay or Bluetooth connection, and starts the trip if your paired vehicle is connected. The exception is force-quit — if you swipe up in the app switcher to kill Milely, iOS treats that as the user explicitly disabling background activity and won't relaunch the app until you open it again. That's a system-wide iOS rule no app can override.
 </details>
 
 <details>

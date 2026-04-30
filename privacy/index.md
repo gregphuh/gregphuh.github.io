@@ -136,7 +136,7 @@ If you enable Calendar Suggestions (off by default — Settings → Integrations
 
 ## 8. Receipt photos {#photos}
 
-If you scan or attach a photo to a trip, the photo is stored as part of the trip record on your iPhone. Photos are processed on-device using Apple's VisionKit (for scan/edge-detection) and Vision (for optional text-recognition of receipt totals). **No photo data leaves your device** unless you (a) enable backups, in which case the photos are included with the backup, or (b) manually share a trip via the iOS share sheet.
+If you scan or attach a photo to a trip, the photo is stored as part of the trip record on your iPhone. Photos are processed on-device using Apple's VisionKit (for scan/edge-detection) and Vision (for optional text-recognition of receipt totals). Location and timestamp metadata (EXIF) are stripped from each receipt photo before it's saved into the trip record, so a backup file or a shared trip cannot leak where the photo was taken. **No photo data leaves your device** unless you (a) enable backups, in which case the photos are included with the backup, or (b) manually share a trip via the iOS share sheet.
 
 You can revoke camera or photo-library permissions in iOS Settings → Privacy &amp; Security → Camera / Photos → Milely.
 
