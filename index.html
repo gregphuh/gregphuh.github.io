@@ -108,7 +108,7 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
     <img src="/assets/screenshots/hero-4-reports.png"
          alt="Milely Reports tab — yearly estimated deduction with stacked-bar breakdown, year-at-a-glance stats, and monthly summaries" />
     <img src="/assets/screenshots/hero-5-settings.png"
-         alt="Milely Settings — Trip Detection mode, Sunday review reminder, and Setup section with Businesses, Vehicles, Trip Templates, calendar recovery, auto-classify rules, mileage rate, and tax bracket" />
+         alt="Milely Settings — Trip Settings, Sunday review reminder, Backup, Integrations, and Setup section with Businesses, Vehicles, Trip Templates, auto-classify rules, mileage rate, and tax bracket" />
     <img src="/assets/screenshots/hero-6-export.png"
          alt="Milely Export menu — PDF, Excel (.xls), CSV — Milely (full), and CSV — QuickBooks Online options on the Reports tab" />
     <img src="/assets/screenshots/hero-7-pdf.png"
@@ -358,12 +358,17 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
     </div>
     <div class="feature feature-orange">
       <h3>CarPlay vehicle pairing</h3>
-      <p>Pair each vehicle to its CarPlay or car Bluetooth. Auto-detect can be scoped to a specific car (so it doesn't fire when you're a passenger). Choose what happens on disconnect — <strong>pause low-power GPS</strong> to save battery between stops, or <strong>keep recording</strong> so you don't miss a leg. Connecting to a different paired car mid-trip prompts you to stop or continue.</p>
+      <p>Pair each vehicle to its CarPlay or car Bluetooth. The Vehicle list itself is the auto-detect arming gate — with paired vehicles in the list, motion-based detection only arms when one of those vehicles is the live audio route, so passenger rides in someone else's car stay silent. Pick whether disconnect <strong>pauses</strong> the trip (saves battery between stops) or <strong>keeps recording</strong> (so you don't miss a leg). Connecting to a different paired car mid-trip prompts you to stop or continue.</p>
       <p class="feature-sub">CarPlay-trigger works in <strong>both Manual and Automatic modes</strong> — they're independent. Pick Manual + CarPlay-trigger if you want hands-off recording for your paired vehicles only and manual control everywhere else.</p>
+    </div>
+    <div class="feature feature-warm">
+      <h3>Lost-miles recovery</h3>
+      <p>iOS's motion classifier can take a minute or two to confirm you're driving. Most mileage trackers eat that latency — those miles are simply gone. Milely keeps a rolling 10-minute location buffer in the background; the moment auto-detect promotes to recording, it walks back through the buffer to find when you actually started driving and rewrites the trip's start time and route to match.</p>
+      <p class="feature-sub">Net effect: when other trackers log a 14.6-mile commute as 13.1 miles, Milely logs it as 14.6. Over a year, that's real money you weren't deducting.</p>
     </div>
     <div class="feature feature-sky">
       <h3>Switching from MileIQ, Everlance, or TripLog?</h3>
-      <p>Drop in your CSV — Milely auto-detects the source format, brings every trip with you, and lets you preview before confirming. Settings → Setup → Import. Your history goes with you, so you don't lose deductions to "I'll set it up later."</p>
+      <p>Drop in your CSV — Milely auto-detects the source format, brings every trip with you, and lets you preview before confirming. Settings → Backup → Import. Your history goes with you, so you don't lose deductions to "I'll set it up later."</p>
     </div>
   </div>
 </section>
@@ -415,15 +420,14 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
       <a class="badge-link badge-link-secondary" href="https://apps.apple.com/app/milely/id__APPSTORE_ID_PENDING__" rel="noopener noreferrer">Try free for 7 days</a>
 
       <div class="pricing-card-section pricing-card-section-muted">
-        <h4>Free without subscribing:</h4>
+        <h4>After your 7-day trial:</h4>
         <ul class="checklist checklist-muted">
-          <li><span class="check-x">○</span> Up to 25 trips per month</li>
-          <li><span class="check-x">○</span> Plain PDF + CSV export</li>
-          <li><span class="check-x">○</span> Warm theme</li>
-          <li><span class="check-x">○</span> Manual JSON export</li>
-          <li><span class="check-x">○</span> Standard email support</li>
+          <li><span class="check">✓</span> All recorded trips stay viewable, editable, and exportable forever</li>
+          <li><span class="check">✓</span> Re-export PDF, CSV, JSON anytime — no subscription needed</li>
+          <li><span class="check-x">○</span> Recording new trips requires a subscription</li>
+          <li><span class="check-x">○</span> Premium themes + power features stay subscription-only</li>
         </ul>
-        <p class="pricing-card-fineprint" style="margin-top: 12px; padding-top: 0;">No ads. No lockouts. Just a 25-trip-per-month cap and the cosmetic / power features stay locked.</p>
+        <p class="pricing-card-fineprint" style="margin-top: 12px; padding-top: 0;">Trial timer starts on your first recorded trip — not on app install. Drive when you're ready.</p>
       </div>
     </div>
 
@@ -441,7 +445,7 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
 
 <section class="themes-showcase">
   <h2 class="themes-title">Pick what feels like you.</h2>
-  <p class="themes-sub">The free tier ships with the <strong>Warm</strong> palette — the original Milely look. Subscribe to unlock the other seven. They're laid out below in the same order as the in-app picker (dark / light pairs): Warm, Light, Night, Day, Slate, Sky, Forest, Mint.</p>
+  <p class="themes-sub">The default <strong>Warm</strong> palette is the original Milely look. Subscribe to unlock the other seven. They're laid out below in the same order as the in-app picker (dark / light pairs): Warm, Light, Night, Day, Slate, Sky, Forest, Mint.</p>
 
   <div class="themes-grid">
 
@@ -561,7 +565,7 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
       "name": "How much does Milely cost?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Milely is free to try for 7 days. After the trial it's a single subscription — $3.99 per month or $29.99 per year (annual saves about 37%). A one-time $69.99 Lifetime purchase is available inside the app for users who don't want a subscription. The free tier records up to 25 trips per month with no time limit."
+        "text": "Milely is free to try for 7 days, fully unlocked. The trial timer starts on your first recorded trip — not on app install — so drive when you're ready. After the trial it's a single subscription: $3.99 per month or $29.99 per year (annual saves about 37%). All trips you've already recorded stay viewable, editable, and exportable forever — recording NEW trips is what requires a subscription. A one-time $69.99 Lifetime purchase is available inside the app for users who don't want a subscription."
       }
     },
     {
@@ -601,7 +605,7 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
       "name": "Does CarPlay auto-start work in Manual mode?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Detection Mode (Manual or Automatic) and the Auto-start trip on CarPlay connect toggle are independent settings. Pick Manual + CarPlay-trigger ON if you want hands-off recording for your paired vehicles only, with manual control everywhere else. Or Automatic + CarPlay-trigger OFF if you want motion-based detection without the CarPlay shortcut. The combinations: Automatic + CarPlay-trigger ON (default) — both paths active, CarPlay wins on speed for paired drives, motion is the fallback for unpaired drives. Automatic + CarPlay-trigger OFF — motion only. Manual + CarPlay-trigger ON — CarPlay-trigger only, motion ignored. Manual + CarPlay-trigger OFF — pure manual."
+        "text": "Yes. The mode (Manual or Automatic) and the Auto-Start Trip on CarPlay Connect toggle live inside Settings → Trip Settings, but they're independent. Pick Manual with CarPlay auto-start ON if you want hands-off recording for your paired vehicles only, with manual control everywhere else. Or Automatic with CarPlay auto-start OFF if you want motion-based detection without the CarPlay shortcut. The four combinations: Automatic + CarPlay auto-start ON (default) — both paths active, CarPlay wins on speed for paired drives, motion is the fallback for unpaired drives. Automatic + CarPlay auto-start OFF — motion only. Manual + CarPlay auto-start ON — CarPlay only, motion ignored. Manual + CarPlay auto-start OFF — pure manual."
       }
     }
   ]

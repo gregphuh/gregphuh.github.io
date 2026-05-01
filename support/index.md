@@ -19,10 +19,14 @@ Help with Milely. If your question isn't answered below, email **milely@smileycr
 
 ### How much does Milely cost?
 
-**Try it free for 7 days, then a single subscription: $3.99/month or $29.99/year (annual saves ~37%).** That's it — one plan, all features.
+**Try it free for 7 days, fully unlocked. After the trial, a single subscription: $3.99/month or $29.99/year (annual saves ~37%).** One plan, all features.
 
-What the subscription unlocks:
-- **Unlimited trips** — free tier records up to 25 trips/month
+**The trial timer starts on your first recorded trip — not on app install.** Set Milely up at home, pair your CarPlay, classify your first drive, then start the clock when you're actually driving.
+
+**What stays free forever after the trial ends:** every trip you recorded keeps living on your phone. View, edit, classify, and re-export PDF / CSV / JSON / Excel / QuickBooks Online any time, no subscription needed. Recording *new* trips is what requires a subscription.
+
+A subscription unlocks:
+- **Recording new trips** — the 7-day trial gives you all features unlocked while you decide
 - **Smart Suggestions** — on-device CoreML pattern learning that pre-fills business + purpose based on your past classifications (never leaves your phone)
 - **Auto-classify rules** — "Always business at this address" / "Always personal" one-tap rules
 - **Favorite trips** — save recurring drives as one-tap shortcuts on the Dashboard
@@ -30,7 +34,6 @@ What the subscription unlocks:
 - **Branded PDF reports** — your logo, colors, and firm footer
 - **Eight color themes** — Warm, Light, Night, Day, Slate, Sky, Forest, Mint (in picker order)
 - **Cloud backup** — automatic exports to a Files folder you pick (iCloud Drive, Google Drive, Dropbox, OneDrive)
-- **Excel and QuickBooks Online exports** — drop-in mileage import alongside the PDF / Milely CSV options
 - **Calendar past-trip recovery** — pulls past calendar events with locations and proposes them as trips
 - **Project / client tagging** — sub-classify within a business for billing and reporting
 - **Year-end odometer reconciliation** — IRS Form 2106 / Schedule C-aligned beginning-of-year and end-of-year readings
@@ -48,7 +51,7 @@ Yes — recording, classifying, viewing, and exporting all work fully offline. T
 
 ### Will Milely drain my battery?
 
-Manual mode only consumes battery while a trip is recording. Automatic mode uses iOS's significant-location-changes API when idle (negligible drain) and ramps up GPS only when motion suggests driving. Typical drain: ~3% per hour while recording. Automatic mode and CarPlay-trigger detection both keep working even after iOS has shut Milely down to free memory: when you start your next drive, iOS wakes the app via a significant location change, Milely re-checks your CarPlay or Bluetooth connection, and starts the trip if your paired vehicle is connected. The exception is force-quit: if you swipe up in the app switcher to kill Milely, iOS won't relaunch it — that's a system policy that no app can override.
+Manual mode only consumes battery while a trip is recording. Automatic mode runs a three-stage state machine: **idle** (only iOS's significant-location-changes API, negligible drain) → **armed** (full GPS turns on the moment iOS's motion classifier reports automotive activity, so Milely can confirm you're really driving) → **recording** (the trip is committed). Typical drain: ~3% per hour while recording. Automatic mode and CarPlay-trigger detection both keep working even after iOS has shut Milely down to free memory: when you start your next drive, iOS wakes the app via a significant location change, Milely re-checks your CarPlay or Bluetooth connection, and starts the trip if your paired vehicle is connected. The exception is force-quit: if you swipe up in the app switcher to kill Milely, iOS won't relaunch it — that's a system policy that no app can override.
 
 ### What happens if the app crashes or my phone dies during a trip?
 
@@ -85,7 +88,7 @@ Not currently — and likely staying that way. Milely is iOS-only by design; bui
 
 ### Can I import data from MileIQ / Everlance / [other app]?
 
-Yes — Milely imports CSV exports from **MileIQ**, **Everlance**, and **TripLog**. Export a CSV from your old app, then in Milely go to **Settings → Setup → Import from MileIQ / Everlance / TripLog**, pick the file, and confirm. Milely auto-detects the source format from the file's header row, shows a preview of detected trips, and applies your chosen default business / vehicle / purpose to every imported trip. Imported trips arrive **Excluded** from your annual report by default — Include and assign a business in bulk via the Logs multi-select.
+Yes — Milely imports CSV exports from **MileIQ**, **Everlance**, and **TripLog**. Export a CSV from your old app, then in Milely go to **Settings → Backup → Import from MileIQ / Everlance / TripLog**, pick the file, and confirm. Milely auto-detects the source format from the file's header row, shows a preview of detected trips, and applies your chosen default business / vehicle / purpose to every imported trip. Imported trips arrive **Excluded** from your annual report by default — Include and assign a business in bulk via the Logs multi-select.
 
 If you're coming from a different app and have a CSV that isn't one of those three formats, send it to **milely@smileycreative.io** and we'll see if we can help.
 
@@ -96,7 +99,7 @@ Two ways, pick whichever fits the moment:
 - **Long-press** a row in the **Logs** tab → tap **Delete trip** in the menu → confirm. This is the quickest delete path.
 - Open the trip detail screen → tap **Delete Trip** at the bottom → confirm. Same outcome, just from inside the trip.
 
-(Swipe-left no longer deletes — it now Excludes the trip from your annual report. Locked trips — every saved trip auto-locks — can't be deleted until you unlock them from the trip's detail page.)
+(Swipe-left no longer deletes — it now Excludes the trip from your annual report. Locked **business** trips can't be deleted until you unlock them from the trip's detail page; locked Personal trips can be deleted directly without unlocking, since they don't reach IRS reports.)
 
 ### How do I exclude a trip from my annual report (so it doesn't count toward my deduction)?
 
@@ -116,7 +119,7 @@ Delete the app from your iPhone — that wipes the local SwiftData store, UserDe
 Two paths depending on the gap:
 
 - **One or two trips?** **Logs → Log Past Trip Manually**. Enter the date, miles, addresses, business, and purpose by hand.
-- **A whole stretch (a week, a month)?** **Settings → Setup → Recover from calendar**. Milely reads your past calendar events with locations (on-device, never transmitted), dedupes against trips you already saved, and lets you bulk-create the rest.
+- **A whole stretch (a week, a month)?** **Settings → Integrations → Recover from calendar**. Milely reads your past calendar events with locations (on-device, never transmitted), dedupes against trips you already saved, and lets you bulk-create the rest.
 
 ### What is Smart Suggestions, and why is Milely guessing?
 
@@ -132,30 +135,30 @@ On **January 31 each year**, Milely automatically locks the previous year's trip
 
 ### What happens when I disconnect from CarPlay mid-drive?
 
-Up to you. **Settings → Detection Mode → Disconnect behavior** has two options:
+Up to you — **Settings → Trip Settings** has a **Pause/Resume Based on CarPlay** toggle inside each mode (Manual and Automatic) that controls disconnect behavior independently:
 
-- **Pause low-power GPS (recommended).** When you disconnect from CarPlay or your car's Bluetooth, Milely drops to a low-power GPS state — the trip is paused, your battery doesn't drain while you're at the job site, and the trip resumes automatically when you reconnect. Best for stop-and-go workdays.
-- **Keep recording.** Milely keeps logging at full GPS resolution after disconnect — useful if you regularly continue a drive in a different vehicle, or the trip's destination is somewhere you'll arrive on foot.
+- **Toggle ON.** When you disconnect from CarPlay or your car's Bluetooth, Milely pauses the trip and drops GPS to a low-power state — your battery doesn't drain at the job site, and the trip resumes automatically when you reconnect. Best for stop-and-go workdays.
+- **Toggle OFF.** Milely keeps logging at full GPS resolution after disconnect — useful if you regularly continue a drive in a different vehicle, or the trip's destination is somewhere you'll arrive on foot.
 
 Either way, reconnecting to a *different* paired vehicle mid-trip prompts you to stop the current trip and start a new one for the new vehicle.
 
-### How do Detection Mode and the CarPlay auto-start toggle interact?
+### How do the mode and the CarPlay auto-start toggle interact?
 
-They're independent. **Detection Mode** (Settings → Detection Mode → Manual or Automatic) controls motion-based auto-detect. The **Auto-start trip on CarPlay connect** toggle controls whether connecting to a paired vehicle starts a trip on its own. You can mix them however you want:
+They're independent. The mode (Manual or Automatic) controls motion-based auto-detect. The **Auto-Start Trip on CarPlay Connect** toggle — both live inside Settings → Trip Settings — controls whether connecting to a paired vehicle starts a trip on its own. You can mix them however you want:
 
 <table>
   <thead>
-    <tr><th>Detection Mode</th><th>CarPlay auto-start</th><th>What you get</th></tr>
+    <tr><th>Mode</th><th>CarPlay auto-start</th><th>What you get</th></tr>
   </thead>
   <tbody>
-    <tr><td><strong>Automatic</strong></td><td><strong>ON</strong> (default)</td><td>Trip auto-starts the instant you connect to a paired vehicle. For unpaired drives (Ubers, borrowed cars), motion-based detection still catches the trip after about 30 seconds. CarPlay wins on speed when both apply.</td></tr>
-    <tr><td><strong>Automatic</strong></td><td><strong>OFF</strong></td><td>Motion-only. Trips auto-start after about 30 seconds of confirmed driving. Works without any vehicle pairing.</td></tr>
+    <tr><td><strong>Automatic</strong></td><td><strong>ON</strong> (default)</td><td>Trip auto-starts the instant you connect to a paired vehicle. For unpaired drives (Ubers, borrowed cars), motion-based detection still catches the trip. CarPlay wins on speed when both apply.</td></tr>
+    <tr><td><strong>Automatic</strong></td><td><strong>OFF</strong></td><td>Motion-only. Works without any vehicle pairing.</td></tr>
     <tr><td><strong>Manual</strong></td><td><strong>ON</strong></td><td>CarPlay-trigger still fires for paired vehicles. Motion is ignored. Useful if you want manual control everywhere except your work truck.</td></tr>
     <tr><td><strong>Manual</strong></td><td><strong>OFF</strong></td><td>Pure manual. Nothing auto-starts; you tap Start, drive, tap End.</td></tr>
   </tbody>
 </table>
 
-Both auto-start paths check whether a trip is already recording before starting one — they won't double-start. There's also a per-vehicle filter under **Settings → Vehicles** ("Only auto-detect when this vehicle's CarPlay is connected") that silences motion-based detection unless that vehicle's CarPlay or Bluetooth is currently connected — useful for stopping passenger rides from being logged as drives.
+Both auto-start paths check whether a trip is already recording before starting one — they won't double-start. The Vehicle list under **Settings → Vehicles** also acts as the motion-detect arming gate: with at least one paired vehicle, motion-based detection only arms when one of those vehicles is the live audio route, so passenger rides in someone else's car stay silent.
 
 ### How do I export to QuickBooks Online or Excel?
 
@@ -232,7 +235,7 @@ We read every email. We don't promise to build everything (we're keeping the app
       "name": "How much does Milely cost?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Try it free for 7 days, then a single subscription: $3.99/month or $29.99/year (annual saves about 37%). One plan, all features. The free tier records up to 25 trips per month with no time limit. A one-time $69.99 Lifetime option is available inside the app at Settings → Subscribe → Other options."
+        "text": "Try Milely free for 7 days, fully unlocked. The trial timer starts on your first recorded trip — not on app install. After the trial, a single subscription: $3.99/month or $29.99/year (annual saves about 37%). All trips you've already recorded stay viewable, editable, and exportable forever — recording new trips is what requires a subscription. A one-time $69.99 Lifetime option is available inside the app at Settings → Subscribe → Other options."
       }
     },
     {
@@ -304,7 +307,7 @@ We read every email. We don't promise to build everything (we're keeping the app
       "name": "Can I import data from MileIQ, Everlance, or another app?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Milely imports CSV exports from MileIQ, Everlance, and TripLog. Export a CSV from your old app, then in Milely go to Settings → Setup → Import, pick the file, and confirm. Milely auto-detects the source format from the file's header row and shows a preview of detected trips before applying. Imported trips arrive Excluded from your annual report by default — Include and assign a business in bulk via the Logs multi-select."
+        "text": "Yes. Milely imports CSV exports from MileIQ, Everlance, and TripLog. Export a CSV from your old app, then in Milely go to Settings → Backup → Import, pick the file, and confirm. Milely auto-detects the source format from the file's header row and shows a preview of detected trips before applying. Imported trips arrive Excluded from your annual report by default — Include and assign a business in bulk via the Logs multi-select."
       }
     },
     {
@@ -328,7 +331,7 @@ We read every email. We don't promise to build everything (we're keeping the app
       "name": "What if I forgot to start a trip?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Two paths. For one or two trips: Logs → Log Past Trip Manually, then enter the date, miles, addresses, business, and purpose by hand. For a longer stretch (a week or month): Settings → Setup → Recover from calendar — Milely reads your past calendar events with locations on-device, dedupes against trips you already saved, and lets you bulk-create the rest."
+        "text": "Two paths. For one or two trips: Logs → Log Past Trip Manually, then enter the date, miles, addresses, business, and purpose by hand. For a longer stretch (a week or month): Settings → Integrations → Recover from calendar — Milely reads your past calendar events with locations on-device, dedupes against trips you already saved, and lets you bulk-create the rest."
       }
     },
     {
@@ -360,15 +363,15 @@ We read every email. We don't promise to build everything (we're keeping the app
       "name": "What happens when I disconnect from CarPlay mid-drive?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Settings → Detection Mode → Disconnect behavior has two options. Pause low-power GPS (recommended) drops Milely to a low-power state when you disconnect, pausing the trip without draining your battery; the trip resumes automatically when you reconnect — best for stop-and-go workdays. Keep recording continues full-resolution logging after disconnect — useful when a drive continues in a different vehicle or arrives on foot. Either way, reconnecting to a different paired vehicle mid-trip prompts you to stop the current trip and start a new one."
+        "text": "Up to you. Settings → Trip Settings has a Pause/Resume Based on CarPlay toggle inside each mode — Manual and Automatic configure it independently. Toggle ON: Milely pauses the trip on disconnect and drops GPS to low-power so your battery doesn't drain at the job site; the trip resumes automatically when you reconnect. Toggle OFF: Milely keeps logging at full GPS resolution after disconnect — useful when a drive continues in a different vehicle or arrives on foot. Either way, reconnecting to a different paired vehicle mid-trip prompts you to stop the current trip and start a new one."
       }
     },
     {
       "@type": "Question",
-      "name": "How do Detection Mode and the CarPlay auto-start toggle interact?",
+      "name": "How do the mode and the CarPlay auto-start toggle interact?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "They're independent. Detection Mode (Manual or Automatic) controls motion-based auto-detect; the Auto-start trip on CarPlay connect toggle controls whether connecting to a paired vehicle starts a trip on its own. Four useful combinations: Automatic + CarPlay-trigger ON (default) — both paths active, CarPlay wins on speed for paired drives, motion-based detection is the fallback for unpaired drives like Ubers or borrowed cars. Automatic + CarPlay-trigger OFF — motion only, about a 30-second arming window. Manual + CarPlay-trigger ON — CarPlay-trigger fires for paired vehicles only, motion is ignored, useful for hands-off recording on a work truck plus manual control everywhere else. Manual + CarPlay-trigger OFF — pure manual. A per-vehicle filter under Settings → Vehicles can also restrict motion-based detection to only fire when a specific vehicle's CarPlay is connected."
+        "text": "They're independent. The mode (Manual or Automatic) controls motion-based auto-detect; the Auto-Start Trip on CarPlay Connect toggle controls whether connecting to a paired vehicle starts a trip on its own. Both live inside Settings → Trip Settings. Four useful combinations: Automatic + CarPlay auto-start ON (default) — both paths active, CarPlay wins on speed for paired drives, motion-based detection is the fallback for unpaired drives. Automatic + CarPlay auto-start OFF — motion only. Manual + CarPlay auto-start ON — CarPlay only, motion ignored, useful for hands-off recording on a work truck plus manual control everywhere else. Manual + CarPlay auto-start OFF — pure manual. The Vehicle list under Settings → Vehicles also acts as the motion-detect arming gate — with paired vehicles in the list, motion only arms when one of them is the live audio route, so passenger rides in someone else's car stay silent."
       }
     },
     {

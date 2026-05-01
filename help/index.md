@@ -28,7 +28,7 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 <p>Both are stored locally on your phone. Nothing is transmitted. You'll only see this screen again if the Terms or Privacy Policy materially change in a future update.</p>
 
-<p>After that, Milely walks you through choosing a Detection Mode (Manual or Automatic), adding your first vehicle, and setting up at least one Business — and then you're ready to drive.</p>
+<p>After that, Milely walks you through choosing a mode (Manual or Automatic) in Trip Settings, adding your first vehicle, and setting up at least one Business — and then you're ready to drive.</p>
 </div>
 <div class="how-img"><img src="/assets/screenshots/first-launch.png" alt="Welcome screen with age confirmation and Terms agreement checkboxes" /></div>
 </div>
@@ -240,7 +240,7 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 <p>Forgot to use the app for three weeks? Calendar recovery can rescue you.</p>
 
 <ol>
-<li>Settings → <strong>Setup</strong> → <strong>Recover from calendar</strong>.</li>
+<li>Settings → <strong>Integrations</strong> → <strong>Recover from calendar</strong>.</li>
 <li>Pick a lookback window — <strong>14, 30, 60, or 90 days</strong>.</li>
 <li>Milely reads your past calendar events that have a location, dedupes against trips you've already saved, and shows you what's left as proposed trips.</li>
 <li>Review the list, uncheck anything that wasn't actually a drive, and tap <strong>Create trips</strong>. They become normal audit-trailed entries.</li>
@@ -362,7 +362,7 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 <p>Listed in the same order as the in-app picker — dark and light siblings paired:</p>
 
 <ul>
-<li><strong>Warm</strong> — the original Milely look. Dark warm-brown with burnt-orange accents. Friendly at any hour. <em>(free tier)</em></li>
+<li><strong>Warm</strong> — the original Milely look. Dark warm-brown with burnt-orange accents. Friendly at any hour. <em>(default theme)</em></li>
 <li><strong>Light</strong> — daytime sibling of Warm. Toasted cream with burnt-orange accents. Reads great in sunlight.</li>
 <li><strong>Night</strong> — strict monochrome dark palette with crisp Azure-blue accent. The minimum-viable distraction.</li>
 <li><strong>Day</strong> — Night's daylight counterpart. Pure-white cards on soft neutral grey, same Azure accent. Office-clean.</li>
@@ -383,15 +383,18 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 <div class="how-row">
 <div class="how-text">
-<p>Milely is free to try for 7 days, then a single subscription: <strong>$3.99/month</strong> or <strong>$29.99/year</strong> (saves about 37%). Subscribing unlocks:</p>
+<p>Milely is free to try for 7 days, fully unlocked. The trial timer starts on your <strong>first recorded trip</strong> — not on app install — so you can set everything up at home and only spend trial days when you're actually driving. After the trial: a single subscription, <strong>$3.99/month</strong> or <strong>$29.99/year</strong> (saves about 37%).</p>
+
+<p><strong>What stays free forever after the trial:</strong> every trip you recorded during the trial keeps living on your phone. You can view them, edit them, classify them, and re-export PDF / CSV / JSON / Excel / QuickBooks Online any time — no subscription needed. Recording <em>new</em> trips is what requires a subscription.</p>
+
+<p>A subscription unlocks:</p>
 
 <ul>
-<li><strong>Unlimited trips.</strong> The free tier records up to 25 trips per calendar month. Subscribers track every drive, no cap.</li>
+<li><strong>Recording new trips.</strong> The 7-day trial gives you all features unlocked while you decide. After it ends, recording new trips needs a subscription; existing trips stay accessible forever.</li>
 <li><strong>Receipts.</strong> VisionKit scanner (edge detection, perspective correction, multi-page) plus camera-roll attach. Receipts surface alongside each trip and on the PDF report.</li>
 <li><strong>Branded PDFs.</strong> Your business logo on every cover, accent colors auto-matched to your brand, your firm footer on every page.</li>
 <li><strong>Eight color themes.</strong> Warm, Light, Night, Day, Slate, Sky, Forest, Mint — see <a href="#themes">section 18</a> for the full lineup.</li>
 <li><strong>Automatic cloud backup.</strong> iCloud Drive, Google Drive, Dropbox, OneDrive. Hands-off after setup.</li>
-<li><strong>Excel + QuickBooks Online exports.</strong> Free tier gets PDF and the standard Milely CSV; subscribers also get .xls and the QBO drop-in.</li>
 <li><strong>Priority support.</strong> Front of the queue at <a href="mailto:milely@smileycreative.io">milely@smileycreative.io</a>.</li>
 </ul>
 
@@ -418,29 +421,29 @@ Milely snapshots your in-progress trip (route, distance, and time so far) to dis
 
 <details>
 <summary><strong>Will it drain my battery?</strong></summary>
-Manual mode only consumes battery while a trip is recording (~3% per hour). Automatic mode uses iOS's significant-location-changes API when idle (negligible drain) and only ramps up GPS when motion suggests driving.
+Manual mode only consumes battery while a trip is recording (~3% per hour). Automatic mode runs a three-stage state machine: idle (only iOS's significant-location-changes API, negligible drain) → armed (full GPS turns on the moment iOS's motion classifier reports automotive activity, so Milely can confirm and accumulate distance) → recording. The armed window is bounded — if motion doesn't sustain, it drops back to idle.
 </details>
 
 <details>
 <summary><strong>How does Automatic mode work?</strong></summary>
-Settings → Detection mode → switch to <strong>Automatic</strong>. Milely uses motion + GPS to detect when you start driving, records the route in the background, and notifies you to classify after the trip ends. Requires "Always Allow" location and Motion &amp; Fitness permissions. Automatic mode and CarPlay-trigger detection both keep working even after iOS has shut Milely down to free memory: when your next drive begins, iOS wakes the app via a significant location change, Milely re-checks your CarPlay or Bluetooth connection, and starts the trip if your paired vehicle is connected. The exception is force-quit — if you swipe up in the app switcher to kill Milely, iOS treats that as the user explicitly disabling background activity and won't relaunch the app until you open it again. That's a system-wide iOS rule no app can override.
+Settings → <strong>Trip Settings</strong> → switch to <strong>Automatic</strong>. Milely uses motion + GPS to detect when you start driving, records the route in the background, and notifies you to classify after the trip ends. Requires "Always Allow" location and Motion &amp; Fitness permissions. Automatic mode and CarPlay-trigger detection both keep working even after iOS has shut Milely down to free memory: when your next drive begins, iOS wakes the app via a significant location change, Milely re-checks your CarPlay or Bluetooth connection, and starts the trip if your paired vehicle is connected. The exception is force-quit — if you swipe up in the app switcher to kill Milely, iOS treats that as the user explicitly disabling background activity and won't relaunch the app until you open it again. That's a system-wide iOS rule no app can override.
 </details>
 
 <details>
-<summary><strong>How do Detection Mode and the CarPlay auto-start toggle interact?</strong></summary>
-<p>They're independent. Detection Mode (Manual or Automatic) controls motion-based auto-detect. The "Auto-start trip on CarPlay connect" toggle (Settings → Detection mode) controls whether connecting to a paired vehicle starts a trip on its own. You can mix them however you want:</p>
+<summary><strong>How do the mode and the CarPlay auto-start toggle interact?</strong></summary>
+<p>They're independent. The mode (Manual or Automatic) controls motion-based auto-detect. The "Auto-Start Trip on CarPlay Connect" toggle — both live inside Settings → Trip Settings — controls whether connecting to a paired vehicle starts a trip on its own. You can mix them however you want:</p>
 <table>
   <thead>
-    <tr><th>Detection Mode</th><th>CarPlay auto-start</th><th>What you get</th></tr>
+    <tr><th>Mode</th><th>CarPlay auto-start</th><th>What you get</th></tr>
   </thead>
   <tbody>
-    <tr><td><strong>Automatic</strong></td><td><strong>ON</strong> (default)</td><td>Trip auto-starts the instant you connect to a paired vehicle. For unpaired drives (Ubers, borrowed cars), motion-based detection still catches the trip after about 30 seconds. CarPlay wins on speed when both apply.</td></tr>
-    <tr><td><strong>Automatic</strong></td><td><strong>OFF</strong></td><td>Motion-only. Trips auto-start after about 30 seconds of confirmed driving. Works without any vehicle pairing.</td></tr>
+    <tr><td><strong>Automatic</strong></td><td><strong>ON</strong> (default)</td><td>Trip auto-starts the instant you connect to a paired vehicle. For unpaired drives (Ubers, borrowed cars), motion-based detection still catches the trip. CarPlay wins on speed when both apply.</td></tr>
+    <tr><td><strong>Automatic</strong></td><td><strong>OFF</strong></td><td>Motion-only. Works without any vehicle pairing.</td></tr>
     <tr><td><strong>Manual</strong></td><td><strong>ON</strong></td><td>CarPlay-trigger still fires for paired vehicles. Motion is ignored. Useful if you want manual control everywhere except your work truck.</td></tr>
     <tr><td><strong>Manual</strong></td><td><strong>OFF</strong></td><td>Pure manual. Nothing auto-starts; you tap Start, drive, tap End.</td></tr>
   </tbody>
 </table>
-<p>Both auto-start paths check whether a trip is already recording before starting one — they won't double-start. There's also a per-vehicle filter under Settings → Vehicles ("Only auto-detect when this vehicle's CarPlay is connected") that silences motion-based detection unless that vehicle's CarPlay or Bluetooth is currently connected — useful for stopping passenger rides from being logged as drives.</p>
+<p>Both auto-start paths check whether a trip is already recording before starting one — they won't double-start. The Vehicle list under Settings → Vehicles also acts as the motion-detect arming gate: if you have at least one paired vehicle, motion-based detection only arms when one of those vehicles is the live audio route, so passenger rides in someone else's car stay silent.</p>
 </details>
 
 <details>

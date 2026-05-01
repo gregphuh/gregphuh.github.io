@@ -35,7 +35,7 @@ This guide assumes you're not technical. There's no jargon you can't skip past. 
 14. [Settings reference](#settings-reference)
 15. [CarPlay and background recording](#carplay-and-background-recording)
 16. [Trip recovery](#trip-recovery)
-17. [Subscription and free tier](#subscription-and-free-tier)
+17. [Subscription and trial](#subscription-and-trial)
 18. [Privacy and data](#privacy-and-data)
 19. [Troubleshooting and FAQ](#troubleshooting-and-faq)
 20. [Glossary](#glossary)
@@ -174,57 +174,56 @@ If you tap End by accident, the Classify screen has a small **Resume trip** butt
 
 <!-- SCREENSHOT NEEDED: live map with route polyline drawn, stats card overlay, and the End trip button at the bottom -->
 
-### Automatic mode (motion + significant location changes)
+### Automatic mode (motion + GPS state machine)
 
-In Automatic mode, Milely watches for driving even when you haven't tapped Start. Switch to it in Settings → Detection mode → **Automatic**.
+In Automatic mode, Milely watches for driving even when you haven't tapped Start. Switch to it in Settings → Trip Settings → **Automatic**.
 
-How it works (in plain terms):
+How it works (in plain terms): Milely runs a three-stage state machine.
 
-- iOS occasionally tells Milely "the phone has moved a meaningful distance from where it last reported." That's the *significant location change* signal. It uses very little battery because the phone is doing it for other system reasons anyway.
-- When that signal lands, Milely briefly checks: are we moving fast enough to be in a vehicle? If yes, recording starts.
-- Recording continues until you've been stopped long enough (the **stationary auto-end timeout** in Settings) and CarPlay isn't connected. Then the trip ends automatically.
-- iOS sends you a notification: "Trip ended — tap to classify." If you tap, the Classify screen opens. If you don't tap the notification, the trip lands in Logs already saved (auto-locked) and Included in the annual report. To assign a business after the fact, open the trip from Logs, tap **Unlock for editing**, and pick a business.
+1. **IDLE.** No trip recording. Only iOS's *significant location change* API is listening — that's a low-power signal iOS sends apps when the phone has moved a meaningful distance, typically a few hundred meters. Negligible battery drain.
+2. **ARMED.** The moment iOS's motion classifier reports automotive activity, Milely flips to ARMED. Full GPS turns on so distance can accumulate, but no trip is recorded yet. The state machine is waiting on confirmation: speed sustained above a threshold, distance traveled, time elapsed.
+3. **RECORDING.** Once thresholds are met, the trip starts. The threshold values relax when you're connected to a paired vehicle's CarPlay (UID match is ground truth — we don't need conservative motion-classifier filters). Without CarPlay, thresholds are stricter to avoid false positives from walking or transit.
+
+Recording continues until you've been stopped long enough (the **End Trip After Sitting Still** timeout in Settings → Trip Settings → Universal) and CarPlay isn't connected. Then the trip ends automatically and iOS sends you a notification — "Trip ended, tap to classify." Whether you tap or not, the trip is saved (it lands in Logs marked **Unclassified** until you classify it).
+
+**Lost-miles recovery:** when a trip promotes to RECORDING, Milely walks back through a 10-minute rolling location buffer to find when you actually started driving and rewrites the trip's start time and route to match. This recovers the typical 1–3 minutes of latency between "you started driving" and "the motion classifier confirmed it" — miles that other trackers simply lose.
 
 Automatic mode requires:
 
-- **Always-Allow location.** "While Using" isn't enough — iOS won't wake the app for SLC events on While-Using. Settings → Detection mode shows a "Background recording" status card that tells you whether you're set up correctly.
+- **Always-Allow location.** "While Using" isn't enough — iOS won't wake the app for SLC events on While-Using. Settings → Trip Settings shows a Background Recording status card that tells you whether you're set up correctly.
 - **Motion & Fitness permission.** Used to filter out walking/biking from real driving.
 
-Automatic mode does NOT keep GPS running constantly. It uses the SLC signal as a wakeup, then turns on full GPS only when it's actually recording a trip. Battery impact is small unless you drive a lot.
-
-<!-- SCREENSHOT NEEDED: Settings → Detection mode → Automatic card selected, with the Background recording status card showing "Active" -->
+<!-- SCREENSHOT NEEDED: Settings → Trip Settings → Automatic card selected, with the Background recording status card showing "Active" -->
 
 ### CarPlay-trigger (the most accurate option)
 
-If you've paired a vehicle in Milely (Settings → Vehicles → see the [Vehicles section](#vehicles)), connecting your phone to that vehicle's CarPlay or car-Bluetooth audio route triggers a trip start automatically.
+If you've paired a vehicle in Milely (Settings → Vehicles → see the [Vehicles section](#vehicles)) and the **Auto-Start Trip on CarPlay Connect** toggle is on under **Settings → Trip Settings**, connecting your phone to that vehicle's CarPlay or car-Bluetooth audio route triggers a trip start automatically.
 
 How it works in plain terms:
 
 - iOS notices an audio route connected (CarPlay or your car's hands-free Bluetooth).
 - Milely matches the connected device's identifier to a paired vehicle in your records.
-- The first time this happens for a new vehicle, Milely shows a one-time prompt asking "Auto-start trips when you connect to [vehicle]?" Tap **Yes, do that** to confirm. From then on, connecting to that vehicle silently starts a trip.
-- When you disconnect (engine off + phone leaves the car), the trip pauses or ends depending on the vehicle's settings.
+- A trip starts immediately — no waiting on the motion classifier. Pairing a vehicle counts as consent: when you save a vehicle with a paired CarPlay route, the auto-start toggle defaults to ON, so future connects silently start trips.
+- When you disconnect (engine off + phone leaves the car), the trip pauses or ends depending on your **Pause/Resume Based on CarPlay** toggle.
 
 This is the most accurate detection signal Milely has — UID-matching CarPlay or Bluetooth is essentially never wrong, where motion-detected can occasionally fire on a passenger ride or miss a slow start. If you have CarPlay or Bluetooth in your vehicle, this is the recommended setup.
 
-<!-- SCREENSHOT NEEDED: first-time CarPlay consent prompt with Yes do that and Not yet buttons -->
-
 ### How the modes interact
 
-The **Detection Mode** (Manual or Automatic) and the **Auto-start trip on CarPlay connect** toggle are independent — they aren't sub-settings of each other. Either can be on or off without affecting the other. That gives you four useful combinations:
+The mode (Manual or Automatic) and the **Auto-Start Trip on CarPlay Connect** toggle are independent — both live inside Settings → Trip Settings, but neither is a sub-setting of the other. Either can be on or off without affecting the other. That gives you four useful combinations:
 
-| Detection Mode | CarPlay auto-start | What you get |
+| Mode | CarPlay auto-start | What you get |
 |---|---|---|
-| **Automatic** | **ON** (default) | Trip auto-starts the instant you connect to a paired vehicle. If you're driving something Milely doesn't know about (Uber, borrowed car), motion-based detection still catches the trip after about 30 seconds. CarPlay wins on speed when both apply. |
-| **Automatic** | **OFF** | Motion-only. Trips auto-start after about 30 seconds of confirmed driving. Works without any vehicle pairing. |
+| **Automatic** | **ON** (default) | Trip auto-starts the instant you connect to a paired vehicle. If you're driving something Milely doesn't know about (Uber, borrowed car), motion-based detection still catches the trip. CarPlay wins on speed when both apply. |
+| **Automatic** | **OFF** | Motion-only. Trips auto-start once Milely confirms driving. Works without any vehicle pairing. |
 | **Manual** | **ON** | CarPlay-trigger still fires for paired vehicles. Motion is ignored. Useful if you want manual control everywhere except your work truck — connect to the truck and a trip starts automatically; everywhere else you tap Start. |
 | **Manual** | **OFF** | Pure manual. Nothing auto-starts; you tap Start, drive, tap End. |
 
-Both auto-start paths check whether a trip is already recording before starting one — they won't double-start. If both paths could fire (you connect to CarPlay AND the motion classifier sees driving), CarPlay almost always wins because it's instant; motion needs about 30 seconds of confirmed automotive activity.
+Both auto-start paths check whether a trip is already recording before starting one — they won't double-start. If both paths could fire (you connect to CarPlay AND the motion classifier sees driving), CarPlay almost always wins because it's instant; motion takes longer to confirm automotive activity.
 
-There's also a per-vehicle filter: in Settings → Vehicles, you can mark a vehicle "**Only auto-detect when this vehicle's CarPlay is connected**." When at least one vehicle has that on, motion-based detection is silenced unless that vehicle's CarPlay or Bluetooth is currently active. Stops Milely from logging passenger rides in your spouse's car or someone else's Uber.
+The Vehicle list under Settings → Vehicles also acts as the motion-detect arming gate. With at least one paired vehicle in the list, motion-based detection only arms when one of those vehicles is the live audio route — so passenger rides in your spouse's car or someone else's Uber stay silent automatically. With no vehicles in the list, motion-detect arms on any drive (permissive default for first-time users).
 
-<!-- SCREENSHOT NEEDED: Settings → Detection mode showing the Detection Mode tiles and the CarPlay auto-start toggle in their cards -->
+<!-- SCREENSHOT NEEDED: Settings → Trip Settings showing the mode tiles and the CarPlay auto-start toggle in their cards -->
 
 ### What happens during recording
 
@@ -528,7 +527,7 @@ If a build fails (rare — usually a disk-space or temporary issue), you'll see 
 
 Same four formats listed in [Reports](#reports). A few extras you should know:
 
-- **Free tier** can export PDF and the standard Milely CSV. Excel and the QuickBooks Online CSV are subscriber-only.
+- **Every export format** — PDF, CSV (Milely + QuickBooks Online), Excel, JSON — works during the trial and stays available forever for trips you've already recorded. The only subscription-gated action is recording **new** trips.
 - **PDF cover page** includes your business logo and brand color (subscriber feature — Settings → Branding) and per-vehicle odometer reconciliation (Jan 1 and Dec 31 readings if you've filled them in on each vehicle).
 - **CSV files** are UTF-8 with a header row. They open in any spreadsheet app.
 - **Excel files** are .xls (legacy format) for maximum compatibility. They open in Numbers, modern Excel, Google Sheets, and LibreOffice.
@@ -561,30 +560,33 @@ Tap any vehicle to edit. Fields:
 - **Make / Model.** Free-text.
 - **Current odometer.** Optional.
 - **Year-end odometer.** Three rows: current year, last year, year before. Enter the reading from December 31 of each year (which is the same as January 1 of the following year). Used by the PDF report's cover page for the IRS-required odometer reconciliation.
-- **Set as default vehicle.** Toggle. The default vehicle is auto-selected on the Classify screen and on the manual entry form when no other match is found.
-- **Auto-detect this vehicle.** Pairing controls — see below.
-- **Auto-detect only with this CarPlay.** Restricts automatic detection to fire only when this vehicle's audio route is the connected one. Prevents Milely from firing on Uber rides or borrowed cars. Disabled until a CarPlay device is paired.
-- **Pause recording when CarPlay disconnects.** When recording a manual trip in this vehicle, pause GPS when CarPlay disconnects (do work between drives, the trip resumes when you reconnect). Connecting to a *different* paired vehicle prompts you to stop or continue.
-- **Stationary auto-end timeout.** Per-vehicle override of the global stationary auto-end timeout (Settings → Detection mode). Inherit, Never, or 15/30/60/120 minutes.
+- **Set as Default Vehicle.** Toggle. The default vehicle is auto-selected on the Classify screen and on the manual entry form when no other match is found.
+- **Vehicle Pairing.** A status card showing whether this vehicle's CarPlay/Bluetooth route is currently live. See below.
+- **End Trip After Stationary** *(per-vehicle override).* Inherits the value from Trip Settings → Universal by default ("Use default"), or pick a custom timeout for this vehicle (Never, or 15 / 30 / 60 / 120 minutes). Useful for splitting behavior between, say, a work truck that sits all day at a job site and a sedan that gives up faster.
+- **Stats & Patterns.** Read-only stats: trips logged, total miles, average trip, most common start time, recent driveway-shuffle starts (false-start count for the dampening signal).
 - **Delete.** Swipe left on the vehicle row in the list. Blocked if the vehicle is currently attached to a recording trip — end the trip first, then delete.
+
+### Vehicle Pairing card
+
+The vehicle edit sheet has a **Vehicle Pairing** section that shows the current connection state:
+
+- **Paired and connected** *(green checkmark).* Your phone is currently on this vehicle's audio route. The subtitle reads "CarPlay" or "Bluetooth" + your vehicle's Name (e.g., **CarPlayTruck**, **BluetoothSedan**) — concatenated with no separator.
+- **Saved pairing.** Below the live state, a row showing what's stored. Tap **Unpair** to forget the pairing.
+- **Tap to pair this vehicle.** Appears when you're connected to a route Milely doesn't recognize yet — one tap pairs it.
+- **Different vehicle connected.** Appears when you're on a paired route that belongs to a different vehicle in your list. Lets you switch the trip vehicle if needed.
+- **Pairing broken.** Appears when the saved pairing's UID can't match the live route — usually means iOS swapped UIDs (wireless ↔ wired). Re-pair to refresh.
+
+The Vehicle list itself is the **motion-detect arming gate**: with at least one paired vehicle, motion-based detection only arms when one of those vehicles is the live audio route — so passenger rides in someone else's car stay silent. With an empty Vehicle list, motion-detect arms on any drive.
 
 ### Pairing a CarPlay or Bluetooth device
 
-When you connect to a vehicle's audio route for the first time and Milely is in the foreground (or the app launches mid-drive via the CarPlay-trigger path), it offers to pair the route to a vehicle. You can also do this manually:
+When you connect to a vehicle's audio route for the first time and Milely is in the foreground (or the app launches mid-drive via the auto-start path), it offers to pair the route to a vehicle. You can also do this manually:
 
 1. Open the vehicle's edit sheet.
-2. Scroll to **Auto-detect this vehicle**.
-3. If you're currently connected to the device, the live route's name shows up — tap to pair. Otherwise, use **Add from recently seen** at the Vehicles list level.
+2. Scroll to **Vehicle Pairing**.
+3. If you're currently connected to the device, the live route's name shows up — tap **Tap to pair this vehicle**. Otherwise, use **Add from Recently Seen** at the Vehicles list level.
 
-The pairing stores the device's UID (a stable internal identifier) and friendly name. Future connects on either match the vehicle silently. If iOS reports a different UID for the same vehicle (wireless vs wired CarPlay sometimes do this), the second pairing flow stamps the second UID onto the same vehicle so both wake the right vehicle without re-prompting.
-
-### "Auto-detect armed" status
-
-The vehicle edit sheet shows whether auto-detect is currently armed for this vehicle. Reads "Active" when iOS has the right permissions and the vehicle is listed in the auto-detect pool, "Limited" if you only have While-Using location, and "Off" otherwise.
-
-### Custom display name for generic-named pairings
-
-Some CarPlay devices report only the generic name "CarPlay" instead of the vehicle's real name. The vehicle edit sheet has a **Custom pairing display name** field where you can type "GMC", "F-150", or whatever you want to see in Milely. Purely cosmetic — pairing matching is still UID-first, so the custom name never affects detection.
+The pairing stores the device's UID (a stable internal identifier) and friendly name. Future connects match the vehicle silently. If iOS reports a different UID for the same vehicle (wireless vs wired CarPlay sometimes do this), the next pairing flow stamps the second UID onto the same vehicle so both wake the right vehicle without re-prompting.
 
 ### Personal pseudo-vehicle
 
@@ -628,49 +630,46 @@ Top to bottom in the Settings tab.
 
 ### Subscription
 
-The Subscribe row at the top opens [Subscription view](#subscription-and-free-tier). Shows ACTIVE / LIFETIME badge if you're subscribed.
+The Subscribe row at the top opens [Subscription view](#subscription-and-trial). Shows ACTIVE / LIFETIME badge if you're subscribed, or your trial countdown if you're in the 7-day window.
 
-### Trip Detection
+### Trip Settings
 
-#### Detection mode
+A single row that opens the Trip Settings page. Inside, the page is split into mode tiles plus a Universal section.
 
-Three sub-screens:
+#### Mode tiles (top of the page)
 
-- **Manual / Automatic mode card.** Pick which one is the default for new trips.
-- **CarPlay auto-start card.** Per-app explanation of how CarPlay-trigger works and the consent prompt flow.
-- **Background recording status card.** Status (Active / Idle / Limited / Off), what it implies, and a "Request Always Allow" button if you're on While-Using. Always-Allow is required for the SLC wakeup that powers Automatic and CarPlay-trigger detection in the background.
-- **Stationary auto-end card.** How long Milely will wait after you stop moving before auto-ending a recording trip. Slider: Never, 15 min, 30 min, 60 min, 120 min. Per-vehicle override available in vehicle settings.
-- **Disconnect behavior.** What Milely does when CarPlay disconnects mid-trip. Two options:
-  - **Pause (low-power GPS)** *(default).* The trip pauses but Milely keeps a low-rate GPS fix running so the app stays alive. When you reconnect, the trip resumes cleanly and the bridge route fills in. About 1–3% battery per hour while paused.
-  - **Keep recording.** The trip never pauses — Milely runs at full GPS until you tap End or the stationary auto-end timer fires. Simplest behavior, but uses about 5–10% per hour while parked.
+Two tiles side by side: **Manual** and **Automatic**. The active one shows a checkmark + "Active" label; the other shows "Inactive". Tap either to switch.
 
-  The legacy "tear down GPS on disconnect" behavior was retired — that was the data-loss path where a paused trip plus a CarPlay reconnect could lose data. This setting supersedes the per-vehicle "Pause recording when CarPlay disconnects" toggle described in [Vehicles](#vehicles).
-- **Minimum logged trip distance.** Trips that end below this length are dropped silently. Pick from Log every trip / 0.05 / 0.1 / 0.25 / 0.5 / 1.0 mi. Default 0.05 mi (so even short hops are kept; bump up if driveway shuffles clutter Logs).
-- **Quiet hours.** Time-of-day window during which auto-end notifications won't ping (so a trip ending at 2 AM doesn't wake you). The trip itself still ends — just no buzz.
-- **Ignored routes.** A list of CarPlay/Bluetooth devices you've explicitly told Milely to ignore (e.g., a friend's car you ride in occasionally). Swipe to remove.
-- **Connectivity diagnostic.** Live readout of the connectivity service's current state. Useful when troubleshooting "why didn't auto-start fire?"
+#### Manual Detection (sub-section, only when Manual is active)
 
-#### Notifications
+- **Pause/Resume Based on CarPlay.** A single toggle with dynamic copy describing both states. ON: when you disconnect CarPlay mid-trip the recording pauses; reconnecting resumes it. OFF: the recording keeps running at full GPS until you tap End. Independently configurable from the Automatic mode's version of this toggle.
 
-A single Picker for the **Weekly review reminder**:
+#### Automatic Detection (sub-section, only when Automatic is active)
 
-- **Never.** No reminders.
-- **Sunday 6 PM** (default), or any other weekday at 6 PM.
+- **Auto-Start Trip on CarPlay Connect.** ON: connecting to a paired vehicle starts a trip immediately, no waiting on the motion classifier. New paired vehicles enable this automatically (pairing IS consent). OFF: motion-only auto-detect.
+- **Pause/Resume Based on CarPlay.** Same toggle as in Manual mode but tracked separately, so you can have one mode pause and the other not.
+- **Background Recording.** A status card showing Active / Idle / Limited / Off, with a "Request Always Allow" button if you don't have the location permission auto-detect needs. Always-Allow is required for iOS to wake Milely on a significant location change.
+- **Minimum Trip Distance.** Trips that auto-end below this length are dropped silently — keeps the log free of driveway shuffles and GPS jitter. Pick from Log Every Trip / 0.05 / 0.1 / 0.25 / 0.5 / 1.0 mi. Default 0.05 mi. Manual trips ignore this — pure user control, no silent drops.
 
-When the chosen day rolls around at 6 PM, if you have any unclassified trips waiting, Milely sends a notification. If the queue is empty, no buzz.
+#### Universal (sub-section, applies to both modes)
 
-#### Personal Trips
+- **Save Trip Timestamps.** Default ON. When OFF, trips save as date-only with no clock time or duration. Useful if you log all your trips manually after the fact and don't want time precision.
+- **Keep Personal Trips.** Default ON. See [Personal trips](#personal-trips) for what changes when you turn it off.
+- **End Trip After Sitting Still.** Slider 0–8 hours in 15-minute steps, plus an "Or End at This Hour if Still Stationary" toggle (default 3 AM) that ends a forgotten parked trip overnight. Per-vehicle override available in vehicle settings ("Use default" inherits this value).
+- **Ignored Routes.** A list of CarPlay/Bluetooth devices you've explicitly told Milely to ignore (e.g., a friend's car you ride in occasionally). Swipe to remove.
+- **Connectivity Diagnostic.** Live readout of the connectivity service's current state. Useful when troubleshooting "why didn't auto-start fire?"
 
-A single toggle: **Keep personal trips**. Default ON. See [Personal trips](#personal-trips) for what changes when you turn it off.
+### Notifications
+
+- **Weekly Review Reminder.** Single Picker: **Never** / **Sunday 6 PM** (default) / **Monday 6 PM** / etc. When the chosen day rolls around at 6 PM, if you have any unclassified trips waiting, Milely sends a notification. Empty queue, no buzz.
+- **Quiet Hours.** Start and end hour pickers. Auto-end notifications won't ping during this window — the trip itself still ends, you just don't get woken at 2 AM.
 
 ### Setup
 
 - **Businesses.** [See Businesses section.](#businesses)
 - **Vehicles.** [See Vehicles section.](#vehicles)
 - **Trip Templates.** Manage your saved Favorite trips. Templates appear on the Dashboard's Favorites Quick Start row. Add, rename, edit business attribution, attach addresses, mark as round-trip.
-- **Recover from calendar.** [See above.](#recovering-trips-from-your-calendar)
-- **Import from MileIQ / Everlance / TripLog.** Auto-detects the CSV format from the header row and maps each format's columns onto Milely's Trip model. Gives you a preview of what'll be imported before you commit.
-- **Auto-classify rules.** A list of every rule you've created (typically from the "Always business" / "Always personal" buttons on a trip's detail screen). Swipe to delete a rule. The empty state explains how to create one.
+- **Auto-Classify Rules.** A list of every rule you've created (typically from the "Always business" / "Always personal" buttons on a trip's detail screen). Swipe to delete a rule. The empty state explains how to create one.
 - **Mileage Rate.** The IRS standard mileage rate, year by year. Milely seeds defaults for the current and recent years; you can edit any value if the IRS publishes a mid-year update.
 - **Tax Bracket.** Your federal marginal tax bracket. Optional. When set, the Dashboard's monthly card and Reports' yearly hero show "≈ $X saved" — a rough estimate of the tax savings from your deduction. Off by default.
 - **Data Retention.** Forever (default) or 3 years. With 3 years selected, trips older than 3 years are deleted on the next launch — but only after a confirmation alert tells you the count and oldest date. Locked trips and trips on the in-progress current year are never auto-deleted.
@@ -681,7 +680,7 @@ A single toggle: **Keep personal trips**. Default ON. See [Personal trips](#pers
 
 Pick from 8 color themes:
 
-- **Warm** (free, default). Dark warm-brown with burnt-orange accents.
+- **Warm** (default). Dark warm-brown with burnt-orange accents.
 - **Light**. Daytime sibling of Warm. Toasted cream with burnt-orange accents.
 - **Night.** Strict monochrome dark palette with crisp Azure-blue accent.
 - **Day.** Pure-white cards on soft neutral grey, same Azure accent.
@@ -690,7 +689,7 @@ Pick from 8 color themes:
 - **Forest.** Deep forest greens with sage and wheat-gold accents.
 - **Mint.** Soft mint as the brand voice with warm orange accents on white.
 
-Warm is free for everyone. The other seven require an active subscription. The picker also has a "Match iOS Dark Mode" option — pick a dark theme and a light sibling, and Milely auto-switches based on your phone's system mode.
+Warm is the default for everyone. The other seven require an active subscription. The picker also has a "Match iOS Dark Mode" option — pick a dark theme and a light sibling, and Milely auto-switches based on your phone's system mode.
 
 <!-- SCREENSHOT NEEDED: Settings → Theme picker showing all eight color theme swatches -->
 
@@ -704,30 +703,17 @@ Customize the look of exported PDFs:
 
 ### Backup
 
-#### Cloud Backup (subscriber)
-
-Pick where to write automatic backups:
-
-- **iCloud Drive.** Free with any Apple ID. Most users.
-- **Google Drive / Dropbox / OneDrive.** Uses iOS's Files picker. The cloud app must be installed and authenticated; Milely just writes to a folder you choose.
-
-Backups run on a schedule (typically once per day after a trip ends). Each backup is a JSON file containing all your trips, businesses, vehicles, settings, and receipts. Files are named with a timestamp so you can keep multiple versions.
-
-To restore on a new iPhone: install Milely → open the backup file from Files → "Open in Milely". Milely shows a preview (count of trips, businesses, vehicles) and asks you to confirm before applying.
+- **Cloud Backup.** *(subscriber)* Pick where to write automatic backups: iCloud Drive (free with any Apple ID, most users), or Google Drive / Dropbox / OneDrive via the iOS Files picker. Backups run on a schedule (typically once per day after a trip ends). Each backup is a JSON file with all your trips, businesses, vehicles, settings, and receipts. Files are timestamped so you can keep multiple versions.
+- **Manual Export.** Always available. Tap **Export Backup** to generate a JSON file and present the iOS share sheet.
+- **Restore from Backup.** Pick a backup file to restore from. Milely shows a preview (count of trips, businesses, vehicles) and asks you to confirm before applying.
+- **Import from MileIQ / Everlance / TripLog.** Auto-detects the CSV format from the header row and maps each format's columns onto Milely's Trip model. Shows a preview before committing.
 
 <!-- SCREENSHOT NEEDED: Backup screen showing Cloud Backup row with iCloud selected and last backup timestamp -->
 
-#### Manual Export
-
-Always free. Tap **Export Backup** to generate a JSON file and present the iOS share sheet. Email it to yourself, AirDrop it to another device, drop it in Files, etc.
-
-### Trip Recording
-
-Single toggle: **Save timestamps with trips**. Default ON. When OFF, trips save as date-only with no clock time or duration. Useful if you log all your trips manually after the fact and don't want time precision.
-
 ### Integrations
 
-Single toggle: **Calendar suggestions**. Off by default. When ON, Milely reads upcoming events with locations from your calendar and surfaces them as one-tap trip starters on the Trip tab. Calendar data is processed only on your device.
+- **Recover from Calendar.** Reads past calendar events with locations (on-device, never transmitted), dedupes against trips you already saved, and lets you bulk-create the rest. See [Recovering trips from your calendar](#recovering-trips-from-your-calendar).
+- **Calendar Suggestions.** Off by default. When ON, Milely reads *upcoming* events with locations from your calendar and surfaces them as one-tap trip starters on the Trip tab.
 
 ### About
 
@@ -748,7 +734,7 @@ This section is for users who want fully hands-off recording — phone in your p
 
 ### What you need
 
-- **Always-Allow location.** Settings → Detection mode shows whether you have it. The card has a "Request Always Allow" button; pairing a vehicle also prompts for the upgrade.
+- **Always-Allow location.** Settings → Trip Settings shows whether you have it. The card has a "Request Always Allow" button; pairing a vehicle also prompts for the upgrade.
 - **At least one paired vehicle** (for CarPlay-trigger), OR **Automatic detection mode** (for motion-detected start).
 - **Don't force-quit Milely.** This one's important. See below.
 
@@ -762,13 +748,13 @@ iOS has a rule: when a user manually force-quits an app from the iOS app switche
 
 What this means: if you swipe Milely up to kill it, background recording stops working until you next open the app. Other ways the app might end (a crash, iOS evicting it for memory, your phone shutting down) do NOT trigger this rule — Milely will still wake on the next SLC event.
 
-If you suspect background recording isn't working, the easiest test is: open Milely, go to Settings → Detection mode, and check the Background recording status card. If it says "Active", you're set. If it says "Off" or "Limited", follow the on-card instructions.
+If you suspect background recording isn't working, the easiest test is: open Milely, go to Settings → Trip Settings, and check the Background recording status card. If it says "Active", you're set. If it says "Off" or "Limited", follow the on-card instructions.
 
-### CarPlay-trigger consent prompt
+### How CarPlay-trigger consent works
 
-The first time you connect to a vehicle Milely has paired, you'll see a one-time prompt: "Auto-start trips when you connect to [vehicle]?" Tap **Yes, do that** to confirm. From then on, connections silently start trips. Tap **Not yet** if you'd rather not — Milely will ask again next connect.
+There's no separate consent prompt anymore — **pairing is consent**. When you save a vehicle with a CarPlay or Bluetooth route attached, the **Auto-Start Trip on CarPlay Connect** toggle (Settings → Trip Settings → Automatic Detection) defaults to ON. Future connects to that vehicle silently start trips.
 
-This prompt exists because some users connect to CarPlay for non-driving reasons (sitting in a parked car listening to music). The consent step makes sure auto-start only fires when you've explicitly opted in.
+If you prefer not to have CarPlay auto-start, just turn that toggle off. Motion-based detection still catches drives in your paired vehicles after the usual arming window.
 
 ### Cross-vehicle alert
 
@@ -776,11 +762,12 @@ If you start a trip in Vehicle A's CarPlay, then disconnect, then connect to Veh
 
 ### Pause-on-disconnect
 
-If a vehicle has the **Pause recording when CarPlay disconnects** flag set, manual trips in that vehicle pause GPS the moment CarPlay disconnects and resume when you reconnect. This is the "do work between drives" pattern: drive to job site A, disconnect to do paperwork, drive to job site B — Milely captures one trip with two segments, the paperwork time excluded from the duration.
+The **Pause/Resume Based on CarPlay** toggle in **Settings → Trip Settings** controls disconnect behavior. It's configured separately for each mode (Manual and Automatic) so you can have one mode pause and the other not.
 
-If you're still actively driving when CarPlay disconnects (cable came loose, Bluetooth dropped), Milely waits 2 minutes before pausing. If you're still moving at that point, it abandons the pause and keeps recording. Real-world scenario: you don't lose the next 0.5 miles to a flaky cable.
+- **Toggle ON.** When CarPlay disconnects mid-trip, Milely pauses the recording and drops to low-power GPS so the app stays alive. When you reconnect, the trip resumes cleanly. The "do work between drives" pattern: drive to job site A, disconnect to do paperwork, drive to job site B — Milely captures one trip with two segments, the paperwork time excluded from the duration.
+- **Toggle OFF.** Milely keeps recording at full GPS until you tap End or the stationary auto-end fires. Use this when a drive continues in a different vehicle, or arrives somewhere you continue on foot.
 
-The newer **Disconnect behavior** setting in [Settings → Detection mode](#settings-reference) is the global version of this — Pause (low-power GPS) is the default. Use the global setting unless a specific vehicle needs different behavior.
+Either way, reconnecting to a *different* paired vehicle mid-trip prompts you to stop the current trip and start a new one for the new vehicle (cross-vehicle alert above).
 
 ---
 
@@ -806,31 +793,33 @@ If recording was paused at the time of the kill (e.g., CarPlay disconnect pause)
 
 ---
 
-## Subscription and free tier
+## Subscription and trial
 
-Milely is free to install and try. There's a 7-day free trial, then a single subscription with two billing options, plus a one-time lifetime purchase for users who'd rather not subscribe.
+Milely is free to install and try. There's a 7-day free trial that gives you every feature unlocked. After the trial, a single subscription with two billing options, plus a one-time lifetime purchase for users who'd rather not subscribe.
 
-### What's free
+### How the trial works
 
-- Unlimited installs and onboarding.
-- Up to **25 trips per calendar month**, recorded any way you like.
-- Full Dashboard, Logs, Reports, Trip detail, edit history, audit lock — none of these are gated.
-- Manual export (JSON backup) any time.
-- PDF export.
-- CSV — Milely (full) export.
-- One color theme: **Warm** (the original Milely look).
-- All trip detection modes (Manual, Automatic, CarPlay-trigger).
+**The 7-day timer starts on your first recorded trip — not on app install.** Set everything up at home, pair your CarPlay, classify a sample trip, then start the clock when you're actually driving. This way you don't burn trial days while configuring.
 
-When you hit the 25-trip cap, the next Start Trip tap shows: "You've used your 25 free trips this month. Subscribe for unlimited trips." Existing trips stay visible and editable — only NEW trips are blocked.
+During the trial, every feature is unlocked: unlimited recording, all themes, all export formats, Smart Suggestions, receipts, branded PDFs, cloud backup — the works.
 
-### What unlocks with a subscription
+### What stays free forever after the trial
 
-- **Unlimited trips.** No monthly cap.
+Every trip you recorded during the trial keeps living on your phone. After the trial ends, even without subscribing you can still:
+
+- View, edit, and re-classify any trip you already recorded.
+- Re-export PDF, CSV, JSON, Excel, and QuickBooks Online any time. No format is permanently locked.
+- See your full Dashboard, Logs, Reports, Trip detail, edit history, and audit lock.
+- Use the Warm theme.
+
+What you can't do without a subscription: record **new** trips. The next Start Trip tap shows the subscription prompt.
+
+### What a subscription unlocks
+
+- **Recording new trips.** Without a subscription, the next Start tap (or auto-detect promotion) is blocked. With one, drive as much as you want.
 - **Receipts.** Scan, attach, on-PDF inclusion. See [Receipts](#receipts).
 - **7 additional color themes.** Light, Night, Day, Slate, Sky, Forest, Mint.
 - **Branded PDFs.** Logo, accent color, footer text on every PDF page.
-- **Excel exports.** .xls format that opens cleanly in Excel, Numbers, Sheets, LibreOffice.
-- **QuickBooks Online CSV.** The drop-in QBO importer.
 - **Automatic cloud backup.** iCloud Drive, Google Drive, Dropbox, OneDrive — Milely writes a backup on a schedule to a folder you control.
 - **Priority support.** Front of the queue at milely@smileycreative.io.
 
@@ -882,20 +871,20 @@ For the full legal version of this, see [the Privacy Policy](/privacy/).
 
 Walk through these in order:
 
-1. Settings → Detection mode → Background recording status card. Does it say "Active"? If not, follow the card's instructions (usually grant Always-Allow location).
+1. Settings → Trip Settings → Background recording status card. Does it say "Active"? If not, follow the card's instructions (usually grant Always-Allow location).
 2. Settings → Vehicles. Is the vehicle paired? If yes, tap into it and verify the "Auto-detect this vehicle" rows show a paired device.
-3. Did you tap **Yes, do that** on the first-time consent prompt? If you tapped Not yet, the next CarPlay connect re-prompts. Connect again and tap Yes.
+3. Is **Auto-Start Trip on CarPlay Connect** turned on under Settings → Trip Settings → Automatic Detection? It defaults to ON when you pair a vehicle, but you may have turned it off.
 4. Did you force-quit Milely from the iOS app switcher? Background recording is disabled until you next open the app. Reopen Milely.
 5. Some CarPlay devices report a generic "CarPlay" name and an unstable UID. Settings → Vehicles → vehicle edit → set a custom display name and re-pair via the "Add from recently seen" path so the latest UID is captured.
-6. If a trip "disappears" after CarPlay disconnects mid-drive, check **Settings → Detection mode → Disconnect behavior** — set it to "Keep recording" if pause-and-resume isn't working for your vehicle.
+6. If a trip "disappears" after CarPlay disconnects mid-drive, check **Settings → Trip Settings → Pause/Resume Based on CarPlay** for the active mode — turn it OFF if you'd rather Milely keep recording at full GPS through the disconnect.
 
 ### A trip didn't auto-start
 
 If you have Automatic mode on but a trip wasn't captured:
 
-1. Was Always-Allow location granted? Settings → Detection mode → Background recording.
+1. Was Always-Allow location granted? Settings → Trip Settings → Background recording.
 2. Was the app force-quit before the drive? Reopen and the next drive will trigger.
-3. Was the drive very short (< 0.05 mi by default)? Sub-threshold trips are silently discarded by design. The threshold is in Settings → Detection mode → Minimum logged trip distance.
+3. Was the drive very short (< 0.05 mi by default)? Sub-threshold trips are silently discarded by design. The threshold is in Settings → Trip Settings → Minimum logged trip distance.
 4. Was your phone in airplane mode or out of cell range? GPS still works without cell, but iOS's significant-location-change wake-up needs at least one location source — try granting precise location, not just approximate.
 
 ### The app didn't relaunch after force-quit
@@ -904,13 +893,13 @@ Force-quitting Milely from the iOS app switcher disables background recording un
 
 ### My CarPlay is named "CarPlay" — that doesn't help
 
-Some vehicles (older models, certain wireless adapters) report only the generic name "CarPlay" instead of the vehicle's actual name. Milely matches by UID first, so detection still works — but the friendly name in the app is unhelpful. Open Settings → Vehicles → tap the vehicle → set a **Custom pairing display name** ("F-150", "GMC", whatever). The custom name shows in chips, banners, and Logs.
+Some vehicles (older models, certain wireless adapters) report only the generic name "CarPlay" instead of the vehicle's actual name. Milely handles this automatically: the in-app display concatenates the connection type with your Vehicle's name (e.g., **CarPlayTruck**, **BluetoothSedan**). Just set the Vehicle's `Name` to whatever you want shown — "Truck", "F-150", "GMC" — and the app composes the friendly label everywhere it appears (Dashboard chip, Vehicle Pairing card, Logs).
 
 ### Milely uses too much battery
 
 Manual mode only uses battery while a trip is recording (around 3% per hour, depending on phone and conditions). Automatic mode uses iOS's significant-location-changes API when idle (very low power), then ramps up GPS only when motion suggests driving.
 
-If battery use is high without trips being recorded, check Settings → Detection mode → Background recording status — "Active" is correct; "Limited" or anything stuck-on may indicate stale state. Restart the app.
+If battery use is high without trips being recorded, check Settings → Trip Settings → Background recording status — "Active" is correct; "Limited" or anything stuck-on may indicate stale state. Restart the app.
 
 ### A trip's miles look wrong
 
@@ -949,13 +938,13 @@ The IRS sometimes updates the standard mileage rate mid-year. Settings → Milea
 
 **CarPlay-trigger.** Auto-starting a trip when your phone connects to a paired vehicle's CarPlay or car-Bluetooth audio route. The most accurate detection signal Milely has — UID-matched and almost never wrong.
 
-**Detection mode.** Manual (you tap Start) or Automatic (motion + significant location changes start a trip on their own). Set in Settings → Detection mode.
+**Detection mode.** Manual (you tap Start) or Automatic (motion + significant location changes start a trip on their own). Set in Settings → Trip Settings.
 
 **Edit history.** The append-only record of every field-level change on a trip — old value, new value, timestamp. Always on. Captures locks, unlocks, Personal toggles, receipt adds and removes. Can't be wiped from inside the app (deleting the trip removes the history with it).
 
 **Generic-name pairing.** A CarPlay or Bluetooth route that reports only "CarPlay" as its friendly name. Milely matches by UID instead, so detection still works — set a custom display name in vehicle settings to make the in-app label useful.
 
-**Disconnect behavior.** A global setting in Settings → Detection mode that controls what Milely does when CarPlay disconnects mid-trip. **Pause (low-power GPS)** is the default — the trip pauses but a low-rate GPS fix keeps the app alive so it can resume cleanly when you reconnect. **Keep recording** runs full GPS until you tap End or the stationary auto-end fires. Supersedes the older per-vehicle "Pause recording when CarPlay disconnects" toggle.
+**Pause/Resume Based on CarPlay.** A toggle in Settings → Trip Settings, configured separately for Manual and Automatic modes. ON: when CarPlay disconnects mid-trip, the recording pauses and GPS drops to low power; reconnecting resumes the trip. OFF: the recording keeps running at full GPS until you tap End or the stationary auto-end fires.
 
 **Pending classify.** The state where a trip has just ended but you haven't tapped Save on the Classify screen yet. The trip is already saved to Logs as a recorded record without a business attached — Save just adds the business + purpose and locks the trip. Skip for now leaves the trip without a business assigned for later.
 
@@ -969,7 +958,7 @@ The IRS sometimes updates the standard mileage rate mid-year. Settings → Milea
 
 **Smart Suggestions.** On-device CoreML predictions of the right business and purpose for a just-ended trip, based on your past classifications. Show as one-tap chips above the business row on the Classify screen.
 
-**Stationary auto-end.** The timeout after which a recording trip ends automatically if you've been stopped and CarPlay is disconnected. Configured globally in Settings → Detection mode → Stationary auto-end and per-vehicle in vehicle settings.
+**Stationary auto-end.** The timeout after which a recording trip ends automatically if you've been stopped and CarPlay is disconnected. Configured globally in Settings → Trip Settings → Stationary auto-end and per-vehicle in vehicle settings.
 
 **Trip Template (Favorite).** A saved trip you can re-launch with one tap. Created via the star button on any trip detail screen. Surfaces on the Dashboard's Favorites Quick Start row. Managed in Settings → Trip Templates.
 
@@ -1002,8 +991,8 @@ The following screenshots are referenced in this guide as `<!-- SCREENSHOT NEEDE
 6. **Live trip banner** — recording state showing distance, time, deduction, with the End pill on the right.
 7. **Quick Start row** — top business rows (Personal appears as a sibling row when enabled), Repeat Last, Favorites stacked.
 8. **Live map (Trip tab)** — route polyline drawn, stats card overlay, End Trip button at the bottom.
-9. **Settings → Detection mode** — Automatic card selected, Background recording status card showing "Active".
-10. **First-time CarPlay consent prompt** — "Auto-start trips when you connect to [vehicle]?" with Yes do that and Not yet buttons.
+9. **Settings → Trip Settings** — Automatic mode tile showing "Active" with the sub-section expanded (Auto-Start Trip on CarPlay Connect, Pause/Resume Based on CarPlay, Background Recording, Minimum Trip Distance) and Universal section visible below.
+10. **Settings → Vehicles → Edit Vehicle** — Vehicle Pairing card showing "Paired and connected" with subtitle reading "CarPlayTruck" or similar concatenated label.
 11. **Log Past Trip Manually form** — date picker, From/To address fields, miles field, business chips, purpose field.
 12. **Classify Trip screen (full)** — route map at top, business chips (Personal sits in the same row as the user's businesses), purpose field, Save Trip button at bottom.
 13. **Trip detail with receipts** — Receipts row showing two attached thumbnails plus Scan / Add from photos buttons.
