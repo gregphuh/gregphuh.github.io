@@ -402,7 +402,7 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 <p><strong>Don't want a subscription?</strong> An optional <strong>Milely Lifetime</strong> at $69.99 one-time is available behind <em>Settings → Subscribe → Other options</em>. Unlocks everything forever, no recurring charge. We don't promote it because subscriptions fund ongoing development, but it's available for the minority who refuse subscriptions on principle.</p>
 </div>
-<div class="how-img"><img src="/assets/screenshots/settings.png" alt="Settings screen with the Subscribe row at the top" /></div>
+<div class="how-img"><img src="/assets/screenshots/subscription.png" alt="Subscription screen — Unlimited Trips, Every Feature header with the seven subscriber benefits and a Subscription Active badge" /></div>
 </div>
 
 ---
