@@ -102,11 +102,11 @@ Milely never asks for: your contacts, your microphone, your health data, or anyt
 
 The Dashboard is the home screen. Here's what every tile does, top to bottom.
 
-<!-- SCREENSHOT NEEDED: full Dashboard with monthly card, Quick Start row including business + Personal + Repeat Last + Favorites, and the Start Trip button -->
+<!-- SCREENSHOT NEEDED: full Dashboard with monthly card, Quick Start rows (Personal sits inline as a sibling business row when enabled) + Repeat Last + Favorites, and the Start Trip button -->
 
 ### Audit Lock reminder banner (January 31 each year)
 
-Once a year, on or after February 1, you'll see a yellow banner at the top of the Dashboard asking whether to lock last year's trips. Tapping **Lock [year]** locks every unlocked business trip from the prior year so it can't be edited or deleted later — that's the audit-defense guarantee. Tapping **Not now** dismisses the banner for the rest of the calendar year. The banner reappears the following January if there are still unlocked prior-year trips.
+Once a year, on or after January 31, you'll see a yellow banner at the top of the Dashboard asking whether to lock last year's trips. Tapping **Lock [year]** locks every unlocked business trip from the prior year so it can't be edited or deleted later — that's the audit-defense guarantee. Tapping **Not now** dismisses the banner for the rest of the calendar year. The banner reappears the following January if there are still unlocked prior-year trips.
 
 Locking is irreversible per trip. The confirmation alert will ask you again before applying it.
 
@@ -124,6 +124,8 @@ If a trip is paused (because the CarPlay you started in just disconnected), the 
 
 If you haven't recorded any trips yet, you'll see a small "No trips yet" card explaining what Start Trip will do. This card disappears the moment you save your first trip.
 
+**Quick Start always renders** as long as you have at least one Business set up — even on day one before you've logged a trip. Tap any Quick Start row to start a pre-tagged trip immediately.
+
 ### Monthly Report Card
 
 Once you have trips, the Dashboard shows a card for the current month with:
@@ -139,12 +141,11 @@ Personal trips are excluded from every figure on this card.
 
 Below the monthly card, "Quick Start" surfaces shortcuts for the most-used actions:
 
-- **Top businesses (up to 3).** One row per business, sorted by miles this month. Each shows the business's color initials, the trip count, and total miles. Tap to start a trip pre-tagged for that business.
-- **Personal.** Green "P" tile, shows this month's Personal trip count and miles, with "Non-deductible" caption. Tap to start a Personal trip directly. (Only appears if "Keep personal trips" is on in Settings — it is by default.)
+- **Top businesses (up to 3).** One row per business, sorted by miles this month. Each shows the business's color initials, the trip count, and total miles. Tap to start a trip pre-tagged for that business. Personal is treated as a built-in business in this list — it surfaces with the same Quick Start row layout as any other business. Tap it to start a Personal trip. The Personal row only appears if "Keep personal trips" is on in Settings (default ON). Personal trips are still excluded from your deduction; the row just lives alongside your real businesses instead of in its own slot.
 - **Repeat Last.** Yellow refresh tile. Starts a new trip pre-filled with the same business and purpose as your most recent trip.
 - **Favorites.** Yellow star tile. Opens a picker of your saved trip templates. Tap any template to start a trip from it.
 
-<!-- SCREENSHOT NEEDED: Quick Start row with one or two business rows, the green P Personal row, Repeat Last, and Favorites -->
+<!-- SCREENSHOT NEEDED: Quick Start row with one or two business rows (including Personal as a sibling row), Repeat Last, and Favorites -->
 
 ### Start Trip button
 
@@ -182,7 +183,7 @@ How it works (in plain terms):
 - iOS occasionally tells Milely "the phone has moved a meaningful distance from where it last reported." That's the *significant location change* signal. It uses very little battery because the phone is doing it for other system reasons anyway.
 - When that signal lands, Milely briefly checks: are we moving fast enough to be in a vehicle? If yes, recording starts.
 - Recording continues until you've been stopped long enough (the **stationary auto-end timeout** in Settings) and CarPlay isn't connected. Then the trip ends automatically.
-- iOS sends you a notification: "Trip ended — tap to classify." If you tap, the Classify screen opens. If you don't, the trip lands in Logs marked **Unclassified** and you can classify it later.
+- iOS sends you a notification: "Trip ended — tap to classify." If you tap, the Classify screen opens. If you don't tap the notification, the trip lands in Logs already saved (auto-locked) and Included in the annual report. To assign a business after the fact, open the trip from Logs, tap **Unlock for editing**, and pick a business.
 
 Automatic mode requires:
 
@@ -208,6 +209,23 @@ This is the most accurate detection signal Milely has — UID-matching CarPlay o
 
 <!-- SCREENSHOT NEEDED: first-time CarPlay consent prompt with Yes do that and Not yet buttons -->
 
+### How the modes interact
+
+The **Detection Mode** (Manual or Automatic) and the **Auto-start trip on CarPlay connect** toggle are independent — they aren't sub-settings of each other. Either can be on or off without affecting the other. That gives you four useful combinations:
+
+| Detection Mode | CarPlay auto-start | What you get |
+|---|---|---|
+| **Automatic** | **ON** (default) | Trip auto-starts the instant you connect to a paired vehicle. If you're driving something Milely doesn't know about (Uber, borrowed car), motion-based detection still catches the trip after about 30 seconds. CarPlay wins on speed when both apply. |
+| **Automatic** | **OFF** | Motion-only. Trips auto-start after about 30 seconds of confirmed driving. Works without any vehicle pairing. |
+| **Manual** | **ON** | CarPlay-trigger still fires for paired vehicles. Motion is ignored. Useful if you want manual control everywhere except your work truck — connect to the truck and a trip starts automatically; everywhere else you tap Start. |
+| **Manual** | **OFF** | Pure manual. Nothing auto-starts; you tap Start, drive, tap End. |
+
+Both auto-start paths check whether a trip is already recording before starting one — they won't double-start. If both paths could fire (you connect to CarPlay AND the motion classifier sees driving), CarPlay almost always wins because it's instant; motion needs about 30 seconds of confirmed automotive activity.
+
+There's also a per-vehicle filter: in Settings → Vehicles, you can mark a vehicle "**Only auto-detect when this vehicle's CarPlay is connected**." When at least one vehicle has that on, motion-based detection is silenced unless that vehicle's CarPlay or Bluetooth is currently active. Stops Milely from logging passenger rides in your spouse's car or someone else's Uber.
+
+<!-- SCREENSHOT NEEDED: Settings → Detection mode showing the Detection Mode tiles and the CarPlay auto-start toggle in their cards -->
+
 ### What happens during recording
 
 While a trip is recording, regardless of how it started:
@@ -218,6 +236,7 @@ While a trip is recording, regardless of how it started:
 - The **Logs** tab adds an "End trip" pill to its header so you can stop without changing tabs.
 - iOS keeps Milely running cleanly even with the screen locked or another app in the foreground.
 - Every 30 seconds, Milely snapshots your in-progress trip to disk, in case the app is force-quit, runs out of memory, or your phone dies. See [Trip recovery](#trip-recovery).
+- **Background notifications fire even with your phone in your pocket.** Milely keeps a quiet audio session alive so the OS doesn't suspend the app while a trip is recording — the "Trip ended — tap to classify" notification reliably reaches you whether the screen is on, off, or buried under another app.
 
 ### Logging a past trip manually
 
@@ -239,8 +258,7 @@ It's organized top to bottom:
 - **Trip facts.** Three numbers — distance, duration, end time — that you can sanity-check at a glance.
 - **Editable fields.** Miles, date/time, From address, To address. Pre-filled but editable. The addresses come from a reverse-geocode of the trip's start and end coordinates, and may take a moment to populate after the screen appears.
 - **Smart Suggestions** (when applicable). On-device pattern matches from your past classifications surface as one-tap chips above the business row. Tap to apply.
-- **Business chips.** One per business you've created. Tap to select.
-- **Personal chip.** Below the business row (when "Keep personal trips" is on). Selecting Personal clears any business and skips the purpose field — Personal trips don't need one.
+- **Business chips.** One per business you've created. Tap to select. When "Keep personal trips" is on, a **Personal** chip sits in the same row as your real businesses — tapping it clears any business attached and hides the purpose field, since Personal trips don't need one. Personal lives in the same chip row rather than a separate slot.
 - **Calendar suggestions.** If the trip overlapped any calendar events with locations, those titles surface as one-tap chips you can use as the purpose.
 - **Recent purpose chips.** Up to 6 most-recent purposes for the chosen business. Tap one to fill the purpose field instantly.
 - **Purpose field.** Free-text. Required for business trips. Specific is better than generic — "Showing 1428 Maple St" reads better in an audit than "Real Estate."
@@ -249,14 +267,14 @@ It's organized top to bottom:
 - **Round trip toggle.** Default OFF. Turn on if you'll drive the same route back — Milely doubles the miles and saves it as one record.
 - **Receipts row.** Subscriber feature. See [Receipts](#receipts).
 - **Ready to save** summary. The final values that will be saved if you hit Save Trip.
-- **Save Trip** button. Shows the deduction amount when you tap it (e.g. "Save Trip · $12.40"), unless the trip is Personal — Personal saves just say "Save Trip."
-- **Skip for now** button. The trip lands in Logs as **Unclassified**. You can classify it later by opening it in Logs and editing.
+- **Save Trip** button. Shows the deduction amount when you tap it (e.g. "Save Trip · $12.40"), unless the trip is Personal — Personal saves just say "Save Trip." Saving auto-locks the trip — there's no separate manual lock action anymore. To edit a saved trip, open it from Logs and tap **Unlock for editing** in the trip detail view.
+- **Skip for now** button. The trip lands in Logs auto-locked and Included in the annual report, with no business attached. You can assign a business later by opening it in Logs, tapping **Unlock for editing**, and picking a business.
 
 <!-- SCREENSHOT NEEDED: Classify Trip screen scrolled to show route map, business chips, purpose field, and the Save Trip button -->
 
 ### What "Skip for now" actually does
 
-This used to be called "Cancel" and people read it as "throw the trip away." It does NOT throw the trip away. The trip is already saved to Logs the moment recording ends — Skip for now just leaves it Unclassified. Open it from Logs anytime, fill in the business and purpose, and save.
+This used to be called "Cancel" and people read it as "throw the trip away." It does NOT throw the trip away. The trip is already saved to Logs the moment recording ends — auto-locked and Included in your annual report by default, just with no business attached. Open it from Logs, tap **Unlock for editing**, fill in the business, save.
 
 This means: even if you crash, kill the app, or never tap Save, your recorded miles are not lost. They're sitting in Logs waiting for you.
 
@@ -270,45 +288,38 @@ If you have an auto-classify rule that already matched the trip, the Smart Sugge
 
 ---
 
-## Personal trips
+## Personal trips (excluded from annual report)
 
-Personal trips are drives that aren't business. Driving to the grocery store, picking up the kids, weekend errands. Milely has a first-class concept of Personal so you can record them and exclude them from your deduction without losing the record.
+Personal trips are drives you don't want in your annual deduction report — grocery runs, weekend errands, kid pickup. Milely treats Personal as a built-in Business in the picker (rather than a separate category) and as an Exclude flag on each trip.
 
-Three things define a Personal trip:
+Two effects:
 
-- **No business attached.** It's not "Real Estate" or "Smith Plumbing" or anything.
-- **No purpose required.** The IRS doesn't ask why you went to the grocery store. The Classify screen hides the purpose field for Personal trips.
-- **Zero deduction.** Personal miles don't contribute to your business mileage total in any report or export. Ever.
+- **Built-in Personal business in the chip picker.** When "Keep personal trips" is on (default), a Personal entry appears alongside your real businesses on the Classify screen, in the live trip editor, and in the Logs Business filter dropdown. Picking it classifies the trip as Personal AND sets it Excluded.
+- **Excluded flag on each trip.** Every trip in Logs is either Included (orange checkmark pill) or Excluded (gray minus pill). Excluded trips don't show up in Reports, exports, or the Dashboard's deduction tallies.
 
-You'll see Personal trips marked with a small green pill in lists and on the live banner.
+### How to mark a trip Personal / Excluded
 
-### How to mark a trip Personal
-
-- **At the moment you classify it.** Tap the **Personal** chip below the business row on the Classify screen.
-- **From the Logs tab.** Swipe left on a trip row. The trip is marked Personal AND locked in one motion (Personal trips usually mean "this isn't deductible — set it aside").
-- **From the trip detail screen.** Tap the trip in Logs, scroll to the bottom, tap **Mark as personal**.
+- **At Save time.** Pick the **Personal** chip in the business chip row on the Classify screen.
+- **From Logs (any saved trip).** Swipe LEFT on the row to Exclude — Include/Exclude works on locked or unlocked trips alike.
+- **From the trip detail view.** Open the trip from Logs, scroll to the bottom, and tap **Mark as personal**. (If the trip is locked, tap **Unlock for editing** first.)
 - **Mid-trip.** Tap the live banner on the Dashboard and pick **Personal** from the business dropdown.
-- **From the Dashboard.** Tap the green Personal Quick Start row to start a new trip pre-tagged Personal.
+- **From the Dashboard.** Tap the Personal Quick Start row to start a new trip pre-tagged Personal.
 
-### The Personal Quick Start row
+### How to undo / re-include
 
-When "Keep personal trips" is on (Settings → Personal Trips), the Dashboard's Quick Start shows a green Personal row with this month's personal trip count and miles. It reads "X trips · non-deductible" so the meaning is clear.
-
-### The Personal filter chip in Logs
-
-The Logs tab's filter row has a green **Personal** chip. Tap it to filter the list to only Personal trips. Personal and the business filter are mutually exclusive — picking one clears the other.
+Swipe RIGHT on the row in Logs (Include action), or open the trip detail view and tap **Mark as business**.
 
 ### What happens if you turn "Keep personal trips" off
 
 If you set Settings → Personal Trips → Keep personal trips to OFF:
 
 - The Personal chip disappears from the Classify screen and the live trip editor.
-- The Dashboard's Personal Quick Start row hides.
-- Existing Personal trips stay in Logs (they're never silently deleted).
+- The Personal entry disappears from the Dashboard's Quick Start row and the Logs Business filter dropdown.
+- Existing Personal (Excluded) trips stay in Logs (they're never silently deleted).
 - When you next open the Reports tab on a year that has unlocked Personal trips, Milely asks: "Delete N Personal trips from [year]?" Tap Delete to remove them, or Keep to leave them. Either way, you're prompted only once per year.
 - Locked Personal trips are NEVER deleted, regardless of your answer.
 
-This gives you two clean modes: Personal as a first-class category, or Personal as a passing label that gets cleaned up at year-end.
+This gives you two clean modes: Personal as a first-class option in the picker, or Personal as a passing label that gets cleaned up at year-end.
 
 ---
 
@@ -366,8 +377,8 @@ Tap any trip in Logs to open Trip detail. Top to bottom:
 - **Auto badge.** If the trip was auto-detected, a small "Auto-detected" badge appears here.
 - **Auto-classify future trips here.** Two buttons — **Always business: [name]** and **Always personal**. Tap one to create an [auto-classify rule](#auto-classify-rules) that fires on every future trip ending at this same address.
 - **Edit history.** Every field-level change to the trip, with old value, new value, and timestamp. Includes locking, unlocking, Personal toggling, receipt adds and removes. Always on, always captured. Can't be wiped from inside the app (deleting the trip removes the history with it).
-- **Lock / Unlock button.** Tap to lock the trip (immutable for audit) or unlock (to edit again). Locked trips show a lock icon in the row.
-- **Mark as business / Mark as personal button.** Only on unlocked trips. Flips the Personal flag.
+- **Unlock for editing button.** Trips lock automatically on Save — to edit a saved trip, tap **Unlock for editing** here. Re-locking happens automatically the next time you save changes.
+- **Mark as business / Mark as personal button.** Only on unlocked trips. Flips the Personal flag, which also flips the trip's Included/Excluded state.
 - **Delete Trip button.** At the bottom, in destructive red. Asks for confirmation. Locked business trips can't be deleted — unlock first. Locked Personal trips can be deleted (they don't reach IRS reports anyway).
 
 ### The star button
@@ -376,22 +387,28 @@ In the top-right toolbar of any trip detail screen there's a **star** icon. Tap 
 
 <!-- SCREENSHOT NEEDED: Trip detail screen with route map, all sections visible, star button in the top-right -->
 
-### Audit Lock
+### Audit Lock and auto-lock-on-save
 
-Lock means "frozen for audit." On a locked trip:
+Every trip auto-locks the moment you tap Save (or Skip for now) on the Classify screen. There is no separate manual Lock action — saving locks. The trip's content is now frozen for audit; every editable field is read-only.
+
+On a locked trip:
 
 - Every editable field is read-only.
 - Receipts can't be added or removed.
 - The trip can't be deleted (unless it's Personal).
 - The Personal flag can't be flipped.
 
-To unlock, tap **Unlock for editing** on the detail screen. The unlock action and any subsequent edits are written to the edit history, so even if you do reopen a closed year there's a clean paper trail showing exactly what changed and when.
+**To edit a locked trip:** open Trip detail and tap **Unlock for editing** at the bottom. Every unlock and subsequent change is captured in the trip's edit history.
 
-Trips lock automatically once a year on January 31 if you accept the Audit Lock reminder banner on the Dashboard. You can also lock individual trips manually via the Lock button or by swiping right on a row in Logs.
+**Re-locking** happens automatically the next time you Save changes. Save and Unlock are the only two actions.
 
-### Edit history
+Once a year, on or after January 31, a yellow audit-lock banner appears on the Dashboard asking whether to lock every prior-year trip in one shot. The yearly banner is for catching trips that slipped through (auto-lock disabled, user unlocked something and forgot to re-save). Locking the prior year is irreversible per trip.
 
-Every change writes a row to the edit history. Field, old value, new value, timestamp. You don't have to do anything to turn it on — it just runs. The history is there for the IRS, your CPA, or you-six-months-from-now wondering what changed.
+### Edit history (the audit-defense backbone)
+
+Every saved trip has an always-on edit history — open Trip detail and scroll to the **Edit history** section at the bottom. Every field-level change is recorded with timestamp and before/after values: locks, unlocks, Personal toggling, business reassignment, miles edits, address edits, receipt adds and removes.
+
+This is what tells an auditor (or a CPA, or future-you) what really happened. Combined with auto-lock-on-save, it gives the audit-defense guarantee the old per-row lock icon hinted at, with less visual clutter on every Logs row. Edit history can't be wiped from inside the app (deleting the trip removes the history with it).
 
 ---
 
@@ -406,24 +423,35 @@ A frozen header pinned at the top has:
 - **Logs** title and the **Select** button (toggles bulk-select mode).
 - An **End trip** pill (only when a trip is recording — quick stop without changing tabs).
 - A search field that filters across purpose, From address, To address, and business name.
-- A row of four filter pills: **Year**, **Month**, **Business**, **Personal**. Year and Month default to the current year + month. Personal and Business are mutually exclusive — picking one clears the other.
+- A row of three filter pills: **Year**, **Month**, **Business**. Year and Month default to the current year + month. The Business pill opens a dropdown that includes "All", each of your active businesses, and a "Personal" entry (when "Keep personal trips" is on).
 
-<!-- SCREENSHOT NEEDED: Logs tab header showing the search field, Year/Month/Business/Personal filter pills, and a list of trips below -->
+<!-- SCREENSHOT NEEDED: Logs tab header showing the search field, Year/Month/Business filter pills, and a list of trips below -->
 
 ### The trip list
 
-Trips are grouped by date with smart labels — **Today**, **Yesterday**, **This week**, **This month**, then "April 2026" / "March 2026" / etc. Each trip row shows the purpose, business pill, miles, time, and any flags (locked, Personal, has-receipts, unclassified).
+Trips are grouped by date with smart labels — **Today**, **Yesterday**, **This week**, **This month**, then "April 2026" / "March 2026" / etc. Each trip row shows the route (or purpose), distance, business chip if assigned, time, and the trip's annual-report state — either an orange **Included** check or a gray **Excluded** minus on the trailing edge.
 
 Tap a row to open Trip detail.
 
-Long-press a row to open a context menu with **Lock trip / Unlock trip**, **Mark as personal / Mark as business**, and **Delete trip** (when allowed).
+### Included vs Excluded — the two-state model
+
+Every trip in Logs has one of two annual-report states:
+
+- **Included** (orange checkmark pill) — counts toward your annual deduction. Default for every new trip.
+- **Excluded** (gray minus pill) — set aside. Still in Logs (searchable, filterable), but filtered out of every Reports figure, every export, and the Dashboard's deduction tallies.
+
+Included/Excluded is **independent** of which business is attached. A trip can be Excluded with the "Real Estate" business attached, or Included with no business attached.
+
+Swipe right to Include; swipe left to Exclude. Locked or unlocked, the swipes work either way — categorization (Include/Exclude) is separate from edit-locking (frozen for audit).
 
 ### Swipe actions
 
-- **Swipe right** on a trip row → **Lock as Business** (burnt orange pill, lock icon).
-- **Swipe left** on a trip row → **Lock as Personal** (blue pill, person icon). Sets the trip to Personal AND locks it in one motion.
+Every trip in Logs is either **Included** in your annual report (orange checkmark pill, default) or **Excluded** (gray minus pill).
 
-Both swipes only fire on "active" trips (not already Personal, not already locked). Already-Personal or already-locked rows don't budge when swiped — to undo either, tap into the trip detail and use the Unlock and Mark as business buttons at the bottom of the page.
+- **Swipe right** on a row → **Include**. Flips the trip back to Included if it was Excluded; preserves whatever business is attached.
+- **Swipe left** on a row → **Exclude**. Marks the trip as Personal/Excluded; preserves whatever business is attached.
+
+Both swipes work on locked trips — Include/Exclude is a categorization choice, separate from edit-locking. The two are independent: a trip can be Included with no business assigned, or Excluded with a business attached.
 
 ### Bulk select
 
@@ -584,6 +612,10 @@ Tap **+** in the top-right. The edit sheet has:
 
 Tap a business to edit. The bottom of the edit sheet has an **Archive** button — archived businesses don't show up in chips, dropdowns, or filters but their existing trips remain visible in Logs and Reports. Use this when a client engagement ends and you don't want it cluttering the picker, but you still need the records.
 
+### The built-in Personal business
+
+Milely auto-creates a single **Personal** business sentinel that surfaces alongside your real businesses in chips, dropdowns, and filters. You can hide it via **Settings → Personal Trips → Keep personal trips**, but you can't delete or rename it.
+
 ### Reordering
 
 Drag the handles in the Businesses list to reorder. The order applies to chip rows and dropdowns throughout the app (and the Dashboard's Quick Start row, but Quick Start re-sorts by miles this month, so manual order only matters for businesses with the same miles).
@@ -608,7 +640,12 @@ Three sub-screens:
 - **CarPlay auto-start card.** Per-app explanation of how CarPlay-trigger works and the consent prompt flow.
 - **Background recording status card.** Status (Active / Idle / Limited / Off), what it implies, and a "Request Always Allow" button if you're on While-Using. Always-Allow is required for the SLC wakeup that powers Automatic and CarPlay-trigger detection in the background.
 - **Stationary auto-end card.** How long Milely will wait after you stop moving before auto-ending a recording trip. Slider: Never, 15 min, 30 min, 60 min, 120 min. Per-vehicle override available in vehicle settings.
-- **Minimum logged trip distance.** Trips that end below this length are dropped silently. Default 0.5 mi. Stops driveway shuffles from cluttering Logs.
+- **Disconnect behavior.** What Milely does when CarPlay disconnects mid-trip. Two options:
+  - **Pause (low-power GPS)** *(default).* The trip pauses but Milely keeps a low-rate GPS fix running so the app stays alive. When you reconnect, the trip resumes cleanly and the bridge route fills in. About 1–3% battery per hour while paused.
+  - **Keep recording.** The trip never pauses — Milely runs at full GPS until you tap End or the stationary auto-end timer fires. Simplest behavior, but uses about 5–10% per hour while parked.
+
+  The legacy "tear down GPS on disconnect" behavior was retired — that was the data-loss path where a paused trip plus a CarPlay reconnect could lose data. This setting supersedes the per-vehicle "Pause recording when CarPlay disconnects" toggle described in [Vehicles](#vehicles).
+- **Minimum logged trip distance.** Trips that end below this length are dropped silently. Pick from Log every trip / 0.05 / 0.1 / 0.25 / 0.5 / 1.0 mi. Default 0.05 mi (so even short hops are kept; bump up if driveway shuffles clutter Logs).
 - **Quiet hours.** Time-of-day window during which auto-end notifications won't ping (so a trip ending at 2 AM doesn't wake you). The trip itself still ends — just no buzz.
 - **Ignored routes.** A list of CarPlay/Bluetooth devices you've explicitly told Milely to ignore (e.g., a friend's car you ride in occasionally). Swipe to remove.
 - **Connectivity diagnostic.** Live readout of the connectivity service's current state. Useful when troubleshooting "why didn't auto-start fire?"
@@ -743,6 +780,8 @@ If a vehicle has the **Pause recording when CarPlay disconnects** flag set, manu
 
 If you're still actively driving when CarPlay disconnects (cable came loose, Bluetooth dropped), Milely waits 2 minutes before pausing. If you're still moving at that point, it abandons the pause and keeps recording. Real-world scenario: you don't lose the next 0.5 miles to a flaky cable.
 
+The newer **Disconnect behavior** setting in [Settings → Detection mode](#settings-reference) is the global version of this — Pause (low-power GPS) is the default. Use the global setting unless a specific vehicle needs different behavior.
+
 ---
 
 ## Trip recovery
@@ -848,6 +887,7 @@ Walk through these in order:
 3. Did you tap **Yes, do that** on the first-time consent prompt? If you tapped Not yet, the next CarPlay connect re-prompts. Connect again and tap Yes.
 4. Did you force-quit Milely from the iOS app switcher? Background recording is disabled until you next open the app. Reopen Milely.
 5. Some CarPlay devices report a generic "CarPlay" name and an unstable UID. Settings → Vehicles → vehicle edit → set a custom display name and re-pair via the "Add from recently seen" path so the latest UID is captured.
+6. If a trip "disappears" after CarPlay disconnects mid-drive, check **Settings → Detection mode → Disconnect behavior** — set it to "Keep recording" if pause-and-resume isn't working for your vehicle.
 
 ### A trip didn't auto-start
 
@@ -855,7 +895,7 @@ If you have Automatic mode on but a trip wasn't captured:
 
 1. Was Always-Allow location granted? Settings → Detection mode → Background recording.
 2. Was the app force-quit before the drive? Reopen and the next drive will trigger.
-3. Was the drive very short (< 0.5 mi by default)? Sub-threshold trips are silently discarded by design. The threshold is in Settings → Detection mode → Minimum logged trip distance.
+3. Was the drive very short (< 0.05 mi by default)? Sub-threshold trips are silently discarded by design. The threshold is in Settings → Detection mode → Minimum logged trip distance.
 4. Was your phone in airplane mode or out of cell range? GPS still works without cell, but iOS's significant-location-change wake-up needs at least one location source — try granting precise location, not just approximate.
 
 ### The app didn't relaunch after force-quit
@@ -903,7 +943,7 @@ The IRS sometimes updates the standard mileage rate mid-year. Settings → Milea
 
 ## Glossary
 
-**Audit Lock.** The state of a trip where every field is read-only, the trip can't be deleted (unless Personal), and the Personal flag can't be flipped. Triggered by the January 31 reminder banner, by manually tapping Lock on a trip, or by swiping right or left on a row in Logs. To make changes, tap Unlock for editing on the trip detail screen — every unlock and subsequent edit is captured in the trip's edit history.
+**Audit Lock.** The state of a trip where every field is read-only. Trips lock automatically the moment you Save them. A yearly January 31 banner sweeps any prior-year unlocked trips. To make changes to a locked trip, tap **Unlock for editing** on the trip detail screen — every unlock and subsequent edit is captured in the trip's edit history.
 
 **Auto-classify rule.** A user-defined rule that pre-fills the business and purpose for any future trip ending at a specific address. Created via the "Always business" or "Always personal" buttons on a trip's detail screen. Managed via Settings → Auto-classify rules. Working hours filter applies — a rule for a "Showings" business won't auto-fire at 11 PM on a Sunday.
 
@@ -915,11 +955,11 @@ The IRS sometimes updates the standard mileage rate mid-year. Settings → Milea
 
 **Generic-name pairing.** A CarPlay or Bluetooth route that reports only "CarPlay" as its friendly name. Milely matches by UID instead, so detection still works — set a custom display name in vehicle settings to make the in-app label useful.
 
-**Manual recording continues across disconnects.** A per-vehicle setting. When OFF (default), GPS keeps running on a manual trip even if CarPlay disconnects. When ON, manual trips pause on disconnect and resume on reconnect.
+**Disconnect behavior.** A global setting in Settings → Detection mode that controls what Milely does when CarPlay disconnects mid-trip. **Pause (low-power GPS)** is the default — the trip pauses but a low-rate GPS fix keeps the app alive so it can resume cleanly when you reconnect. **Keep recording** runs full GPS until you tap End or the stationary auto-end fires. Supersedes the older per-vehicle "Pause recording when CarPlay disconnects" toggle.
 
-**Pending classify.** The state where a trip has just ended but you haven't tapped Save on the Classify screen yet. The trip is already saved to Logs as Unclassified — Save just adds the business + purpose. Skip for now leaves the trip Unclassified for later.
+**Pending classify.** The state where a trip has just ended but you haven't tapped Save on the Classify screen yet. The trip is already saved to Logs as a recorded record without a business attached — Save just adds the business + purpose and locks the trip. Skip for now leaves the trip without a business assigned for later.
 
-**Personal trip.** A drive with no business attached, no required purpose, and zero deduction contribution. Marked with a green pill in lists. Excluded from every Reports figure. Optional first-class concept (Settings → Personal Trips → Keep personal trips).
+**Personal trip.** A drive marked Excluded from the annual report. May or may not have the built-in Personal sentinel business attached — what makes a trip "Personal" is the Excluded flag, not the absence of a business. Marked with a gray Excluded pill on the row. Excluded from every Reports figure. The built-in Personal business is optional (Settings → Personal Trips → Keep personal trips).
 
 **Project / Client tag.** A free-text tag on each trip — type a listing address, matter name, job number, or whatever your industry uses. Surfaces as a column in CSV exports and as a "By project" breakdown in Reports.
 
@@ -935,7 +975,7 @@ The IRS sometimes updates the standard mileage rate mid-year. Settings → Milea
 
 **UID (Unique Identifier).** An iOS-internal opaque string that identifies a specific CarPlay or Bluetooth device. Stable across connections (mostly). Milely uses UIDs as the primary match for vehicle pairing because they're more reliable than friendly names.
 
-**Unclassified.** A trip that's been recorded and saved but doesn't have a business attached yet. Lands here when you tap Skip for now on the Classify screen, or when an auto-detected trip ends and you don't open the notification. Show in Logs with a tap-to-classify chip on the row. The weekly review reminder counts these.
+**Excluded.** A trip's annual-report state when it's been set aside — won't count toward your deduction, won't show up in Reports, exports, or Dashboard tallies. Marked with a gray minus pill on the row in Logs. Set via swipe-LEFT on a Logs row, the Personal chip on the Classify screen, or the **Mark as personal** button in trip detail. The opposite state is **Included** (orange checkmark pill, the default for every new trip).
 
 **Working days mask / Working hours.** Optional per-business settings that tell Smart Suggestions and auto-classify rules when this business is active. A weekday-only consulting business won't auto-classify a Saturday trip; an after-hours rule won't apply to a Sunday morning drive.
 
@@ -957,18 +997,18 @@ The following screenshots are referenced in this guide as `<!-- SCREENSHOT NEEDE
 1. **Legal consent screen** — first-launch welcome with both checkboxes filled and the Continue button enabled.
 2. **Onboarding business-name step** — text field showing example "Greg's Real Estate".
 3. **Onboarding vehicle step** — vehicle name field with both Skip and Add Vehicle buttons visible.
-4. **Full Dashboard** — monthly card on top, Quick Start row including a business row + Personal + Repeat Last + Favorites, Start Trip button at bottom.
+4. **Full Dashboard** — monthly card on top, Quick Start row including business rows (Personal sits in this same row when enabled) + Repeat Last + Favorites, Start Trip button at bottom.
 5. **Audit-lock banner** — yellow banner on the Dashboard with Lock [year] and Not now buttons.
 6. **Live trip banner** — recording state showing distance, time, deduction, with the End pill on the right.
-7. **Quick Start row** — business row, green P Personal row, Repeat Last, Favorites stacked.
+7. **Quick Start row** — top business rows (Personal appears as a sibling row when enabled), Repeat Last, Favorites stacked.
 8. **Live map (Trip tab)** — route polyline drawn, stats card overlay, End Trip button at the bottom.
 9. **Settings → Detection mode** — Automatic card selected, Background recording status card showing "Active".
 10. **First-time CarPlay consent prompt** — "Auto-start trips when you connect to [vehicle]?" with Yes do that and Not yet buttons.
 11. **Log Past Trip Manually form** — date picker, From/To address fields, miles field, business chips, purpose field.
-12. **Classify Trip screen (full)** — route map at top, business chips, purpose field, Save Trip button at bottom.
+12. **Classify Trip screen (full)** — route map at top, business chips (Personal sits in the same row as the user's businesses), purpose field, Save Trip button at bottom.
 13. **Trip detail with receipts** — Receipts row showing two attached thumbnails plus Scan / Add from photos buttons.
 14. **Trip detail (full)** — route map, all sections visible, star button in the top-right corner.
-15. **Logs tab header** — search field, Year/Month/Business/Personal filter pills, list of trips below.
+15. **Logs tab header** — search field, Year/Month/Business filter pills, list of trips below (each row shows an orange Included or gray Excluded pill).
 16. **Recover from calendar** — lookback window picker and a checked list of proposed trips.
 17. **Reports tab** — scrolled to show year hero, year stats grid, By business breakdown, start of monthly cards.
 18. **Settings → Vehicles** — list with two vehicles and the "Add from recently seen" section visible.

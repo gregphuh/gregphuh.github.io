@@ -103,9 +103,11 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 <p><strong>Forgot to start a trip?</strong> Hit <strong>Log Past Trip Manually</strong> at the top of the Logs tab and enter the date, miles, addresses, and purpose by hand — same audit-ready record.</p>
 
-<p><strong>Swipe right</strong> on an active trip row to lock it as business — locked trips can't be edited or deleted, handy when you've finalized a trip and don't want to fat-finger it later. <strong>Swipe left</strong> on an active trip locks it as Personal in one motion: the trip stays in your Logs but is excluded from every deduction total (Reports, Dashboard, exports). Both swipes only work on trips that aren't already locked or Personal — to undo either, tap the trip and use the bottom of the detail page (Unlock for editing → optional Mark as business → optional Lock again).</p>
+<p><strong>Swipe right</strong> on a trip row to <strong>Include</strong> it in your annual report — every new trip is Included by default, so swipe right is mostly an undo for an Excluded trip. <strong>Swipe left</strong> to <strong>Exclude</strong>: the trip stays in your Logs (searchable, filterable) but is filtered out of every Reports figure, every export, and the Dashboard's deduction tallies. Both swipes preserve whatever business is attached, and both work on locked trips — Include/Exclude is a categorization choice, separate from edit-locking.</p>
 
-<p><strong>Personal trips are first-class, not an afterthought.</strong> The <strong>green Personal tile</strong> on the Dashboard's Quick Start row starts a Personal trip immediately — same one-tap path the business chips offer. Personal trips show with a <strong>green dot</strong> in the Logs list, alongside the colored chips you've assigned to each business, so the two streams are visually distinct at a glance. The Classify form for a Personal trip is also simplified: no business purpose required, no deduction shown — just a clean record that the drive happened.</p>
+<p>Each row shows a single trailing pill: <strong>Included</strong> (orange checkmark) or <strong>Excluded</strong> (gray minus). Trips lock automatically the moment you Save them — to edit a saved trip, tap into the detail screen and tap <strong>Unlock for editing</strong>.</p>
+
+<p><strong>Personal trips live in the same picker as your real businesses.</strong> Milely auto-creates a built-in Personal sentinel that surfaces alongside your real businesses in chips, dropdowns, and filters. Picking Personal on the Classify screen marks the trip Excluded; tapping the Personal Quick Start row on the Dashboard starts a new trip pre-tagged Personal. The Classify form for a Personal trip is simplified — no purpose required, no deduction shown — just a clean record that the drive happened. Hide Personal entirely via <strong>Settings → Personal Trips → Keep personal trips</strong> if you'd rather not see it.</p>
 
 <p><strong>Delete a trip:</strong></p>
 <ul>
@@ -116,7 +118,7 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 <p><strong>Edit history is captured automatically.</strong> Every field-level change to a saved trip is recorded — including locking, unlocking, and Personal/Business toggles. See <a href="#edit-history">section 6</a>.</p>
 </div>
-<div class="how-img"><img src="/assets/screenshots/logs.png" alt="Logs tab with searchable list of trips, swipe-right to lock as business, swipe-left to lock as personal" /></div>
+<div class="how-img"><img src="/assets/screenshots/logs.png" alt="Logs tab with searchable list of trips, swipe right to Include in annual report, swipe left to Exclude" /></div>
 </div>
 
 ---
@@ -125,13 +127,13 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 <div class="how-row">
 <div class="how-text">
-<p>On <strong>January 31 each year</strong>, Milely automatically locks the previous year's trips so you can't accidentally edit them mid-audit. A small lock icon shows on locked trips.</p>
+<p>On or after <strong>January 31 each year</strong>, a yellow audit-lock banner appears on the Dashboard asking whether to lock the previous year's trips in one shot. Tapping <strong>Lock [year]</strong> freezes every unlocked prior-year trip from edits and deletion. Trips also auto-lock as you save them — the Jan 31 banner is for sweeping any that slipped through.</p>
 
 <p>If you legitimately need to amend a return or fix a typo in a closed year:</p>
 <ol>
 <li>Open the <strong>Logs</strong> tab and tap the locked trip.</li>
 <li>Hit <strong>Unlock for editing</strong>.</li>
-<li>Make the change and save.</li>
+<li>Make the change and save (re-locking is automatic).</li>
 </ol>
 
 <p>Both the unlock action and any edits that follow are written to the trip's <strong>Edit history</strong> with timestamps. So even if you do reopen a closed year, there's a clean paper trail showing exactly what changed and when. That's the point.</p>
@@ -422,6 +424,23 @@ Manual mode only consumes battery while a trip is recording (~3% per hour). Auto
 <details>
 <summary><strong>How does Automatic mode work?</strong></summary>
 Settings → Detection mode → switch to <strong>Automatic</strong>. Milely uses motion + GPS to detect when you start driving, records the route in the background, and notifies you to classify after the trip ends. Requires "Always Allow" location and Motion &amp; Fitness permissions. Automatic mode and CarPlay-trigger detection both keep working even after iOS has shut Milely down to free memory: when your next drive begins, iOS wakes the app via a significant location change, Milely re-checks your CarPlay or Bluetooth connection, and starts the trip if your paired vehicle is connected. The exception is force-quit — if you swipe up in the app switcher to kill Milely, iOS treats that as the user explicitly disabling background activity and won't relaunch the app until you open it again. That's a system-wide iOS rule no app can override.
+</details>
+
+<details>
+<summary><strong>How do Detection Mode and the CarPlay auto-start toggle interact?</strong></summary>
+<p>They're independent. Detection Mode (Manual or Automatic) controls motion-based auto-detect. The "Auto-start trip on CarPlay connect" toggle (Settings → Detection mode) controls whether connecting to a paired vehicle starts a trip on its own. You can mix them however you want:</p>
+<table>
+  <thead>
+    <tr><th>Detection Mode</th><th>CarPlay auto-start</th><th>What you get</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Automatic</strong></td><td><strong>ON</strong> (default)</td><td>Trip auto-starts the instant you connect to a paired vehicle. For unpaired drives (Ubers, borrowed cars), motion-based detection still catches the trip after about 30 seconds. CarPlay wins on speed when both apply.</td></tr>
+    <tr><td><strong>Automatic</strong></td><td><strong>OFF</strong></td><td>Motion-only. Trips auto-start after about 30 seconds of confirmed driving. Works without any vehicle pairing.</td></tr>
+    <tr><td><strong>Manual</strong></td><td><strong>ON</strong></td><td>CarPlay-trigger still fires for paired vehicles. Motion is ignored. Useful if you want manual control everywhere except your work truck.</td></tr>
+    <tr><td><strong>Manual</strong></td><td><strong>OFF</strong></td><td>Pure manual. Nothing auto-starts; you tap Start, drive, tap End.</td></tr>
+  </tbody>
+</table>
+<p>Both auto-start paths check whether a trip is already recording before starting one — they won't double-start. There's also a per-vehicle filter under Settings → Vehicles ("Only auto-detect when this vehicle's CarPlay is connected") that silences motion-based detection unless that vehicle's CarPlay or Bluetooth is currently connected — useful for stopping passenger rides from being logged as drives.</p>
 </details>
 
 <details>

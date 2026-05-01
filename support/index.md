@@ -35,7 +35,7 @@ What the subscription unlocks:
 - **Project / client tagging** — sub-classify within a business for billing and reporting
 - **Year-end odometer reconciliation** — IRS Form 2106 / Schedule C-aligned beginning-of-year and end-of-year readings
 - **Audit Lock and edit history** — last year's records lock automatically January 31; every edit is timestamped for audit defense
-- **Sunday review reminder** — gentle nudge when you have unclassified trips waiting
+- **Sunday review reminder** — gentle nudge when you have trips waiting on Include/Exclude
 - **Priority email support**
 
 Cancel any time in Apple's subscription management.
@@ -85,7 +85,7 @@ Not currently — and likely staying that way. Milely is iOS-only by design; bui
 
 ### Can I import data from MileIQ / Everlance / [other app]?
 
-Yes — Milely imports CSV exports from **MileIQ**, **Everlance**, and **TripLog**. Export a CSV from your old app, then in Milely go to **Settings → Setup → Import from MileIQ / Everlance / TripLog**, pick the file, and confirm. Milely auto-detects the source format from the file's header row, shows a preview of detected trips, and applies your chosen default business / vehicle / purpose to every imported trip. Imported trips arrive in your Logs as personal/unclassified by default — bulk-reassign business in 30 seconds via the Logs multi-select.
+Yes — Milely imports CSV exports from **MileIQ**, **Everlance**, and **TripLog**. Export a CSV from your old app, then in Milely go to **Settings → Setup → Import from MileIQ / Everlance / TripLog**, pick the file, and confirm. Milely auto-detects the source format from the file's header row, shows a preview of detected trips, and applies your chosen default business / vehicle / purpose to every imported trip. Imported trips arrive **Excluded** from your annual report by default — Include and assign a business in bulk via the Logs multi-select.
 
 If you're coming from a different app and have a CSV that isn't one of those three formats, send it to **milely@smileycreative.io** and we'll see if we can help.
 
@@ -96,16 +96,16 @@ Two ways, pick whichever fits the moment:
 - **Long-press** a row in the **Logs** tab → tap **Delete trip** in the menu → confirm. This is the quickest delete path.
 - Open the trip detail screen → tap **Delete Trip** at the bottom → confirm. Same outcome, just from inside the trip.
 
-(Swipe-left no longer deletes — it now locks the trip as Personal in one motion. Locked trips can't be deleted at all until you unlock them.)
+(Swipe-left no longer deletes — it now Excludes the trip from your annual report. Locked trips — every saved trip auto-locks — can't be deleted until you unlock them from the trip's detail page.)
 
-### How do I mark a trip as personal (so it doesn't count toward my deduction)?
+### How do I exclude a trip from my annual report (so it doesn't count toward my deduction)?
 
 Two paths, depending on whether you know up-front:
 
-- **Starting a Personal trip directly.** Tap the **green Personal tile** in the Dashboard's Quick Start row. Milely starts recording a Personal trip immediately — the Classify form skips business purpose and deduction entirely.
-- **Reclassifying an already-recorded trip.** **Swipe left** on a row in the **Logs** tab to lock the trip as Personal — one swipe both flags it Personal and locks it down.
+- **Marking it Personal at classification.** When you classify a trip, pick **Personal** in the business picker — Personal lives there alongside the businesses you've added. The Classify form for a Personal trip skips business purpose and deduction.
+- **Excluding an already-saved trip.** **Swipe left** on a row in the **Logs** tab to Exclude it from your annual report. To put it back, swipe right on the same row to Include it.
 
-Personal trips stay in your Logs for record-keeping (with a green dot alongside your business chips) but are excluded from every deduction total — Reports tab, Dashboard savings ticker, and PDF/CSV/Excel exports. To flip a Personal trip back to Business, tap the trip → **Unlock for editing** → **Mark as business** at the bottom of the detail page (you can re-lock from there too if you want).
+Excluded trips (and trips assigned to Personal) stay in your Logs for record-keeping but are kept out of every deduction total — Reports tab, Dashboard savings ticker, and PDF / CSV / Excel exports. Include and Exclude are independent of which business a trip is assigned to: a trip stays on whichever business you picked, you're just choosing whether it's part of this year's report or not.
 
 ### How do I delete ALL my data?
 
@@ -124,11 +124,38 @@ After you've classified about ten trips, Milely starts pre-filling business + pu
 
 ### What is Audit Lock?
 
-On **January 31 each year**, Milely automatically locks the previous year's trips so you can't accidentally edit them mid-audit. A small lock icon shows on locked trips. If you legitimately need to amend a return, open the trip from the Logs tab → tap **Unlock for editing** → make the change. The unlock and any edits that follow are written to the trip's **Edit history** with timestamps, so even when you reopen a closed year there's a clean paper trail showing exactly what changed and when.
+On **January 31 each year**, Milely automatically locks the previous year's trips so you can't accidentally edit them mid-audit. A year-end-lock banner appears at the top of the **Reports** tab on and after Jan 31 so you can see at a glance that the year is sealed. If you legitimately need to amend a return, open the trip from the Logs tab → tap **Unlock for editing** → make the change. The unlock and any edits that follow are written to the trip's **Edit history** with timestamps, so even when you reopen a closed year there's a clean paper trail showing exactly what changed and when.
 
-### Can I lock individual trips before the year ends?
+### How does locking work?
 
-Yes. On the **Logs** tab, **swipe right** on any active trip to lock it. Locked trips can't be edited or deleted — useful the moment a trip is correct and you don't want to fat-finger it later. To unlock, tap the trip and tap **Unlock for editing** at the bottom of the detail page. Every lock and unlock event is recorded in the trip's **Edit history** alongside any field-level changes, so the full timeline is always there if your CPA asks how a record evolved.
+**Every trip auto-locks the moment you save it.** The instant you classify a trip and tap Save, it's locked — no extra step, no chance to forget. Locked trips can't be edited or deleted accidentally, so you can't fat-finger a record once it's correct. To make a legitimate change, tap the trip → **Unlock for editing** at the bottom of the detail page → make the change → save. The unlock and every field-level change after it are recorded in the trip's **Edit history** with timestamps, so the full timeline is always there if your CPA asks how a record evolved. Re-saving auto-locks the trip again.
+
+### What happens when I disconnect from CarPlay mid-drive?
+
+Up to you. **Settings → Detection Mode → Disconnect behavior** has two options:
+
+- **Pause low-power GPS (recommended).** When you disconnect from CarPlay or your car's Bluetooth, Milely drops to a low-power GPS state — the trip is paused, your battery doesn't drain while you're at the job site, and the trip resumes automatically when you reconnect. Best for stop-and-go workdays.
+- **Keep recording.** Milely keeps logging at full GPS resolution after disconnect — useful if you regularly continue a drive in a different vehicle, or the trip's destination is somewhere you'll arrive on foot.
+
+Either way, reconnecting to a *different* paired vehicle mid-trip prompts you to stop the current trip and start a new one for the new vehicle.
+
+### How do Detection Mode and the CarPlay auto-start toggle interact?
+
+They're independent. **Detection Mode** (Settings → Detection Mode → Manual or Automatic) controls motion-based auto-detect. The **Auto-start trip on CarPlay connect** toggle controls whether connecting to a paired vehicle starts a trip on its own. You can mix them however you want:
+
+<table>
+  <thead>
+    <tr><th>Detection Mode</th><th>CarPlay auto-start</th><th>What you get</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Automatic</strong></td><td><strong>ON</strong> (default)</td><td>Trip auto-starts the instant you connect to a paired vehicle. For unpaired drives (Ubers, borrowed cars), motion-based detection still catches the trip after about 30 seconds. CarPlay wins on speed when both apply.</td></tr>
+    <tr><td><strong>Automatic</strong></td><td><strong>OFF</strong></td><td>Motion-only. Trips auto-start after about 30 seconds of confirmed driving. Works without any vehicle pairing.</td></tr>
+    <tr><td><strong>Manual</strong></td><td><strong>ON</strong></td><td>CarPlay-trigger still fires for paired vehicles. Motion is ignored. Useful if you want manual control everywhere except your work truck.</td></tr>
+    <tr><td><strong>Manual</strong></td><td><strong>OFF</strong></td><td>Pure manual. Nothing auto-starts; you tap Start, drive, tap End.</td></tr>
+  </tbody>
+</table>
+
+Both auto-start paths check whether a trip is already recording before starting one — they won't double-start. There's also a per-vehicle filter under **Settings → Vehicles** ("Only auto-detect when this vehicle's CarPlay is connected") that silences motion-based detection unless that vehicle's CarPlay or Bluetooth is currently connected — useful for stopping passenger rides from being logged as drives.
 
 ### How do I export to QuickBooks Online or Excel?
 
@@ -277,7 +304,7 @@ We read every email. We don't promise to build everything (we're keeping the app
       "name": "Can I import data from MileIQ, Everlance, or another app?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Milely imports CSV exports from MileIQ, Everlance, and TripLog. Export a CSV from your old app, then in Milely go to Settings → Setup → Import, pick the file, and confirm. Milely auto-detects the source format from the file's header row and shows a preview of detected trips before applying. Imported trips arrive as personal/unclassified by default — bulk-reassign business in the Logs tab."
+        "text": "Yes. Milely imports CSV exports from MileIQ, Everlance, and TripLog. Export a CSV from your old app, then in Milely go to Settings → Setup → Import, pick the file, and confirm. Milely auto-detects the source format from the file's header row and shows a preview of detected trips before applying. Imported trips arrive Excluded from your annual report by default — Include and assign a business in bulk via the Logs multi-select."
       }
     },
     {
@@ -285,7 +312,7 @@ We read every email. We don't promise to build everything (we're keeping the app
       "name": "How do I delete a single trip?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Two ways: long-press a row in the Logs tab and tap Delete trip in the menu (quickest); or open the trip detail screen and tap Delete Trip at the bottom. Swipe-left no longer deletes — it now locks the trip as Personal in one motion. Locked trips cannot be deleted until you unlock them."
+        "text": "Two ways: long-press a row in the Logs tab and tap Delete trip in the menu (quickest); or open the trip detail screen and tap Delete Trip at the bottom. Swipe-left no longer deletes — it now Excludes the trip from your annual report. Saved trips auto-lock and can't be deleted until you unlock them from the trip's detail page."
       }
     },
     {
@@ -317,15 +344,31 @@ We read every email. We don't promise to build everything (we're keeping the app
       "name": "What is Audit Lock?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "On January 31 each year, Milely automatically locks the previous year's trips so you can't accidentally edit them mid-audit. A small lock icon shows on locked trips. If you legitimately need to amend a return, open the trip from the Logs tab, tap Unlock for editing, and make the change. The unlock and any edits that follow are written to the trip's Edit history with timestamps."
+        "text": "On January 31 each year, Milely automatically locks the previous year's trips so you can't accidentally edit them mid-audit. A year-end-lock banner appears at the top of the Reports tab on and after January 31 so you can see at a glance that the year is sealed. If you legitimately need to amend a return, open the trip from the Logs tab, tap Unlock for editing, and make the change. The unlock and any edits that follow are written to the trip's Edit history with timestamps."
       }
     },
     {
       "@type": "Question",
-      "name": "Can I lock individual trips before the year ends?",
+      "name": "How does locking work?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. On the Logs tab, swipe right on any active trip to lock it. Locked trips can't be edited or deleted — useful the moment a trip is correct and you don't want to fat-finger it later. To unlock, tap the trip and tap Unlock for editing at the bottom of the detail page. Every lock and unlock event is recorded in the trip's Edit history alongside any field-level changes, so the full timeline is always there if your CPA asks how a record evolved."
+        "text": "Every trip auto-locks the moment you save it — no extra step, no chance to forget. Locked trips can't be edited or deleted accidentally. To make a legitimate change, tap the trip and tap Unlock for editing at the bottom of the detail page, then save again to re-lock. Every unlock and every field-level change is recorded in the trip's Edit history with timestamps, so the full timeline is always there if your CPA asks how a record evolved."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens when I disconnect from CarPlay mid-drive?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Settings → Detection Mode → Disconnect behavior has two options. Pause low-power GPS (recommended) drops Milely to a low-power state when you disconnect, pausing the trip without draining your battery; the trip resumes automatically when you reconnect — best for stop-and-go workdays. Keep recording continues full-resolution logging after disconnect — useful when a drive continues in a different vehicle or arrives on foot. Either way, reconnecting to a different paired vehicle mid-trip prompts you to stop the current trip and start a new one."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do Detection Mode and the CarPlay auto-start toggle interact?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "They're independent. Detection Mode (Manual or Automatic) controls motion-based auto-detect; the Auto-start trip on CarPlay connect toggle controls whether connecting to a paired vehicle starts a trip on its own. Four useful combinations: Automatic + CarPlay-trigger ON (default) — both paths active, CarPlay wins on speed for paired drives, motion-based detection is the fallback for unpaired drives like Ubers or borrowed cars. Automatic + CarPlay-trigger OFF — motion only, about a 30-second arming window. Manual + CarPlay-trigger ON — CarPlay-trigger fires for paired vehicles only, motion is ignored, useful for hands-off recording on a work truck plus manual control everywhere else. Manual + CarPlay-trigger OFF — pure manual. A per-vehicle filter under Settings → Vehicles can also restrict motion-based detection to only fire when a specific vehicle's CarPlay is connected."
       }
     },
     {

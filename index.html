@@ -78,14 +78,13 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
   <h1>
     <span class="hero-rank">#1</span>
     <!--
-      Non-breaking spaces (&nbsp;) lock "Small-Company Mileage" together
-      and "Tracking App" together. The only space the browser can break
-      on is between "Mileage" and "Tracking" — so on mobile the headline
-      always wraps cleanly to two lines (SMALL-COMPANY MILEAGE / TRACKING
-      APP), never mid-phrase or after "Tracking". On desktop where it
-      all fits on one line, no break happens.
+      Non-breaking space locks "Small-Company Mileage" together. The
+      only break point is between "Mileage" and "App" — so on mobile
+      the headline wraps to two clean lines (SMALL-COMPANY MILEAGE /
+      APP), never mid-phrase. On desktop where it all fits on one line,
+      no break happens.
     -->
-    <span class="hero-claim">Small-Company&nbsp;Mileage Tracking&nbsp;App</span>
+    <span class="hero-claim">Small-Company&nbsp;Mileage App</span>
     <span class="hero-coda">for privacy.</span>
   </h1>
   <p class="tagline">Track mileage for business deductions.<br/>On your iPhone. Never on our servers.</p>
@@ -245,24 +244,25 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
 </section>
 
 <!--
-  Spotlight — Personal trips as a first-class category (warm).
-  Personal isn't just a swipe-left lock action; it's its own
-  Quick Start tile on the Dashboard with parity to business
-  flows (green dot in Logs, simplified Classify form). Sits
-  between Smart Suggestions and Audit so the narrative goes:
-  "Milely classifies → Personal is its own first-class lane →
-  the audit trail is clean."
+  Spotlight — Include / Exclude two-state model (warm).
+  Round-3 (2026-04) collapsed the older "Personal as a separate
+  first-class state" framing into a clean two-state model: every
+  trip is either Included in the annual report or Excluded from
+  it. Personal is now a regular item in the business picker, not
+  a parallel concept. Sits between Smart Suggestions and Audit so
+  the narrative goes: "Milely classifies → every trip is in or
+  out → the audit trail is clean."
 -->
 <section class="spot spot-warm">
   <div class="spot-inner">
     <div class="spot-text">
-      <span class="spot-eyebrow">Personal trips, first-class</span>
-      <h2>Personal trips, kept side by side.</h2>
-      <p>Tap the green Personal tile on the Dashboard to start a personal drive directly. Not every trip is deductible, and Milely keeps both records together so your business log stays clean.</p>
-      <p>Personal trips show with a green dot in Logs, alongside the colored chips for each business — so you can see the full picture at a glance. The Classify form for a Personal trip is simplified: no business purpose required, no deduction shown.</p>
+      <span class="spot-eyebrow">Include or exclude — never gray</span>
+      <h2>Every trip is either in your report, or kept aside.</h2>
+      <p>No "to-do" pile. No half-classified rows haunting your dashboard. Every trip Milely records is either part of your annual report or kept aside for your records — and you can flip between the two with one swipe.</p>
+      <p>Swipe right in Logs to <strong>Include</strong> a trip in your annual report. Swipe left to <strong>Exclude</strong> it (gym runs, school pickups, the Costco trip). Excluded trips stay in your records, but they're kept out of every deduction total — Reports, Dashboard, exports.</p>
     </div>
     <div class="spot-art">
-      <img class="spot-shot" src="/assets/screenshots/hero-1-dashboard.png" alt="Milely Dashboard showing the green Personal Quick Start tile alongside the business shortcuts" />
+      <img class="spot-shot" src="/assets/screenshots/hero-1-dashboard.png" alt="Milely Dashboard with monthly deduction card and Quick Start row" />
     </div>
   </div>
 </section>
@@ -278,13 +278,12 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
     <div class="spot-text">
       <span class="spot-eyebrow">Audit-defensive by design</span>
       <h2>Make your life boring if the IRS ever wants to see.</h2>
-      <p>Six audit-trail features, on by default, no add-on tier:</p>
+      <p>Five audit-trail features, on by default, no add-on tier:</p>
       <ul class="spot-bullets">
-        <li><strong>Audit Lock (automatic)</strong>January 31 each year, the prior year's trips lock automatically so you can't accidentally edit them mid-audit. Unlocking is a deliberate two-tap action that writes a timestamped event to the trip's edit history.</li>
-        <li><strong>Per-trip lock (manual)</strong>Lock individual trips the moment they're correct. Swipe right on an active trip in the Logs tab to lock it as business — the trip is frozen, can't be edited or deleted, and every lock event is captured in the trip's edit history. To unlock, tap the trip and tap <em>Unlock for editing</em> at the bottom of the detail page.</li>
-        <li><strong>Personal vs Business in one swipe</strong>Auto-detect can pick up the gym run, the school pickup, the Costco trip. Swipe left on a row in Logs to lock it as Personal in one motion — the trip stays in your records but is excluded from every deduction total (Reports, Dashboard, exports). To flip a Personal trip back to Business, tap the trip → <em>Unlock for editing</em> → <em>Mark as business</em> at the bottom of the detail page.</li>
-        <li><strong>Per-trip edit history</strong>Every field-level change records a <em>TripEditEvent</em> with timestamp, old value, and new value.</li>
-        <li><strong>Trip recovery if the app is killed</strong>If your phone runs out of memory or the app force-quits mid-trip, you'll see a <em>Recover trip in progress?</em> prompt the next time you open Milely. Your route, distance, and time so far are preserved — nothing is lost.</li>
+        <li><strong>Auto-lock on save</strong>The moment you save a classified trip, it locks itself — no extra tap, no chance to forget. Every later change is captured in the trip's edit history with a timestamp and the old/new value.</li>
+        <li><strong>Audit Lock (automatic)</strong>On January 31 each year, the prior year's trips lock automatically so you can't accidentally edit them mid-audit. A year-end-lock banner appears in the Reports tab so you can see the year is sealed at a glance. Unlocking any individual trip is a deliberate two-tap action that writes a timestamped event to the trip's edit history.</li>
+        <li><strong>Per-trip edit history</strong>Every field-level change records a <em>TripEditEvent</em> with timestamp, old value, and new value — visible from the trip's detail view, so the full timeline is always there if your CPA asks how a record evolved.</li>
+        <li><strong>Trip recovery if iOS reclaims memory mid-drive</strong>If your phone runs out of memory or the app force-quits mid-trip, you'll see a <em>Recover trip in progress?</em> prompt the next time you open Milely. Your route, distance, and time so far are preserved — nothing is lost.</li>
         <li><strong>Year-end odometer reconciliation</strong>IRS Form 2106 / Schedule C-aligned readings, reconciled against actual miles logged.</li>
       </ul>
     </div>
@@ -343,7 +342,7 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
     </div>
     <div class="feature feature-green">
       <h3>Weekly review reminder</h3>
-      <p>Pick a day in Settings (Sunday by default). At 6 PM that day, if you have unclassified trips, Milely pings you. If everything's classified, it stays silent. Five minutes a week.</p>
+      <p>Pick a day in Settings (Sunday by default). At 6 PM that day, if you have trips waiting on Include/Exclude, Milely pings you. If everything's reviewed, it stays silent. Five minutes a week.</p>
     </div>
     <div class="feature feature-purple">
       <h3>"I forgot for three weeks."</h3>
@@ -359,7 +358,8 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
     </div>
     <div class="feature feature-orange">
       <h3>CarPlay vehicle pairing</h3>
-      <p>Pair each vehicle to its CarPlay or car Bluetooth. Auto-detect can be scoped to a specific car (so it doesn't fire when you're a passenger). On manual mode, pause GPS when you disconnect (do work between drives) and resume when you reconnect — connecting to a different paired car prompts you to stop or continue the trip.</p>
+      <p>Pair each vehicle to its CarPlay or car Bluetooth. Auto-detect can be scoped to a specific car (so it doesn't fire when you're a passenger). Choose what happens on disconnect — <strong>pause low-power GPS</strong> to save battery between stops, or <strong>keep recording</strong> so you don't miss a leg. Connecting to a different paired car mid-trip prompts you to stop or continue.</p>
+      <p class="feature-sub">CarPlay-trigger works in <strong>both Manual and Automatic modes</strong> — they're independent. Pick Manual + CarPlay-trigger if you want hands-off recording for your paired vehicles only and manual control everywhere else.</p>
     </div>
     <div class="feature feature-sky">
       <h3>Switching from MileIQ, Everlance, or TripLog?</h3>
@@ -399,7 +399,7 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
           <li><span class="check">✓</span> Automatic cloud backup (iCloud / Google Drive / Dropbox / OneDrive)</li>
           <li><span class="check">✓</span> Branded map route (Milely's gradient instead of Apple blue)</li>
           <li><span class="check">✓</span> Live Activity, Dynamic Island, Widget, Watch, Siri Shortcuts</li>
-          <li><span class="check">✓</span> Trip Templates, calendar suggestions, vehicle auto-detect</li>
+          <li><span class="check">✓</span> Trip Templates, calendar suggestions, vehicle auto-detect with disconnect behavior</li>
           <li><span class="check">✓</span> Tax bracket setting → estimated savings ticker</li>
           <li><span class="check">✓</span> Priority email support — front of the queue</li>
         </ul>
@@ -594,6 +594,14 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Yes — Automatic mode uses iOS motion and significant-location-changes APIs to detect trip start and end, then records the route in the background. Manual mode is also available if you'd rather start and stop trips yourself. Automatic mode and CarPlay-trigger detection both work even after iOS has shut Milely down to free memory: when you start your next drive, iOS wakes the app via a significant location change, Milely re-checks your CarPlay or Bluetooth connection, and starts the trip if your paired vehicle is connected. The exception is that if you explicitly force-quit Milely (swipe up in the app switcher), iOS won't relaunch it — that's a system policy that no app can override."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does CarPlay auto-start work in Manual mode?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Detection Mode (Manual or Automatic) and the Auto-start trip on CarPlay connect toggle are independent settings. Pick Manual + CarPlay-trigger ON if you want hands-off recording for your paired vehicles only, with manual control everywhere else. Or Automatic + CarPlay-trigger OFF if you want motion-based detection without the CarPlay shortcut. The combinations: Automatic + CarPlay-trigger ON (default) — both paths active, CarPlay wins on speed for paired drives, motion is the fallback for unpaired drives. Automatic + CarPlay-trigger OFF — motion only. Manual + CarPlay-trigger ON — CarPlay-trigger only, motion ignored. Manual + CarPlay-trigger OFF — pure manual."
       }
     }
   ]
