@@ -25,8 +25,8 @@ Help with Milely. If your question isn't answered below, email **milely@smileycr
 
 **What stays free forever after the trial ends:** every trip you recorded keeps living on your phone. View, edit, classify, and re-export PDF / CSV / JSON / Excel / QuickBooks Online any time, no subscription needed. Recording *new* trips is what requires a subscription.
 
-A subscription unlocks:
-- **Recording new trips** — the 7-day trial gives you all features unlocked while you decide
+**Unlocked during your 7-day trial AND with a subscription** (the trial really is the full app — every feature, no card required to start):
+- **Recording new trips** — without limit; gated only after the trial expires
 - **Smart Suggestions** — on-device CoreML pattern learning that pre-fills business + purpose based on your past classifications (never leaves your phone)
 - **Auto-classify rules** — "Always business at this address" / "Always personal" one-tap rules
 - **Favorite trips** — save recurring drives as one-tap shortcuts on the Dashboard
@@ -235,7 +235,7 @@ We read every email. We don't promise to build everything (we're keeping the app
       "name": "How much does Milely cost?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Try Milely free for 7 days, fully unlocked. The trial timer starts on your first recorded trip — not on app install. After the trial, a single subscription: $3.99/month or $29.99/year (annual saves about 37%). All trips you've already recorded stay viewable, editable, and exportable forever — recording new trips is what requires a subscription. A one-time $69.99 Lifetime option is available inside the app at Settings → Subscribe → Other options."
+        "text": "Try Milely free for 7 days with every feature unlocked — unlimited trips, all eight themes, receipts, branded PDFs, automatic cloud backup. The trial timer starts on your first recorded trip — not on app install. After the trial, a single subscription: $3.99/month or $29.99/year (annual saves about 37%). All trips you've already recorded stay viewable, editable, and exportable forever — recording new trips is what requires a subscription. A one-time $69.99 Lifetime option is available inside the app at Settings → Subscribe → Other options."
       }
     },
     {

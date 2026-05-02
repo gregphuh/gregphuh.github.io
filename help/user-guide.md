@@ -266,7 +266,7 @@ It's organized top to bottom:
 - **Vehicle chips.** Pick which vehicle you drove. Auto-fills from your CarPlay/Bluetooth pairing if matched, otherwise from your default vehicle.
 - **I was driving toggle.** Default ON. Turn off if you were a passenger (Uber, ride-along, carpool). Off marks the trip Personal so it doesn't count toward your deduction.
 - **Round trip toggle.** Default OFF. Turn on if you'll drive the same route back — Milely doubles the miles and saves it as one record.
-- **Receipts row.** Subscriber feature. See [Receipts](#receipts).
+- **Receipts row.** Unlocked during the 7-day trial; a subscriber feature thereafter. See [Receipts](#receipts).
 - **Ready to save** summary. The final values that will be saved if you hit Save Trip.
 - **Save Trip** button. Shows the deduction amount when you tap it (e.g. "Save Trip · $12.40"), unless the trip is Personal — Personal saves just say "Save Trip." Saving auto-locks the trip — there's no separate manual lock action anymore. To edit a saved trip, open it from Logs and tap **Unlock for editing** in the trip detail view.
 - **Skip for now** button. The trip lands in Logs auto-locked and Included in the annual report, with no business attached. You can assign a business later by opening it in Logs, tapping **Unlock for editing**, and picking a business.
@@ -326,7 +326,7 @@ This gives you two clean modes: Personal as a first-class option in the picker, 
 
 ## Receipts
 
-Snapping receipts to your trips makes audit responses trivial. Milely supports receipts as a subscriber feature.
+Snapping receipts to your trips makes audit responses trivial. Receipts are unlocked during your 7-day trial; after the trial, they're a subscriber feature.
 
 ### Adding a receipt
 
@@ -530,7 +530,7 @@ If a build fails (rare — usually a disk-space or temporary issue), you'll see 
 Same four formats listed in [Reports](#reports). A few extras you should know:
 
 - **Every export format** — PDF, CSV (Milely + QuickBooks Online), Excel, JSON — works during the trial and stays available forever for trips you've already recorded. The only subscription-gated action is recording **new** trips.
-- **PDF cover page** includes your business logo and brand color (subscriber feature — Settings → Branding) and per-vehicle odometer reconciliation (Jan 1 and Dec 31 readings if you've filled them in on each vehicle).
+- **PDF cover page** includes your business logo and brand color (unlocked during the 7-day trial; a subscriber feature thereafter — Settings → Branding) and per-vehicle odometer reconciliation (Jan 1 and Dec 31 readings if you've filled them in on each vehicle).
 - **CSV files** are UTF-8 with a header row. They open in any spreadsheet app.
 - **Excel files** are .xls (legacy format) for maximum compatibility. They open in Numbers, modern Excel, Google Sheets, and LibreOffice.
 
@@ -691,7 +691,7 @@ Pick from 8 color themes:
 - **Forest.** Deep forest greens with sage and wheat-gold accents.
 - **Mint.** Soft mint as the brand voice with warm orange accents on white.
 
-Warm is the default for everyone. The other seven require an active subscription. The picker also has a "Match iOS Dark Mode" option — pick a dark theme and a light sibling, and Milely auto-switches based on your phone's system mode.
+All eight themes are unlocked during your 7-day free trial — try them all. After the trial, Warm stays the default free theme; the other seven require an active subscription. The picker also has a "Match iOS Dark Mode" option (also unlocked during trial) — pick a dark theme and a light sibling, and Milely auto-switches based on your phone's system mode.
 
 <!-- SCREENSHOT NEEDED: Settings → Theme picker showing all eight color theme swatches -->
 

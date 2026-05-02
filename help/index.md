@@ -305,7 +305,7 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 ---
 
-<h2 id="receipts">15. Receipts (subscribers)</h2>
+<h2 id="receipts">15. Receipts (free during trial, then subscribers)</h2>
 
 <div class="how-row">
 <div class="how-text">
@@ -345,11 +345,11 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 <p><strong>Manual export</strong> is always free: <em>Settings → Manual Export</em> gives you a JSON backup file via the iOS share sheet — email it, AirDrop it, drop it in Files. Any time, no subscription needed.</p>
 
-<p><strong>Automatic cloud backup (subscribers):</strong> point Milely at <strong>iCloud Drive, Google Drive, Dropbox, or OneDrive</strong> via the iOS Files picker, and it writes a fresh backup on a schedule. Your data goes to <em>your</em> cloud folder — Milely doesn't proxy it, doesn't index it, doesn't see it.</p>
+<p><strong>Automatic cloud backup</strong> (unlocked during the 7-day trial, then a subscriber feature): point Milely at <strong>iCloud Drive, Google Drive, Dropbox, or OneDrive</strong> via the iOS Files picker, and it writes a fresh backup on a schedule. Your data goes to <em>your</em> cloud folder — Milely doesn't proxy it, doesn't index it, doesn't see it.</p>
 
 <p><strong>Restoring on a new iPhone:</strong> reinstall Milely → open the backup file from Files → tap "Open in Milely". Done.</p>
 </div>
-<div class="how-img"><img src="/assets/screenshots/backup.png" alt="Settings screen showing the Backup section with Cloud Backup (subscribers) and Manual Export options" /></div>
+<div class="how-img"><img src="/assets/screenshots/backup.png" alt="Settings screen showing the Backup section with Cloud Backup (free during trial, then subscriber) and Manual Export options" /></div>
 </div>
 
 ---
@@ -358,7 +358,7 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 <div class="how-row">
 <div class="how-text">
-<p>Milely ships with eight color themes. <strong>Warm</strong> (the default) is free for everyone. The other seven are subscriber perks:</p>
+<p>Milely ships with eight color themes. <strong>All eight are unlocked during your 7-day free trial.</strong> After the trial, <strong>Warm</strong> (the default) stays free for everyone; the other seven are subscriber perks:</p>
 
 <p>Listed in the same order as the in-app picker — dark and light siblings paired:</p>
 
