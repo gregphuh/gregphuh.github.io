@@ -763,6 +763,89 @@
     .stat-num { font-size: 36px; }
   }
 
+  /* Editorial pull-quote moment between the stat strip and the
+     first spotlight panel. Quiet, centered, single big number in
+     Fraunces italic gradient — same treatment as the hero "#1"
+     rank so the page has a single editorial-cover voice instead
+     of "stat strip + Inter copy" dominating the typography. The
+     italic Fraunces caption underneath reads like a magazine
+     deck; the Inter body line below is the explanatory caption. */
+  .deduction-moment {
+    background: var(--bg);
+    padding: 96px 24px 88px;
+  }
+  .deduction-moment-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .deduction-eyebrow {
+    display: inline-block;
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--burnt);
+    margin-bottom: 24px;
+  }
+  .deduction-num {
+    font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-weight: 900;
+    font-size: clamp(80px, 13vw, 144px);
+    line-height: 1.0;
+    letter-spacing: -0.04em;
+    background: linear-gradient(135deg, var(--yellow) 0%, var(--burnt) 75%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 8px 20px rgba(194, 65, 12, 0.16));
+    margin-bottom: 18px;
+    /* Slight nudge — italic Fraunces 900 tilts right; without a
+       bit of left padding the leading "$" reads pushed against
+       the eyebrow's optical center. */
+    padding-left: 0.04em;
+  }
+  .deduction-plus {
+    font-size: 0.55em;
+    vertical-align: 0.32em;
+    letter-spacing: -0.02em;
+    /* The "+" inherits the gradient via -webkit-background-clip
+       on the parent; no separate background needed. */
+  }
+  .deduction-caption {
+    font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+    font-weight: 500;
+    font-size: clamp(18px, 2.4vw, 24px);
+    line-height: 1.4;
+    color: var(--muted);
+    max-width: 600px;
+    margin: 0 auto 24px;
+  }
+  .deduction-caption em {
+    font-style: italic;
+  }
+  .deduction-body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--muted);
+    max-width: 560px;
+    margin: 0 auto;
+  }
+  .deduction-body strong {
+    color: var(--text);
+    font-weight: 700;
+  }
+  @media (max-width: 720px) {
+    .deduction-moment { padding: 64px 20px 56px; }
+    .deduction-eyebrow { font-size: 11px; margin-bottom: 18px; }
+    .deduction-num { font-size: 72px; margin-bottom: 14px; }
+    .deduction-caption { font-size: 17px; margin-bottom: 18px; }
+    .deduction-body { font-size: 14px; }
+  }
+
   /* Privacy-first banner — thin full-bleed vermillion strip that
      introduces the privacy panel. Modeled on .stat-strip's
      full-bleed pattern; brand vermillion background, all-caps

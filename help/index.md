@@ -427,7 +427,7 @@ Manual mode only consumes battery while a trip is recording (~3% per hour). Auto
 
 <details>
 <summary><strong>How does Automatic mode work?</strong></summary>
-Settings → <strong>Trip Settings</strong> → switch to <strong>Automatic</strong>. Milely uses motion + GPS to detect when you start driving, records the route in the background, and notifies you to classify after the trip ends. Requires "Always Allow" location and Motion &amp; Fitness permissions. Automatic mode and CarPlay-trigger detection both keep working even after iOS has shut Milely down to free memory: when your next drive begins, iOS wakes the app via a significant location change, Milely re-checks your CarPlay or Bluetooth connection, and starts the trip if your paired vehicle is connected. The exception is force-quit — if you swipe up in the app switcher to kill Milely, iOS treats that as the user explicitly disabling background activity and won't relaunch the app until you open it again. That's a system-wide iOS rule no app can override.
+Settings → <strong>Trip Settings</strong> → switch to <strong>Automatic</strong>. Milely uses motion + GPS to detect when you start driving, records the route in the background, and notifies you to classify after the trip ends. By default it's aggressive: every drive auto-records — motion alone is enough, even without CarPlay. The trade-off is that occasional passenger rides (Ubers, riding with a friend) also record; you swipe-left in Logs to Exclude them. If you'd rather restrict auto-recording to drives in one specific paired vehicle, flip the <strong>Require Paired Vehicle</strong> toggle (motion AND paired CarPlay both required). Requires "Always Allow" location and Motion &amp; Fitness permissions. Automatic mode and CarPlay-trigger detection both keep working even after iOS has shut Milely down to free memory: when your next drive begins, iOS wakes the app via a significant location change. The exception is force-quit — if you swipe up in the app switcher to kill Milely, iOS treats that as the user explicitly disabling background activity and won't relaunch the app until you open it again. That's a system-wide iOS rule no app can override.
 </details>
 
 <details>
@@ -438,13 +438,15 @@ Settings → <strong>Trip Settings</strong> → switch to <strong>Automatic</str
     <tr><th>Mode</th><th>CarPlay auto-start</th><th>What you get</th></tr>
   </thead>
   <tbody>
-    <tr><td><strong>Automatic</strong></td><td><strong>ON</strong> (default)</td><td>Trip auto-starts the instant you connect to a paired vehicle. For unpaired drives (Ubers, borrowed cars), motion-based detection still catches the trip. CarPlay wins on speed when both apply.</td></tr>
+    <tr><td><strong>Automatic</strong></td><td><strong>ON</strong> (default)</td><td>Trip auto-starts the instant you connect to a paired vehicle (no motion check — CarPlay alone is enough). For drives Milely doesn't recognize (Ubers, borrowed cars), motion-based detection still catches the trip — every drive auto-records by default. Swipe-left in Logs to Exclude any rides that weren't yours.</td></tr>
     <tr><td><strong>Automatic</strong></td><td><strong>OFF</strong></td><td>Motion-only. Works without any vehicle pairing.</td></tr>
     <tr><td><strong>Manual</strong></td><td><strong>ON</strong></td><td>CarPlay-trigger still fires for paired vehicles. Motion is ignored. Useful if you want manual control everywhere except your work truck.</td></tr>
     <tr><td><strong>Manual</strong></td><td><strong>OFF</strong></td><td>Pure manual. Nothing auto-starts; you tap Start, drive, tap End.</td></tr>
   </tbody>
 </table>
-<p>Both auto-start paths check whether a trip is already recording before starting one — they won't double-start. The Vehicle list under Settings → Vehicles also acts as the motion-detect arming gate: if you have at least one paired vehicle, motion-based detection only arms when one of those vehicles is the live audio route, so passenger rides in someone else's car stay silent.</p>
+<p>Both auto-start paths check whether a trip is already recording before starting one — they won't double-start.</p>
+<p><strong>Want to restrict auto-recording to one specific vehicle?</strong> Flip the <strong>Require Paired Vehicle</strong> toggle in Settings → Trip Settings → Automatic. With it on, Milely only auto-records when motion confirms automotive activity AND a paired vehicle is the live audio route — both conditions, not either. Default is OFF (aggressive) because most users net out ahead by capturing every business mile and excluding the rare passenger ride after the fact.</p>
+<p><strong>Mid-trip CarPlay attribution.</strong> If a motion-only trip is recording and your phone later connects to a paired vehicle, Milely picks up the CarPlay attribution mid-trip — disconnecting later still triggers pause-on-disconnect, the same as a trip that started on CarPlay.</p>
 </details>
 
 <details>

@@ -181,8 +181,8 @@ In Automatic mode, Milely watches for driving even when you haven't tapped Start
 How it works (in plain terms): Milely runs a three-stage state machine.
 
 1. **IDLE.** No trip recording. Only iOS's *significant location change* API is listening — that's a low-power signal iOS sends apps when the phone has moved a meaningful distance, typically a few hundred meters. Negligible battery drain.
-2. **ARMED.** The moment iOS's motion classifier reports automotive activity, Milely flips to ARMED. Full GPS turns on so distance can accumulate, but no trip is recorded yet. The state machine is waiting on confirmation: speed sustained above a threshold, distance traveled, time elapsed.
-3. **RECORDING.** Once thresholds are met, the trip starts. The threshold values relax when you're connected to a paired vehicle's CarPlay (UID match is ground truth — we don't need conservative motion-classifier filters). Without CarPlay, thresholds are stricter to avoid false positives from walking or transit.
+2. **ARMED.** The moment iOS's motion classifier reports automotive activity AND you're *not* connected to a paired vehicle's CarPlay, Milely flips to ARMED. Full GPS turns on so distance can accumulate, but no trip is recorded yet. The state machine confirms on a low bar — about 5 seconds of sustained motion at walking-plus speed (~2 mph) and ~50 meters traveled. Aggressive on purpose: a missed real drive costs more in lost deductions than an occasional false positive, and you can swipe-left in Logs to Exclude any rides that weren't yours.
+3. **RECORDING.** Once thresholds are met, the trip starts. **Paired-vehicle fast-path:** if your phone is connected to a paired vehicle's CarPlay or car-Bluetooth audio route at the moment motion confirms automotive activity, Milely skips ARMED entirely and goes straight to RECORDING — UID match is ground truth, no need to gate on motion thresholds.
 
 Recording continues until you've been stopped long enough (the **End Trip After Sitting Still** timeout in Settings → Trip Settings → Universal) and CarPlay isn't connected. Then the trip ends automatically and iOS sends you a notification — "Trip ended, tap to classify." Whether you tap or not, the trip is saved (it lands in Logs marked **Unclassified** until you classify it).
 
@@ -214,14 +214,16 @@ The mode (Manual or Automatic) and the **Auto-Start Trip on CarPlay Connect** to
 
 | Mode | CarPlay auto-start | What you get |
 |---|---|---|
-| **Automatic** | **ON** (default) | Trip auto-starts the instant you connect to a paired vehicle. If you're driving something Milely doesn't know about (Uber, borrowed car), motion-based detection still catches the trip. CarPlay wins on speed when both apply. |
-| **Automatic** | **OFF** | Motion-only. Trips auto-start once Milely confirms driving. Works without any vehicle pairing. |
+| **Automatic** | **ON** (default) | Trip auto-starts the instant you connect to a paired vehicle (no motion check — CarPlay alone is enough). If you're driving something Milely doesn't recognize (Uber, borrowed car), motion-based detection still catches the drive — every drive auto-records by default. Swipe-left in Logs to Exclude rides that weren't yours. |
+| **Automatic** | **OFF** | Motion-only. Trips auto-start once motion confirms automotive activity (~5 seconds). Works without any vehicle pairing. |
 | **Manual** | **ON** | CarPlay-trigger still fires for paired vehicles. Motion is ignored. Useful if you want manual control everywhere except your work truck — connect to the truck and a trip starts automatically; everywhere else you tap Start. |
 | **Manual** | **OFF** | Pure manual. Nothing auto-starts; you tap Start, drive, tap End. |
 
 Both auto-start paths check whether a trip is already recording before starting one — they won't double-start. If both paths could fire (you connect to CarPlay AND the motion classifier sees driving), CarPlay almost always wins because it's instant; motion takes longer to confirm automotive activity.
 
-The Vehicle list under Settings → Vehicles also acts as the motion-detect arming gate. With at least one paired vehicle in the list, motion-based detection only arms when one of those vehicles is the live audio route — so passenger rides in your spouse's car or someone else's Uber stay silent automatically. With no vehicles in the list, motion-detect arms on any drive (permissive default for first-time users).
+**Require Paired Vehicle (opt-in restrictive mode).** If your business driving is in one specific paired vehicle and you'd rather not record anything else, flip the **Require Paired Vehicle** toggle in Settings → Trip Settings → Automatic. With it on, Milely only auto-records when motion confirms automotive activity AND a paired vehicle is the live audio route — both conditions, not either. The CarPlay-trigger path is suppressed in this mode (the motion path handles the AND combination via its arming gate). Default is OFF (aggressive) because most users net out ahead by capturing every business mile and excluding the rare passenger ride after the fact.
+
+**Mid-trip CarPlay attribution.** If a motion-only trip is already recording and your phone later connects to a paired vehicle — say, you walked to the corner, then got into your truck — Milely picks up the CarPlay attribution mid-trip. Disconnecting later (engine off, phone leaves the car) still triggers pause-on-disconnect, the same as a trip that started on CarPlay.
 
 <!-- SCREENSHOT NEEDED: Settings → Trip Settings showing the mode tiles and the CarPlay auto-start toggle in their cards -->
 
@@ -576,7 +578,7 @@ The vehicle edit sheet has a **Vehicle Pairing** section that shows the current 
 - **Different vehicle connected.** Appears when you're on a paired route that belongs to a different vehicle in your list. Lets you switch the trip vehicle if needed.
 - **Pairing broken.** Appears when the saved pairing's UID can't match the live route — usually means iOS swapped UIDs (wireless ↔ wired). Re-pair to refresh.
 
-The Vehicle list itself is the **motion-detect arming gate**: with at least one paired vehicle, motion-based detection only arms when one of those vehicles is the live audio route — so passenger rides in someone else's car stay silent. With an empty Vehicle list, motion-detect arms on any drive.
+In the default (aggressive) configuration, motion-based detection arms on any drive — paired vehicle or not — so passenger rides in someone else's car *do* record by default. The expectation is you swipe-left in Logs to Exclude any rides that weren't yours. To restrict motion-based detection to only fire when one of your paired vehicles is the live audio route, flip the **Require Paired Vehicle** toggle in Settings → Trip Settings → Automatic.
 
 ### Pairing a CarPlay or Bluetooth device
 
