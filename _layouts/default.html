@@ -16,7 +16,24 @@
   frame-ancestors only works as a real header, so we use frame-src
   + child-src locally).
 -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data:; script-src 'self' 'unsafe-inline'; connect-src 'self'; frame-src 'none'; child-src 'none'; base-uri 'self'; form-action 'none'; object-src 'none'" />
+<!--
+  CSP — 2026-05-02 (security audit) tightening:
+    1. Removed `https://fonts.googleapis.com` from style-src and
+       `https://fonts.gstatic.com` from font-src — fonts are now
+       self-hosted (see /assets/fonts/), so the only allowed CSS +
+       font origin is 'self'. Closes the Google-as-third-party data
+       leak (every visitor's IP + UA was being sent to Google to
+       fetch the font CSS).
+    2. Removed `'unsafe-inline'` from script-src — the only <script>
+       tags on the site are <script type="application/ld+json"> blocks
+       which browsers don't execute as JS, so the directive was doing
+       nothing useful while leaving an inline-XSS escape hatch open.
+    `'unsafe-inline'` stays on style-src because the inline <style>
+    block in this layout is large; switching to nonces/hashes would
+    add complexity without a clear win on a static site with no
+    user-supplied content.
+-->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:; script-src 'self'; connect-src 'self'; frame-src 'none'; child-src 'none'; base-uri 'self'; form-action 'none'; object-src 'none'" />
 <title>{% if page.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }} · {{ site.description }}{% endif %}</title>
 <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
 <link rel="canonical" href="{{ page.url | absolute_url }}" />
@@ -26,16 +43,16 @@
 <link rel="apple-touch-icon" href="/assets/icon.png" />
 
 {%- comment -%}
-  Network hints. preconnect: open the connection now (DNS + TLS) for
-  origins we definitely need on every page (Google Fonts). dns-prefetch
-  is the cheaper variant — just resolve DNS — for origins we link to
-  but don't fetch resources from on initial load (App Store badge link
-  goes to apps.apple.com).
+  Network hints. 2026-05-02 (security audit): the Google Fonts
+  preconnects and stylesheet load were removed when the three font
+  families (Inter, Space Grotesk, Fraunces) were migrated to self-
+  hosted woff2 under /assets/fonts/. dns-prefetch to apps.apple.com
+  stays — that's the App Store CTA destination and resolving its DNS
+  early shaves ~50ms off the App Store transition for users who tap
+  "Try free for 7 days."
 {%- endcomment -%}
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="dns-prefetch" href="https://apps.apple.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&display=swap" rel="stylesheet">
+<link href="/assets/fonts/fonts.css" rel="stylesheet">
 
 <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
 <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
@@ -92,7 +109,7 @@
     "{{ '/assets/screenshots/hero-2-recording.png' | absolute_url }}",
     "{{ '/assets/screenshots/hero-3-classify.png' | absolute_url }}",
     "{{ '/assets/screenshots/hero-4-reports.png' | absolute_url }}",
-    "{{ '/assets/screenshots/hero-7-pdf.png' | absolute_url }}"
+    "{{ '/assets/screenshots/hero-6-pdf.png' | absolute_url }}"
   ],
   "featureList": [
     "Automatic and manual GPS trip detection",
