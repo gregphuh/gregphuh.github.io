@@ -429,36 +429,13 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
 </section>
 
 <!--
-  Spotlight 3 — Audit-defensive by design (green).
-  Three sub-features (Audit Lock, edit history, year-end odometer)
-  surfaced as in-panel bullets — kept inside one panel so the
-  audit story reads as a single coherent claim, not three claims.
--->
-<section class="spot spot-green">
-  <div class="spot-inner">
-    <div class="spot-text">
-      <span class="spot-eyebrow">Audit-defensive by design</span>
-      <h2>Make your life boring if the IRS ever wants to see.</h2>
-      <p>Five audit-trail features, on by default, no add-on tier:</p>
-      <ul class="spot-bullets">
-        <li><strong>Auto-lock on save</strong>The moment you save a classified trip, it locks itself — no extra tap, no chance to forget. Every later change is captured in the trip's edit history with a timestamp and the old/new value.</li>
-        <li><strong>Audit Lock (automatic)</strong>On January 31 each year, the prior year's trips lock automatically so you can't accidentally edit them mid-audit. A year-end-lock banner appears in the Reports tab so you can see the year is sealed at a glance. Unlocking any individual trip is a deliberate two-tap action that writes a timestamped event to the trip's edit history.</li>
-        <li><strong>Per-trip edit history</strong>Every field-level change records a <em>TripEditEvent</em> with timestamp, old value, and new value — visible from the trip's detail view, so the full timeline is always there if your CPA asks how a record evolved.</li>
-        <li><strong>Trip recovery if iOS reclaims memory mid-drive</strong>If your phone runs out of memory or the app force-quits mid-trip, you'll see a <em>Recover trip in progress?</em> prompt the next time you open Milely. Your route, distance, and time so far are preserved — nothing is lost.</li>
-        <li><strong>Year-end odometer reconciliation</strong>IRS Form 2106 / Schedule C-aligned readings, reconciled against actual miles logged.</li>
-      </ul>
-    </div>
-    <div class="spot-art">
-      <img class="spot-shot" src="/assets/screenshots/hero-6-pdf.png" alt="Milely 2026 Mileage Log PDF — IRS Pub. 463-formatted summary with totals, by-business breakdown, and per-trip details ready to hand to a CPA" />
-    </div>
-  </div>
-</section>
-
-<!--
-  Spotlight 4 — Export to anywhere (slate, reverse).
-  Closes the workflow loop: from "I drove" to "here's what to
-  hand the CPA." Four formats listed inline with the screenshot
-  showing the actual menu.
+  Spotlight 3 — Export to anywhere (slate, reverse).
+  Reordered 2026-05-01 to come BEFORE the audit-defensive panel
+  per Greg's narrative flow: drove → reports → exports → audit
+  story (the IRS sees the export; the audit trail explains why
+  it holds up). Each panel keeps its original color (slate for
+  Export, green for Audit-defensive) — only the section order
+  moved.
 -->
 <section class="spot spot-slate spot-reverse">
   <div class="spot-inner">
@@ -476,6 +453,32 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
     </div>
     <div class="spot-art">
       <img class="spot-shot" src="/assets/screenshots/hero-5-export.png" alt="Milely Export menu showing PDF, Excel, CSV — Milely, and CSV — QuickBooks Online options" />
+    </div>
+  </div>
+</section>
+
+<!--
+  Spotlight 4 — Audit-defensive by design (green).
+  Five sub-features (auto-lock, Audit Lock, edit history, recovery,
+  year-end odometer) surfaced as in-panel bullets — kept inside one
+  panel so the audit story reads as a single coherent claim.
+-->
+<section class="spot spot-green">
+  <div class="spot-inner">
+    <div class="spot-text">
+      <span class="spot-eyebrow">Audit-defensive by design</span>
+      <h2>Make your life boring if the IRS ever wants to see.</h2>
+      <p>Five audit-trail features, on by default, no add-on tier:</p>
+      <ul class="spot-bullets">
+        <li><strong>Auto-lock on save</strong>The moment you save a classified trip, it locks itself — no extra tap, no chance to forget. Every later change is captured in the trip's edit history with a timestamp and the old/new value.</li>
+        <li><strong>Audit Lock (automatic)</strong>On January 31 each year, the prior year's trips lock automatically so you can't accidentally edit them mid-audit. A year-end-lock banner appears in the Reports tab so you can see the year is sealed at a glance. Unlocking any individual trip is a deliberate two-tap action that writes a timestamped event to the trip's edit history.</li>
+        <li><strong>Per-trip edit history</strong>Every field-level change records a <em>TripEditEvent</em> with timestamp, old value, and new value — visible from the trip's detail view, so the full timeline is always there if your CPA asks how a record evolved.</li>
+        <li><strong>Trip recovery if iOS reclaims memory mid-drive</strong>If your phone runs out of memory or the app force-quits mid-trip, you'll see a <em>Recover trip in progress?</em> prompt the next time you open Milely. Your route, distance, and time so far are preserved — nothing is lost.</li>
+        <li><strong>Year-end odometer reconciliation</strong>IRS Form 2106 / Schedule C-aligned readings, reconciled against actual miles logged.</li>
+      </ul>
+    </div>
+    <div class="spot-art">
+      <img class="spot-shot" src="/assets/screenshots/hero-6-pdf.png" alt="Milely 2026 Mileage Log PDF — IRS Pub. 463-formatted summary with totals, by-business breakdown, and per-trip details ready to hand to a CPA" />
     </div>
   </div>
 </section>
