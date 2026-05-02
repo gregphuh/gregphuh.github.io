@@ -1333,8 +1333,16 @@
     color: var(--muted);
     margin: 0 0 10px;
   }
+  /* 2026-05-01 (Greg-feedback): the muted-section h4 was previously
+     `rgba(168, 162, 158, 0.7)` — almost ghost-gray on white. Greg
+     missed the "After your trial, without subscribing:" header on
+     first read, which led him to misparse the bullets underneath.
+     Promoted to full --text (same as the "During your 7-day free
+     trial:" header above it). Visual distinction between the two
+     sections now comes from content + check-circle color (✓ vs ○)
+     rather than from making the post-trial header invisible. */
   .pricing-card-section-muted h4 {
-    color: rgba(168, 162, 158, 0.7);
+    color: var(--text);
   }
   .pricing-card-fineprint {
     margin-top: auto;
@@ -1392,8 +1400,15 @@
     font-weight: 600;
     margin-top: 1px;
   }
+  /* 2026-05-01 (Greg-feedback): the muted-checklist body text was
+     previously `var(--muted)` (#57534e) — readable but light enough
+     that a casual scanner can blow past it. Promoted to --text so
+     the "After your trial, without subscribing:" bullets read at
+     the same contrast as the "During your trial" bullets above.
+     The kept-aside ○ check-x circle still visually distinguishes
+     the limitation bullet from the rest. */
   .checklist-muted li {
-    color: var(--muted);
+    color: var(--text);
     font-size: 14px;
   }
 
