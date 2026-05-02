@@ -318,20 +318,21 @@ Quick, friendly walkthroughs for the things you'll actually do. If you get stuck
 
 ---
 
-<h2 id="notifications">16. Sunday review reminder</h2>
+<h2 id="notifications">16. Weekly Review Reminder</h2>
 
 <div class="how-row">
 <div class="how-text">
 <p>If you grant Milely Notification permission, you'll get one push per week:</p>
 
 <ul>
-<li><strong>Sunday at 6 PM.</strong> A quiet notification when there are unclassified trips waiting.</li>
-<li><strong>Skipped if everything's classified.</strong> If your queue is empty, Sunday stays silent — no nag.</li>
+<li><strong>Pick the day.</strong> Settings → <em>Notifications</em> → <strong>Weekly Review Reminder</strong>. Pick any weekday at 6 PM, or set it to <em>Never</em>.</li>
+<li><strong>Quiet by default — Sunday 6 PM.</strong> A short notification when there are unclassified trips waiting.</li>
+<li><strong>Skipped if everything's classified.</strong> If your queue is empty, the chosen day stays silent — no nag.</li>
 </ul>
 
-<p>That's it. No daily reminders, no streak gamification, no marketing pings. Toggle it on or off in <strong>Settings → Notifications</strong>.</p>
+<p>That's it. No daily reminders, no streak gamification, no marketing pings.</p>
 </div>
-<div class="how-img"><img src="/assets/screenshots/sunday-review.png" alt="Sunday review reminder notification on the lock screen" /></div>
+<div class="how-img"><img src="/assets/screenshots/sunday-review.png" alt="Settings showing the Weekly Review Reminder picker set to Sunday 6 PM" /></div>
 </div>
 
 ---
