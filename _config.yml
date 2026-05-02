@@ -32,9 +32,13 @@ defaults:
       layout: default
       image: /assets/og-image.png
 
-# Don't process these
+# Don't process these — operator-only docs that should not be served
+# at milely.io as Jekyll-rendered pages. SECURITY.md in particular
+# contains the Cloudflare runbook + verification curl scripts; keeping
+# it out of the deploy keeps it from showing up in search engines.
 exclude:
   - README.md
+  - SECURITY.md
   - Gemfile
   - Gemfile.lock
   - vendor
