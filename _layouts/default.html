@@ -447,11 +447,12 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    /* Subtler tilt + horizontal padding for the rotated glyph's
-       corners to live in. -4° + the italic shear was overflowing
-       the hero's max-width and getting clipped. */
-    transform: rotate(-3deg);
-    transform-origin: center;
+    /* 2026-05-01: rotation removed. The -3° tilt looked like a
+       deliberate stylistic flourish when the content was just "#1"
+       (almost square), but with the longer "#1 Rated" phrase it
+       reads as crooked / misaligned. Italic shear stays — that's
+       intentional Fraunces character — but the element sits level.
+    */
     display: inline-block;
     padding: 0.08em 0.18em;
     /* Drop-shadow on the gradient text for depth — text-shadow
