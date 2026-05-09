@@ -413,7 +413,7 @@ Defaults to keeping every trip forever. You can set a retention window (e.g. 6 y
 
 ## Themes and branding
 
-Milely ships with eight themes. The default on a fresh install is **Day** (Office Day) — pure-white cards, a soft neutral grey, an Azure blue accent. Quiet, restrained, deliberate.
+Milely ships with eight themes. The default on a fresh install is **Day** — pure-white cards, a soft neutral grey, an Azure blue accent. Quiet, restrained, deliberate.
 
 <!-- SCREENSHOT NEEDED: theme picker with Day selected -->
 

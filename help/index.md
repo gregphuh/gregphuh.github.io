@@ -32,7 +32,7 @@ The [Milely User Guide](/help/user-guide/) is one long page that walks the app i
 - **[Vehicles and odometer](/help/user-guide/#vehicles)** — pairing routes, year-end odometer reconciliation
 - **[Backup &amp; restore](/help/user-guide/#backup-and-restore)** — Choose Cloud Folder vs This iPhone Only
 - **[Subscription &amp; trial](/help/user-guide/#subscription)** — how the 7-day trial works, what stays free, the lifetime option
-- **[Themes](/help/user-guide/#themes)** — Office Day default plus seven subscriber themes
+- **[Themes](/help/user-guide/#themes)** — Day default plus seven subscriber themes
 - **[Privacy and permissions](/help/user-guide/#privacy)** — what Milely asks for and why; what it doesn't ask for at all
 - **[Troubleshooting](/help/user-guide/#troubleshooting)** — auto-mode didn't catch a drive; CarPlay didn't trigger; recovery prompt
 - **[Glossary](/help/user-guide/#glossary)** — terms used in the app and in this guide

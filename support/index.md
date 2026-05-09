@@ -35,7 +35,7 @@ Help with Milely. If your question isn't answered below, email [**milely@smileyc
 - **Trip templates (favorites)** — save recurring drives as one-tap shortcuts on the Dashboard Quick Start row
 - **Receipts** — VisionKit document scanner, on-device, EXIF stripped at attach, up to 10 per trip at 5 MB each
 - **Branded PDF reports** — your logo, accent color, and firm footer
-- **Eight color themes** — Office Day (default), Warm, Light, Office Night, Storm, Clear, Mint, Minty
+- **Eight color themes** — Day (default), Night, Light, Warm, Storm, Clear, Mint, Minty
 - **Cloud-folder backup** — automatic JSON snapshots into a folder you pick (iCloud Drive, Google Drive, Dropbox, OneDrive, Box) via the iOS Files picker; or *This iPhone Only* mode with manual JSON exports
 - **Calendar past-trip recovery** — pulls past calendar events with locations and proposes them as trips
 - **Project / client tagging** — sub-classify within a business for billing and reporting
