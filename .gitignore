@@ -4,3 +4,14 @@ Gemfile.lock
 vendor/
 .jekyll-cache/
 
+# Local-dev preview shim (Liquid-light renderer that wraps content
+# pages in _layouts/default.html without needing Jekyll/Ruby). Pure
+# convenience for local previewing — never deployed.
+_preview.py
+_preview/
+
+# Favicon-design workspace artifacts (mock variants from the v3
+# brand exploration). The canonical favicon is assets/favicon.svg;
+# these are reference scratch files.
+assets/favicon-mock-*.svg
+assets/favicon-msblue-mock.svg

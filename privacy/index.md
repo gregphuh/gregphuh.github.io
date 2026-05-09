@@ -100,7 +100,7 @@ Milely lets you choose whether and where to back up your data. When enabled, bac
 Available options:
 
 - **iCloud Drive.** Backups are encrypted by Apple and governed by [Apple's Privacy Policy](https://www.apple.com/legal/privacy/).
-- **Google Drive, Dropbox, OneDrive, Box, or any iOS Files-app provider.** Only if you authorize it via the iOS Files picker. Data sent to these providers is governed by their respective privacy policies — see [Google](https://policies.google.com/privacy), [Dropbox](https://www.dropbox.com/privacy), [Microsoft](https://privacy.microsoft.com/), [Box](https://www.box.com/legal/privacy).
+- **Google Drive, Dropbox, OneDrive, Box, or any iOS Files-app provider.** Only if you authorize it via the iOS Files picker. Data sent to these providers is governed by their respective privacy policies — see [Google](https://policies.google.com/privacy), [Dropbox](https://www.dropbox.com/privacy), [OneDrive](https://privacy.microsoft.com/), [Box](https://www.box.com/legal/privacy).
 - **Manual export.** You can export a CSV or JSON file of your trips at any time using the iOS share sheet — email, AirDrop, save to Files, or upload anywhere.
 
 You can disable any backup option in Settings → Backup at any time. Disabling a backup does not delete previous backup files at the destination; you must delete those yourself from the storage provider's app or website.
@@ -179,7 +179,7 @@ To turn this off entirely, open iOS Settings → Privacy &amp; Security → Anal
 
 ## 12. Website privacy {#website}
 
-This privacy policy is published at **milely.io**, which is a static website served by **GitHub Pages** (operated by GitHub, Inc., a subsidiary of Microsoft Corporation). When you visit milely.io:
+This privacy policy is published at **milely.io**, which is a static website served by **GitHub Pages** (operated by GitHub, Inc.). When you visit milely.io:
 
 - **Hosting.** GitHub Pages serves the site's HTML, CSS, images, and fonts. As a standard part of operating any web server, **GitHub logs visitor IP addresses, user-agent strings, and request paths** for security, abuse-prevention, and operational purposes. Those logs are governed by [GitHub's Privacy Statement](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement). The Company does not access or aggregate those logs.
 - **Fonts.** The site loads typefaces (Inter, Space Grotesk) from **Google Fonts**. When your browser fetches a font file, Google may receive your IP address and user-agent. See [Google's privacy policy](https://policies.google.com/privacy).

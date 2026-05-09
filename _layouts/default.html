@@ -112,20 +112,23 @@
     "{{ '/assets/screenshots/hero-6-pdf.png' | absolute_url }}"
   ],
   "featureList": [
-    "Automatic and manual GPS trip detection",
-    "On-device Smart Suggestions — pattern learning runs locally on your iPhone",
+    "Manual, Automatic, and Universal trip-recording modes",
+    "Strict CarPlay Start — locks auto-record to drives where a paired vehicle is the live audio route",
+    "Lost-miles backfill — recovers the first half-mile to two miles when iOS motion classification lags",
+    "Continuous GPS during armed and recording — no straight-line A→B gaps",
+    "Pattern-learning Smart Suggestions trained on-device with Apple's CoreML",
     "Include or exclude trips from your annual report in one swipe",
     "Auto-lock on save with full per-trip edit history",
-    "Year-end Audit Lock with January 31 banner in the Reports tab",
-    "Year-end odometer reconciliation aligned to IRS Form 2106 / Schedule C",
-    "PDF, Excel, CSV, and QuickBooks Online export formats",
-    "Receipt scanning, on-device — text recognition runs locally on your iPhone",
+    "Year-end Audit Lock — prior year sealed automatically on January 31",
+    "Year-end odometer reconciliation per vehicle",
+    "PDF, Excel (XLSX), CSV (Milely full + QuickBooks Online), and JSON exports",
+    "VisionKit receipt scanning — on-device, EXIF stripped at attach",
     "Calendar-based past-trip recovery (on-device)",
     "Trip recovery if iOS reclaims memory mid-drive",
-    "CarPlay disconnect behavior — pause low-power GPS or keep recording",
-    "Eight color themes",
-    "Cloud backup to iCloud Drive, Google Drive, Dropbox, OneDrive",
-    "No servers — all data stays on your iPhone"
+    "Live Activity, Dynamic Island, watchOS, and home-screen widget",
+    "Eight color themes — Office Day default, seven more for subscribers",
+    "Cloud-folder backup via the iOS Files picker (iCloud Drive, Google Drive, Dropbox, OneDrive, Box) or local-only JSON export",
+    "Zero data collection, zero analytics, zero backend — all data stays on the iPhone"
   ],
   "releaseNotes": "{{ site.url }}/help/",
   "publisher": {
@@ -227,36 +230,56 @@
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    /* Light page surface — clean white background, dark text. Brand
-       accent colors are kept the same so links + buttons still pop. */
+    /* v3 brand identity — three colors, used in strict hierarchy:
+         azure blue (#0078D4) — primary surface and accent
+         white                   — form / page background
+         brand yellow (#FFB900) — single moment of warmth (headlight echo)
+       The page background stays white; blue carries CTAs and links;
+       yellow appears sparingly (header bottom-strip, ribbon, the
+       deduction-moment headline). Graphite #1F2937 for body text. */
     --bg: #ffffff;
-    --surface: #f7f5f2;     /* warm-tinted near-white for cards */
-    --border: #e7e5e4;      /* hairline gray for dividers */
-    --burnt: #c2410c;       /* brand burnt orange */
-    --yellow: #eab308;      /* brand warm yellow */
-    --text: #1c1917;        /* near-black, warm-tinted */
-    --muted: #57534e;       /* slate gray for secondary text */
+    --surface: #f5f7fa;     /* very-pale neutral for cards (cooler than warm) */
+    --border: #e5e7eb;      /* hairline gray for dividers */
+    --text: #1F2937;        /* graphite per brand spec */
+    --muted: #4b5563;       /* secondary text — slate */
 
-    /* Primary CTA blue — moved from warm cream pill to a vibrant
-       SaaS-blue fill so the buy button has the same "obvious next
-       step" weight as MileIQ / Hurdlr / Stride / Everlance. Tailwind
-       blue-600 family — confident without being neon. */
-    --blue:        #2563eb;   /* primary CTA fill */
-    --blue-hover:  #1d4ed8;   /* hover/pressed state */
-    --blue-soft:   #dbeafe;   /* soft accent — stat strips, callouts */
+    /* Primary CTA + accents are azure family. The v3 spec calls
+       brand blue the surface/trust color; on a white page it carries
+       every button, link, and primary accent. */
+    --brand-blue:        #0078D4;   /* primary CTA fill — azure */
+    --brand-blue-hover:  #005A9E;   /* hover/pressed — deeper brand blue */
+    --brand-blue-soft:   #E5F1FB;   /* soft accent — panel tints, table headers */
+    --brand-blue-deep:   #004578;   /* darkest blue for high-contrast text on light */
 
-    /* Header keeps the original dark warm aesthetic so the brand wordmark
-       still has its glow + the gradient logo reads correctly. Exposed as
-       its own vars so the .site-header rules below don't need to hardcode. */
-    --header-bg: #292524;
-    --header-border: #57534e;
-    --header-text: #f5f5f4;
-    --header-muted: #a8a29e;
+    /* brand yellow — the single accent. Reserved for:
+         (1) the header's bottom-edge strip (echoes the wordmark tittle)
+         (2) the "Most Popular" pricing ribbon
+         (3) the deduction-moment / hero star
+       Never used on buttons; never used on body text. */
+    --brand-yellow:      #FFB900;   /* brand yellow — accent only */
+    --brand-yellow-dim:  rgba(255, 185, 0, 0.18);
 
-    /* Aliases used by sections that were originally drafted with these
-       names — keeps the rest of the stylesheet working without renames. */
-    --brand-yellow: var(--yellow);
-    --brand-orange: var(--burnt);
+    --graphite:       #1F2937;   /* mono context per design philosophy */
+
+    /* Back-compat aliases — the rules below originally used a
+       --blue/--blue-hover/--blue-soft/--blue-deep family. Re-pointed
+       at the v3 azure family so every existing selector resolves
+       to a v3 color without a sweep through 1500 lines of CSS. */
+    --blue:         var(--brand-blue);
+    --blue-hover:   var(--brand-blue-hover);
+    --blue-soft:    var(--brand-blue-soft);
+    --blue-deep:    var(--brand-blue-deep);
+
+    /* Header — clean white surface with a thin yellow
+       bottom strip that echoes the wordmark's tittle. Quiet, premium,
+       reads at home next to Outlook in a corporate dock. */
+    /* Header palette inverted to match the v3 icon's squircle: MS
+       Azure surface, white type, yellow strip. Pulls the page's
+       first impression into perfect color sync with the app icon. */
+    --header-bg: var(--brand-blue);
+    --header-border: var(--brand-yellow);
+    --header-text: #ffffff;
+    --header-muted: rgba(255, 255, 255, 0.72);
   }
   html, body {
     background: var(--bg);
@@ -269,8 +292,8 @@
        vertical scrollbar narrows the viewport's effective width. */
     overflow-x: hidden;
   }
-  a { color: var(--burnt); text-decoration: none; }
-  a:hover { text-decoration: underline; }
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { color: var(--blue-hover); text-decoration: underline; }
   h1, h2, h3, h4 {
     font-family: "Space Grotesk", sans-serif;
     font-weight: 700;
@@ -289,14 +312,20 @@
   pre code { background: transparent; padding: 0; }
   strong { color: var(--text); }
 
-  /* Header — kept dark + warm-aesthetic regardless of body theme. */
+  /* Header — v3: brand-blue surface, white type, with a thin yellow
+     bottom strip that echoes the dot of the i in the wordmark.
+     Sticky and translucent so the page can scroll cleanly behind it. */
   .site-header {
-    border-bottom: 1px solid var(--header-border);
+    border-bottom: 3px solid var(--brand-yellow);
     padding: 18px 0;
     position: sticky;
     top: 0;
-    background: rgba(41, 37, 36, 0.96);
-    backdrop-filter: blur(12px);
+    /* azure with subtle translucency so the page can scroll
+       behind it; backdrop-blur keeps content legible without going
+       opaque. Same blue as the icon's squircle. */
+    background: rgba(0, 120, 212, 0.94);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     z-index: 100;
     color: var(--header-text);
   }
@@ -308,21 +337,36 @@
     align-items: center;
     gap: 24px;
   }
+  /* Logo lockup: icon (squircle) + custom-drawn wordmark with a
+     yellow tittle on the "i". The wordmark SVG is the canonical
+     brand wordmark — colored letters in white with the i-tittle
+     in brand yellow — so the dot lines up with the icon's
+     pillar-foot headlights and the editorial "#1 / for privacy"
+     hero accent. Plain text-rendered "Milely" couldn't carry the
+     yellow tittle (CSS can't recolor a font glyph's i-dot). */
   .site-header .logo {
-    display: flex; align-items: center; gap: 10px;
-    font-family: "Space Grotesk", sans-serif;
-    font-weight: 700;
-    font-size: 22px;
-    letter-spacing: -0.025em;
-    background: linear-gradient(135deg, var(--yellow), var(--burnt));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    display: flex; align-items: center; gap: 12px;
     text-decoration: none;
   }
-  .site-header .logo img {
+  .site-header .logo:hover { text-decoration: none; }
+  .site-header .logo-mark {
     width: 32px; height: 32px;
     border-radius: 7px;
+    /* Subtle ring so the icon's blue squircle separates from the
+       same-blue header background. */
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.18);
+  }
+  .site-header .logo-wordmark {
+    /* Header-only wordmark variant (assets/wordmark-header.svg) —
+       same letterforms + yellow tittle as the canonical wordmark
+       used on the help-page hero / og-image, but with the
+       brand-mark progress-bar element trimmed off. At header
+       sizes the bar adds pixel noise without legibility benefit;
+       trimming the viewBox lets the letters render bigger and
+       match the visual weight Greg sees on the help page. */
+    height: 32px;
+    width: auto;
+    display: block;
   }
   .site-header nav {
     margin-left: auto;
@@ -334,7 +378,7 @@
     font-weight: 500;
     text-decoration: none;
   }
-  .site-header nav a:hover { color: var(--header-text); }
+  .site-header nav a:hover { color: #ffffff; text-decoration: none; }
 
   /* Main */
   main {
@@ -386,8 +430,8 @@
     gap: 8px;
     padding: 7px 16px;
     border-radius: 999px;
-    background: linear-gradient(135deg, var(--yellow), var(--burnt));
-    color: #1c1917;
+    background: var(--blue);
+    color: #ffffff;
     font-family: "Inter", sans-serif;
     font-size: 12px;
     font-weight: 800;
@@ -396,10 +440,11 @@
     margin-bottom: 20px;
     position: relative;
     z-index: 2;
-    box-shadow: 0 6px 20px rgba(194, 65, 12, 0.25);
+    box-shadow: 0 6px 20px rgba(0, 120, 212, 0.22);
   }
   .hero-eyebrow::before {
     content: "★";
+    color: var(--brand-yellow);
     font-size: 14px;
     line-height: 1;
   }
@@ -407,7 +452,7 @@
     width: 110px; height: 110px;
     border-radius: 24px;
     margin: 0 auto 24px;
-    box-shadow: 0 16px 50px rgba(194, 65, 12, 0.4);
+    box-shadow: 0 16px 50px rgba(0, 120, 212, 0.30);
     position: relative;
     z-index: 2;
   }
@@ -451,31 +496,17 @@
     font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
     font-style: italic;
     font-weight: 900;
-    /* Slightly smaller upper bound so the giant italic glyph
-       doesn't fight the viewport on wide screens, and the
-       claim line below stays in proportion. */
     font-size: clamp(88px, 14vw, 144px);
-    /* Looser line-height — italic Fraunces 900 has tall
-       ascenders/descenders that the 0.85 line box was clipping
-       against the parent's bounds. 1.0 gives the glyph room. */
     line-height: 1.0;
     letter-spacing: -0.04em;
-    background: linear-gradient(135deg, var(--yellow) 0%, var(--burnt) 75%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    /* 2026-05-01: rotation removed. The -3° tilt looked like a
-       deliberate stylistic flourish when the content was just "#1"
-       (almost square), but with the longer "#1 Rated" phrase it
-       reads as crooked / misaligned. Italic shear stays — that's
-       intentional Fraunces character — but the element sits level.
-    */
+    /* v3: brand yellow — the same accent that lives in the
+       icon's headlight dots and the wordmark's i-tittle. Pulls
+       the hero into perfect color sync with the brand mark and
+       gives the "#1" the visual pop the body type can't match. */
+    color: var(--brand-yellow);
     display: inline-block;
     padding: 0.08em 0.18em;
-    /* Drop-shadow on the gradient text for depth — text-shadow
-       doesn't compose with -webkit-background-clip, so we use a
-       filter on the element instead. */
-    filter: drop-shadow(0 8px 20px rgba(194, 65, 12, 0.20));
+    filter: drop-shadow(0 8px 20px rgba(255, 185, 0, 0.32));
   }
   .hero-claim {
     font-family: 'Inter', -apple-system, sans-serif;
@@ -497,16 +528,14 @@
   .hero-coda {
     font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
     font-style: italic;
-    /* "for privacy." is the positioning hook — Greg explicitly
-       wanted it sized large. Bumped from 38px max → 64px max
-       (close to the rank's scale) so it lands as a co-equal
-       headline beat, not a whisper under the claim. Letter-
-       spacing tightened a hair to match the larger size. */
     font-weight: 900;
     font-size: clamp(30px, 5.6vw, 64px);
     line-height: 1.05;
     letter-spacing: -0.02em;
-    color: var(--burnt);
+    /* v3: brand yellow — pairs with the "#1" rank above so the
+       editorial cover reads as one warm typographic moment carrying
+       the brand's accent color across both glyphs. */
+    color: var(--brand-yellow);
     margin-top: 8px;
   }
   .hero .tagline {
@@ -735,7 +764,7 @@
   }
 
   /* Stat strip — the credibility row right under the hero. Four
-     hard numbers (IRS rate, servers, weekly cadence, price) with
+     hard numbers (servers, weekly cadence, price) with
      a punchy display font on top + a one-line label underneath.
      Full-bleed band so it reads as a "marquee" between the hero
      fan and the first feature panel. */
@@ -744,10 +773,16 @@
     left: 50%;
     width: 100vw;
     transform: translateX(-50%);
-    background: #0c0a09;
-    color: #fafaf9;
+    /* Loud version — same azure as the site header so the strip
+       reads as the page's second confident brand surface. White
+       headlines on the deep-blue field carry the kind of presence
+       a credibility-tile row should have. */
+    background: var(--brand-blue);
+    color: #ffffff;
     padding: 48px 24px;
     margin: 32px 0 0;
+    border-top: none;
+    border-bottom: none;
   }
   .stat-strip-inner {
     max-width: 1100px;
@@ -763,15 +798,14 @@
     font-size: 48px;
     line-height: 1;
     letter-spacing: -0.03em;
-    background: linear-gradient(135deg, var(--yellow), var(--burnt));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: #ffffff;
     margin-bottom: 8px;
   }
   .stat-label {
     font-size: 13px;
-    color: #a8a29e;
+    /* Slightly muted white for the secondary line so the big number
+       on top stays the dominant element. */
+    color: rgba(255, 255, 255, 0.78);
     line-height: 1.45;
     letter-spacing: 0.4px;
   }
@@ -803,7 +837,7 @@
     font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--burnt);
+    color: var(--brand-blue);
     margin-bottom: 24px;
   }
   .deduction-num {
@@ -813,11 +847,11 @@
     font-size: clamp(80px, 13vw, 144px);
     line-height: 1.0;
     letter-spacing: -0.04em;
-    background: linear-gradient(135deg, var(--yellow) 0%, var(--burnt) 75%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    filter: drop-shadow(0 8px 20px rgba(194, 65, 12, 0.16));
+    /* brand yellow — same accent as the hero "#1" and the
+       icon's headlight dots, so the editorial cover and the
+       deduction moment read as one continuous brand statement. */
+    color: var(--brand-yellow);
+    filter: drop-shadow(0 8px 20px rgba(255, 185, 0, 0.32));
     margin-bottom: 18px;
     /* Slight nudge — italic Fraunces 900 tilts right; without a
        bit of left padding the leading "$" reads pushed against
@@ -863,17 +897,19 @@
     .deduction-body { font-size: 14px; }
   }
 
-  /* Privacy-first banner — thin full-bleed vermillion strip that
-     introduces the privacy panel. Modeled on .stat-strip's
-     full-bleed pattern; brand vermillion background, all-caps
-     display headline. */
+  /* Privacy-first banner — full-bleed brand yellow strip that
+     introduces the privacy panel. Yellow ties to the icon's
+     headlight dots + the wordmark's i-tittle, so the banner
+     reads as the brand's "pay attention here" moment. Graphite
+     text on yellow keeps WCAG AA contrast (white on yellow
+     fails). */
   .privacy-first-banner {
     position: relative;
     left: 50%;
     width: 100vw;
     transform: translateX(-50%);
-    background: #E54B1F;
-    color: #ffffff;
+    background: var(--brand-yellow);
+    color: var(--graphite);
     padding: 28px 24px;
     margin: 0;
     text-align: center;
@@ -920,25 +956,23 @@
      2nd and 4th panels so the page rhythms left-right-left-right
      instead of all phones on one side. */
   .spot-reverse .spot-art { order: -1; }
-  /* Researched palette — Tailwind-harmonized 50→200 backgrounds
-     paired with deep 700-800 accent text. Each hue family ties
-     back to one of Milely's actual app themes for brand integrity:
-       warm  → Warm theme (burnt orange family)
-       blue  → Day theme (Azure blue family)
-       green → Forest theme (deep emerald family)
-       slate → Slate theme (cool gray family)
-     The gradient direction (135deg) keeps light at top-left,
-     darker at bottom-right — gives each panel a subtle "lit
-     from above" depth that flat colors lack. */
-  .spot-warm   { background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%); --spot-accent: #9a3412; --spot-blob: #fb923c; }
-  .spot-blue   { background: linear-gradient(135deg, #eef2ff 0%, #c7d2fe 100%); --spot-accent: #3730a3; --spot-blob: #818cf8; }
-  .spot-green  { background: linear-gradient(135deg, #ecfdf5 0%, #a7f3d0 100%); --spot-accent: #065f46; --spot-blob: #34d399; }
-  .spot-slate  { background: linear-gradient(135deg, #f8fafc 0%, #cbd5e1 100%); --spot-accent: #1e293b; --spot-blob: #64748b; }
-  /* Purple palette — added for the dedicated privacy panel.
-     Tailwind purple 50→300 background pairs with a deep purple-800
-     accent. Privacy gets its own color so it reads as a distinct
-     pillar, not a fifth feature. */
-  .spot-purple { background: linear-gradient(135deg, #faf5ff 0%, #d8b4fe 100%); --spot-accent: #6b21a8; --spot-blob: #c084fc; }
+  /* v3 panel palette — cool/neutral pastels so azure stays the
+     primary surface. Each tint nudges toward one role:
+       blue   → primary accent panel (privacy / architecture)
+       yellow → the single yellow moment (savings / deduction story)
+       slate  → quiet graphite frame for audit / discipline copy
+       mint   → emerald moment for the "natural / on-device" story
+     Restraint is the point: yellow only earns its place once. */
+  .spot-blue   { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); --spot-accent: var(--brand-blue-deep); --spot-blob: #60a5fa; }
+  .spot-yellow { background: linear-gradient(135deg, #fefce8 0%, #fef3c7 100%); --spot-accent: #854d0e; --spot-blob: #fcd34d; }
+  .spot-slate  { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); --spot-accent: var(--graphite); --spot-blob: #94a3b8; }
+  .spot-mint   { background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); --spot-accent: #065f46; --spot-blob: #34d399; }
+  /* Back-compat aliases for any pages that still reference the v1
+     spot classes (warm/green/purple). They render as the closest v3
+     panel so legacy markup doesn't crash visually. */
+  .spot-warm   { background: linear-gradient(135deg, #fefce8 0%, #fef3c7 100%); --spot-accent: #854d0e; --spot-blob: #fcd34d; }
+  .spot-green  { background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); --spot-accent: #065f46; --spot-blob: #34d399; }
+  .spot-purple { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); --spot-accent: var(--brand-blue-deep); --spot-blob: #60a5fa; }
   /* Decorative blob in the upper-right of each panel — soft tinted
      circle bleeding off the edge. Adds depth + visual interest
      without feeling decorative for decoration's sake. The blob
@@ -1108,7 +1142,7 @@
     margin: 48px 0;
   }
   .feature {
-    --accent: var(--burnt);
+    --accent: var(--brand-blue);
     background: #ffffff;
     border: 1px solid var(--border);
     border-top: 4px solid var(--accent);
@@ -1130,17 +1164,23 @@
   }
   .feature p { font-size: 15.5px; line-height: 1.6; color: #44403c; margin-bottom: 0; }
   .feature p strong { color: #0c0a09; }
-  /* Tint variants — each section picks its accent to give the grid
-     a deliberate palette. Warm / blue / green / purple / rose /
-     orange covers six cards without colors clashing. */
-  .feature-warm   { --accent: #f59e0b; }
-  .feature-blue   { --accent: #2563eb; }
-  .feature-green  { --accent: #16a34a; }
-  .feature-purple { --accent: #9333ea; }
-  .feature-rose   { --accent: #e11d48; }
-  .feature-orange { --accent: #c2410c; }
-  .feature-teal   { --accent: #0d9488; }
+  /* Tint variants — v3 keeps these in a cool/neutral family so
+     the row reads as variations on the MS-Azure system rather than
+     a rainbow. The single yellow card is reserved for the deduction /
+     savings story; everything else stays in the blue/slate/emerald
+     band. Mapped names are preserved so existing markup doesn't break. */
+  .feature-blue   { --accent: var(--brand-blue); }
   .feature-sky    { --accent: #0284c7; }
+  .feature-slate  { --accent: var(--graphite); }
+  .feature-teal   { --accent: #0d9488; }
+  .feature-green  { --accent: #047857; }
+  .feature-mint   { --accent: #059669; }
+  .feature-yellow { --accent: #b45309; }   /* the one warm card — savings */
+  /* Legacy class aliases retained so older markup continues to render. */
+  .feature-warm   { --accent: #b45309; }
+  .feature-purple { --accent: var(--brand-blue-deep); }
+  .feature-rose   { --accent: var(--brand-blue); }
+  .feature-orange { --accent: var(--brand-blue-deep); }
 
   /* Tables (in markdown content) */
   table { border-collapse: collapse; margin: 16px 0; width: 100%; }
@@ -1248,23 +1288,23 @@
     border-color: var(--border);
   }
   .pricing-card-plus {
-    border-color: var(--brand-yellow);
-    background: linear-gradient(180deg, rgba(234, 179, 8, 0.06), rgba(234, 179, 8, 0.02) 60%, var(--surface));
+    border-color: var(--brand-blue-soft);
+    background: linear-gradient(180deg, rgba(0, 120, 212, 0.04), rgba(0, 120, 212, 0.01) 60%, var(--surface));
   }
   /* "Selected" treatment for the top-pick (Annual) card — a 2px
-     burnt-orange border, a brand-gradient halo shadow, a subtle
-     translate-up, and a ribbon badge overlapping the top edge.
-     Together they read as "this one is pre-selected / the obvious
-     choice" instead of "two equal options, pick one." */
+     azure border, a soft halo shadow, a subtle translate-up,
+     and a yellow ribbon badge overlapping the top edge. The yellow
+     here is one of the brand's three permitted yellow moments
+     (header strip + this ribbon + the hero star). */
   .pricing-card-selected {
     position: relative;
     border-width: 2px;
-    border-color: var(--burnt);
-    background: linear-gradient(180deg, rgba(234, 179, 8, 0.12), rgba(194, 65, 12, 0.04) 60%, var(--surface));
+    border-color: var(--brand-blue);
+    background: linear-gradient(180deg, rgba(0, 120, 212, 0.06), rgba(0, 120, 212, 0.02) 60%, var(--surface));
     box-shadow:
       0 1px 0 rgba(0, 0, 0, 0.04),
-      0 20px 40px rgba(194, 65, 12, 0.16),
-      0 56px 112px rgba(194, 65, 12, 0.08);
+      0 20px 40px rgba(0, 120, 212, 0.18),
+      0 56px 112px rgba(0, 120, 212, 0.10);
     transform: translateY(-6px);
     z-index: 2;
   }
@@ -1273,8 +1313,8 @@
     top: -14px;
     left: 50%;
     transform: translateX(-50%);
-    background: linear-gradient(135deg, var(--yellow), var(--burnt));
-    color: #1c1917;
+    background: var(--brand-yellow);
+    color: var(--graphite);
     padding: 7px 18px;
     border-radius: 999px;
     font-family: 'Inter', sans-serif;
@@ -1283,7 +1323,7 @@
     letter-spacing: 1.6px;
     text-transform: uppercase;
     white-space: nowrap;
-    box-shadow: 0 8px 20px rgba(194, 65, 12, 0.30);
+    box-shadow: 0 8px 20px rgba(255, 185, 0, 0.30);
     z-index: 3;
   }
   /* On mobile when cards stack, drop the lift so the ribbon
@@ -1305,8 +1345,8 @@
     margin-bottom: 12px;
   }
   .pricing-card-tag-optional {
-    background: rgba(234, 179, 8, 0.18);
-    color: var(--brand-yellow);
+    background: var(--brand-blue-soft);
+    color: var(--brand-blue-deep);
   }
   .pricing-card-name {
     font-family: 'Space Grotesk', sans-serif;
@@ -1399,8 +1439,8 @@
     margin-top: 1px;
   }
   .checklist .check-plus {
-    background: linear-gradient(135deg, var(--brand-yellow), var(--brand-orange));
-    color: #1c1917;
+    background: var(--brand-yellow);
+    color: var(--graphite);
     font-size: 14px;
   }
   .checklist .check-x {
@@ -1458,7 +1498,7 @@
     letter-spacing: 0.4px;
   }
   .compare th.th-base { color: var(--text); }
-  .compare th.th-plus { color: var(--brand-yellow); }
+  .compare th.th-plus { color: var(--brand-blue); }
   .compare th .th-price {
     display: block;
     font-weight: 500;
@@ -1513,8 +1553,8 @@
   }
   .theme-card:hover { transform: translateY(-2px); }
   .theme-card-base {
-    border-color: var(--brand-orange);
-    box-shadow: 0 0 0 1px rgba(194, 65, 12, 0.18);
+    border-color: var(--brand-blue);
+    box-shadow: 0 0 0 1px rgba(0, 120, 212, 0.18);
   }
   .theme-card img {
     display: block;
@@ -1545,12 +1585,12 @@
     border-radius: 999px;
   }
   .theme-badge-base {
-    background: rgba(194, 65, 12, 0.18);
-    color: var(--brand-orange);
+    background: var(--brand-blue-soft);
+    color: var(--brand-blue-deep);
   }
   .theme-badge-plus {
-    background: linear-gradient(135deg, var(--brand-yellow), var(--brand-orange));
-    color: #1c1917;
+    background: var(--brand-yellow);
+    color: var(--graphite);
   }
 
   /* Bucket separators (Included vs Plus) */
@@ -1585,7 +1625,7 @@
   .plus-section {
     margin: 56px 0 24px;
     padding: 40px 28px;
-    background: linear-gradient(135deg, rgba(234, 179, 8, 0.08), rgba(194, 65, 12, 0.05));
+    background: var(--brand-blue-soft);
     border: 1px solid var(--border);
     border-radius: 22px;
     position: relative;
@@ -1595,7 +1635,7 @@
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 2px;
-    color: var(--brand-yellow);
+    color: var(--brand-blue-deep);
     margin-bottom: 8px;
   }
   .plus-title {
@@ -1678,18 +1718,27 @@
     line-height: 1.55;
   }
 
-  /* Sticky header CTA */
+  /* Sticky header CTA — inverted now that the header itself is MS
+     Azure: white pill with blue text. The yellow strip at the
+     header's base + the icon's yellow dots already carry the warm
+     accent; this CTA stays clean white for confident contrast. */
   .header-cta {
-    background: linear-gradient(135deg, var(--brand-yellow), var(--brand-orange));
-    color: #1c1917;
-    padding: 8px 16px;
-    border-radius: 999px;
-    font-weight: 600;
+    background: #ffffff;
+    color: var(--brand-blue);
+    padding: 9px 18px;
+    border-radius: 10px;
+    font-weight: 700;
     font-size: 14px;
     text-decoration: none;
     margin-left: auto;
+    transition: background 0.15s ease, transform 0.15s ease, color 0.15s ease;
   }
-  .header-cta:hover { transform: translateY(-1px); transition: transform 0.15s; }
+  .header-cta:hover {
+    background: var(--brand-yellow);
+    color: var(--graphite);
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
 
   /* Legal pages — Privacy + Terms — get a denser, more scannable layout
      than the marketing pages so users can find sections quickly. */
@@ -1740,7 +1789,7 @@
     break-inside: avoid;
   }
   .legal-toc a { color: var(--text); }
-  .legal-toc a:hover { color: var(--burnt); }
+  .legal-toc a:hover { color: var(--brand-blue); }
   /* Section heading anchors — give numbered legal sections clear vertical
      rhythm so users skimming the page can lock onto the heading. */
   main h2 {
@@ -1757,8 +1806,8 @@
   main h2:hover a.heading-anchor { opacity: 1; }
   /* Per-section side note for definitions and call-outs in the legal pages. */
   .legal-note {
-    background: rgba(234, 179, 8, 0.08);
-    border-left: 3px solid var(--yellow);
+    background: var(--brand-blue-soft);
+    border-left: 3px solid var(--brand-blue);
     padding: 12px 16px;
     margin: 14px 0;
     color: var(--text);
@@ -1796,9 +1845,9 @@
 
 <header class="site-header">
   <div class="inner">
-    <a href="/" class="logo">
-      <img src="/assets/icon.png" alt="" />
-      Milely
+    <a href="/" class="logo" aria-label="Milely — home">
+      <img class="logo-mark" src="/assets/icon.png" alt="" />
+      <img class="logo-wordmark" src="/assets/wordmark-header.svg" alt="Milely" />
     </a>
     <nav>
       <a href="/help/">Help</a>

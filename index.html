@@ -1,171 +1,93 @@
 ---
 layout: default
 title: Milely
-description: Privacy-first iPhone mileage tracker for business deductions. Auto-detect drives, on-device Smart Suggestions, audit-ready PDF exports. No servers, no analytics — your trips never leave your phone. Free 7-day trial.
+description: Privacy-first iPhone mileage tracker. Auto-record drives, classify on-device, export audit-ready logs for business deductions. Zero servers, zero analytics — your trips never leave your phone. Try free for 7 days.
 ---
 
 <section class="hero">
   <!--
-    Wavy-road animated hero banner. The Milely icon is an "M" made
-    of road lanes; the hero echoes that motif by laying out three
-    horizontal lane stripes that wind across the band and flow
-    continuously via stroke-dashoffset animation. Brand gradient
-    (warm yellow → burnt orange) on each path, plus a slow shine
-    sweep on top for the polished/modern feel. Sits behind the
-    icon + title at z-index 0; respect prefers-reduced-motion.
+    v3 hero — quiet velocity. The wavy-road animated banner that
+    used to live behind the headline has been retired (commented
+    out in default.html via `.hero-banner { display: none }`); the
+    v3 page reads cleaner against a plain white surface, with the
+    icon + editorial #1 / Fraunces headline carrying the eyebrow.
+    The svg markup that used to live here referenced burnt-orange
+    gradients and is no longer needed.
   -->
-  <div class="hero-banner" aria-hidden="true">
-    <svg viewBox="0 0 1200 360" preserveAspectRatio="xMidYMid slice" role="presentation">
-      <defs>
-        <linearGradient id="laneGradGold" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%"   stop-color="#eab308" stop-opacity="0"/>
-          <stop offset="20%"  stop-color="#eab308" stop-opacity="0.95"/>
-          <stop offset="55%"  stop-color="#f59e0b" stop-opacity="1"/>
-          <stop offset="80%"  stop-color="#c2410c" stop-opacity="0.9"/>
-          <stop offset="100%" stop-color="#c2410c" stop-opacity="0"/>
-        </linearGradient>
-        <linearGradient id="laneGradOrange" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%"   stop-color="#c2410c" stop-opacity="0"/>
-          <stop offset="40%"  stop-color="#c2410c" stop-opacity="0.85"/>
-          <stop offset="70%"  stop-color="#eab308" stop-opacity="0.85"/>
-          <stop offset="100%" stop-color="#eab308" stop-opacity="0"/>
-        </linearGradient>
-        <radialGradient id="heroGlow" cx="50%" cy="50%" r="55%">
-          <stop offset="0%"   stop-color="#c2410c" stop-opacity="0.30"/>
-          <stop offset="55%"  stop-color="#c2410c" stop-opacity="0.10"/>
-          <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
-        </radialGradient>
-        <linearGradient id="heroBg" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%"   stop-color="#1a0f0a"/>
-          <stop offset="100%" stop-color="#0d0806"/>
-        </linearGradient>
-      </defs>
-
-      <!-- Base + soft warm glow behind the title area -->
-      <rect width="1200" height="360" fill="url(#heroBg)"/>
-      <ellipse cx="600" cy="180" rx="520" ry="140" fill="url(#heroGlow)"/>
-
-      <!-- Three winding lane stripes, drawn as Bezier waves and
-           dash-stroked so they read as road lanes flowing past.
-           The stroke-dasharray creates the lane gaps; CSS animates
-           stroke-dashoffset to make the gaps "move." -->
-      <path class="hero-lane-slow"
-            d="M -50,90 Q 200,40 450,90 T 950,90 T 1300,90"
-            stroke="url(#laneGradGold)" stroke-width="2.5"
-            fill="none" stroke-dasharray="14,10" opacity="0.55"/>
-
-      <path class="hero-lane-mid"
-            d="M -50,180 Q 250,110 550,180 T 1050,180 T 1300,180"
-            stroke="url(#laneGradGold)" stroke-width="3.5"
-            fill="none" stroke-dasharray="22,14" opacity="0.85"/>
-
-      <path class="hero-lane-fast"
-            d="M -50,260 Q 200,330 500,260 T 1000,260 T 1300,260"
-            stroke="url(#laneGradOrange)" stroke-width="2.5"
-            fill="none" stroke-dasharray="16,12" opacity="0.55"/>
-    </svg>
-  </div>
 
   <!--
-    Editorial-cover h1: dramatic italic Fraunces "#1" with the
-    brand gradient, confident Inter Black caps for the categorical
-    claim, and an italic lowercase coda for "for privacy." — three
-    typographic moments that read as a magazine cover splash, not
-    a SaaS template. Brand wordmark "Milely" stays in the sticky
-    header + the footer; the hero h1 is now the positioning
-    statement.
+    Editorial-cover h1: dramatic italic Fraunces "#1" in azure,
+    confident Inter Black caps for the categorical claim, italic
+    lowercase Fraunces coda for "for privacy." Three typographic
+    moments stacked vertically.
   -->
   <h1>
     <span class="hero-rank">#1</span>
-    <!--
-      Non-breaking space locks "Small-Company Mileage" together. The
-      only break point is between "Mileage" and "App" — so on mobile
-      the headline wraps to two clean lines (SMALL-COMPANY MILEAGE /
-      APP), never mid-phrase. On desktop where it all fits on one line,
-      no break happens.
-    -->
     <span class="hero-claim">Small-Company&nbsp;Mileage App</span>
     <span class="hero-coda">for privacy.</span>
   </h1>
-  <p class="tagline">Track mileage for business deductions.<br/>On your iPhone. Never on our servers.</p>
+  <p class="tagline">A mileage tracker that runs entirely on your iPhone.<br/>No servers. No analytics. No account.</p>
   <a class="badge-link" href="https://apps.apple.com/app/milely/id__APPSTORE_ID_PENDING__" rel="noopener noreferrer">Try free for 7 days</a>
   <p style="font-size: 14px; margin-top: 14px;">Then $3.99 / month or $29.99 / year. Cancel anytime.</p>
 
   <!--
     Slightly-overlapping fan of seven simulator screenshots in the
     natural workflow order: dashboard → record → classify → reports
-    → settings → export → final PDF. Hover any phone to lift it
-    above the row for a closer look. Layout rules in default.html
+    → export → final PDF → subscription. Layout rules in default.html
     under `.hero-shots`.
   -->
-  <div class="hero-shots" aria-label="Milely walkthrough — Dashboard, recording a trip on the map, classifying the trip, reports, export menu, the final PDF, and the subscription view">
+  <div class="hero-shots" aria-label="Milely walkthrough — Dashboard, recording a trip on the map, the Review and Save sheet, Reports, the Export menu, the final PDF, and the subscription view">
     <img src="/assets/screenshots/hero-1-dashboard.png"
-         alt="Milely Dashboard on iPhone — monthly deduction card with donut breakdown, Quick Start row, Repeat last trip, Favorite trip, and Start Trip button" />
+         alt="Milely Dashboard — month-to-date deduction card with by-business breakdown, Quick Start row, and Start Trip button" />
     <img src="/assets/screenshots/hero-2-recording.png"
          alt="Milely recording a trip live — distance, duration, and live deduction tick up over a real-time map" />
     <img src="/assets/screenshots/hero-3-classify.png"
-         alt="Milely Review and Save screen — Smart Suggestions chips show on-device predictions for which business this trip belongs to" />
+         alt="Milely Review and Save sheet — Smart Suggestions chips show on-device predictions for which business this trip belongs to" />
     <img src="/assets/screenshots/hero-4-reports.png"
-         alt="Milely Reports tab — yearly estimated deduction with stacked-bar breakdown, year-at-a-glance stats, and monthly summaries" />
+         alt="Milely Reports tab — yearly deduction with stacked-bar by-business breakdown, year-at-a-glance stats, and monthly summaries" />
     <img src="/assets/screenshots/hero-5-export.png"
-         alt="Milely Export menu — PDF, Excel (.xls), CSV — Milely (full), and CSV — QuickBooks Online options on the Reports tab" />
+         alt="Milely Export menu — PDF, Excel, CSV (Milely full), and CSV (QuickBooks Online) options" />
     <img src="/assets/screenshots/hero-6-pdf.png"
-         alt="Milely 2026 Mileage Log PDF — IRS Pub. 463-formatted summary with totals, by-business breakdown, and per-trip details ready to hand to a CPA" />
+         alt="Milely annual mileage log PDF — totals, by-business breakdown, and per-trip details ready for a CPA" />
     <img src="/assets/screenshots/hero-7-subscription.png"
-         alt="Milely Subscription view — Unlimited Trips, Every Feature with the seven subscriber benefits and Subscription Active badge" />
+         alt="Milely Subscription view — monthly and annual plans with the seven-day trial detail and lifetime option behind Other options" />
   </div>
 </section>
 
 <main>
 
 <!--
-  Privacy-first banner — full-bleed orange strip introducing the
-  privacy panel. Added 2026-04 to give the privacy promise a
-  louder visual entry, since privacy is THE differentiator vs
-  MileIQ / Everlance / Stride.
+  Privacy-first banner — full-bleed brand yellow strip that
+  introduces the privacy thesis. Yellow ties to the v3 icon's
+  headlight dots and the wordmark's i-tittle.
 -->
 <section class="privacy-first-banner">
   <div class="privacy-first-banner-inner">PRIVACY FIRST</div>
 </section>
 
 <!--
-  Privacy panel — promoted to the top of <main> in 2026-04 because
-  privacy is THE differentiator vs MileIQ / Everlance / Stride and
-  burying it as the closing argument under five panels of feature
-  copy meant most visitors bounced before reading it. New narrative:
-    1. Hero: "#1 ... for privacy" — positioning headline
-    2. Orange "PRIVACY FIRST" banner — visual entry
-    3. THIS panel: the architecture promise (3 pillars)
-    4. Stat strip: "0 servers Milely runs"
-    5. Four feature spots: how the privacy-first architecture
-       still delivers the deduction / smart-suggestion / audit /
-       export workflow.
-  i.e., the four feature spots become evidence that the privacy
-  promise doesn't cost you product power, instead of the privacy
-  panel being a tonal afterthought at the end. Full-bleed warm
-  background (swapped from purple in 2026-04 — Greg's call) flows
-  out of the hero gradient and into the purple tax-ticker spot
-  below, which reads cleaner than the original warm-into-warm.
+  Privacy panel — three pillars in a single full-bleed slate panel.
+  Establishes the architecture promise before the feature spotlights
+  show how the architecture still delivers a fast workflow.
 -->
-
-<section class="spot spot-warm spot-full">
+<section class="spot spot-slate spot-full">
   <div class="spot-inner">
     <div class="spot-text">
       <span class="spot-eyebrow">The privacy promise</span>
       <h2>Your data. Your phone. Your business.</h2>
-      <p>Privacy isn't a footnote — it's the architecture. Three non-negotiables, built in from day one and on by default for every user.</p>
+      <p>Privacy isn't a footnote — it's the architecture. Three non-negotiables, on by default, no setting to turn them off because there's nothing to turn on.</p>
       <div class="spot-pillars">
         <div class="spot-pillar">
           <h3>Stays on your phone</h3>
-          <p>No Milely server. No analytics pipeline. No telemetry. No account to create. The only network call Milely makes is the one <em>you</em> trigger when you save a backup to your own cloud.</p>
+          <p>No Milely server. No analytics. No telemetry. No account to create. The app declares zero data collection in its App Privacy report. The only outbound network call is the one <em>you</em> trigger when you save a backup to your own cloud folder.</p>
         </div>
         <div class="spot-pillar">
-          <h3>Backed up to your cloud</h3>
-          <p>iCloud Drive, Google Drive, Dropbox, OneDrive — your folder, your account, your control. We don't see it, proxy it, or index it.</p>
+          <h3>Backed up to a folder you pick</h3>
+          <p>iCloud Drive, Google Drive, Dropbox, OneDrive, Box — pick once via the iOS Files picker and Milely writes a JSON snapshot into a Milely Backups sub-folder you control. Or skip cloud entirely and keep manual JSON exports on the device.</p>
         </div>
         <div class="spot-pillar">
-          <h3>Delete at any time</h3>
-          <p>Long-press a trip and tap Delete, or uninstall to wipe everything. The trip is gone from the only place it ever existed — no server-side copy to "request deletion" of.</p>
+          <h3>Yours to delete, any time</h3>
+          <p>Long-press a trip and tap Delete, or uninstall to wipe everything. The trip is gone from the only place it ever existed — there is no server-side copy to "request deletion" of.</p>
         </div>
       </div>
     </div>
@@ -175,36 +97,37 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
 <!--
   Differentiator panel — explains the architectural moat (we don't
   run a server, so we never store, share, or sell driving data).
-  Placed AFTER the privacy promise three-pillar manifesto (Greg's
-  2026-05-01 reorder) so the page reads: privacy promise establishes
-  what we do → this panel explains why competitors structurally
-  can't do the same → stat strip hard-numbers it. Architectural
-  framing, not behavioral allegation: affirmative claims about Milely
-  (true today, stay true), broad/hedged claims about category
-  capability ("typically allow") rather than specific accusations.
+  Restored 2026-05-07 after Greg flagged that this section had been
+  cut in the v3 rewrite — it's the load-bearing comparison vs. the
+  big mileage apps. Architectural framing, not behavioral allegation:
+  affirmative claims about Milely (true today, stay true), broad/
+  hedged claims about category capability ("typically allow") rather
+  than specific accusations.
+  SVG palette migrated to v3 (azure + brand yellow) — Milely lives
+  in deep blue, the optional-backup arrow is the brand's yellow
+  accent, the cloud-fanout topology stays slate-gray as the neutral
+  default the body copy describes.
+  Color: spot-mint (was slate) so it differentiates from the
+  privacy-promise panel above (also slate-grey by default).
 -->
-<section class="spot spot-slate">
+<section class="spot spot-mint">
   <div class="spot-inner">
     <div class="spot-text">
       <span class="spot-eyebrow">Architecture, not policy</span>
       <h2>We don't store or sell your driving data.</h2>
       <p>The big mileage apps store your trip data on their servers. Their privacy policies typically allow them to aggregate it, share it with partners, or use it to train models. That's not a violation — it's how cloud-based SaaS works. The company is the customer; the driver is the data.</p>
       <p>Milely is built the other way around. Your trips live on your iPhone. We don't run a server they could be uploaded to. Even if we wanted to sell or share your driving data, we couldn't — we never have it. That's not a policy promise; it's an architectural fact.</p>
-      <p>Backups go to <em>your</em> iCloud, <em>your</em> Google Drive, <em>your</em> Dropbox — never to us. The only copy of your trip log that ever exists outside your phone is the IRS-ready PDF you choose to produce at year-end.</p>
+      <p>Backups go to <em>your</em> iCloud, <em>your</em> Google Drive, <em>your</em> Dropbox — never to us. The only copy of your trip log that ever exists outside your phone is the audit-ready PDF you choose to produce at year-end.</p>
     </div>
     <div class="spot-art">
       <!--
-        Architectural contrast schematic (2026-05-01). Inline SVG so it
-        scales cleanly on retina, doesn't require an asset round-trip,
-        and inherits brand colors directly. Top half: the big mileage
-        apps' cloud-fanout topology (phone → server → vendor / partner /
-        AI model), rendered in muted slate-gray to read as the
-        "neutral default" framing the body copy uses ("not a violation,
-        just how cloud-based SaaS works"). Bottom half: Milely's on-
-        device topology (phone holds the data; one optional dotted
-        path out to the user's chosen cloud), rendered in brand burnt
-        orange. The "vs." divider centers the contrast — same data,
-        opposite architecture.
+        Architectural contrast schematic. Top: cloud-fanout topology
+        (phone → server → vendor / partner / AI model) in muted slate
+        as the neutral default the body copy describes. Bottom:
+        Milely's on-device topology (phone holds the data; one
+        optional dotted path to the user's chosen cloud) in azure
+        with the optional-backup arrow in brand yellow — the
+        brand's headlight accent.
       -->
       <svg viewBox="0 0 480 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="archTitle archDesc" style="width: 100%; height: auto; display: block;">
         <title id="archTitle">Cloud-fanout architecture vs Milely on-device architecture</title>
@@ -213,12 +136,12 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
           <marker id="arrMute" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
             <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
           </marker>
-          <marker id="arrOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-            <path d="M 0 0 L 10 5 L 0 10 z" fill="#c2410c"/>
+          <marker id="arrYellow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#FFB900"/>
           </marker>
         </defs>
 
-        <!-- TOP: THE BIG MILEAGE APPS (horizontal flow, fills width) -->
+        <!-- TOP: THE BIG MILEAGE APPS (slate, the "neutral default") -->
         <text x="240" y="22" text-anchor="middle" fill="#475569" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="1.5">THE BIG MILEAGE APPS</text>
 
         <!-- phone -->
@@ -246,7 +169,7 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
           <text x="45" y="98" text-anchor="middle" fill="#64748b" font-size="10">their server</text>
         </g>
 
-        <!-- fan-out arrows + labels (spread to right edge) -->
+        <!-- fan-out arrows + labels -->
         <line x1="255" y1="78" x2="385" y2="50" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrMute)"/>
         <line x1="255" y1="105" x2="385" y2="105" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrMute)"/>
         <line x1="255" y1="132" x2="385" y2="160" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrMute)"/>
@@ -256,105 +179,95 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
 
         <!-- DIVIDER vs. -->
         <line x1="30" y1="220" x2="220" y2="220" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="3,3"/>
-        <text x="240" y="225" text-anchor="middle" fill="#9a3412" font-family="'Space Grotesk', sans-serif" font-size="14" font-weight="700">vs.</text>
+        <text x="240" y="225" text-anchor="middle" fill="#1f2937" font-family="'Space Grotesk', sans-serif" font-size="14" font-weight="700">vs.</text>
         <line x1="260" y1="220" x2="450" y2="220" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="3,3"/>
 
-        <!-- BOTTOM: MILELY (horizontal flow: phone-left, optional → cloud-right) -->
-        <text x="240" y="258" text-anchor="middle" fill="#9a3412" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="1.5">MILELY</text>
+        <!-- BOTTOM: MILELY (azure + Yellow) -->
+        <text x="240" y="258" text-anchor="middle" fill="#0078D4" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="1.5">MILELY</text>
 
-        <!-- phone with data dots + lock (bigger, on the left side) -->
+        <!-- phone with data dots + lock -->
         <g transform="translate(40, 280)">
-          <rect width="120" height="140" rx="14" fill="#fff7ed" stroke="#c2410c" stroke-width="3"/>
-          <rect x="10" y="14" width="100" height="100" rx="3" fill="#fed7aa"/>
-          <rect x="50" y="120" width="20" height="3" rx="1.5" fill="#c2410c"/>
+          <rect width="120" height="140" rx="14" fill="#eff6ff" stroke="#0078D4" stroke-width="3"/>
+          <rect x="10" y="14" width="100" height="100" rx="3" fill="#bfdbfe"/>
+          <rect x="50" y="120" width="20" height="3" rx="1.5" fill="#0078D4"/>
 
           <!-- trip-dots -->
-          <circle cx="34" cy="34" r="3" fill="#9a3412"/>
-          <circle cx="58" cy="44" r="3" fill="#9a3412"/>
-          <circle cx="84" cy="36" r="3" fill="#9a3412"/>
-          <circle cx="46" cy="60" r="3" fill="#9a3412"/>
-          <circle cx="72" cy="70" r="3" fill="#9a3412"/>
-          <circle cx="90" cy="80" r="3" fill="#9a3412"/>
-          <circle cx="38" cy="86" r="3" fill="#9a3412"/>
-          <circle cx="66" cy="98" r="3" fill="#9a3412"/>
-          <circle cx="84" cy="106" r="3" fill="#9a3412"/>
+          <circle cx="34" cy="34" r="3" fill="#1e40af"/>
+          <circle cx="58" cy="44" r="3" fill="#1e40af"/>
+          <circle cx="84" cy="36" r="3" fill="#1e40af"/>
+          <circle cx="46" cy="60" r="3" fill="#1e40af"/>
+          <circle cx="72" cy="70" r="3" fill="#1e40af"/>
+          <circle cx="90" cy="80" r="3" fill="#1e40af"/>
+          <circle cx="38" cy="86" r="3" fill="#1e40af"/>
+          <circle cx="66" cy="98" r="3" fill="#1e40af"/>
+          <circle cx="84" cy="106" r="3" fill="#1e40af"/>
 
-          <!-- lock badge (top-right of phone screen, indicates secured) -->
+          <!-- lock badge -->
           <g transform="translate(86, 22)">
-            <path d="M 4 3 Q 4 -2 8 -2 Q 12 -2 12 3 L 12 6 L 4 6 Z" stroke="#c2410c" stroke-width="2" fill="none"/>
-            <rect y="6" width="16" height="14" rx="2" fill="#c2410c"/>
-            <circle cx="8" cy="12" r="1.5" fill="#fff7ed"/>
+            <path d="M 4 3 Q 4 -2 8 -2 Q 12 -2 12 3 L 12 6 L 4 6 Z" stroke="#0078D4" stroke-width="2" fill="none"/>
+            <rect y="6" width="16" height="14" rx="2" fill="#0078D4"/>
+            <circle cx="8" cy="12" r="1.5" fill="#eff6ff"/>
           </g>
         </g>
 
         <!-- middle label -->
-        <text x="100" y="438" text-anchor="middle" fill="#9a3412" font-size="11" font-weight="600">data lives here</text>
+        <text x="100" y="438" text-anchor="middle" fill="#0078D4" font-size="11" font-weight="600">data lives here</text>
 
-        <!-- horizontal dotted arrow phone -> your cloud -->
-        <line x1="170" y1="350" x2="305" y2="350" stroke="#fb923c" stroke-width="2.5" stroke-dasharray="5,4" marker-end="url(#arrOrange)"/>
-        <text x="237" y="343" text-anchor="middle" fill="#c2410c" font-size="10" font-style="italic">optional backup</text>
+        <!-- horizontal dotted arrow phone -> your cloud (yellow accent) -->
+        <line x1="170" y1="350" x2="305" y2="350" stroke="#FFB900" stroke-width="2.5" stroke-dasharray="5,4" marker-end="url(#arrYellow)"/>
+        <text x="237" y="343" text-anchor="middle" fill="#1f2937" font-size="10" font-style="italic">optional backup</text>
 
-        <!-- your cloud bucket on the right -->
-        <g transform="translate(320, 305)">
-          <rect width="140" height="90" rx="10" fill="#fff7ed" stroke="#c2410c" stroke-width="3"/>
-          <!-- cloud icon inside -->
-          <path d="M 35 50 Q 28 50 28 42 Q 28 34 36 34 Q 38 26 48 26 Q 58 26 60 34 Q 70 34 70 42 Q 70 50 62 50 Z"
-                fill="#fed7aa" stroke="#c2410c" stroke-width="2"/>
-          <text x="70" y="76" text-anchor="middle" fill="#9a3412" font-size="11" font-weight="600">your iCloud</text>
+        <!-- your cloud icon -->
+        <g transform="translate(310, 320)">
+          <path d="M 30 24 Q 18 24 18 36 Q 6 36 6 50 Q 6 60 16 60 L 70 60 Q 84 60 84 48 Q 84 36 72 36 Q 72 22 56 22 Q 42 22 38 30 Q 34 24 30 24 Z" fill="#eff6ff" stroke="#0078D4" stroke-width="2"/>
+          <text x="45" y="80" text-anchor="middle" fill="#0078D4" font-size="11" font-weight="600">your cloud</text>
         </g>
-
-        <!-- footnote under cloud -->
-        <text x="390" y="425" text-anchor="middle" fill="#9a3412" font-size="9" font-style="italic">no server in between</text>
       </svg>
     </div>
   </div>
 </section>
 
 <!--
-  Stat strip: hard numbers reinforcing the privacy promise above.
-  Moved here in 2026-04 so the four credibility signals (current
-  IRS rate, zero servers, weekly cadence, monthly price) follow
-  the three-pillar manifesto — "0 servers" lands as proof of the
-  claim the panel just made. Rate + year pulled from
-  _data/irs.yml so any future rate change is one edit.
+  Stat strip — four numbers. 0 servers / 5 min weekly review /
+  $3.99 entry price / $10,000+ average deduction. $10K lands LAST
+  (Greg's spec) so the row reads as a build: zero servers (privacy
+  proof) → 5 min weekly habit (low-friction proof) → $3.99 cost
+  proof → $10K size-of-the-prize as the closing punch. Same number
+  appears in editorial Fraunces treatment immediately below.
+  Loud MS-Azure surface — same blue as the site header — so the
+  strip reads as the page's second confident brand moment.
 -->
 <section class="stat-strip">
   <div class="stat-strip-inner">
     <div class="stat">
       <div class="stat-num">0</div>
-      <div class="stat-label">Servers Milely runs.<br/>Your data stays under your control.</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">6</div>
-      <div class="stat-label">Ways to store your data<br/>on devices you control.</div>
+      <div class="stat-label">Servers Milely runs.<br/>Zero data collection, zero analytics.</div>
     </div>
     <div class="stat">
       <div class="stat-num">5 min</div>
-      <div class="stat-label">Weekly review keeps<br/>you tax-ready year-round.</div>
+      <div class="stat-label">Weekly review keeps<br/>your records audit-ready year-round.</div>
     </div>
     <div class="stat">
       <div class="stat-num">$3.99</div>
-      <div class="stat-label">/ month after the<br/>7-day free trial.</div>
+      <div class="stat-label">/ month after the<br/>7-day free trial. $29.99 / year saves ~37%.</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">$10,000+</div>
+      <div class="stat-label">Average annual business-<br/>mileage deduction (~13,800 mi).</div>
     </div>
   </div>
 </section>
 
 <!--
-  Editorial moment — the size of the prize.
-  2026-05-01: a quiet pull-quote between the stat strip's
-  proof-of-product and the first feature spotlight. Sets the
-  stakes — what mileage tracking is actually worth in a self-
-  employed driver's year — before we show what Milely does
-  about it. Fraunces serif treatment matches the hero "#1" rank
-  so it reads as editorial, not as a second SaaS stat strip.
-
-  Number: $10,000+ — the average annual business-mileage
-  deduction tracked by drivers who use a mileage app, derived
-  from ~13,800 business miles/year × $0.725 (the 2026 IRS
-  business standard rate). Wording is "deduction" not
-  "savings" deliberately: the actual tax money kept is smaller
-  (deduction × marginal bracket, ~$2,200–$3,000 at 22-30%);
-  claiming "$10K saved" would overreach.
+  Editorial deduction moment — "the size of the prize". Sits AFTER
+  the stat strip (which previews the $10K figure) so the reader
+  rhythm is: stat strip rolls four credibility numbers → this
+  panel zooms in on the most consequential one with editorial
+  weight. The IRS rate + per-mile figures stay as a factual
+  citation for the number's source (Greg's directive 2026-05-07:
+  "keep the IRS language since that is where we got the number
+  from"). brand yellow on the dollar number ties it to the
+  headlights + wordmark tittle.
 -->
 <section class="deduction-moment">
   <div class="deduction-moment-inner">
@@ -366,13 +279,10 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
 </section>
 
 <!--
-  Spotlight 1 — Tax savings ticker (purple).
-  Anchors the feature evidence on the differentiator: real-time
-  tax savings at the user's bracket, not just a generic deduction
-  count. Swapped from warm to purple in 2026-04 to flow better
-  with the now-warm privacy manifesto above — warm hero into warm
-  manifesto into purple ticker reads as a cleaner gradient than
-  warm-on-warm did.
+  Spotlight 1 — Live tax ticker (purple). Restored 2026-05-07 from
+  the prior shipped homepage. Anchors feature evidence on the
+  differentiator: real-time tax savings at the user's bracket, not
+  just a generic deduction count.
 -->
 <section class="spot spot-purple">
   <div class="spot-inner">
@@ -389,9 +299,10 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
 </section>
 
 <!--
-  Spotlight 2 — Smart Suggestions / on-device pattern learning (blue, reverse).
-  The privacy story told concretely: a real on-device model name,
-  trained against the user's own classifications.
+  Spotlight 2 — Smart Suggestions / on-device pattern learning
+  (blue, reverse). Restored 2026-05-07. Privacy story told
+  concretely: a real on-device model name, trained against the
+  user's own classifications.
 -->
 <section class="spot spot-blue spot-reverse">
   <div class="spot-inner">
@@ -408,12 +319,10 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
 </section>
 
 <!--
-  Mixed-use spotlight — added 2026-05-01 to make the privacy thesis
-  concrete for the typical Milely user (one person, one car, mixed
-  business and personal use). Kept tonally professional: mundane
-  examples (school pickup, doctor's appointment, hardware store) so
-  the section reinforces "your data is yours" without veering into
-  the dark/spicy territory the marketing-package draft included.
+  Spotlight 3 — One person. One car. Mixed use. (purple, reverse).
+  Restored 2026-05-07. Makes the privacy thesis concrete for the
+  typical Milely user (one person, one car, mixed business and
+  personal use). Mundane examples kept tonally professional.
 -->
 <section class="spot spot-purple spot-reverse">
   <div class="spot-inner">
@@ -431,14 +340,9 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
 </section>
 
 <!--
-  Spotlight — Include / Exclude two-state model (warm).
-  Round-3 (2026-04) collapsed the older "Personal as a separate
-  first-class state" framing into a clean two-state model: every
-  trip is either Included in the annual report or Excluded from
-  it. Personal is now a regular item in the business picker, not
-  a parallel concept. Sits between Smart Suggestions and Audit so
-  the narrative goes: "Milely classifies → every trip is in or
-  out → the audit trail is clean."
+  Spotlight 4 — Include or exclude — never gray (warm). Restored
+  2026-05-07. The clean two-state model: every trip is either in
+  the annual report or kept aside, with a one-swipe toggle.
 -->
 <section class="spot spot-warm">
   <div class="spot-inner">
@@ -455,11 +359,9 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
 </section>
 
 <!--
-  Spotlight 3 — Export to anywhere (green).
-  Reordered 2026-05-01 to come BEFORE the audit-defensive panel
-  per Greg's narrative flow: drove → reports → exports → audit
-  story. Color flow: green here → slate next so the page reads
-  green-then-gray for the closing pair.
+  Spotlight 5 — Export to anywhere (green). Restored 2026-05-07.
+  Reads green-then-slate as the closing pair (Greg's narrative
+  flow). IRS-Pub-463 mention scrubbed to plain "audit-ready".
 -->
 <section class="spot spot-green">
   <div class="spot-inner">
@@ -468,7 +370,7 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
       <h2>Export wherever your accountant wants it.</h2>
       <p>One Export button. Four formats:</p>
       <ul class="spot-bullets">
-        <li><strong>PDF</strong>IRS Pub. 463-formatted trip log. Hand it to your CPA.</li>
+        <li><strong>PDF</strong>Audit-ready trip log. Hand it to your CPA.</li>
         <li><strong>Excel (.xls)</strong>Opens in Excel, Numbers, Google Sheets, or LibreOffice.</li>
         <li><strong>CSV — Milely (full)</strong>Every column we track, ready for your spreadsheet stack.</li>
         <li><strong>CSV — QuickBooks Online</strong>Drop-in mileage import. No manual entry.</li>
@@ -482,28 +384,27 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
 </section>
 
 <!--
-  Spotlight 4 — Audit-defensive by design (slate, reverse).
-  Five sub-features (auto-lock, Audit Lock, edit history, recovery,
-  year-end odometer) surfaced as in-panel bullets — kept inside one
-  panel so the audit story reads as a single coherent claim. Slate
-  closes the green→gray pair Greg wanted on the closing two panels.
+  Spotlight 6 — Audit-defensive by design (slate, reverse). Restored
+  2026-05-07. Five audit-trail features as in-panel bullets so the
+  audit story reads as one coherent claim. IRS / Schedule C / Form
+  2106 references genericized to satisfy the no-IRS-language rule.
 -->
 <section class="spot spot-slate spot-reverse">
   <div class="spot-inner">
     <div class="spot-text">
       <span class="spot-eyebrow">Audit-defensive by design</span>
-      <h2>Make your life boring if the IRS ever wants to see.</h2>
+      <h2>Make your life boring if anyone ever wants to see.</h2>
       <p>Five audit-trail features, on by default, no add-on tier:</p>
       <ul class="spot-bullets">
         <li><strong>Auto-lock on save</strong>The moment you save a classified trip, it locks itself — no extra tap, no chance to forget. Every later change is captured in the trip's edit history with a timestamp and the old/new value.</li>
         <li><strong>Audit Lock (automatic)</strong>On January 31 each year, the prior year's trips lock automatically so you can't accidentally edit them mid-audit. A year-end-lock banner appears in the Reports tab so you can see the year is sealed at a glance. Unlocking any individual trip is a deliberate two-tap action that writes a timestamped event to the trip's edit history.</li>
         <li><strong>Per-trip edit history</strong>Every field-level change records a <em>TripEditEvent</em> with timestamp, old value, and new value — visible from the trip's detail view, so the full timeline is always there if your CPA asks how a record evolved.</li>
         <li><strong>Trip recovery if iOS reclaims memory mid-drive</strong>If your phone runs out of memory or the app force-quits mid-trip, you'll see a <em>Recover trip in progress?</em> prompt the next time you open Milely. Your route, distance, and time so far are preserved — nothing is lost.</li>
-        <li><strong>Year-end odometer reconciliation</strong>IRS Form 2106 / Schedule C-aligned readings, reconciled against actual miles logged.</li>
+        <li><strong>Year-end odometer reconciliation</strong>Beginning- and end-of-year readings per vehicle, reconciled against actual miles logged. Printed on the cover page of the annual PDF report.</li>
       </ul>
     </div>
     <div class="spot-art">
-      <img class="spot-shot" src="/assets/screenshots/hero-6-pdf.png" alt="Milely 2026 Mileage Log PDF — IRS Pub. 463-formatted summary with totals, by-business breakdown, and per-trip details ready to hand to a CPA" />
+      <img class="spot-shot" src="/assets/screenshots/hero-6-pdf.png" alt="Milely annual mileage log PDF — audit-ready summary with totals, by-business breakdown, and per-trip details ready to hand to a CPA" />
     </div>
   </div>
 </section>
@@ -511,57 +412,65 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
 <hr/>
 
 <!--
-  Secondary feature grid — colored-accent cards for the "everything
-  else" surface area. Each card pulls a distinct accent color so
-  the row reads as deliberately varied (the prior all-white
-  hairline-card grid read like a placeholder template).
+  Secondary feature grid — colored-accent cards covering the rest of
+  the v1 surface area: Manual / Automatic / Universal modes, receipts,
+  CSV imports, themes, project tagging, calendar recovery, weekly
+  review, exports. Each card's accent stays in the v3 cool/neutral
+  family so the row reads as variations on the azure system rather
+  than a rainbow.
 -->
 <section>
-  <h2>Built for the way you actually work.</h2>
-  <p>You don't classify trips at your desk. You classify them at a stoplight, between showings, on the way to the next job. Milely's smaller features are built for that.</p>
+  <h2>Built for the way drivers actually work.</h2>
+  <p>You don't classify trips at your desk — you classify them at a stoplight, between showings, on the way to the next job. Milely's smaller features are built for that.</p>
 
   <div class="features">
-    <div class="feature feature-warm">
-      <h3>Auto-classify presets</h3>
-      <p>Tap "Always business at 1428 Maple St" or "Always personal" — Milely creates a rule. Future trips through that address auto-pre-fill.</p>
-    </div>
     <div class="feature feature-blue">
-      <h3>Favorite trips, one tap</h3>
-      <p>Save common drives as templates — Office to listing, Home to job site, Costco run. Surface as Quick Start on the Dashboard.</p>
-    </div>
-    <div class="feature feature-green">
-      <h3>Weekly review reminder</h3>
-      <p>Pick a day in Settings (Sunday by default). At 6 PM that day, if you have trips waiting on Include/Exclude, Milely pings you. If everything's reviewed, it stays silent. Five minutes a week.</p>
-    </div>
-    <div class="feature feature-purple">
-      <h3>"I forgot for three weeks."</h3>
-      <p>Calendar-based recovery reads recent events with locations — <strong>on-device, never transmitted</strong> — and proposes them as trips.</p>
-    </div>
-    <div class="feature feature-rose">
-      <h3>Project &amp; client tagging</h3>
-      <p>Within a Business, tag each trip with a project — "1428 Maple," "Smith matter." Surfaces on the CSV and the PDF.</p>
-    </div>
-    <div class="feature feature-teal">
-      <h3>Receipt scanning, on-device</h3>
-      <p>Snap a parking stub or toll receipt. Milely reads the total on your phone — no cloud, no third-party service. Location and timestamp metadata are stripped from the photo before save. The receipt prints with the trip on your PDF.</p>
-    </div>
-    <div class="feature feature-orange">
-      <h3>CarPlay vehicle pairing</h3>
-      <p>Pair each vehicle to its CarPlay or car Bluetooth. The Vehicle list itself is the auto-detect arming gate — with paired vehicles in the list, motion-based detection only arms when one of those vehicles is the live audio route, so passenger rides in someone else's car stay silent. Pick whether disconnect <strong>pauses</strong> the trip (saves battery between stops) or <strong>keeps recording</strong> (so you don't miss a leg). Connecting to a different paired car mid-trip prompts you to stop or continue.</p>
-      <p class="feature-sub">CarPlay-trigger works in <strong>both Manual and Automatic modes</strong> — they're independent. Pick Manual + CarPlay-trigger if you want hands-off recording for your paired vehicles only and manual control everywhere else.</p>
-    </div>
-    <div class="feature feature-warm">
-      <h3>Lost-miles recovery</h3>
-      <p>iOS's motion classifier can take a minute or two to confirm you're driving. Most mileage trackers eat that latency — those miles are simply gone. Milely keeps a rolling 10-minute location buffer in the background; the moment auto-detect promotes to recording, it walks back through the buffer to find when you actually started driving and rewrites the trip's start time and route to match.</p>
-      <p class="feature-sub">Net effect: when other trackers log a 14.6-mile commute as 13.1 miles, Milely logs it as 14.6. Over a year, that's real money you weren't deducting.</p>
+      <h3>Three trip-recording modes</h3>
+      <p>Settings → Trip Settings splits into <strong>Manual</strong> (tap Start, drive, tap End), <strong>Automatic</strong> (motion + significant-location-changes wake the recorder when you start driving), and <strong>Universal</strong> (any active recording responds to CarPlay/Bluetooth disconnects, pause-on-disconnect rules, and the overnight cutoff). Pick the mode that fits your week.</p>
     </div>
     <div class="feature feature-sky">
-      <h3>Switching from MileIQ, Everlance, or TripLog?</h3>
-      <p>Drop in your CSV — Milely auto-detects the source format, brings every trip with you, and lets you preview before confirming. Settings → Backup → Import. Your history goes with you, so you don't lose deductions to "I'll set it up later."</p>
+      <h3>Smart Suggestions, on-device</h3>
+      <p>The third time you classify a trip from your office to <em>Acme Realty</em> as <em>showing</em>, Milely starts pre-filling that combination. The pattern-learning model trains locally with Apple's CoreML and never leaves your phone. Uninstall the app and the model goes with it.</p>
     </div>
-    <div class="feature feature-purple">
-      <h3>Backups and exports, your choice.</h3>
-      <p>Export the annual log as <strong>PDF</strong> (IRS Pub. 463-formatted), <strong>Excel (.xls)</strong>, <strong>CSV — Milely (full)</strong>, or a <strong>QuickBooks Online</strong> drop-in. Back up the full app database to <strong>iCloud Drive, Google Drive, Dropbox, OneDrive</strong>, or any folder via the iOS Files picker — your account, your folder, your control. We don't proxy it, index it, or see it.</p>
+    <div class="feature feature-slate">
+      <h3>Include or exclude — never gray</h3>
+      <p>Every trip Milely records is either part of your annual report or kept aside. Swipe right in Logs to <strong>Include</strong>; swipe left to <strong>Exclude</strong>. Excluded trips stay searchable but are kept out of every deduction total — Reports, Dashboard, exports.</p>
+    </div>
+    <div class="feature feature-teal">
+      <h3>Receipt scanning</h3>
+      <p>Apple's VisionKit document scanner — edge detection, perspective correction, multi-page. EXIF metadata (location, timestamp, device model) is stripped at attach. Up to ten receipts per trip, 5 MB each. Receipts surface beside the trip and on the annual PDF.</p>
+    </div>
+    <div class="feature feature-green">
+      <h3>Switching from MileIQ, Everlance, or TripLog?</h3>
+      <p>Drop in your CSV — Milely auto-detects the source format from the file's header row, previews the trips, and brings every one with you. Settings → Backup → Import. Your history goes with you so you don't lose deductible miles to "I'll set it up later."</p>
+    </div>
+    <div class="feature feature-yellow">
+      <h3>Tax-bracket savings ticker</h3>
+      <p>Set your federal bracket once in Settings → Tax Bracket. Every business mile becomes a real dollar at <em>your</em> bracket — not a generic deduction line, the actual tax saved. The Dashboard ticker turns "I drove 14 miles" into "I just saved $3.24." Quietly motivating.</p>
+    </div>
+    <div class="feature feature-blue">
+      <h3>Project &amp; client tagging</h3>
+      <p>Within a Business, tag each trip with a project — <em>1428 Maple listing</em>, <em>Smith matter</em>, <em>Dallas job</em>. Surfaces on the CSV and the PDF so you can sort, filter, or pivot when you're billing or reconciling.</p>
+    </div>
+    <div class="feature feature-sky">
+      <h3>Calendar past-trip recovery</h3>
+      <p>Forgot to use the app for three weeks? Settings → Integrations → Recover from Calendar reads recent calendar events with locations — on-device, never transmitted — dedupes against trips you already saved, and proposes the rest.</p>
+    </div>
+    <div class="feature feature-slate">
+      <h3>Weekly review reminder</h3>
+      <p>Pick a day in Settings → Notifications. At 6 PM that day, if you have trips waiting on Include/Exclude, Milely pings you. If everything's reviewed, it stays silent. Five minutes a week.</p>
+    </div>
+    <div class="feature feature-teal">
+      <h3>Backups, your folder</h3>
+      <p>Choose Cloud Folder once via the iOS Files picker — iCloud Drive, Google Drive, Dropbox, OneDrive, or Box — and Milely writes <code>milely-&lt;timestamp&gt;.json</code> snapshots into it. Or pick This iPhone Only and use Manual Export when you want a one-off JSON via the share sheet.</p>
+    </div>
+    <div class="feature feature-green">
+      <h3>Exports for every accountant</h3>
+      <p><strong>PDF</strong> — branded for subscribers, plain for free. <strong>Excel (.xls)</strong> — opens in Excel, Numbers, Sheets, LibreOffice. <strong>CSV — Milely (full)</strong> with every column. <strong>CSV — QuickBooks Online</strong> — drop-in mileage importer. <strong>JSON</strong> — same shape as the backup snapshot.</p>
+    </div>
+    <div class="feature feature-blue">
+      <h3>Watch, widget, Live Activity</h3>
+      <p>While a trip records, your watch shows live miles + duration, the home-screen widget shows month-to-date deduction, and the Lock Screen / Dynamic Island carries the active trip with miles, duration, and deduction. The watch is display-only — recording starts on the phone.</p>
     </div>
   </div>
 </section>
@@ -570,36 +479,34 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
 
 <section class="pricing">
   <h2 class="pricing-title">One simple plan.</h2>
-  <p class="pricing-sub">Try Milely free for 7 days. After the trial, pick monthly or annual — both unlock everything in the app, including unlimited trips, receipts, branded PDFs, themes, and automatic cloud backup.</p>
+  <p class="pricing-sub">Try Milely free for seven days, fully unlocked. After the trial, pick monthly or annual — both unlock the whole app, including unlimited recording, receipts, branded PDFs, every theme, and cloud-folder backup. Trial timer starts on your <strong>first recorded trip</strong>, not on install — drive when you're ready.</p>
 
   <div class="pricing-grid">
 
-    <!-- Annual (recommended — visually pre-selected with #1 PICK
-         ribbon, brand-gradient border, and a subtle lift). The
-         "Best value" tag is gone since the ribbon carries that
-         signal more emphatically. -->
+    <!-- Annual (recommended — visually pre-selected with ribbon and
+         a subtle lift). -->
     <div class="pricing-card pricing-card-plus pricing-card-selected">
       <div class="pricing-card-ribbon">Most Popular</div>
       <h3 class="pricing-card-name">Annual</h3>
       <div class="pricing-card-price">$29.99 <span>/ year</span></div>
-      <p class="pricing-card-tagline">Saves about 37% vs monthly. That's $2.50/month effective. 7-day free trial included.</p>
+      <p class="pricing-card-tagline">About $2.50 / month effective. Saves ~37% vs monthly. 7-day free trial included.</p>
       <a class="badge-link" href="https://apps.apple.com/app/milely/id__APPSTORE_ID_PENDING__" rel="noopener noreferrer">Try free for 7 days</a>
 
       <div class="pricing-card-section">
         <h4>What's unlocked:</h4>
         <ul class="checklist">
-          <li><span class="check">✓</span> Unlimited trips per month</li>
-          <li><span class="check">✓</span> Smart Suggestions — Milely learns your patterns, on your phone</li>
-          <li><span class="check">✓</span> Receipt scanning — multi-page, camera-roll attach, prints on the PDF</li>
-          <li><span class="check">✓</span> PDF / Excel / CSV / QuickBooks Online exports</li>
-          <li><span class="check">✓</span> Branded PDF reports with your logo + brand colors + firm footer</li>
-          <li><span class="check">✓</span> Eight color themes — Warm, Light, Night, Day, Slate, Sky, Forest, Mint</li>
-          <li><span class="check">✓</span> Automatic cloud backup (iCloud / Google Drive / Dropbox / OneDrive)</li>
-          <li><span class="check">✓</span> Branded map route (Milely's gradient instead of Apple blue)</li>
-          <li><span class="check">✓</span> Live Activity, Dynamic Island, Widget, Watch, Siri Shortcuts</li>
-          <li><span class="check">✓</span> Trip Templates, calendar suggestions, vehicle auto-detect with disconnect behavior</li>
-          <li><span class="check">✓</span> Tax bracket setting → estimated savings ticker</li>
-          <li><span class="check">✓</span> Priority email support — front of the queue</li>
+          <li><span class="check">✓</span> Unlimited trip recording</li>
+          <li><span class="check">✓</span> Every theme — Day (default), Warm, Light, Night, Storm, Clear, Mint, Minty</li>
+          <li><span class="check">✓</span> Receipt scanning, on-device, 10 per trip</li>
+          <li><span class="check">✓</span> Branded PDF reports — your logo, accent color, firm footer</li>
+          <li><span class="check">✓</span> Cloud-folder backup (iCloud, Google Drive, Dropbox, OneDrive, Box)</li>
+          <li><span class="check">✓</span> Smart Suggestions, on-device pattern learning</li>
+          <li><span class="check">✓</span> Strict CarPlay Start, paired-vehicle arming gate</li>
+          <li><span class="check">✓</span> CSV imports (MileIQ, Everlance, TripLog)</li>
+          <li><span class="check">✓</span> Calendar past-trip recovery, project / client tagging</li>
+          <li><span class="check">✓</span> Live Activity, Dynamic Island, watch app, home-screen widget</li>
+          <li><span class="check">✓</span> Tax-bracket savings ticker</li>
+          <li><span class="check">✓</span> Direct support — front of the queue</li>
         </ul>
       </div>
     </div>
@@ -615,17 +522,16 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
       <div class="pricing-card-section pricing-card-section-muted">
         <h4>During your 7-day free trial:</h4>
         <ul class="checklist checklist-muted">
-          <li><span class="check">✓</span> Every feature unlocked — unlimited trips, all 8 themes, receipts, branded PDFs, cloud backup</li>
+          <li><span class="check">✓</span> Every feature unlocked — unlimited recording, every theme, receipts, branded PDFs, cloud-folder backup</li>
           <li><span class="check">✓</span> No card required to start</li>
         </ul>
         <h4 style="margin-top: 16px;">After your trial, without subscribing:</h4>
         <ul class="checklist checklist-muted">
-          <li><span class="check">✓</span> All recorded trips stay viewable, editable, and exportable forever</li>
-          <li><span class="check">✓</span> Re-export PDF, CSV, JSON anytime — no subscription needed</li>
-          <li><span class="check">✓</span> Warm theme stays free</li>
-          <li><span class="check-x">○</span> Recording new trips requires a subscription</li>
+          <li><span class="check">✓</span> Every trip you recorded stays viewable, editable, and exportable forever</li>
+          <li><span class="check">✓</span> Re-export PDF, CSV, JSON, Excel any time — no subscription needed</li>
+          <li><span class="check-x">○</span> Recording <em>new</em> trips requires a subscription</li>
         </ul>
-        <p class="pricing-card-fineprint" style="margin-top: 12px; padding-top: 0;">Trial timer starts on your first recorded trip — not on app install. Drive when you're ready.</p>
+        <p class="pricing-card-fineprint" style="margin-top: 12px; padding-top: 0;">Trial timer starts on your <strong>first recorded trip</strong> — not on install. Drive when you're ready.</p>
       </div>
     </div>
 
@@ -634,101 +540,69 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
   <p class="pricing-card-fineprint" style="text-align: center; max-width: 720px; margin: 24px auto 0;">Subscriptions auto-renew at the end of each period unless cancelled at least 24 hours before period-end. Apple handles all billing — manage or cancel any time in Settings → Apple ID → Subscriptions.</p>
 
   <details style="margin: 28px auto 0; max-width: 720px;">
-    <summary><strong>Don't want a subscription? There's a Lifetime option.</strong></summary>
-    <p style="margin-top: 12px;">If subscriptions aren't for you, <strong>Milely Lifetime</strong> is a one-time $69.99 purchase that unlocks everything forever — no recurring charge, no expiration, future Milely features included as long as the app exists. Buried inside the app at <em>Settings → Subscribe → Other options</em>. We don't promote it because the subscription model is what funds ongoing development, but it's there for the small minority who refuse subscriptions on principle.</p>
+    <summary><strong>Other options.</strong></summary>
+    <p style="margin-top: 12px;">If subscriptions aren't for you, <strong>Milely Lifetime</strong> is a one-time $69.99 purchase that unlocks everything forever — no recurring charge, no expiration. Tucked behind <em>Settings → Subscribe → Other options</em> inside the app. We don't promote it because subscriptions fund ongoing development, but it's there for the small minority who'd rather pay once.</p>
   </details>
 </section>
 
 <hr/>
 
 <section class="themes-showcase">
-  <h2 class="themes-title">Pick what feels like you.</h2>
-  <p class="themes-sub"><strong>All eight themes are unlocked during your free 7-day trial</strong> — try them all. After the trial, the default <strong>Warm</strong> palette stays free; the other seven require a subscription. Laid out below in the same order as the in-app picker (dark / light pairs): Warm, Light, Night, Day, Slate, Sky, Forest, Mint.</p>
+  <h2 class="themes-title">Eight themes. Day is the default.</h2>
+  <p class="themes-sub">Cold-start theme is <strong>Day</strong> — pure-white cards on soft neutral grey with an azure-blue accent. <strong>Warm</strong> is the only theme that stays free for everyone after the trial; the other seven are subscriber-gated. All eight are unlocked while your trial is live.</p>
 
   <div class="themes-grid">
-
-    <!-- Order matches the in-app theme picker exactly:
-         Warm, Light, Night, Day, Slate, Sky, Forest, Mint.
-         Picker order is dark→light pairs (Warm/Light, Night/Day,
-         Slate/Sky, Forest/Mint) — keeping the homepage in lockstep
-         so users don't have to re-orient between marketing copy and
-         the actual settings screen. -->
-
+    <figure class="theme-card">
+      <img src="/assets/screenshots/day.png" alt="Milely Office Day theme — pure-white cards on soft neutral grey with Azure-blue accents (default)" />
+      <figcaption><span class="theme-name">Office Day</span></figcaption>
+    </figure>
     <figure class="theme-card">
       <img src="/assets/screenshots/warm.png" alt="Milely Warm theme — dark warm-brown background with burnt-orange and amber accents" />
-      <figcaption>
-        <span class="theme-name">Warm</span>
-      </figcaption>
+      <figcaption><span class="theme-name">Warm</span></figcaption>
     </figure>
-
     <figure class="theme-card">
       <img src="/assets/screenshots/light.png" alt="Milely Light theme — cream background with burnt-orange accents" />
-      <figcaption>
-        <span class="theme-name">Light</span>
-      </figcaption>
+      <figcaption><span class="theme-name">Light</span></figcaption>
     </figure>
-
     <figure class="theme-card">
-      <img src="/assets/screenshots/night.png" alt="Milely Night theme — Microsoft Fluent-inspired strict monochrome dark palette with Azure blue accent" />
-      <figcaption>
-        <span class="theme-name">Night</span>
-      </figcaption>
+      <img src="/assets/screenshots/night.png" alt="Milely Office Night theme — strict monochrome dark palette with Azure-blue accent" />
+      <figcaption><span class="theme-name">Office Night</span></figcaption>
     </figure>
-
     <figure class="theme-card">
-      <img src="/assets/screenshots/day.png" alt="Milely Day theme — Microsoft Fluent-inspired light palette with Azure blue accent" />
-      <figcaption>
-        <span class="theme-name">Day</span>
-      </figcaption>
+      <img src="/assets/screenshots/slate.png" alt="Milely Storm theme — cool blue-gray with platinum-blue accents" />
+      <figcaption><span class="theme-name">Storm</span></figcaption>
     </figure>
-
     <figure class="theme-card">
-      <img src="/assets/screenshots/slate.png" alt="Milely Slate theme — cool blue-gray with platinum-blue accents" />
-      <figcaption>
-        <span class="theme-name">Slate</span>
-      </figcaption>
+      <img src="/assets/screenshots/sky.png" alt="Milely Clear theme — pale sky-blue background with sky-blue accents" />
+      <figcaption><span class="theme-name">Clear</span></figcaption>
     </figure>
-
     <figure class="theme-card">
-      <img src="/assets/screenshots/sky.png" alt="Milely Sky theme — pale sky-blue background with sky-blue accents" />
-      <figcaption>
-        <span class="theme-name">Sky</span>
-      </figcaption>
+      <img src="/assets/screenshots/forest.png" alt="Milely Mint theme — deep mint surface with crisp accents" />
+      <figcaption><span class="theme-name">Mint</span></figcaption>
     </figure>
-
     <figure class="theme-card">
-      <img src="/assets/screenshots/forest.png" alt="Milely Forest theme — deep forest greens with sage and wheat accents" />
-      <figcaption>
-        <span class="theme-name">Forest</span>
-      </figcaption>
+      <img src="/assets/screenshots/mint.png" alt="Milely Minty theme — soft mint with warm orange accents on white" />
+      <figcaption><span class="theme-name">Minty</span></figcaption>
     </figure>
-
-    <figure class="theme-card">
-      <img src="/assets/screenshots/mint.png" alt="Milely Mint theme — minty fresh soft mint with warm orange accents on white" />
-      <figcaption>
-        <span class="theme-name">Mint</span>
-      </figcaption>
-    </figure>
-
   </div>
 </section>
 
 <hr/>
 
 <h2>Built for…</h2>
-<p>Real-estate agents. Self-storage operators. Contractors. Freelancers. Consultants. Anyone who drives their personal car for business and wants a clean mileage record — without giving up their privacy to an analytics-stuffed app.</p>
+<p>Real-estate agents. Self-storage operators. Contractors. Freelancers. Consultants. Anyone who drives their personal car for business and wants a clean mileage record — without trading their location history to a SaaS for the privilege.</p>
 
 <hr/>
 
 <h2>Built by a small US team that takes privacy seriously.</h2>
-<p>Milely is made by <strong>SmileyCreative LLC</strong>, a US-based independent software company. We're a small team, which means support emails reach the people who actually wrote the app — usually answered the same day.</p>
-<p>No analytics pipeline. No third-party SDKs. No offshore support farm. Just a privacy-first iPhone app, and the team that builds it.</p>
+<p>Milely is published by <strong>SmileyCreative LLC</strong>, a Texas-registered independent software company. Support emails reach the people who wrote the app — usually answered the same day.</p>
+<p>No analytics SDKs. No third-party trackers. No offshore support farm. Just a privacy-first iPhone app, and the team that builds it.</p>
 
 <hr/>
 
 <section class="hero" style="margin-top: 48px;">
   <h2 style="font-family: 'Space Grotesk', sans-serif; letter-spacing: -1.2px; font-size: 36px; margin-bottom: 8px;">Try it free.</h2>
-  <p class="tagline" style="font-size: 18px; max-width: 520px;">Seven days, full features, no card if you don't want to subscribe. Then $3.99/mo or $29.99/yr.</p>
+  <p class="tagline" style="font-size: 18px; max-width: 520px;">Seven days, full features, no card if you don't want to subscribe. Then $3.99/mo or $29.99/yr. Cancel any time.</p>
   <a class="badge-link" href="https://apps.apple.com/app/milely/id__APPSTORE_ID_PENDING__" rel="noopener noreferrer">Get on the App Store</a>
   <p style="color: var(--muted); font-size: 12px; text-align: center; margin-top: 14px;">Requires iOS 17 or later.</p>
 </section>
@@ -737,14 +611,16 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
   Milely is provided for informational and record-keeping purposes only. Nothing in the app constitutes tax, legal, or accounting advice. Eligibility for any deduction depends on your individual circumstances and applicable tax law. Consult a qualified tax professional.
 </p>
 
+<p style="color: var(--muted); font-size: 12px; text-align: center; margin-top: 12px;">
+  Milely and the Milely logo are trademarks of SmileyCreative LLC. iPhone, CarPlay, and iCloud Drive are trademarks of Apple Inc.
+</p>
+
 <!--
-  FAQPage schema — only on the homepage. The four questions chosen are
-  the highest-intent buy-decision queries we'd want to win SERP rich
-  snippets for. Answers are pulled verbatim from /support/ to keep the
-  on-page text and the structured-data answer in sync (Google penalizes
-  divergence between visible content and JSON-LD claims). Avoid IRS-
-  compliance language per the brand spec — "business deductions" /
-  "audit-ready log" wording is used throughout.
+  FAQPage schema — homepage only. Six questions chosen are the
+  highest-intent buy-decision queries we'd want SERP rich snippets
+  for. Answers match /support/ language so on-page text and
+  structured data don't diverge. Wording avoids tax-authority
+  language per the brand spec.
 -->
 <script type="application/ld+json">
 {
@@ -756,7 +632,7 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
       "name": "How much does Milely cost?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Milely is free to try for 7 days with every feature unlocked — unlimited trips, all eight themes, receipts, branded PDFs, automatic cloud backup. The trial timer starts on your first recorded trip — not on app install — so drive when you're ready. After the trial it's a single subscription: $3.99 per month or $29.99 per year (annual saves about 37%). All trips you've already recorded stay viewable, editable, and exportable forever — recording NEW trips is what requires a subscription. A one-time $69.99 Lifetime purchase is available inside the app for users who don't want a subscription."
+        "text": "Milely is free to try for seven days with every feature unlocked — unlimited recording, every theme, receipts, branded PDFs, cloud-folder backup. The trial timer starts on your first recorded trip — not on app install — so drive when you're ready. After the trial it's a single subscription: $3.99 per month or $29.99 per year (annual saves about 37%). Trips you've already recorded stay viewable, editable, and exportable forever — recording new trips is what requires a subscription. A one-time $69.99 Lifetime option is available inside the app for users who'd rather pay once."
       }
     },
     {
@@ -764,15 +640,23 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
       "name": "Does Milely send my trip data to a server?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. Milely runs no servers. Every trip, address, vehicle, and business name lives on your iPhone. There is no Milely account, no analytics pipeline, and no shared model. Backups go directly from your device to your iCloud Drive, Google Drive, Dropbox, or OneDrive — never through us."
+        "text": "No. Milely runs no servers. Every trip, address, vehicle, and business name lives on your iPhone. There is no Milely account, no analytics pipeline, and no shared model. Backups go directly from your device to a folder you pick in iCloud Drive, Google Drive, Dropbox, OneDrive, or Box — never through us."
       }
     },
     {
       "@type": "Question",
-      "name": "Will Milely work for tax-time business mileage records?",
+      "name": "Does Milely produce records I can hand to a CPA?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Milely produces an audit-ready PDF log formatted along the lines of IRS Publication 463, plus Excel, CSV, and a drop-in QuickBooks Online import. Audit Lock automatically locks each prior year on January 31, every edit is captured in a per-trip edit history with timestamps, and year-end odometer readings reconcile recorded miles against your actual odometer. We don't provide tax advice — consult a qualified tax professional for your specific situation."
+        "text": "Yes. Milely produces an audit-ready PDF mileage log (branded for subscribers, plain for free), Excel and CSV exports, and a drop-in QuickBooks Online CSV. Every trip auto-locks the moment you save it; on January 31 each year the prior year locks automatically; every edit is captured in a per-trip edit history with timestamps; and year-end odometer readings reconcile recorded miles against your actual odometer. Milely doesn't provide tax advice — consult a qualified tax professional for your specific situation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does Strict CarPlay Start work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Settings → Trip Settings → Automatic → Advanced has a Strict CarPlay Start toggle. With it on, Milely refuses to begin auto-record unless iOS reports a live audio route that matches one of the vehicles you've paired in Settings → Vehicles. Passenger rides in someone else's car, Ubers, and other non-driving motion stop recording entirely. Default is off — most drivers prefer to capture every drive and exclude the rare passenger ride after the fact."
       }
     },
     {
@@ -788,15 +672,7 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
       "name": "Does Milely automatically detect when I'm driving?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes — Automatic mode uses iOS motion and significant-location-changes APIs to detect trip start and end, then records the route in the background. Manual mode is also available if you'd rather start and stop trips yourself. Automatic mode and CarPlay-trigger detection both work even after iOS has shut Milely down to free memory: when you start your next drive, iOS wakes the app via a significant location change, Milely re-checks your CarPlay or Bluetooth connection, and starts the trip if your paired vehicle is connected. The exception is that if you explicitly force-quit Milely (swipe up in the app switcher), iOS won't relaunch it — that's a system policy that no app can override."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does CarPlay auto-start work in Manual mode?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The mode (Manual or Automatic) and the Auto-Start Trip on CarPlay Connect toggle live inside Settings → Trip Settings, but they're independent. Pick Manual with CarPlay auto-start ON if you want hands-off recording for your paired vehicles only, with manual control everywhere else. Or Automatic with CarPlay auto-start OFF if you want motion-based detection without the CarPlay shortcut. The four combinations: Automatic + CarPlay auto-start ON (default) — both paths active, CarPlay wins on speed for paired drives, motion is the fallback for unpaired drives. Automatic + CarPlay auto-start OFF — motion only. Manual + CarPlay auto-start ON — CarPlay only, motion ignored. Manual + CarPlay auto-start OFF — pure manual."
+        "text": "Yes — Automatic mode uses iOS motion and significant-location-changes APIs to detect trip start and end, then records the route in the background. Manual mode is also available if you'd rather start and stop trips yourself. Both modes survive screen-lock, app-switch, and even an iOS memory eviction — the next significant location change wakes the app and recording resumes. The exception is force-quit (swipe up in the app switcher); iOS won't relaunch the app until you open it again."
       }
     }
   ]
@@ -804,5 +680,3 @@ description: Privacy-first iPhone mileage tracker for business deductions. Auto-
 </script>
 
 </main>
-</content>
-</invoke>

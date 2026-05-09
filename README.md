@@ -122,4 +122,4 @@ You don't have to do this — GitHub will build and serve the live site once you
    - `https://example.com/milely-terms` → `https://milely.io/terms/`
 2. **Update `appstore/04-LISTING-COPY.md`** — Support URL = `https://milely.io/support/`, Privacy URL = `https://milely.io/privacy/`, Marketing URL = `https://milely.io/`
 3. **Update Apple's `privacy-policy.md`** in the repo root — already mostly current, but you can delete it if you want one source of truth at the website
-4. **Set up email** at the milely.io domain for `support@`, `privacy@`, `legal@`, `security@`. GoDaddy offers Microsoft 365 mailboxes (~$6/mo each) or you can use Cloudflare Email Routing (free, forwards to your existing inbox) — recommended.
+4. **Set up email** at the milely.io domain for `support@`, `privacy@`, `legal@`, `security@`. GoDaddy offers managed mailboxes (~$6/mo each) or you can use Cloudflare Email Routing (free, forwards to your existing inbox) — recommended.
