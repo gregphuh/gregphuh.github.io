@@ -360,11 +360,12 @@
     /* Header-only wordmark variant (assets/wordmark-header.svg) —
        same letterforms + yellow tittle as the canonical wordmark
        used on the help-page hero / og-image, but with the
-       brand-mark progress-bar element trimmed off. At header
-       sizes the bar adds pixel noise without legibility benefit;
-       trimming the viewBox lets the letters render bigger and
-       match the visual weight Greg sees on the help page. */
-    height: 32px;
+       brand-mark progress-bar element trimmed off. ViewBox is
+       845×304 so the y-descender's tail isn't clipped at the
+       baseline; CSS height bumped to 40px to keep the letter
+       cap-height visually equivalent to the prior 32px / 248-tall
+       layout. */
+    height: 40px;
     width: auto;
     display: block;
   }
