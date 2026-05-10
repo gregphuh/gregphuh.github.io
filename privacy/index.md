@@ -19,7 +19,7 @@ redirect_from:
 
 <div class="legal-summary">
   <h3>Plain-English Summary</h3>
-  <p><strong>Milely doesn't collect your data.</strong> The app does not operate any servers. Every trip, photo, address, vehicle, and business name you enter lives on your iPhone. Backups, when you enable them, go directly from your device to your iCloud Drive or chosen Files-app provider — never through us.</p>
+  <p><strong>Milely doesn't collect your data.</strong> The app does not operate any servers. Every trip, photo, address, vehicle, and business name you enter lives on your iPhone. Backups, when you enable them, go directly from your device to your iCloud Drive or Google Drive — never through us.</p>
   <p>This page explains the technical details, the limited data the app handles locally, and your rights under U.S. and international privacy law.</p>
 </div>
 
@@ -100,7 +100,7 @@ Milely lets you choose whether and where to back up your data. When enabled, bac
 Available options:
 
 - **iCloud Drive.** Backups are encrypted by Apple and governed by [Apple's Privacy Policy](https://www.apple.com/legal/privacy/).
-- **Google Drive, Dropbox, OneDrive, Box, or any iOS Files-app provider.** Only if you authorize it via the iOS Files picker. Data sent to these providers is governed by their respective privacy policies — see [Google](https://policies.google.com/privacy), [Dropbox](https://www.dropbox.com/privacy), [OneDrive](https://privacy.microsoft.com/), [Box](https://www.box.com/legal/privacy).
+- **Google Drive.** Only if you sign in to Google Drive in *Settings → Backup*. Data sent to Google Drive is governed by [Google's Privacy Policy](https://policies.google.com/privacy).
 - **Manual export.** You can export a CSV or JSON file of your trips at any time using the iOS share sheet — email, AirDrop, save to Files, or upload anywhere.
 
 You can disable any backup option in Settings → Backup at any time. Disabling a backup does not delete previous backup files at the destination; you must delete those yourself from the storage provider's app or website.
@@ -153,7 +153,7 @@ If you pair a vehicle to a connected device (CarPlay or Bluetooth audio), Milely
 Milely contains **no** third-party analytics, advertising, attribution, or tracking SDKs. The only third parties touched by the App, and only when you take an action that triggers them:
 
 - **Apple Maps.** Only when you tap "Open in Apple Maps" from a saved trip. Apple Maps receives the destination URL via the iOS open-URL API; the App does not transmit additional data.
-- **Google Drive / Dropbox / OneDrive / Box (etc.).** Only if you enable backups to those services and authorize file writes via the iOS Files app. The Files framework handles the file save; Milely does not call those services' APIs directly. Your data with those providers is governed by their own privacy policies.
+- **Google Drive.** Only if you enable Google Drive backup and authorize the OAuth sign-in. Milely calls Google's Drive upload endpoint directly (user-initiated). Your data with Google is governed by Google's own privacy policy.
 - **Apple iCloud Drive.** If you enable iCloud Drive backup, the file is written via Apple's framework. Apple's privacy policy applies.
 - **Apple App Store.** All purchases (subscription, lifetime, refunds) are handled by Apple. Milely never sees your payment information; we receive only an anonymized "this user has an active subscription" signal that StoreKit hands the App locally on each launch.
 - **Apple's Notification system.** If you enable notifications, the iOS notification system handles delivery on-device. Milely does not use a server-side push provider.

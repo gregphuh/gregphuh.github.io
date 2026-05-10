@@ -36,7 +36,7 @@ Help with Milely. If your question isn't answered below, email [**milely@smileyc
 - **Receipts** — VisionKit document scanner, on-device, EXIF stripped at attach, up to 10 per trip at 5 MB each
 - **Branded PDF reports** — your logo, accent color, and firm footer
 - **Eight color themes** — Day (default), Night, Light, Warm, Clear, Storm, Minty, Mint
-- **Cloud-folder backup** — automatic JSON snapshots into a folder you pick (iCloud Drive, Google Drive, Dropbox, OneDrive, Box) via the iOS Files picker; or *This iPhone Only* mode with manual JSON exports
+- **Cloud-folder backup** — automatic JSON snapshots to iCloud Drive (via the iOS Files picker) or Google Drive (one-tap sign-in); or *This iPhone Only* mode with manual JSON exports
 - **Calendar past-trip recovery** — pulls past calendar events with locations and proposes them as trips
 - **Project / client tagging** — sub-classify within a business for billing and reporting
 - **Year-end odometer reconciliation** — per-vehicle beginning-of-year and end-of-year readings, printed on the PDF cover page
@@ -69,7 +69,7 @@ The app's data is wiped when you uninstall. The encrypted SwiftData store, the r
 
 ### How do I restore from a backup?
 
-Backups are JSON snapshot files written to whichever cloud folder you picked under *Settings → Backup* (iCloud Drive, Google Drive, Dropbox, OneDrive, Box — anything that shows up in the iOS Files app). The same JSON format is also produced by *Settings → Manual Export* for one-off backups.
+Backups are JSON snapshot files written to whichever cloud folder you picked under *Settings → Backup* — iCloud Drive or Google Drive. The same JSON format is also produced by *Settings → Manual Export* for one-off backups.
 
 To restore on a new device:
 
@@ -269,7 +269,7 @@ We read every email. We don't promise to build everything (we're keeping the app
       "name": "How do I restore from a backup?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Backups are JSON snapshot files written to whichever cloud folder you picked under Settings → Backup (iCloud Drive, Google Drive, Dropbox, OneDrive, Box). To restore on a new device: reinstall Milely, open the backup milely-<timestamp>.json file from the Files app, and choose 'Open in Milely' when prompted. Trips, businesses, vehicles, and mileage rates import in place. The import is dedupe-aware — existing rows are kept; only new rows are added."
+        "text": "Backups are JSON snapshot files written to whichever cloud folder you picked under Settings → Backup (iCloud Drive or Google Drive). To restore on a new device: reinstall Milely, open the backup milely-<timestamp>.json file from the Files app, and choose 'Open in Milely' when prompted. Trips, businesses, vehicles, and mileage rates import in place. The import is dedupe-aware — existing rows are kept; only new rows are added."
       }
     },
     {

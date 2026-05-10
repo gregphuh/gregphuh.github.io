@@ -104,7 +104,7 @@ These provisions apply because the App is licensed, not sold, to you, and is dis
 
 **3.7 Legal compliance.** You represent and warrant that (i) you are not located in a country that is subject to a U.S. Government embargo or that has been designated by the U.S. Government as a "terrorist-supporting" country; and (ii) you are not listed on any U.S. Government list of prohibited or restricted parties.
 
-**3.8 Third-party terms of agreement.** You must comply with applicable third-party terms of agreement when using the App (for example, your wireless data-services agreement, and the privacy policies and terms of any cloud-storage provider you connect via the iOS Files app).
+**3.8 Third-party terms of agreement.** You must comply with applicable third-party terms of agreement when using the App (for example, your wireless data-services agreement, the iCloud terms if you back up via iCloud Drive, and Google's terms if you back up via Google Drive).
 
 **3.9 Third-party beneficiary.** You and the Company acknowledge and agree that **Apple, and Apple's subsidiaries, are third-party beneficiaries of these Terms**, and that, upon your acceptance of these Terms, Apple will have the right (and will be deemed to have accepted the right) to enforce these Terms against you as a third-party beneficiary of these Terms.
 
@@ -251,7 +251,7 @@ REGARDLESS OF THE LEGAL THEORY (CONTRACT, TORT, NEGLIGENCE, STRICT LIABILITY, OR
 
 ## 14. Data Loss {#data-loss}
 
-The App stores data locally on your device. **Backup options inside the App are a convenience layered on top of third-party services** (iCloud Drive, Google Drive, Dropbox, OneDrive, Box, or any iOS Files-app provider, plus manual JSON / CSV export). The Company does not host backups, does not operate any backup server, and does not store a copy of your data. The reliability and durability of any backup depends entirely on the third-party provider you select and on your own backup discipline.
+The App stores data locally on your device. **Backup options inside the App are a convenience layered on top of third-party services** (iCloud Drive, Google Drive, plus manual JSON / CSV export). The Company does not host backups, does not operate any backup server, and does not store a copy of your data. The reliability and durability of any backup depends entirely on the third-party provider you select and on your own backup discipline.
 
 The Company is not responsible for any loss of data resulting from device failure, software bugs, OS updates, accidental deletion, sync errors, third-party-provider outages, or any other cause. You are solely responsible for maintaining current backups (across at least one provider you trust) of any data you wish to preserve.
 

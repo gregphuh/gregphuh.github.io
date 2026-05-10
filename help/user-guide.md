@@ -87,7 +87,7 @@ After consent, Milely walks you through a guided setup. The exact steps:
 1. **Welcome** — one-line overview.
 2. **How it works** — Start, drive, End.
 3. **Your business** — type the business you'll track miles for ("Greg's Real Estate", "Smith Plumbing"). You can add more later.
-4. **Backup** — pick where snapshots go. The two options are "Choose Cloud Folder" (iCloud Drive, Google Drive, Dropbox, OneDrive, or Box via the iOS Files picker) or "This iPhone Only" (manual export when you want it). See [Backup and restore](#backup-and-restore) for the full picture.
+4. **Backup** — pick where snapshots go. The two options are "Choose Cloud Folder" (iCloud Drive via the iOS Files picker, or Google Drive via one-tap sign-in) or "This iPhone Only" (manual export when you want it). See [Backup and restore](#backup-and-restore) for the full picture.
 5. **Location** — tap **Allow** when iOS asks. Pick **Allow While Using** for now; the upgrade to Always comes later.
 6. **Always Allow** — iOS prompts a second time to upgrade location to Always. Allowing this is what lets Automatic mode wake the app when you start driving with the phone in your pocket.
 7. **Notifications** — optional. Powers the weekly review reminder, the classify prompt after auto-detected trips, and trip-recovery alerts.
@@ -490,7 +490,7 @@ Milely runs entirely on the iPhone. Backups exist so you can move to a new phone
 
 ### Two options
 
-**Choose Cloud Folder** (subscription required for automatic). On first setup, Milely opens the iOS Files-app folder picker. Pick anywhere — iCloud Drive, Google Drive, Dropbox, OneDrive, Box, or any folder iOS exposes. Milely remembers the folder via a security-scoped bookmark. From then on, "Back Up Now" writes a `milely-<timestamp>.json` file into a Milely Backups sub-folder. You can schedule daily auto-backups or trigger them manually.
+**Choose Cloud Folder** (subscription required for automatic). Milely supports two destinations: **iCloud Drive** (pick a folder via the iOS Files-app folder picker; Milely remembers it via a security-scoped bookmark) or **Google Drive** (one-tap OAuth sign-in). From then on, "Back Up Now" writes a `milely-<timestamp>.json` file into a Milely Backups sub-folder. You can schedule daily auto-backups or trigger them manually.
 
 **This iPhone Only.** Milely never writes anywhere automatically. Settings → Manual Export hands you a JSON file via the share sheet — Mail, Messages, AirDrop, save into Files yourself.
 
