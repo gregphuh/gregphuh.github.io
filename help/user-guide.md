@@ -105,7 +105,7 @@ If you deny location during onboarding, manual recording still works — just ta
 The Dashboard is your home screen. Top to bottom:
 
 <figure style="margin: 24px auto; max-width: 320px;">
-  <img src="/assets/screenshots/hero-1-dashboard.png" alt="Milely Dashboard — May estimated deduction donut, Quick Start row with Contracting and Real Estate, and the blue Start Trip button" style="width: 100%; height: auto; border-radius: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);" />
+  <img src="/assets/screenshots/theme-standard.png" alt="Milely Dashboard in the Standard theme — YTD business deduction, daily activity sparkline, business-mix donut, and top destinations" style="width: 100%; height: auto; border-radius: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);" />
   <figcaption style="text-align: center; font-size: 13px; color: var(--muted); margin-top: 8px;">The Dashboard at idle — Day theme, no trial banner.</figcaption>
 </figure>
 
@@ -146,7 +146,7 @@ Manual is the default, the simplest, and the one that works in every condition. 
 The Classify screen appears. Pick a business, type a purpose, save.
 
 <figure style="margin: 24px auto; max-width: 320px;">
-  <img src="/assets/screenshots/hero-1-dashboard.png" alt="Milely Dashboard while recording — Automatic mode pill, Truck vehicle, distance and time and deduction tick up, monthly card and Quick Start below" style="width: 100%; height: auto; border-radius: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);" />
+  <img src="/assets/screenshots/theme-standard.png" alt="Milely Dashboard in the Standard theme — YTD business deduction, daily activity sparkline, business-mix donut, and top destinations" style="width: 100%; height: auto; border-radius: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);" />
   <figcaption style="text-align: center; font-size: 13px; color: var(--muted); margin-top: 8px;">Dashboard view while a trip records — live distance, time, and deduction at the top.</figcaption>
 </figure>
 
