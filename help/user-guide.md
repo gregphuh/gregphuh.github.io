@@ -146,12 +146,12 @@ Manual is the default, the simplest, and the one that works in every condition. 
 The Classify screen appears. Pick a business, type a purpose, save.
 
 <figure style="margin: 24px auto; max-width: 320px;">
-  <img src="/assets/screenshots/dashboard-active.png" alt="Milely Dashboard while recording — Automatic mode pill, Truck vehicle, distance and time and deduction tick up, monthly card and Quick Start below" style="width: 100%; height: auto; border-radius: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);" />
+  <img src="/assets/screenshots/hero-1-dashboard.png" alt="Milely Dashboard while recording — Automatic mode pill, Truck vehicle, distance and time and deduction tick up, monthly card and Quick Start below" style="width: 100%; height: auto; border-radius: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);" />
   <figcaption style="text-align: center; font-size: 13px; color: var(--muted); margin-top: 8px;">Dashboard view while a trip records — live distance, time, and deduction at the top.</figcaption>
 </figure>
 
 <figure style="margin: 24px auto; max-width: 320px;">
-  <img src="/assets/screenshots/hero-3-classify.png" alt="Milely Trip tab during a live recording — distance, time, and deduction tick up over a real-time map" style="width: 100%; height: auto; border-radius: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);" />
+  <img src="/assets/screenshots/hero-3-recording.png" alt="Milely Trip tab during a live recording — distance, time, and deduction tick up over a real-time map" style="width: 100%; height: auto; border-radius: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);" />
   <figcaption style="text-align: center; font-size: 13px; color: var(--muted); margin-top: 8px;">Recording a live trip — Trip tab, real-time map.</figcaption>
 </figure>
 
@@ -226,7 +226,7 @@ If you force-quit Milely from the app switcher, iOS suspends the *significant lo
 After recording, the Classify sheet asks four questions:
 
 <figure style="margin: 24px auto; max-width: 320px;">
-  <img src="/assets/screenshots/classify-trip.png" alt="Milely classify-trip view — Trip-tab live map showing distance, time, deduction at the top during recording" style="width: 100%; height: auto; border-radius: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);" />
+  <img src="/assets/screenshots/hero-3-recording.png" alt="Milely classify-trip view — Trip-tab live map showing distance, time, deduction at the top during recording" style="width: 100%; height: auto; border-radius: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);" />
   <figcaption style="text-align: center; font-size: 13px; color: var(--muted); margin-top: 8px;">Trip tab live view — same business / purpose / vehicle fields surface on the Classify sheet at End Trip.</figcaption>
 </figure>
 
@@ -258,7 +258,7 @@ Not every drive is deductible. To mark a trip as non-deductible — a personal e
 Logs is your full trip list with filtering, search, and bulk actions.
 
 <figure style="margin: 24px auto; max-width: 320px;">
-  <img src="/assets/screenshots/car-is-business.png" alt="Milely Logs tab — searchable list of business and personal trips with addresses, businesses, miles, and Included tags" style="width: 100%; height: auto; border-radius: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);" />
+  <img src="/assets/screenshots/hero-4-logs.png" alt="Milely Logs tab — searchable list of business and personal trips with addresses, businesses, miles, and Included tags" style="width: 100%; height: auto; border-radius: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);" />
   <figcaption style="text-align: center; font-size: 13px; color: var(--muted); margin-top: 8px;">Logs — search, filter pills, swipe actions.</figcaption>
 </figure>
 
@@ -311,7 +311,7 @@ Limits: 10 receipts per trip, 5 MB each. Receipts live in Milely's encrypted sto
 The Reports tab gives you the year at a glance plus the export menu.
 
 <figure style="margin: 24px auto; max-width: 320px;">
-  <img src="/assets/screenshots/hero-4-reports.png" alt="Milely Reports tab — yearly $4,472.89 deduction with stacked-bar by-business breakdown, year-at-a-glance stats, and monthly summary card" style="width: 100%; height: auto; border-radius: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);" />
+  <img src="/assets/screenshots/hero-5-reports.png" alt="Milely Reports tab — yearly $4,472.89 deduction with stacked-bar by-business breakdown, year-at-a-glance stats, and monthly summary card" style="width: 100%; height: auto; border-radius: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);" />
   <figcaption style="text-align: center; font-size: 13px; color: var(--muted); margin-top: 8px;">Reports — year hero, stat tiles, monthly breakdown.</figcaption>
 </figure>
 
@@ -341,12 +341,12 @@ Tap the Export button at the bottom of Reports. Choose a format:
 CSV cells are sanitized — values starting with `=`, `+`, `-`, or `@` get a leading apostrophe to neutralize formula injection. PDFs are generated locally with PDFKit. None of these touch the network.
 
 <figure style="margin: 24px auto; max-width: 320px;">
-  <img src="/assets/screenshots/hero-5-export.png" alt="Milely Export menu — PDF (Most Users Pick This), Excel (.xls), CSV — Milely (Full), CSV — QuickBooks Online" style="width: 100%; height: auto; border-radius: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);" />
+  <img src="/assets/screenshots/hero-6-export.png" alt="Milely Export menu — PDF (Most Users Pick This), Excel (.xls), CSV — Milely (Full), CSV — QuickBooks Online" style="width: 100%; height: auto; border-radius: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);" />
   <figcaption style="text-align: center; font-size: 13px; color: var(--muted); margin-top: 8px;">Export menu — PDF, Excel, CSV (Milely full), CSV (QuickBooks Online).</figcaption>
 </figure>
 
 <figure style="margin: 24px auto; max-width: 320px;">
-  <img src="/assets/screenshots/hero-6-pdf.png" alt="Milely annual mileage log PDF — totals, by-business breakdown, and per-trip details ready to hand to a CPA" style="width: 100%; height: auto; border-radius: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);" />
+  <img src="/assets/screenshots/hero-8-pdf.png" alt="Milely annual mileage log PDF — totals, by-business breakdown, and per-trip details ready to hand to a CPA" style="width: 100%; height: auto; border-radius: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);" />
   <figcaption style="text-align: center; font-size: 13px; color: var(--muted); margin-top: 8px;">The generated PDF — audit-ready summary.</figcaption>
 </figure>
 
@@ -444,14 +444,14 @@ Defaults to keeping every trip forever. You can set a retention window (e.g. 6 y
 Milely ships with eight themes. The default on a fresh install is **Day** — pure-white cards, a soft neutral grey, an Azure blue accent. Quiet, restrained, deliberate.
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; max-width: 760px; margin: 24px auto;">
-  <figure style="margin: 0;"><img src="/assets/screenshots/day.png" alt="Day theme" style="width: 100%; height: auto; border-radius: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);" /><figcaption style="text-align: center; font-size: 12px; color: var(--muted); margin-top: 6px;">Day (default)</figcaption></figure>
-  <figure style="margin: 0;"><img src="/assets/screenshots/night.png" alt="Night theme" style="width: 100%; height: auto; border-radius: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);" /><figcaption style="text-align: center; font-size: 12px; color: var(--muted); margin-top: 6px;">Night</figcaption></figure>
-  <figure style="margin: 0;"><img src="/assets/screenshots/light.png" alt="Light theme" style="width: 100%; height: auto; border-radius: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);" /><figcaption style="text-align: center; font-size: 12px; color: var(--muted); margin-top: 6px;">Light</figcaption></figure>
-  <figure style="margin: 0;"><img src="/assets/screenshots/warm.png" alt="Warm theme" style="width: 100%; height: auto; border-radius: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);" /><figcaption style="text-align: center; font-size: 12px; color: var(--muted); margin-top: 6px;">Warm</figcaption></figure>
-  <figure style="margin: 0;"><img src="/assets/screenshots/sky.png" alt="Clear theme" style="width: 100%; height: auto; border-radius: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);" /><figcaption style="text-align: center; font-size: 12px; color: var(--muted); margin-top: 6px;">Clear</figcaption></figure>
-  <figure style="margin: 0;"><img src="/assets/screenshots/slate.png" alt="Storm theme" style="width: 100%; height: auto; border-radius: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);" /><figcaption style="text-align: center; font-size: 12px; color: var(--muted); margin-top: 6px;">Storm</figcaption></figure>
-  <figure style="margin: 0;"><img src="/assets/screenshots/mint.png" alt="Minty theme" style="width: 100%; height: auto; border-radius: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);" /><figcaption style="text-align: center; font-size: 12px; color: var(--muted); margin-top: 6px;">Minty</figcaption></figure>
-  <figure style="margin: 0;"><img src="/assets/screenshots/forest.png" alt="Mint theme" style="width: 100%; height: auto; border-radius: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);" /><figcaption style="text-align: center; font-size: 12px; color: var(--muted); margin-top: 6px;">Mint</figcaption></figure>
+  <figure style="margin: 0;"><img src="/assets/screenshots/theme-standard.png" alt="Day theme" style="width: 100%; height: auto; border-radius: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);" /><figcaption style="text-align: center; font-size: 12px; color: var(--muted); margin-top: 6px;">Day (default)</figcaption></figure>
+  <figure style="margin: 0;"><img src="/assets/screenshots/theme-standard-dark.png" alt="Night theme" style="width: 100%; height: auto; border-radius: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);" /><figcaption style="text-align: center; font-size: 12px; color: var(--muted); margin-top: 6px;">Night</figcaption></figure>
+  <figure style="margin: 0;"><img src="/assets/screenshots/theme-sage.png" alt="Light theme" style="width: 100%; height: auto; border-radius: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);" /><figcaption style="text-align: center; font-size: 12px; color: var(--muted); margin-top: 6px;">Light</figcaption></figure>
+  <figure style="margin: 0;"><img src="/assets/screenshots/theme-sunset.png" alt="Warm theme" style="width: 100%; height: auto; border-radius: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);" /><figcaption style="text-align: center; font-size: 12px; color: var(--muted); margin-top: 6px;">Warm</figcaption></figure>
+  <figure style="margin: 0;"><img src="/assets/screenshots/theme-graphite.png" alt="Clear theme" style="width: 100%; height: auto; border-radius: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);" /><figcaption style="text-align: center; font-size: 12px; color: var(--muted); margin-top: 6px;">Clear</figcaption></figure>
+  <figure style="margin: 0;"><img src="/assets/screenshots/theme-graphite-dark.png" alt="Storm theme" style="width: 100%; height: auto; border-radius: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);" /><figcaption style="text-align: center; font-size: 12px; color: var(--muted); margin-top: 6px;">Storm</figcaption></figure>
+  <figure style="margin: 0;"><img src="/assets/screenshots/theme-mint.png" alt="Minty theme" style="width: 100%; height: auto; border-radius: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);" /><figcaption style="text-align: center; font-size: 12px; color: var(--muted); margin-top: 6px;">Minty</figcaption></figure>
+  <figure style="margin: 0;"><img src="/assets/screenshots/theme-mint-dark.png" alt="Mint theme" style="width: 100%; height: auto; border-radius: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);" /><figcaption style="text-align: center; font-size: 12px; color: var(--muted); margin-top: 6px;">Mint</figcaption></figure>
 </div>
 
 The other themes:
@@ -558,7 +558,7 @@ Milely never asks for: contacts, microphone, health data, or App Tracking Transp
 Milely's pricing is straightforward.
 
 <figure style="margin: 24px auto; max-width: 320px;">
-  <img src="/assets/screenshots/hero-7-subscription.png" alt="Milely Subscription view — monthly and annual plans, the seven-day trial detail, and the lifetime option behind Other options" style="width: 100%; height: auto; border-radius: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);" />
+  <img src="/assets/screenshots/hero-9-subscription.png" alt="Milely Subscription view — monthly and annual plans, the seven-day trial detail, and the lifetime option behind Other options" style="width: 100%; height: auto; border-radius: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);" />
   <figcaption style="text-align: center; font-size: 13px; color: var(--muted); margin-top: 8px;">Subscription — monthly, annual, and the lifetime option.</figcaption>
 </figure>
 

@@ -31,26 +31,31 @@ description: Privacy-first iPhone mileage tracker. Auto-record drives, classify 
   <p style="font-size: 14px; margin-top: 14px;">Then $3.99 / month or $29.99 / year. Cancel anytime.</p>
 
   <!--
-    Slightly-overlapping fan of seven simulator screenshots in the
-    natural workflow order: dashboard → record → classify → reports
-    → export → final PDF → subscription. Layout rules in default.html
-    under `.hero-shots`.
+    Slightly-overlapping fan of nine simulator screenshots in the
+    natural workflow order: dashboard → Trip tab (Quick Start) →
+    live recording → Logs → Reports → Export menu → Business profile
+    → final PDF → subscription. Layout rules in default.html under
+    `.hero-shots`.
   -->
-  <div class="hero-shots" aria-label="Milely walkthrough — Dashboard, recording a trip on the map, the Review and Save sheet, Reports, the Export menu, the final PDF, and the subscription view">
+  <div class="hero-shots" aria-label="Milely walkthrough — Dashboard, the Trip tab Quick Start, live recording on the map, Logs, Reports, the Export menu, a Business profile, the annual PDF, and the Subscription view">
     <img src="/assets/screenshots/hero-1-dashboard.png"
-         alt="Milely Dashboard — month-to-date deduction card with by-business breakdown, Quick Start row, and Start Trip button" />
-    <img src="/assets/screenshots/hero-2-recording.png"
-         alt="Milely recording a trip live — distance, duration, and live deduction tick up over a real-time map" />
-    <img src="/assets/screenshots/hero-3-classify.png"
-         alt="Milely Review and Save sheet — Smart Suggestions chips show on-device predictions for which business this trip belongs to" />
-    <img src="/assets/screenshots/hero-4-reports.png"
-         alt="Milely Reports tab — yearly deduction with stacked-bar by-business breakdown, year-at-a-glance stats, and monthly summaries" />
-    <img src="/assets/screenshots/hero-5-export.png"
-         alt="Milely Export menu — PDF, Excel, CSV (Milely full), and CSV (QuickBooks Online) options" />
-    <img src="/assets/screenshots/hero-6-pdf.png"
-         alt="Milely annual mileage log PDF — totals, by-business breakdown, and per-trip details ready for a CPA" />
-    <img src="/assets/screenshots/hero-7-subscription.png"
-         alt="Milely Subscription view — monthly and annual plans with the seven-day trial detail and lifetime option behind Other options" />
+         alt="Milely Dashboard — YTD business deduction, daily activity sparkline, business-mix donut, and top destinations" />
+    <img src="/assets/screenshots/hero-2-trip.png"
+         alt="Milely Trip tab — Manual Start button plus Quick Start rows for Repeat Last Trip, each business, and saved Favorites" />
+    <img src="/assets/screenshots/hero-3-recording.png"
+         alt="Milely recording a trip live — distance, duration, and live deduction tick up over a real-time map with Pause and Stop controls" />
+    <img src="/assets/screenshots/hero-4-logs.png"
+         alt="Milely Logs tab — searchable list of trips with map thumbnails, business chips, and per-trip deductions" />
+    <img src="/assets/screenshots/hero-5-reports.png"
+         alt="Milely Reports tab — yearly stacked-bar deduction by business with a monthly deduction curve and year-at-a-glance stats" />
+    <img src="/assets/screenshots/hero-6-export.png"
+         alt="Milely Export menu — PDF (most users), PDF (CPA handoff), Excel, CSV (Milely full), and CSV (QuickBooks Online) options" />
+    <img src="/assets/screenshots/hero-7-business.png"
+         alt="Milely Business profile — Contracting card with YTD deduction, Recording Hours schedule, and linked vehicles" />
+    <img src="/assets/screenshots/hero-8-pdf.png"
+         alt="Milely annual mileage log PDF — audit-ready trip-by-trip pages with route maps, totals, and per-business breakdown" />
+    <img src="/assets/screenshots/hero-9-subscription.png"
+         alt="Milely Settings — Subscription Active card plus Setup, Personalize, and Backup sections" />
   </div>
 </section>
 
@@ -293,30 +298,18 @@ description: Privacy-first iPhone mileage tracker. Auto-record drives, classify 
       <p>The Dashboard ticker turns <em>"I drove 14 miles"</em> into <strong>"I just saved $3.24."</strong> Annoyingly motivating.</p>
     </div>
     <div class="spot-art">
-      <img class="spot-shot" src="/assets/screenshots/dashboard-active.png" alt="Milely Dashboard with a live trip recording — distance, duration, and live deduction tick up at the top, monthly deduction card and Quick Start row below" />
+      <img class="spot-shot" src="/assets/screenshots/hero-1-dashboard.png" alt="Milely Dashboard — YTD business deduction, daily activity sparkline, business-mix donut, and top destinations" />
     </div>
   </div>
 </section>
 
 <!--
-  Spotlight 2 — Smart Suggestions / on-device pattern learning
-  (blue, reverse). Restored 2026-05-07. Privacy story told
-  concretely: a real on-device model name, trained against the
-  user's own classifications.
+  Spotlight 2 retired 2026-05-20 — the classify-trip step screenshot
+  was dropped in the May-2026 photo refresh. Smart Suggestions is
+  still covered in the secondary feature grid below ("Smart
+  Suggestions, on-device"), so the privacy story remains intact;
+  this just removed the duplicate spotlight that needed the shot.
 -->
-<section class="spot spot-blue spot-reverse">
-  <div class="spot-inner">
-    <div class="spot-text">
-      <span class="spot-eyebrow">Smart Suggestions</span>
-      <h2>Milely learns from you. On your phone.</h2>
-      <p>The third time you classify a trip from your office to <em>Acme Realty's</em> listing as <em>"showing,"</em> Milely starts pre-filling that purpose for you.</p>
-      <p>The pattern-learning model trains <strong>locally on your device</strong> against your own past classifications — using Apple's standard on-device language tools, the same kind that power iPhone autocorrect and Siri suggestions. No Milely account. No Milely server. There can't be a leak because the training data never leaves your phone.</p>
-    </div>
-    <div class="spot-art">
-      <img class="spot-shot" src="/assets/screenshots/classify-trip.png" alt="Milely Review and Save screen with on-device Smart Suggestions chips for the trip's business" />
-    </div>
-  </div>
-</section>
 
 <!--
   Spotlight 3 — One person. One car. Mixed use. (purple, reverse).
@@ -334,7 +327,7 @@ description: Privacy-first iPhone mileage tracker. Auto-record drives, classify 
       <p>Milely's answer is straightforward. Your trip database lives on your iPhone. The only person who can reach it is you. We don't have a server to copy it to, a partner to share it with, or a model to train on it.</p>
     </div>
     <div class="spot-art">
-      <img class="spot-shot" src="/assets/screenshots/car-is-business.png" alt="Milely Logs tab — searchable list of business and personal trips with addresses, businesses, and miles, all stored on the iPhone" />
+      <img class="spot-shot" src="/assets/screenshots/hero-4-logs.png" alt="Milely Logs tab — searchable list of business and personal trips with map thumbnails, addresses, businesses, and miles, all stored on the iPhone" />
     </div>
   </div>
 </section>
@@ -353,7 +346,7 @@ description: Privacy-first iPhone mileage tracker. Auto-record drives, classify 
       <p>Swipe right in Logs to <strong>Include</strong> a trip in your annual report. Swipe left to <strong>Exclude</strong> it (gym runs, school pickups, the Costco trip). Excluded trips stay in your records, but they're kept out of every deduction total — Reports, Dashboard, exports.</p>
     </div>
     <div class="spot-art">
-      <img class="spot-shot" src="/assets/screenshots/hero-4-reports.png" alt="Milely Reports tab — yearly stacked-bar deduction broken down by business, with year-at-a-glance stats below" />
+      <img class="spot-shot" src="/assets/screenshots/hero-5-reports.png" alt="Milely Reports tab — yearly stacked-bar deduction broken down by business, monthly deduction curve, and year-at-a-glance stats" />
     </div>
   </div>
 </section>
@@ -378,7 +371,7 @@ description: Privacy-first iPhone mileage tracker. Auto-record drives, classify 
       <p>Same source of truth: trip data on your phone. No "sync first, then export" dance.</p>
     </div>
     <div class="spot-art">
-      <img class="spot-shot" src="/assets/screenshots/hero-5-export.png" alt="Milely Export menu showing PDF, Excel, CSV — Milely, and CSV — QuickBooks Online options" />
+      <img class="spot-shot" src="/assets/screenshots/hero-6-export.png" alt="Milely Export menu showing PDF (most users), PDF (CPA handoff), Excel, CSV — Milely, and CSV — QuickBooks Online options" />
     </div>
   </div>
 </section>
@@ -404,7 +397,7 @@ description: Privacy-first iPhone mileage tracker. Auto-record drives, classify 
       </ul>
     </div>
     <div class="spot-art">
-      <img class="spot-shot" src="/assets/screenshots/hero-6-pdf.png" alt="Milely annual mileage log PDF — audit-ready summary with totals, by-business breakdown, and per-trip details ready to hand to a CPA" />
+      <img class="spot-shot" src="/assets/screenshots/hero-8-pdf.png" alt="Milely annual mileage log PDF — audit-ready trip-by-trip pages with route maps, totals, and per-business breakdown" />
     </div>
   </div>
 </section>
@@ -548,41 +541,49 @@ description: Privacy-first iPhone mileage tracker. Auto-record drives, classify 
 <hr/>
 
 <section class="themes-showcase">
-  <h2 class="themes-title">Eight themes. Day is the default.</h2>
-  <p class="themes-sub">Cold-start theme is <strong>Day</strong> — pure-white cards on soft neutral grey with an azure-blue accent. <strong>Warm</strong> is the only theme that stays free for everyone after the trial; the other seven are subscriber-gated. All eight are unlocked while your trial is live.</p>
+  <h2 class="themes-title">Ten themes. Standard is the default.</h2>
+  <p class="themes-sub">Cold-start theme is <strong>Standard</strong> — pure-white cards on a soft slate background with the azure-blue accent that matches the Milely wordmark. <strong>Standard</strong> and <strong>Standard Dark</strong> stay free for everyone after the trial; the other eight palettes are subscriber-gated. All ten are unlocked while your trial is live.</p>
 
   <div class="themes-grid">
     <figure class="theme-card">
-      <img src="/assets/screenshots/day.png" alt="Milely Day theme — pure-white cards on soft neutral grey with Azure-blue accents (default)" />
-      <figcaption><span class="theme-name">Day</span></figcaption>
+      <img src="/assets/screenshots/theme-standard.png" alt="Milely Standard theme — soft slate background with white cards and azure-blue accents (default)" />
+      <figcaption><span class="theme-name">Standard</span></figcaption>
     </figure>
     <figure class="theme-card">
-      <img src="/assets/screenshots/night.png" alt="Milely Night theme — strict monochrome dark palette with Azure-blue accent" />
-      <figcaption><span class="theme-name">Night</span></figcaption>
+      <img src="/assets/screenshots/theme-standard-dark.png" alt="Milely Standard Dark theme — near-black navy background with sky-blue accents" />
+      <figcaption><span class="theme-name">Standard Dark</span></figcaption>
     </figure>
     <figure class="theme-card">
-      <img src="/assets/screenshots/light.png" alt="Milely Light theme — cream background with burnt-orange accents" />
-      <figcaption><span class="theme-name">Light</span></figcaption>
+      <img src="/assets/screenshots/theme-sage.png" alt="Milely Sage theme — warm cream background with forest-green accents" />
+      <figcaption><span class="theme-name">Sage</span></figcaption>
     </figure>
     <figure class="theme-card">
-      <img src="/assets/screenshots/warm.png" alt="Milely Warm theme — dark warm-brown background with burnt-orange and amber accents" />
-      <figcaption><span class="theme-name">Warm</span></figcaption>
+      <img src="/assets/screenshots/theme-sage-dark.png" alt="Milely Sage Dark theme — deep forest background with sage-green accents" />
+      <figcaption><span class="theme-name">Sage Dark</span></figcaption>
     </figure>
     <figure class="theme-card">
-      <img src="/assets/screenshots/sky.png" alt="Milely Clear theme — pale sky-blue background with sky-blue accents" />
-      <figcaption><span class="theme-name">Clear</span></figcaption>
+      <img src="/assets/screenshots/theme-graphite.png" alt="Milely Graphite theme — soft cream cards with strict black ink accents" />
+      <figcaption><span class="theme-name">Graphite</span></figcaption>
     </figure>
     <figure class="theme-card">
-      <img src="/assets/screenshots/slate.png" alt="Milely Storm theme — cool blue-gray with platinum-blue accents" />
-      <figcaption><span class="theme-name">Storm</span></figcaption>
+      <img src="/assets/screenshots/theme-graphite-dark.png" alt="Milely Graphite Dark theme — deep graphite background with white accents" />
+      <figcaption><span class="theme-name">Graphite Dark</span></figcaption>
     </figure>
     <figure class="theme-card">
-      <img src="/assets/screenshots/mint.png" alt="Milely Minty theme — soft mint with warm orange accents on white" />
-      <figcaption><span class="theme-name">Minty</span></figcaption>
+      <img src="/assets/screenshots/theme-sunset.png" alt="Milely Sunset theme — warm cream background with burnt-orange and amber accents" />
+      <figcaption><span class="theme-name">Sunset</span></figcaption>
     </figure>
     <figure class="theme-card">
-      <img src="/assets/screenshots/forest.png" alt="Milely Mint theme — deep mint surface with crisp accents" />
+      <img src="/assets/screenshots/theme-sunset-dark.png" alt="Milely Sunset Dark theme — deep ember background with peach and amber accents" />
+      <figcaption><span class="theme-name">Sunset Dark</span></figcaption>
+    </figure>
+    <figure class="theme-card">
+      <img src="/assets/screenshots/theme-mint.png" alt="Milely Mint theme — soft mint background with emerald accents" />
       <figcaption><span class="theme-name">Mint</span></figcaption>
+    </figure>
+    <figure class="theme-card">
+      <img src="/assets/screenshots/theme-mint-dark.png" alt="Milely Mint Dark theme — deep forest background with emerald accents" />
+      <figcaption><span class="theme-name">Mint Dark</span></figcaption>
     </figure>
   </div>
 </section>
