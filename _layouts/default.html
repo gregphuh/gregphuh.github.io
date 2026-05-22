@@ -360,13 +360,18 @@
     box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.18);
   }
   .site-header .logo-wordmark {
-    /* 2026-05-21: switched to the new bold-sans cursive-m brand
-       wordmark (assets/wordmark.png, sourced from the iOS
-       MilelyWordmark asset). PNG aspect ratio ~1660×740; height
-       28px keeps the wordmark visually equivalent to the prior
-       SVG layout in the header lockup. */
-    height: 28px;
-    width: auto;
+    /* 2026-05-21: wordmark is now rendered as plain white text
+       inside a <span>. The new MilelyWordmark.png was solid blue,
+       which rendered invisible against the same-blue header band.
+       White Inter at the matching cap-height + the brand
+       letter-spacing gives the same lockup feel without any
+       blue-on-blue collision. */
+    color: #ffffff;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    line-height: 1;
     display: block;
   }
   .site-header nav {
@@ -1848,7 +1853,7 @@
   <div class="inner">
     <a href="/" class="logo" aria-label="Milely — home">
       <img class="logo-mark" src="/assets/icon.png" alt="" />
-      <img class="logo-wordmark" src="/assets/wordmark.png" alt="Milely" />
+      <span class="logo-wordmark">Milely</span>
     </a>
     <nav>
       <a href="/help/">Help</a>
