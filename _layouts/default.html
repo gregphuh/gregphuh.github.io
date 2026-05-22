@@ -38,7 +38,10 @@
 <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
 <link rel="canonical" href="{{ page.url | absolute_url }}" />
 
-<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+<!-- 2026-05-21: dropped /assets/favicon.svg — was the legacy
+     angular-M + yellow-dots mark. New cursive-m branding ships only
+     as PNG (iOS AppIcon source); modern browsers handle PNG
+     favicons fine, no need for an SVG variant. -->
 <link rel="icon" type="image/png" href="/assets/icon.png" />
 <link rel="apple-touch-icon" href="/assets/icon.png" />
 
@@ -357,15 +360,12 @@
     box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.18);
   }
   .site-header .logo-wordmark {
-    /* Header-only wordmark variant (assets/wordmark-header.svg) —
-       same letterforms + yellow tittle as the canonical wordmark
-       used on the help-page hero / og-image, but with the
-       brand-mark progress-bar element trimmed off. ViewBox is
-       845×304 so the y-descender's tail isn't clipped at the
-       baseline; CSS height bumped to 40px to keep the letter
-       cap-height visually equivalent to the prior 32px / 248-tall
-       layout. */
-    height: 40px;
+    /* 2026-05-21: switched to the new bold-sans cursive-m brand
+       wordmark (assets/wordmark.png, sourced from the iOS
+       MilelyWordmark asset). PNG aspect ratio ~1660×740; height
+       28px keeps the wordmark visually equivalent to the prior
+       SVG layout in the header lockup. */
+    height: 28px;
     width: auto;
     display: block;
   }
@@ -1848,7 +1848,7 @@
   <div class="inner">
     <a href="/" class="logo" aria-label="Milely — home">
       <img class="logo-mark" src="/assets/icon.png" alt="" />
-      <img class="logo-wordmark" src="/assets/wordmark-header.svg" alt="Milely" />
+      <img class="logo-wordmark" src="/assets/wordmark.png" alt="Milely" />
     </a>
     <nav>
       <a href="/help/">Help</a>
