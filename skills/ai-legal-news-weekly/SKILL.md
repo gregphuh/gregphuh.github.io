@@ -52,7 +52,7 @@ filing — don't rely on the one-line log summary. Pull related primary document
 depends on them (underlying complaint, distinguished opinions, agency comment record, latest S-1
 amendment). Re-check pin cites and any short quotes.
 
-**5. Draft each article by filling the template.** Open **`references/template.docx`** (the docx skill can edit an existing .docx) and replace the bracketed placeholders — Title, subtitle, byline date, Lead, Background, the Analysis subheadings and paragraphs, and the Takeaways bullets — **keeping every style exactly as defined** (Georgia; Title 14pt; section heads 12pt; sub-heads 11pt; body 11pt; black headings; **endnotes, not footnotes**). Add or remove Analysis subsections and Takeaways bullets as needed; add endnotes (blue hyperlinks) for the essential sources. Do not restyle anything. **Voice — report, never advise, never take sides:** describe what happened, what the law says, and what each side argued; never give legal advice or recommendations, and never take a position for or against any party or the government. (Full spec + from-scratch docx-js fallback: `references/article-template.md`.)
+**5. Draft each article by filling the template.** Open **`references/template.docx`** (the docx skill can edit an existing .docx) and replace the bracketed placeholders — Title (one line, no subtitle), byline date, Lead, Background, the Analysis subheadings and paragraphs, and the Takeaways bullets — **keeping every style exactly as defined** (Georgia; Title 14pt; section heads 12pt; sub-heads 11pt; body 11pt; black headings; **endnotes, not footnotes**). Add or remove Analysis subsections and Takeaways bullets as needed; add endnotes (blue hyperlinks) for the essential sources. Do not restyle anything. **Voice — report, never advise, never take sides:** describe what happened, what the law says, and what each side argued; never give legal advice or recommendations, and never take a position for or against any party or the government. (Full spec + from-scratch docx-js fallback: `references/article-template.md`.)
 
 **6. Adversarial review (mandatory — a second, skeptical pass).** Before anything is saved, switch into a separate **Reviewer** role and review each draft adversarially: assume it is wrong until proven otherwise; do not rubber-stamp. If the runtime supports subagents, run this as a separate agent for independence. The Reviewer must, at minimum:
    - **Confirm every citation.** Re-open/verify each endnote's primary-source URL actually resolves and genuinely supports the sentence it is attached to. Flag any citation that cannot be verified, does not match the proposition, or looks fabricated — **no hallucinated or unverifiable citations may remain** (a wrong cite is worse than no cite).
@@ -90,7 +90,7 @@ diversity rule.
 
 - **Font:** Georgia throughout. US Letter, 1" margins. **Headings are bold black (`000000`), never blue** — Word's default Heading styles are blue, so set the color explicitly.
 - **Heading scale:** Title 14pt bold · section heads (`Background` / `Analysis` / `Takeaways`)
-  12pt bold · sub-heads inside Analysis 11pt bold. Body Georgia 11pt. Byline 11pt italic.
+  12pt bold · sub-heads inside Analysis 11pt **bold italic**. Body Georgia 11pt. Byline 11pt italic. Single title, no subtitle.
   Endnotes 10pt.
 - **Byline:** exactly `AI Law Weekly · [Date]` — **no author, no placeholder**. `[Date]` = Friday of
   the ISO week (e.g., `April 24, 2026`).

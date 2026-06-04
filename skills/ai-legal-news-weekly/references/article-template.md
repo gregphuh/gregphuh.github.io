@@ -92,15 +92,15 @@ Also ranked: #3 [Headline] (10) · #4 [Headline] (9) · #5 [Headline] (8)
 - **Length:** **600 words maximum** in the body — lede + Background + Analysis + Takeaways bullets (title, byline, and endnotes don't count). This is a hard cap measured by actual word count, not a stylistic target — aim ~500–580. **Before saving, count the body words; if the total exceeds 600, cut from Analysis until it is ≤600. Never save or upload an article over 600 words.** The section budgets below are deliberately set to sum under 600.
 - **Endnote cap:** no more than 3 endnotes per article. Reserve endnotes for the sources that are directly essential to the article's main points — typically the case or agency action being analyzed, any parallel proceeding central to the analysis, and the controlling statute or regulation. **Do not cite like a law review.** Do not endnote every factual claim. If a point can be stated and attributed inline in the prose (e.g., "the statute defines supply chain risk as an adversary's potential to sabotage a covered system"), state it inline without an endnote.
 - **Takeaways:** required closing section of **4–5 bullets, one sentence each (~15–20 words)**. See Structure below.
-- **Font:** Body in **Georgia 11pt**. Headings bold Georgia at the locked scale: Title 14pt, section heads (Heading 2) 12pt, subsection heads (Heading 3) 11pt. **Headings are black (`000000`), never blue** — Word's default Heading styles are blue, so set the color explicitly.
+- **Font:** Body in **Georgia 11pt**. Headings bold Georgia at the locked scale: Title 14pt, section heads (Heading 2) 12pt, subsection heads (Heading 3) 11pt **bold italic**. Single title, no subtitle. **Headings are black (`000000`), never blue** — Word's default Heading styles are blue, so set the color explicitly.
 - **Margins:** 1" all sides; US Letter (12240 × 15840 DXA).
 - **Endnotes (not footnotes):** Word endnotes, placed at the end of the document. The article uses endnotes rather than footnotes so that prose pages read uninterrupted by citation blocks at the bottom. Full legal citation format (see below). docx-js supports endnotes natively via `EndnoteReferenceRun` and the Document's `endnotes: {}` config (parallel to its footnotes API); see the workflow below for the pattern.
 - **Filename:** `AILawWeekly_YYYY-MM-DD_short-slug.docx` (date = Friday of the week)
 
 ### Structure
 
-1. **Title** (Heading 1, 14pt bold) — a short, substantive title naming the development or doctrine, followed by a fuller **descriptive subtitle** (13pt italic) that states the specific holding/question. This two-line treatment matches the approved exemplar (see Worked exemplar below): short title `FASCSA in the AI Era`, then subtitle `FASCSA in the AI Era: The D.C. Circuit's Anthropic Stay Denial and the Merits Questions Reserved for May 19`. Not a call to action, not a question to the reader, not clickbait.
-   - Good (subtitle): "The Ninth Circuit's Training-Data Fair-Use Ruling in Kadrey v. Meta"
+1. **Title** (Heading 1, 14pt bold black) — a **single line** (no subtitle) that names the development and the holding or question at stake, matching the approved exemplar: `FASCSA in the AI Era: The D.C. Circuit's Anthropic Stay Denial and the Merits Questions Reserved for May 19`. Not a call to action, not a question to the reader, not clickbait.
+   - Good: "The Ninth Circuit's Training-Data Fair-Use Ruling in Kadrey v. Meta"
    - Bad: "What the Kadrey Ruling Means for Your Training-Data Strategy"
    - Bad: "Five Things In-House Counsel Must Know About the Cerebras S-1"
 
@@ -118,7 +118,7 @@ Also ranked: #3 [Headline] (10) · #4 [Headline] (9) · #5 [Headline] (8)
    - One paragraph. Procedural posture (for litigation) or regulatory context (for rules/EOs/IPOs). Parties, forum, prior rulings or comment record. Written entirely in your own words from primary sources. No firm-article paraphrasing.
 
 5. **Analysis** (Heading 2, 12pt bold; body 200–260 words, split into 2–3 subsections with Heading 3 subheads)
-   - Each subsection has its own descriptive subheading (Heading 3, 11pt bold) — not a question, not a call to action.
+   - Each subsection has its own descriptive subheading (Heading 3, 11pt **bold italic**, black) — not a question, not a call to action.
    - Walk through what the opinion/rule/order actually says. Identify the novel or disputed element(s). Compare to prior law where helpful. Describe disagreements — dissents, prior contrary authority. Identify the legal questions the development leaves open, framed analytically rather than as things for the reader to monitor.
    - Prefer three tight subsections over four thin ones given the tight word budget.
 
@@ -241,7 +241,7 @@ After drafting, run a **separate, adversarial Reviewer pass** before the article
 2. **Factual accuracy & posture.** Every claim matches the primary sources. Procedural posture is precise (motion to dismiss vs. summary judgment vs. final judgment; stay vs. merits). Dates, courts, dockets, statute sections, and party names are correct.
 3. **No advice.** No sentence gives advice, recommendations, action items, or tells the reader what to do, watch, consider, or expect. Scan **every Takeaways bullet**.
 4. **Neutrality.** No sentence takes a position for or against any party or the government, predicts an outcome, or signals which side is right. Contested points are attributed, not asserted.
-5. **Length & structure.** ≤600 body words; exactly Title → (subtitle) → byline → Lead → Background → Analysis (with subheadings) → Takeaways (bullets) → endnotes; no forbidden sections.
+5. **Length & structure.** ≤600 body words; exactly Title (single line) → byline → Lead → Background → Analysis (with subheadings) → Takeaways (bullets) → endnotes; no forbidden sections.
 6. **Format.** Georgia; Title 14 / section 12 / sub-head 11 / body 11; headings black; citations blue hyperlinks; **endnotes, not footnotes**; byline `AI Law Weekly · [Date]`.
 7. **Copyright discipline.** Under 15 verbatim words from any source; at most one direct quote per source; everything else paraphrased.
 
@@ -251,7 +251,7 @@ The Reviewer returns a concise, itemized **critical feedback list** (what is wro
 
 ## Worked article skeleton
 
-The authoritative layout is **`references/template.docx`** — open it to see the exact structure to fill in. The skeleton below illustrates that same structure (short Title + subtitle, byline, Lead, Background, Analysis with descriptive subheadings, Takeaways bullets, ≤3 endnotes), targeting ~560 words under the 600 ceiling:
+The authoritative layout is **`references/template.docx`** — open it to see the exact structure to fill in. The skeleton below illustrates that same structure (single Title line, byline, Lead, Background, Analysis with descriptive subheadings, Takeaways bullets, ≤3 endnotes), targeting ~560 words under the 600 ceiling:
 
 ```
 Title: The Ninth Circuit's Training-Data Fair-Use Ruling in Kadrey v. Meta
@@ -337,7 +337,7 @@ styles: {
     { id: "Heading2", name: "Heading 2", basedOn: "Normal", next: "Normal", quickFormat: true,
       run: { font: "Georgia", bold: true, color: "000000", size: 24 } },   // section 12pt
     { id: "Heading3", name: "Heading 3", basedOn: "Normal", next: "Normal", quickFormat: true,
-      run: { font: "Georgia", bold: true, color: "000000", size: 22 } }    // sub-head 11pt
+      run: { font: "Georgia", bold: true, italics: true, color: "000000", size: 22 } }    // sub-head 11pt bold italic
   ]
   // Do NOT add a "Hyperlink" paragraph style here (see step 4).
 }
