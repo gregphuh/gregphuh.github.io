@@ -1,12 +1,12 @@
 ---
 name: ai-legal-news-weekly
-description: Writes the WEEKLY "AI Legal News" articles only — the second of two AI Legal News skills. Use when the user or a Claude Routine asks for the AI Legal News weekly writeup, weekly AI article, hot topics, or top stories of the week. Runs unattended and non-interactively: reads the most recent daily-log snapshot on Google Drive, ranks the week's entries by a hotness rubric, automatically selects the top 2 (different practice areas where possible), and drafts them as .docx articles of 600 words max each (Georgia font, black headings, Word endnotes, blue hyperlinked citations, fixed "AI Legal News · [Date]" byline) saved to the articles folder — never asking which to write. Do NOT use for the daily log capture (use the ai-legal-news-log skill) or for non-US / non-legal AI news.
+description: Writes the WEEKLY "AI Law Weekly" articles only — the second of two AI Law Weekly skills. Use when the user or a Claude Routine asks for the AI Law Weekly weekly writeup, weekly AI article, hot topics, or top stories of the week. Runs unattended and non-interactively: reads the most recent daily-log snapshot on Google Drive, ranks the week's entries by a hotness rubric, automatically selects the top 2 (different practice areas where possible), and drafts them as .docx articles of 600 words max each (Georgia font, black headings, Word endnotes, blue hyperlinked citations, fixed "AI Law Weekly · [Date]" byline) saved to the articles folder — never asking which to write. Do NOT use for the daily log capture (use the ai-legal-news-log skill) or for non-US / non-legal AI news.
 ---
 
-# AI Legal News — Weekly Articles
+# AI Law Weekly — Weekly Articles
 
-This is **one of two** AI Legal News skills. It does **only** the weekly article writeup for Greg's
-"AI Legal News" series. The daily log capture is a **separate** skill (`ai-legal-news-log`) — do not
+This is **one of two** AI Law Weekly skills. It does **only** the weekly article writeup for Greg's
+"AI Law Weekly" series. The daily log capture is a **separate** skill (`ai-legal-news-log`) — do not
 search for or write daily log entries here. This skill **reads** the log the other skill produced
 and turns the week's top stories into finished `.docx` articles.
 
@@ -52,19 +52,18 @@ filing — don't rely on the one-line log summary. Pull related primary document
 depends on them (underlying complaint, distinguished opinions, agency comment record, latest S-1
 amendment). Re-check pin cites and any short quotes.
 
-**5. Draft each article** as a separate `.docx`, following **`references/article-template.md`** — the
-authoritative spec for structure, voice, the no-advice rule, citation/endnote format, and the
-docx-js generation pattern (including the endnote hyperlink fix). Generate with the docx skill
-(`/mnt/skills/public/docx/SKILL.md`); do not hand-write XML and do not improvise typography. Locked
-essentials are summarized under "House style" below.
+**5. Draft each article by filling the template.** Open **`references/template.docx`** (the docx skill can edit an existing .docx) and replace the bracketed placeholders — Title, subtitle, byline date, Lead, Background, the Analysis subheadings and paragraphs, and the Takeaways bullets — **keeping every style exactly as defined** (Georgia; Title 14pt; section heads 12pt; sub-heads 11pt; body 11pt; black headings; **endnotes, not footnotes**). Add or remove Analysis subsections and Takeaways bullets as needed; add endnotes (blue hyperlinks) for the essential sources. Do not restyle anything. **Voice — report, never advise, never take sides:** describe what happened, what the law says, and what each side argued; never give legal advice or recommendations, and never take a position for or against any party or the government. (Full spec + from-scratch docx-js fallback: `references/article-template.md`.)
 
-**6. Check length, then save.** **Before saving, count the body words (lede + Background + Analysis + Takeaways bullets). If over 600, trim Analysis until the total is ≤600 — never save or upload an article over 600 words.** Then save each `.docx` to the `articles` subfolder **by ID** with `create_file`:
-`parentId = '13sq6qNqdVz144cN576Zq-7NDcYRh8CXw'`,
-`title = 'AILegalNews_YYYY-MM-DD_short-slug.docx'` (date = Friday of the week; slug =
-lowercase-hyphen topic). Never write by path and never to My Drive root.
+**6. Adversarial review (mandatory — a second, skeptical pass).** Before anything is saved, switch into a separate **Reviewer** role and review each draft adversarially: assume it is wrong until proven otherwise; do not rubber-stamp. If the runtime supports subagents, run this as a separate agent for independence. The Reviewer must, at minimum:
+   - **Confirm every citation.** Re-open/verify each endnote's primary-source URL actually resolves and genuinely supports the sentence it is attached to. Flag any citation that cannot be verified, does not match the proposition, or looks fabricated — **no hallucinated or unverifiable citations may remain** (a wrong cite is worse than no cite).
+   - **Check accuracy and posture** against the primary sources (e.g., don't call a motion-to-dismiss ruling a "final decision").
+   - **Enforce no advice / neutrality** in every sentence, especially each Takeaways bullet: no advice, recommendations, predictions, or any position for/against a party or the government.
+   - **Enforce limits:** ≤600 body words; ≤3 endnotes; copyright discipline (<15 verbatim words per source, ≤1 quote per source); structure, format, and byline match the template.
+   The Reviewer writes a short, **critical feedback list**; the writer revises to address every item; **loop until the Reviewer signs off with zero open issues.** Full checklist: `references/article-template.md` (Adversarial review).
 
-**7. Report in chat** (brief, no questions): the two article titles, word counts, endnote counts,
-and the `articles/` filenames.
+**7. Save** each reviewed `.docx` to the `articles` subfolder **by ID** with `create_file`: `parentId = '13sq6qNqdVz144cN576Zq-7NDcYRh8CXw'`, `title = 'AILawWeekly_YYYY-MM-DD_short-slug.docx'` (date = Friday of the week; slug = lowercase-hyphen topic). Never write by path and never to My Drive root. Only save a draft that passed review.
+
+**8. Report in chat** (brief, no questions): the two article titles, word counts, endnote counts, the `articles/` filenames, and a one-line note that the adversarial review passed (and what it caught/fixed).
 
 ---
 
@@ -91,9 +90,9 @@ diversity rule.
 
 - **Font:** Georgia throughout. US Letter, 1" margins. **Headings are bold black (`000000`), never blue** — Word's default Heading styles are blue, so set the color explicitly.
 - **Heading scale:** Title 14pt bold · section heads (`Background` / `Analysis` / `Takeaways`)
-  12pt bold · sub-heads inside Analysis 11pt bold. Body Georgia 12pt. Byline 11pt italic.
+  12pt bold · sub-heads inside Analysis 11pt bold. Body Georgia 11pt. Byline 11pt italic.
   Endnotes 10pt.
-- **Byline:** exactly `AI Legal News · [Date]` — **no author, no placeholder**. `[Date]` = Friday of
+- **Byline:** exactly `AI Law Weekly · [Date]` — **no author, no placeholder**. `[Date]` = Friday of
   the ISO week (e.g., `April 24, 2026`).
 - **Notes:** Word **endnotes** (max 3), never footnotes.
 - **Citations:** every primary-source citation is a live **blue** hyperlink (`0563C1`, underlined) —
@@ -108,13 +107,13 @@ diversity rule.
 
 ## Suggested Claude Routine prompt — Weekly, Friday 11:00am CT
 
-> Run the AI Legal News weekly writeup. This is an unattended scheduled run — do not ask me anything
+> Run the AI Law Weekly weekly writeup. This is an unattended scheduled run — do not ask me anything
 > and do not wait for input. Read this week's entries (Monday through today) from the most recent
 > `master-log_*` snapshot in the `AI-legal-log` folder on Google Drive, rank them by hotness, and
 > automatically select and draft the top 2 (different practice areas where possible) as .docx files of
 > no more than 600 words each, with black headings, no more than 3 endnotes, a closing Takeaways
 > bullet list, Bluebook-italic case names, blue hyperlinks to primary sources, and the fixed byline
-> `AI Legal News · [Date]`. Save them
+> `AI Law Weekly · [Date]`. Save them
 > to the `articles` subfolder by folder ID.
 
 ---

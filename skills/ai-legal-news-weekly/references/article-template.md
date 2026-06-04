@@ -1,10 +1,10 @@
-# Weekly Article Template — AI Legal News
+# Weekly Article Template — AI Law Weekly
 
 This file defines the hotness ranking rubric for picking weekly candidates, the .docx article format (structure, voice, citation style, length), and a worked skeleton.
 
 > **House style is locked.** Font is **Georgia** throughout; heading scale is **14 / 12 / 11**
-> (Title 14, section heads 12, subsection heads 11); body is **Georgia 12pt**. The byline is the
-> fixed string **`AI Legal News · [Date]`** — there is no author name and no placeholder to swap.
+> (Title 14, section heads 12, subsection heads 11); body is **Georgia 11pt**. The byline is the
+> fixed string **`AI Law Weekly · [Date]`** — there is no author name and no placeholder to swap.
 > Citations are live **blue** hyperlinks (`0563C1`, underlined). This file is the single source of
 > truth for article formatting and generation; the at-a-glance summary in `SKILL.md` defers to it.
 
@@ -92,22 +92,20 @@ Also ranked: #3 [Headline] (10) · #4 [Headline] (9) · #5 [Headline] (8)
 - **Length:** **600 words maximum** in the body — lede + Background + Analysis + Takeaways bullets (title, byline, and endnotes don't count). This is a hard cap measured by actual word count, not a stylistic target — aim ~500–580. **Before saving, count the body words; if the total exceeds 600, cut from Analysis until it is ≤600. Never save or upload an article over 600 words.** The section budgets below are deliberately set to sum under 600.
 - **Endnote cap:** no more than 3 endnotes per article. Reserve endnotes for the sources that are directly essential to the article's main points — typically the case or agency action being analyzed, any parallel proceeding central to the analysis, and the controlling statute or regulation. **Do not cite like a law review.** Do not endnote every factual claim. If a point can be stated and attributed inline in the prose (e.g., "the statute defines supply chain risk as an adversary's potential to sabotage a covered system"), state it inline without an endnote.
 - **Takeaways:** required closing section of **4–5 bullets, one sentence each (~15–20 words)**. See Structure below.
-- **Font:** Body in **Georgia 12pt**. Headings bold Georgia at the locked scale: Title 14pt, section heads (Heading 2) 12pt, subsection heads (Heading 3) 11pt. **Headings are black (`000000`), never blue** — Word's default Heading styles are blue, so set the color explicitly.
+- **Font:** Body in **Georgia 11pt**. Headings bold Georgia at the locked scale: Title 14pt, section heads (Heading 2) 12pt, subsection heads (Heading 3) 11pt. **Headings are black (`000000`), never blue** — Word's default Heading styles are blue, so set the color explicitly.
 - **Margins:** 1" all sides; US Letter (12240 × 15840 DXA).
 - **Endnotes (not footnotes):** Word endnotes, placed at the end of the document. The article uses endnotes rather than footnotes so that prose pages read uninterrupted by citation blocks at the bottom. Full legal citation format (see below). docx-js supports endnotes natively via `EndnoteReferenceRun` and the Document's `endnotes: {}` config (parallel to its footnotes API); see the workflow below for the pattern.
-- **Filename:** `AILegalNews_YYYY-MM-DD_short-slug.docx` (date = Friday of the week)
+- **Filename:** `AILawWeekly_YYYY-MM-DD_short-slug.docx` (date = Friday of the week)
 
 ### Structure
 
-1. **Title** (Heading 1, 14pt bold)
-   - Substantive and descriptive. The title names the development and the legal question or doctrine at stake. Not a call to action, not a question to the reader, not clickbait.
-   - Good: "FASCSA in the AI Era: The D.C. Circuit's Anthropic Stay Denial and the Merits Questions Reserved for May 19"
-   - Good: "The Ninth Circuit's Training-Data Fair-Use Ruling in Kadrey v. Meta"
+1. **Title** (Heading 1, 14pt bold) — a short, substantive title naming the development or doctrine, followed by a fuller **descriptive subtitle** (13pt italic) that states the specific holding/question. This two-line treatment matches the approved exemplar (see Worked exemplar below): short title `FASCSA in the AI Era`, then subtitle `FASCSA in the AI Era: The D.C. Circuit's Anthropic Stay Denial and the Merits Questions Reserved for May 19`. Not a call to action, not a question to the reader, not clickbait.
+   - Good (subtitle): "The Ninth Circuit's Training-Data Fair-Use Ruling in Kadrey v. Meta"
    - Bad: "What the Kadrey Ruling Means for Your Training-Data Strategy"
    - Bad: "Five Things In-House Counsel Must Know About the Cerebras S-1"
 
 2. **Byline** (italic, 11pt, one line)
-   - Format: **`AI Legal News · [Date]`** — no author name. `[Date]` = Friday of the ISO week, formatted `Month D, YYYY` (e.g., `April 24, 2026`).
+   - Format: **`AI Law Weekly · [Date]`** — no author name. `[Date]` = Friday of the ISO week, formatted `Month D, YYYY` (e.g., `April 24, 2026`).
    - There is no `[AUTHOR]` token and nothing to swap before publishing.
 
 3. **Lede** (60–85 words, no heading)
@@ -217,6 +215,7 @@ Examples in the required format. In the rendered .docx: italic portions are ital
 
 - **Analytical, descriptive, lawyer-to-lawyer.** Write as if briefing another lawyer on what a court or agency did and what the decision or action means as a legal matter. Do not write as if briefing a client on what to do about it.
 - **No advice, no recommendations, no opinions, no predictions directed at the reader.** The article never tells the reader to do anything or feel anything.
+- **Neutral and impartial — never take a position for or against any party or the government.** Report what each side argued and what the court or agency did; do not advocate, praise, criticize, or signal which side is right. Attribute contested points ("the government argues," "Anthropic contends," "the panel held") rather than asserting them in the article's own voice.
 - **Forbidden words and constructions** (when directed at the reader): *should, must, consider, review, monitor, watch for, prepare, assess, examine, revisit, map, inventory, update, audit, expect (you to), anticipate.* These words are fine when describing what a court or party did ("the court should apply Alice/Mayo next"); they are forbidden when directing the reader.
 - **Forbidden sections:** *What it means for in-house counsel, What to do now, Action items, Key takeaways, Next steps, What to watch, Implications for practitioners, Conclusion, Looking ahead, The bottom line.* If content seems to want a section like this, either absorb the legally significant parts into Analysis (framed descriptively), surface them in the required Takeaways bullets (as descriptive statements, never prescriptions), or cut. **Takeaways** is the only permitted post-Analysis section, and its bullets must follow the no-advice rule: describe what the article established, do not tell the reader what to do, feel, or expect.
 - **No marketing adjectives** (*groundbreaking, landmark, seismic, watershed, game-changing*).
@@ -228,18 +227,36 @@ Examples in the required format. In the rendered .docx: italic portions are ital
 
 ### Test for compliance
 
-Before delivering, re-read the draft with one question: **Does any sentence tell the reader what to do, what to think, or how to feel?** If yes, rewrite it as a descriptive statement of fact, doctrine, or procedural posture, or cut it. Check especially the lede's last sentence, every paragraph's closing sentence, and any sentence containing *should, must, consider, expect, watch, review, prepare, map, or update*.
+Before delivering, re-read the draft with two questions. **(1) Does any sentence tell the reader what to do, what to think, or how to feel?** **(2) Does any sentence give legal advice or take a side — for or against a party or the government?** Check **every Takeaways bullet** in particular. If either is true, rewrite the sentence as a neutral, descriptive statement of fact, doctrine, or procedural posture, or cut it. Watch the lede's last sentence, every paragraph's closing sentence, and any sentence containing *should, must, consider, expect, watch, review, prepare, map, or update*. Both checks are hard gates — do not save an article that fails either.
+
+---
+
+## Adversarial review (mandatory before saving)
+
+After drafting, run a **separate, adversarial Reviewer pass** before the article is saved. Adopt a skeptical mindset: assume the draft contains errors and try to find them; do not rubber-stamp. If the runtime supports subagents, run the review as an independent agent; otherwise perform it as a distinct second pass with fresh, critical eyes. The writer then revises to clear every issue, and the loop repeats until the Reviewer signs off with zero open items. Only a draft that passes is saved.
+
+**Reviewer checklist:**
+
+1. **Citations (highest priority).** For every endnote: open/verify the primary-source URL actually resolves, is the authoritative source for the proposition, and genuinely supports the exact sentence it is attached to. Reject and require fixing any citation that is unverifiable, mismatched, to a secondary source where a primary exists, or possibly fabricated. **No hallucinated or unverifiable citation may survive** — a wrong cite is worse than no cite. (Hallucinated citations are themselves a recurring AI-legal story; do not become one.)
+2. **Factual accuracy & posture.** Every claim matches the primary sources. Procedural posture is precise (motion to dismiss vs. summary judgment vs. final judgment; stay vs. merits). Dates, courts, dockets, statute sections, and party names are correct.
+3. **No advice.** No sentence gives advice, recommendations, action items, or tells the reader what to do, watch, consider, or expect. Scan **every Takeaways bullet**.
+4. **Neutrality.** No sentence takes a position for or against any party or the government, predicts an outcome, or signals which side is right. Contested points are attributed, not asserted.
+5. **Length & structure.** ≤600 body words; exactly Title → (subtitle) → byline → Lead → Background → Analysis (with subheadings) → Takeaways (bullets) → endnotes; no forbidden sections.
+6. **Format.** Georgia; Title 14 / section 12 / sub-head 11 / body 11; headings black; citations blue hyperlinks; **endnotes, not footnotes**; byline `AI Law Weekly · [Date]`.
+7. **Copyright discipline.** Under 15 verbatim words from any source; at most one direct quote per source; everything else paraphrased.
+
+The Reviewer returns a concise, itemized **critical feedback list** (what is wrong and why). The writer fixes each item and re-submits. Do not save until the list is empty.
 
 ---
 
 ## Worked article skeleton
 
-For a hypothetical article on a Ninth Circuit training-data fair-use ruling, targeting ~560 words (body + Takeaways, under the 600 ceiling) and 3 endnotes:
+The authoritative layout is **`references/template.docx`** — open it to see the exact structure to fill in. The skeleton below illustrates that same structure (short Title + subtitle, byline, Lead, Background, Analysis with descriptive subheadings, Takeaways bullets, ≤3 endnotes), targeting ~560 words under the 600 ceiling:
 
 ```
 Title: The Ninth Circuit's Training-Data Fair-Use Ruling in Kadrey v. Meta
 
-Byline: AI Legal News · April 24, 2026
+Byline: AI Law Weekly · April 24, 2026
 
 [Lede — 60–85 words]
 The Ninth Circuit on Tuesday reversed the Northern District of California's
@@ -305,15 +322,15 @@ Before writing either of the two chosen articles:
 
 Use the docx skill at `/mnt/skills/public/docx/SKILL.md`. Key points:
 
-1. Create the .docx in `/home/claude/` using the docx skill's scripted approach (don't hand-write XML).
-2. Apply the structure above. Title is Heading 1 (14pt); section heads (Background / Analysis / Takeaways) are Heading 2 (12pt); subsection heads inside Analysis are Heading 3 (11pt). Body is Georgia 12pt; all headings **bold Georgia in black (`000000`)** — never blue. Word's default Heading styles are blue, so you must set the color explicitly (see step 5).
+1. **Preferred method — fill the template:** copy `references/template.docx` and replace the bracketed placeholders, keeping every style. The template already encodes the house style (Georgia; Title 14 / section 12 / sub-head 11; body 11; black headings; bulleted Takeaways; Word endnotes; blue hyperlink style), so you mainly add text. The steps below are the from-scratch fallback if you build a new .docx instead — don't hand-write XML; use docx-js.
+2. Apply the structure above. Title is Heading 1 (14pt); section heads (Background / Analysis / Takeaways) are Heading 2 (12pt); subsection heads inside Analysis are Heading 3 (11pt). Body is Georgia 11pt; all headings **bold Georgia in black (`000000`)** — never blue. Word's default Heading styles are blue, so you must set the color explicitly (see step 5).
 3. Insert Word endnotes (docx skill supports this).
 4. **Embed URLs in endnotes as active `ExternalHyperlink` elements, not plain text.** Apply `color: "0563C1"` and `underline: { type: "single", color: "0563C1" }` directly on the child `TextRun` of each hyperlink. **Do not** declare a `Hyperlink` paragraph style in the Document's `styles.paragraphStyles` — that creates a collision with docx-js's auto-generated `Hyperlink` character style and causes Word to render links as plain black text (the links look "lost" to users). Direct run properties are the robust approach.
 5. Set the document default font to **Georgia** and define Heading 1/2/3 as **bold Georgia, color `000000` (black)** at sizes 28/24/22 half-points (14/12/11pt). **Word's built-in Heading styles default to blue — you MUST set `color: "000000"` on each heading style, or the headings render blue.** Defining Heading paragraph styles is fine; the step-4 rule only forbids declaring a *Hyperlink* paragraph style. Pattern:
 
 ```javascript
 styles: {
-  default: { document: { run: { font: "Georgia", size: 24 } } },   // body Georgia 12pt
+  default: { document: { run: { font: "Georgia", size: 22 } } },   // body Georgia 11pt
   paragraphStyles: [
     { id: "Heading1", name: "Heading 1", basedOn: "Normal", next: "Normal", quickFormat: true,
       run: { font: "Georgia", bold: true, color: "000000", size: 28 } },   // Title 14pt
@@ -327,7 +344,7 @@ styles: {
 ```
 6. Save locally first to verify; run `python /mnt/skills/public/docx/scripts/office/validate.py` on the output. **Then count the body words (lede + Background + Analysis + Takeaways). If the total exceeds 600, trim Analysis and regenerate — do not upload an article over 600 words.**
 7. After validating, inspect `word/_rels/endnotes.xml.rels` (via `unpack.py`) to confirm all expected `TargetMode="External"` hyperlink relationships are present.
-8. Upload to the Google Drive **`articles` subfolder by folder ID** `13sq6qNqdVz144cN576Zq-7NDcYRh8CXw` (never by path, never to My Drive root). Filename `AILegalNews_YYYY-MM-DD_short-slug.docx`.
+8. Upload to the Google Drive **`articles` subfolder by folder ID** `13sq6qNqdVz144cN576Zq-7NDcYRh8CXw` (never by path, never to My Drive root). Filename `AILawWeekly_YYYY-MM-DD_short-slug.docx`.
 9. Report the Drive filename, word count, and endnote count back in chat.
 
 **XML-safety (important):** Article text and URLs frequently contain characters that are special in XML — `&`, `<`, `>` (e.g., SEC EDGAR URLs like `...?action=getcompany&CIK=...&type=S-1`, or party names like "Marsh & McLennan"). docx-js's `TextRun` and `ExternalHyperlink` escape these automatically, so **always build content through those objects — never assemble document XML by hand or by string concatenation, and never inject raw text into a template string.** This applies to the bullet helper and endnote helper too: pass every piece of text through `TextRun` and let docx-js escape it. If `validate.py` reports a parse error mentioning an entity or a stray `&`/`<`/`>`, a string bypassed `TextRun` — route it through `TextRun` rather than escaping by hand.
