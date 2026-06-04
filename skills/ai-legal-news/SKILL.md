@@ -231,9 +231,11 @@ Routine prompt contains "weekly writeup," "hot topics," "top 5 for the week," or
 1. **Precedential/regulatory weight** — SCOTUS > circuit split > circuit > district > final agency rule > proposed rule > guidance > bill > hearing
 2. **Breadth of practice impact** — how many in-house counsel are directly affected
 3. **Novelty** — first-of-kind vs. incremental
-4. **Client-actionability** — near-term compliance deadlines, enforcement exposure, contract-drafting implications
+4. **Doctrinal consequence** — opens or closes a theory of liability, jurisdiction, or agency authority; deepens a split (descriptive, not advice)
 5. **Patent/IP bonus** — +1 weight
 6. **Tie-breaker: resonance** — how much the bar is actually discussing it this week
+
+Full scoring rubric (0–16 scale) in `references/article-template.md`.
 
 **3. Propose top 5, grouped by substantive category.** Present in chat like this:
 
@@ -276,7 +278,7 @@ If two or more of the top 5 fall in the same substantive category, note it and o
 
 **5. Re-verify primary sources** for the chosen 1 or 2. Re-read the opinion, rule, order, or filing. Pull related primary documents if helpful (underlying complaint, prior opinions distinguished, agency comment record). Don't rely on the one-line summary in the log — the log was a lead, now you're writing the article.
 
-**6. Draft each article** as a separate .docx file. **Start from the bundled template `references/house-style.docx`** — it already defines every paragraph style (Title, Subtitle, Byline, Heading 1, Heading 2, List Bullet, Endnote Text) in Georgia at the locked sizes, and already wires up Word endnotes. Copy it, replace the bracketed placeholders with the article content, and keep the styles as-is. Target 600–700 words with no more than 3 endnotes and a closing Takeaways bullet list. Use the docx skill (`/mnt/skills/public/docx/SKILL.md`) for editing. Apply the **locked house style** below verbatim if you ever build without the template — same fonts, sizes, spacing, and structure every week. This is the single most important rule for week-to-week consistency: do not improvise typography or section order. **Byline is fixed: `AI Legal News · [Date]` — no author name, no placeholder.** `[Date]` = Friday of the current ISO week, formatted like `April 24, 2026`.
+**6. Draft each article** as a separate .docx file following **`references/article-template.md`** — the authoritative spec for structure, voice, the no-advice rule, citation/endnote format, and the docx-js generation pattern (including the endnote hyperlink fix). Generate programmatically with the docx skill (`/mnt/skills/public/docx/SKILL.md`); do not hand-write XML and do not improvise typography or section order. Locked essentials: **Georgia** font; heading scale **14 / 12 / 11** (Title 14, section heads 12, sub-heads 11); body Georgia 12; **endnotes, not footnotes** (max 3); every citation a live **blue** hyperlink (`0563C1`, underlined); fixed byline **`AI Legal News · [Date]`** (no author), `[Date]` = Friday of the current ISO week (e.g., `April 24, 2026`); 600–700 words; closing Takeaways bullets (descriptive only).
 
 **7. Save** each .docx into the `articles` subfolder **by ID** with `create_file`: `parentId = '13sq6qNqdVz144cN576Zq-7NDcYRh8CXw'`, `title = 'AILegalNews_YYYY-MM-DD_short-slug.docx'`. Date = Friday of the week. Slug = lowercase-hyphen topic, e.g., `AILegalNews_2026-04-24_ninth-circuit-training-data.docx`. Never pass a path as the parent and never write to root; always use the folder ID above so the file can't land in My Drive root.
 
@@ -284,49 +286,16 @@ If two or more of the top 5 fall in the same substantive category, note it and o
 
 ---
 
-## Article document format (LOCKED house style)
+## Article document format (house style at a glance)
 
-Every weekly `.docx` MUST be built to this exact specification so output is identical week to week. Apply these values explicitly through the docx skill; never fall back to defaults or improvise. Full reference with worked example: `references/article-format.md`.
+The authoritative article spec — structure, ranking rubric, voice/no-advice rules, citation format, and the docx-js generation pattern — is **`references/article-template.md`**. Build every weekly `.docx` from it; never improvise. Locked essentials, identical every week:
 
-### Page
-- US Letter (8.5" × 11"), portrait. Margins **1" on all four sides**.
-
-### Fonts and sizes (font: **Georgia** throughout; sizes in points)
-| Element | Font | Size | Weight | Notes |
-|---|---|---|---|---|
-| **Title** (headline) | Georgia | 14 | Bold | Left-aligned. Space after 4pt. |
-| **Subtitle** (optional, the longer descriptive line) | Georgia | 13 | Regular, *italic* | Left-aligned. Space after 8pt. Omit if the title already says it all. |
-| **Byline** | Georgia | 11 | Regular, *italic* | Exactly `AI Legal News · [Date]`. No author. Space after 12pt. |
-| **H1 section heading** (`Background`, `Analysis`, `Takeaways`) | Georgia | 12 | Bold | Space before 12pt, after 6pt. |
-| **H2 sub-heading** (e.g., "Two statutes, two outcomes") | Georgia | 11 | Bold | Space before 8pt, after 4pt. |
-| **Body paragraph** | Georgia | 12 | Regular | Left-aligned (ragged right), line spacing 1.15, space after 8pt. |
-| **Takeaways bullets** | Georgia | 12 | Regular | Standard round bullets, space after 4pt per item. |
-| **Endnotes** | Georgia | 10 | Regular | See below. |
-
-- **No color** on any element. Headings are bold black, not accented.
-
-### Structure (fixed order, every article)
-1. **Title** (H-title style above).
-2. **Subtitle** (optional).
-3. **Byline** — `AI Legal News · [Date]`, date = Friday of the ISO week (e.g., `April 24, 2026`).
-4. **Lead paragraph** — no heading; opens the story.
-5. **`Background`** (H1) — factual/procedural setup.
-6. **`Analysis`** (H1) — the substance, broken into H2 sub-headings as needed.
-7. **`Takeaways`** (H1) — a bullet list (typically 3–5 bullets), descriptive only (no advice — see the strict no-advice rule).
-
-### Notes — use ENDNOTES, never footnotes
-- Use **Word endnotes** (collected at the very end of the document), **not** footnotes at the bottom of each page. Maximum 3.
-- Endnote markers are **superscript** numbers in the body text.
-- Endnote text: Georgia 10pt. Bluebook style; case names italicized; the citation includes a live **blue hyperlink** (the `Hyperlink` style — color `0563C1`, underlined) to the primary source. Never leave a citation URL as plain black text.
-- If the docx skill defaults to footnotes, explicitly convert/author them as endnotes before saving.
-
-### Inline conventions
-- **Case names** italicized wherever they appear (body and endnotes).
-- **Every primary-source citation is a live hyperlink in blue** — the `Hyperlink` character style (color `0563C1`, underlined). Applies to endnote citations and any inline source mention. No plain-text URLs.
-- Em dashes for asides; no double spaces after periods.
-
-### Consistency guarantee
-The bundled **`references/house-style.docx`** starter already defines all of these styles and endnote wiring; build every article from it. `references/article-format.md` is the written source of truth for the values. If a future example supersedes this, update the template and the table here in one place — do not let individual runs set their own typography.
+- **Font:** Georgia throughout. US Letter, 1" margins. **No color** on headings (bold black).
+- **Heading scale:** Title 14pt bold · section heads (`Background` / `Analysis` / `Takeaways`) 12pt bold · sub-heads inside Analysis 11pt bold. Body Georgia 12pt. Byline 11pt italic. Endnotes 10pt.
+- **Byline:** exactly `AI Legal News · [Date]` — no author, no placeholder. `[Date]` = Friday of the ISO week.
+- **Notes:** Word **endnotes** (max 3), never footnotes.
+- **Citations:** every primary-source citation is a live **blue** hyperlink (`0563C1`, underlined) — never plain text. Generation detail: set color/underline directly on the hyperlink's `TextRun`; do **not** declare a `Hyperlink` paragraph style (it collides with docx-js and renders links black). See `references/article-template.md`.
+- **Length/structure:** 600–700 words; Title → Lead → `Background` → `Analysis` (sub-heads) → `Takeaways` bullets. Takeaways is the only post-Analysis section and stays descriptive — no advice, no predictions.
 
 ---
 
