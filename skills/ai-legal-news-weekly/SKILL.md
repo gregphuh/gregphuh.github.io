@@ -52,7 +52,11 @@ filing — don't rely on the one-line log summary. Pull related primary document
 depends on them (underlying complaint, distinguished opinions, agency comment record, latest S-1
 amendment). Re-check pin cites and any short quotes.
 
-**5. Draft each article by filling the template.** Open **`references/template.docx`** (the docx skill can edit an existing .docx) and replace the bracketed placeholders — Title (one line, no subtitle), byline date, Lead, Background, the Analysis subheadings and paragraphs, and the Takeaways bullets — **keeping every style exactly as defined** (Georgia; Title 14pt; section heads 12pt; sub-heads 11pt; body 11pt; black headings; **endnotes, not footnotes**). Add or remove Analysis subsections and Takeaways bullets as needed; add endnotes (blue hyperlinks) for the essential sources. Do not restyle anything. **Voice — report, never advise, never take sides:** describe what happened, what the law says, and what each side argued; never give legal advice or recommendations, and never take a position for or against any party or the government. (Full spec + from-scratch docx-js fallback: `references/article-template.md`.)
+**5. Draft each article, then generate it with the bundled script.** Compose the article as `article.json` (schema in `references/article-template.md` → *Generating the .docx*), then run:
+```
+python3 references/build_article.py article.json AILawWeekly_YYYY-MM-DD_slug.docx
+```
+This standalone script (Python standard library only) hardcodes the entire house style — Georgia; single Title 14pt; section heads (Background/Analysis/Takeaways) 12pt bold black; Analysis sub-heads 11pt bold italic black; round bullets; real Word **endnotes** (not footnotes); blue (`0563C1`) underlined citation hyperlinks; XML-safe text. **Do NOT call `/mnt/skills/public/docx`, docx-js, python-docx, or any external skill — they are not available in the run environment and produce a broken file (no styles, no headings, square bullets, fake endnotes). The script is the only generator.** **Voice — report, never advise, never take sides:** describe what happened, what the law says, and what each side argued; never give legal advice or recommendations, and never take a position for or against any party or the government.
 
 **6. Adversarial review (mandatory — a second, skeptical pass).** Before anything is saved, switch into a separate **Reviewer** role and review each draft adversarially: assume it is wrong until proven otherwise; do not rubber-stamp. If the runtime supports subagents, run this as a separate agent for independence. The Reviewer must, at minimum:
    - **Confirm every citation.** Re-open/verify each endnote's primary-source URL actually resolves and genuinely supports the sentence it is attached to. Flag any citation that cannot be verified, does not match the proposition, or looks fabricated — **no hallucinated or unverifiable citations may remain** (a wrong cite is worse than no cite).
@@ -61,7 +65,7 @@ amendment). Re-check pin cites and any short quotes.
    - **Enforce limits:** ≤600 body words; ≤3 endnotes; copyright discipline (<15 verbatim words per source, ≤1 quote per source); structure, format, and byline match the template.
    The Reviewer writes a short, **critical feedback list**; the writer revises to address every item; **loop until the Reviewer signs off with zero open issues.** Full checklist: `references/article-template.md` (Adversarial review).
 
-**7. Save** each reviewed `.docx` to the `articles` subfolder **by ID** with `create_file`: `parentId = '13sq6qNqdVz144cN576Zq-7NDcYRh8CXw'`, `title = 'AILawWeekly_YYYY-MM-DD_short-slug.docx'` (date = Friday of the week; slug = lowercase-hyphen topic). Never write by path and never to My Drive root. Only save a draft that passed review.
+**7. Save** each reviewed article. The generator wrote `AILawWeekly_YYYY-MM-DD_slug.docx` plus a `.b64` sidecar; upload it to the `articles` subfolder **by ID** with `create_file`: `parentId = '13sq6qNqdVz144cN576Zq-7NDcYRh8CXw'`, `title = 'AILawWeekly_YYYY-MM-DD_slug.docx'` (date = Friday of the week; slug = lowercase-hyphen topic), `contentMimeType = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'`, `disableConversionToGoogleType = true`, `base64Content =` the full contents of the `.b64` file. Never write by path, never to My Drive root. Only upload a draft that passed review.
 
 **8. Report in chat** (brief, no questions): the two article titles, word counts, endnote counts, the `articles/` filenames, and a one-line note that the adversarial review passed (and what it caught/fixed).
 
@@ -96,9 +100,8 @@ diversity rule.
   the ISO week (e.g., `April 24, 2026`).
 - **Notes:** Word **endnotes** (max 3), never footnotes.
 - **Citations:** every primary-source citation is a live **blue** hyperlink (`0563C1`, underlined) —
-  never plain text. Generation detail: set color/underline directly on the hyperlink's `TextRun`;
-  do **not** declare a `Hyperlink` paragraph style (it collides with docx-js and renders links
-  black). See `references/article-template.md`.
+  never plain text. In the article JSON, mark a citation run as `{"text": "…", "url": "https://…"}`;
+  the generator renders it blue and underlined.
 - **Length/structure:** **600 words maximum** — a hard cap measured by actual word count (aim ~500–580). Count before saving; trim Analysis if over; never save >600. Title → Lead → `Background` → `Analysis` (sub-heads) →
   `Takeaways` bullets. Takeaways is the only post-Analysis section and stays descriptive — **no
   advice, no predictions, no "what counsel should do."**

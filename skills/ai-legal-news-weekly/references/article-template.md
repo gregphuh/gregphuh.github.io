@@ -94,7 +94,7 @@ Also ranked: #3 [Headline] (10) · #4 [Headline] (9) · #5 [Headline] (8)
 - **Takeaways:** required closing section of **4–5 bullets, one sentence each (~15–20 words)**. See Structure below.
 - **Font:** Body in **Georgia 11pt**. Headings bold Georgia at the locked scale: Title 14pt, section heads (Heading 2) 12pt, subsection heads (Heading 3) 11pt **bold italic**. Single title, no subtitle. **Headings are black (`000000`), never blue** — Word's default Heading styles are blue, so set the color explicitly.
 - **Margins:** 1" all sides; US Letter (12240 × 15840 DXA).
-- **Endnotes (not footnotes):** Word endnotes, placed at the end of the document. The article uses endnotes rather than footnotes so that prose pages read uninterrupted by citation blocks at the bottom. Full legal citation format (see below). docx-js supports endnotes natively via `EndnoteReferenceRun` and the Document's `endnotes: {}` config (parallel to its footnotes API); see the workflow below for the pattern.
+- **Endnotes (not footnotes):** Word endnotes, placed at the end of the document. The article uses endnotes rather than footnotes so that prose pages read uninterrupted by citation blocks at the bottom. Full legal citation format (see below). The generator (`references/build_article.py`) produces real Word endnotes automatically from the `endnotes` array — see *Generating the .docx*.
 - **Filename:** `AILawWeekly_YYYY-MM-DD_short-slug.docx` (date = Friday of the week)
 
 ### Structure
@@ -124,7 +124,7 @@ Also ranked: #3 [Headline] (10) · #4 [Headline] (9) · #5 [Headline] (8)
 
 6. **Takeaways** (Heading 2, 12pt bold; bullet list, 4–5 bullets, one sentence each ~15–20 words)
    - Descriptive summary of the article's key analytical points. Each bullet crystallizes a fact, legal conclusion, or open question that the article established. Bullets are not action items, not predictions, not advice.
-   - Use the `bullets` numbering reference with `LevelFormat.BULLET` from the docx skill's bullet pattern.
+   - The generator renders the `takeaways` array as a proper round-bullet list automatically.
    - Good: "The D.C. Circuit denied the stay but granted expedited review, with oral argument set for May 19."
    - Good: "FASCSA's broader reach preserves much of the designation's practical effect despite the N.D. Cal. injunction."
    - Bad: "Counsel should watch the May 19 oral argument carefully." (prescriptive — cut)
@@ -152,9 +152,9 @@ If a fourth endnote seems unavoidable, either (a) cut the sentence that requires
 
 Use Bluebook-style endnote citations. Two formatting rules apply to every citation:
 
-**Rule 1 — Italicize case names and Bluebook signals.** Every case name is italicized, full form and short form. Standard Bluebook signals and citation words are italicized: *See, See also, See, e.g., Cf., Compare, But see, Contra, Accord, E.g., Id.* So are internal cross-references: *supra, infra, ibid.* Statute names, regulation section numbers, and publication titles are not italicized. In docx-js, wrap the italicized text in a `TextRun({ text, italics: true })`.
+**Rule 1 — Italicize case names and Bluebook signals.** Every case name is italicized, full form and short form. Standard Bluebook signals and citation words are italicized: *See, See also, See, e.g., Cf., Compare, But see, Contra, Accord, E.g., Id.* So are internal cross-references: *supra, infra, ibid.* Statute names, regulation section numbers, and publication titles are not italicized. In the article JSON, mark an italic run as `{"text": "…", "italic": true}`.
 
-**Rule 2 — Embed source URLs as active `ExternalHyperlink` elements, not plain text.** Every endnote that cites a source with a public URL must include that URL as an active hyperlink, rendered in standard Word blue with an underline. Implement via docx-js's `ExternalHyperlink` inside the endnote's `Paragraph` children; do not paste raw URL text. See the docx creation workflow below for the pattern.
+**Rule 2 — Embed source URLs as live blue hyperlinks, not plain text.** Every endnote citing a source with a public URL must render that URL as an active hyperlink in Word blue with an underline. In the article JSON, mark a citation run as `{"text": "…", "url": "https://…"}` — the generator renders it blue and underlined. Never paste a raw URL as plain text.
 
 **Which sources get hyperlinks:**
 
@@ -318,123 +318,44 @@ Before writing either of the two chosen articles:
 
 ---
 
-## docx creation workflow
+## Generating the .docx (self-contained — NO external skill)
 
-Use the docx skill at `/mnt/skills/public/docx/SKILL.md`. Key points:
+> **Do not use `/mnt/skills/public/docx`, docx-js, python-docx, or any other external skill/library — they are NOT guaranteed to exist in the run environment, and relying on them yields a broken file (no styles.xml, no heading styles, square bullets, fake endnotes). Generate the document only with the bundled, dependency-free script `references/build_article.py` (Python standard library only). It hardcodes the entire house style, so the output is correct every time.**
 
-1. **Preferred method — fill the template:** copy `references/template.docx` and replace the bracketed placeholders, keeping every style. The template already encodes the house style (Georgia; Title 14 / section 12 / sub-head 11; body 11; black headings; bulleted Takeaways; Word endnotes; blue hyperlink style), so you mainly add text. The steps below are the from-scratch fallback if you build a new .docx instead — don't hand-write XML; use docx-js.
-2. Apply the structure above. Title is Heading 1 (14pt); section heads (Background / Analysis / Takeaways) are Heading 2 (12pt); subsection heads inside Analysis are Heading 3 (11pt). Body is Georgia 11pt; all headings **bold Georgia in black (`000000`)** — never blue. Word's default Heading styles are blue, so you must set the color explicitly (see step 5).
-3. Insert Word endnotes (docx skill supports this).
-4. **Embed URLs in endnotes as active `ExternalHyperlink` elements, not plain text.** Apply `color: "0563C1"` and `underline: { type: "single", color: "0563C1" }` directly on the child `TextRun` of each hyperlink. **Do not** declare a `Hyperlink` paragraph style in the Document's `styles.paragraphStyles` — that creates a collision with docx-js's auto-generated `Hyperlink` character style and causes Word to render links as plain black text (the links look "lost" to users). Direct run properties are the robust approach.
-5. Set the document default font to **Georgia** and define Heading 1/2/3 as **bold Georgia, color `000000` (black)** at sizes 28/24/22 half-points (14/12/11pt). **Word's built-in Heading styles default to blue — you MUST set `color: "000000"` on each heading style, or the headings render blue.** Defining Heading paragraph styles is fine; the step-4 rule only forbids declaring a *Hyperlink* paragraph style. Pattern:
+**Steps:**
 
-```javascript
-styles: {
-  default: { document: { run: { font: "Georgia", size: 22 } } },   // body Georgia 11pt
-  paragraphStyles: [
-    { id: "Heading1", name: "Heading 1", basedOn: "Normal", next: "Normal", quickFormat: true,
-      run: { font: "Georgia", bold: true, color: "000000", size: 28 } },   // Title 14pt
-    { id: "Heading2", name: "Heading 2", basedOn: "Normal", next: "Normal", quickFormat: true,
-      run: { font: "Georgia", bold: true, color: "000000", size: 24 } },   // section 12pt
-    { id: "Heading3", name: "Heading 3", basedOn: "Normal", next: "Normal", quickFormat: true,
-      run: { font: "Georgia", bold: true, italics: true, color: "000000", size: 22 } }    // sub-head 11pt bold italic
-  ]
-  // Do NOT add a "Hyperlink" paragraph style here (see step 4).
+1. Compose the article as `article.json` following this schema:
+
+```json
+{
+  "title": "single-line title",
+  "date": "Month D, YYYY",
+  "lead": [ run, ... ],
+  "background": [ [run, ...], ... ],
+  "analysis": [ { "subhead": "string", "paras": [ [run, ...], ... ] }, ... ],
+  "takeaways": [ [run, ...], ... ],
+  "endnotes": [ [run, ...], ... ]
 }
 ```
-6. Save locally first to verify; run `python /mnt/skills/public/docx/scripts/office/validate.py` on the output. **Then count the body words (lede + Background + Analysis + Takeaways). If the total exceeds 600, trim Analysis and regenerate — do not upload an article over 600 words.**
-7. After validating, inspect `word/_rels/endnotes.xml.rels` (via `unpack.py`) to confirm all expected `TargetMode="External"` hyperlink relationships are present.
-8. Upload to the Google Drive **`articles` subfolder by folder ID** `13sq6qNqdVz144cN576Zq-7NDcYRh8CXw` (never by path, never to My Drive root). Filename `AILawWeekly_YYYY-MM-DD_short-slug.docx`.
-9. Report the Drive filename, word count, and endnote count back in chat.
 
-**XML-safety (important):** Article text and URLs frequently contain characters that are special in XML — `&`, `<`, `>` (e.g., SEC EDGAR URLs like `...?action=getcompany&CIK=...&type=S-1`, or party names like "Marsh & McLennan"). docx-js's `TextRun` and `ExternalHyperlink` escape these automatically, so **always build content through those objects — never assemble document XML by hand or by string concatenation, and never inject raw text into a template string.** This applies to the bullet helper and endnote helper too: pass every piece of text through `TextRun` and let docx-js escape it. If `validate.py` reports a parse error mentioning an entity or a stray `&`/`<`/`>`, a string bypassed `TextRun` — route it through `TextRun` rather than escaping by hand.
+A **run** is a plain string, or one of:
+- `{"text": "…", "italic": true}` — italic (case names, Bluebook signals like *See*, *Id.*)
+- `{"text": "…", "url": "https://…"}` — blue underlined hyperlink (primary-source citations)
+- `{"endnote": N}` — superscript marker that points to endnote N
 
-**Reference endnote pattern (docx-js):**
+2. Run the generator (it writes the .docx **and** a `.b64` sidecar for upload):
 
-The endnote helper accepts mixed parts: plain strings become `TextRun`; `{text, url}` objects become hyperlinks (with color and underline baked directly into the `TextRun`); `{text, italic: true}` objects become italic `TextRun`s (for case names, signals like *See*, *Cf.*, and *Id.*, and publication titles).
-
-**Important hyperlink fix:** do NOT declare a `Hyperlink` paragraph style in the Document's `styles.paragraphStyles`. Doing so collides with the character-style `Hyperlink` that docx-js auto-generates when `ExternalHyperlink` is used, and Word resolves the conflict by rendering links as plain black text — which looks to the user like the hyperlinks have been stripped. Instead, set `color` and `underline` directly on the child `TextRun` of each `ExternalHyperlink`.
-
-```javascript
-const { ExternalHyperlink, TextRun, Paragraph, EndnoteReferenceRun } = require('docx');
-
-function endnote(parts) {
-  const children = parts.map(p => {
-    if (typeof p === 'string') return new TextRun(p);
-    if (p.url) {
-      return new ExternalHyperlink({
-        link: p.url,
-        children: [new TextRun({
-          text: p.text,
-          color: "0563C1",
-          underline: { type: "single", color: "0563C1" }
-        })]
-      });
-    }
-    if (p.italic) return new TextRun({ text: p.text, italics: true });
-    return new TextRun(p.text);
-  });
-  return { children: [new Paragraph({ children })] };
-}
-
-// Shortcut helpers for readability:
-const IT   = (t)    => ({ text: t, italic: true });
-const LINK = (t, u) => ({ text: t, url: u });
-
-// Example — a case with signal, italic case name, and hyperlink:
-const endnotes = {
-  1: endnote([
-    IT("See"), " ",
-    IT("Nken v. Holder"),
-    ", 556 U.S. 418, 434 (2009), ",
-    LINK("https://supreme.justia.com/cases/federal/us/556/418/",
-         "https://supreme.justia.com/cases/federal/us/556/418/"),
-    "."
-  ]),
-  // ... up to 3 endnotes total
-};
-
-// Wire endnotes into the Document; use EndnoteReferenceRun (NOT
-// FootnoteReferenceRun) for inline markers inside body paragraphs.
-const doc = new Document({
-  endnotes: endnotes,
-  styles: { default: { document: { run: { font: "Georgia", size: 24 } } } },
-  sections: [{
-    children: [
-      new Paragraph({
-        children: [
-          new TextRun("The Ninth Circuit held X"),
-          new EndnoteReferenceRun(1),
-          new TextRun(" and applied the Y framework."),
-        ]
-      }),
-      // ... rest of the document
-    ]
-  }]
-});
+```
+python3 references/build_article.py article.json AILawWeekly_YYYY-MM-DD_slug.docx
 ```
 
-**Takeaways bullet pattern (docx-js):**
+3. Upload to Google Drive with the connector's `create_file`:
+   - `parentId = '13sq6qNqdVz144cN576Zq-7NDcYRh8CXw'`  (the `articles` folder)
+   - `title = 'AILawWeekly_YYYY-MM-DD_slug.docx'`  (date = Friday of the week)
+   - `contentMimeType = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'`
+   - `disableConversionToGoogleType = true`
+   - `base64Content =` the full contents of `AILawWeekly_YYYY-MM-DD_slug.docx.b64`
 
-```javascript
-const { LevelFormat, AlignmentType } = require('docx');
+The script guarantees: Georgia; Title 14 bold black; Background/Analysis/Takeaways 12 bold black; Analysis sub-heads 11 bold italic black; round bullets; real Word ENDNOTES (never footnotes); blue (`0563C1`) underlined citation hyperlinks; XML-safe text (escapes `&`, `<`, `>`). Do not hand-build a .docx, do not restyle, do not post-process.
 
-// In the Document config:
-numbering: {
-  config: [
-    { reference: "bullets",
-      levels: [{ level: 0, format: LevelFormat.BULLET, text: "•",
-                 alignment: AlignmentType.LEFT,
-                 style: { paragraph: { indent: { left: 720, hanging: 360 } } } }] }
-  ]
-}
-
-// Each bullet paragraph:
-new Paragraph({
-  numbering: { reference: "bullets", level: 0 },
-  spacing: { after: 80 },
-  children: [new TextRun("The D.C. Circuit denied the stay but granted expedited review...")]
-})
-```
-
-Do not use unicode bullet characters in `TextRun` text (e.g., `new TextRun("• Item")`). Always use the `numbering` mechanism above.
+`build_article.py` is the single source of truth for format — if the house style ever changes, edit that script (its `STYLES`, `NUMBERING`, and endnote builders).
