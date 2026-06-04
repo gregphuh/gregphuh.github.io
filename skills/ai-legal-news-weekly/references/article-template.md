@@ -251,7 +251,7 @@ The Reviewer returns a concise, itemized **critical feedback list** (what is wro
 
 ## Worked article skeleton
 
-The authoritative layout is **`references/template.docx`** — open it to see the exact structure to fill in. The skeleton below illustrates that same structure (single Title line, byline, Lead, Background, Analysis with descriptive subheadings, Takeaways bullets, ≤3 endnotes), targeting ~560 words under the 600 ceiling:
+The exact format is produced by **`references/build_article.py`** (see *Generating the .docx*). The skeleton below illustrates the structure it emits — single Title line, byline, Lead, Background, Analysis with descriptive subheadings, Takeaways bullets, ≤3 endnotes — targeting ~560 words under the 600 ceiling:
 
 ```
 Title: The Ninth Circuit's Training-Data Fair-Use Ruling in Kadrey v. Meta
