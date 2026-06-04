@@ -276,7 +276,7 @@ If two or more of the top 5 fall in the same substantive category, note it and o
 
 **5. Re-verify primary sources** for the chosen 1 or 2. Re-read the opinion, rule, order, or filing. Pull related primary documents if helpful (underlying complaint, prior opinions distinguished, agency comment record). Don't rely on the one-line summary in the log — the log was a lead, now you're writing the article.
 
-**6. Draft each article** as a separate .docx file. Target 600–700 words with no more than 3 endnotes and a closing Takeaways bullet list. Use the docx skill (`/mnt/skills/public/docx/SKILL.md`) for generation, and apply the **locked house style** below verbatim — same fonts, sizes, spacing, and structure every week. This is the single most important rule for week-to-week consistency: do not improvise typography or section order. **Byline is fixed: `AI Legal News · [Date]` — no author name, no placeholder.** `[Date]` = Friday of the current ISO week, formatted like `April 24, 2026`.
+**6. Draft each article** as a separate .docx file. **Start from the bundled template `references/house-style.docx`** — it already defines every paragraph style (Title, Subtitle, Byline, Heading 1, Heading 2, List Bullet, Endnote Text) in Times New Roman at the locked sizes, and already wires up Word endnotes. Copy it, replace the bracketed placeholders with the article content, and keep the styles as-is. Target 600–700 words with no more than 3 endnotes and a closing Takeaways bullet list. Use the docx skill (`/mnt/skills/public/docx/SKILL.md`) for editing. Apply the **locked house style** below verbatim if you ever build without the template — same fonts, sizes, spacing, and structure every week. This is the single most important rule for week-to-week consistency: do not improvise typography or section order. **Byline is fixed: `AI Legal News · [Date]` — no author name, no placeholder.** `[Date]` = Friday of the current ISO week, formatted like `April 24, 2026`.
 
 **7. Save** each .docx into the `articles` subfolder **by ID** with `create_file`: `parentId = '13sq6qNqdVz144cN576Zq-7NDcYRh8CXw'`, `title = 'AILegalNews_YYYY-MM-DD_short-slug.docx'`. Date = Friday of the week. Slug = lowercase-hyphen topic, e.g., `AILegalNews_2026-04-24_ninth-circuit-training-data.docx`. Never pass a path as the parent and never write to root; always use the folder ID above so the file can't land in My Drive root.
 
@@ -326,7 +326,7 @@ Every weekly `.docx` MUST be built to this exact specification so output is iden
 - Em dashes for asides; no double spaces after periods.
 
 ### Consistency guarantee
-Keep `references/article-format.md` (and, if maintained, a `references/house-style.docx` starter that already defines these styles) as the single source of truth. If a future example supersedes this, update the table here in one place — do not let individual runs set their own typography.
+The bundled **`references/house-style.docx`** starter already defines all of these styles and endnote wiring; build every article from it. `references/article-format.md` is the written source of truth for the values. If a future example supersedes this, update the template and the table here in one place — do not let individual runs set their own typography.
 
 ---
 

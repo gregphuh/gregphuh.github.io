@@ -85,9 +85,13 @@ Takeaways                            ← 14pt bold H1
 - Filename: `AILegalNews_YYYY-MM-DD_short-slug.docx`, date = Friday of the ISO week, slug =
   lowercase-hyphen topic (e.g., `AILegalNews_2026-04-24_fascsa-dc-circuit-anthropic-stay.docx`).
 
-## Optional: starter template
+## Starter template (use it)
 
-For maximum fidelity, keep a `references/house-style.docx` in the skill bundle whose paragraph
-styles ("Title", "Heading 1", "Heading 2", "Normal", "Endnote Text") are already defined to the
-values above. Start each article by copying that template and filling content, so the style
-definitions are identical every week rather than re-applied by hand.
+`references/house-style.docx` is bundled with this skill. Its paragraph styles — `Title`,
+`Subtitle`, `Byline`, `Heading 1`, `Heading 2`, `List Bullet`, `Normal`, and `Endnote Text` — are
+already defined to the values above in Times New Roman, and it already contains a working Word
+endnote (no footnotes part). It also includes a placeholder skeleton in the correct section order.
+
+**Build every weekly article by copying this template and replacing the bracketed placeholders.**
+Do not re-define styles by hand; keeping the style definitions in the file guarantees identical
+output week to week. Only update the template if the house style itself changes.
