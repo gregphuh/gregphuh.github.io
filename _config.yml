@@ -42,6 +42,7 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - vendor
+  - skills
 
 # Permalink format — clean trailing-slash URLs (no .html suffixes).
 permalink: /:path/
