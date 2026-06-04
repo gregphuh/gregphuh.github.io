@@ -1,6 +1,6 @@
 ---
 name: ai-legal-news-weekly
-description: Writes the WEEKLY "AI Legal News" articles only — the second of two AI Legal News skills. Use when the user or a Claude Routine asks for the AI Legal News weekly writeup, weekly AI article, hot topics, or top stories of the week. Runs unattended and non-interactively: reads the most recent daily-log snapshot on Google Drive, ranks the week's entries by a hotness rubric, automatically selects the top 2 (different practice areas where possible), and drafts them as 600–700 word .docx articles (Georgia font, Word endnotes, blue hyperlinked citations, fixed "AI Legal News · [Date]" byline) saved to the articles folder — never asking which to write. Do NOT use for the daily log capture (use the ai-legal-news-log skill) or for non-US / non-legal AI news.
+description: Writes the WEEKLY "AI Legal News" articles only — the second of two AI Legal News skills. Use when the user or a Claude Routine asks for the AI Legal News weekly writeup, weekly AI article, hot topics, or top stories of the week. Runs unattended and non-interactively: reads the most recent daily-log snapshot on Google Drive, ranks the week's entries by a hotness rubric, automatically selects the top 2 (different practice areas where possible), and drafts them as .docx articles of 600 words max each (Georgia font, black headings, Word endnotes, blue hyperlinked citations, fixed "AI Legal News · [Date]" byline) saved to the articles folder — never asking which to write. Do NOT use for the daily log capture (use the ai-legal-news-log skill) or for non-US / non-legal AI news.
 ---
 
 # AI Legal News — Weekly Articles
@@ -89,7 +89,7 @@ diversity rule.
 
 ## House style (at a glance — full spec in `references/article-template.md`)
 
-- **Font:** Georgia throughout. US Letter, 1" margins. **No color** on headings (bold black).
+- **Font:** Georgia throughout. US Letter, 1" margins. **Headings are bold black (`000000`), never blue** — Word's default Heading styles are blue, so set the color explicitly.
 - **Heading scale:** Title 14pt bold · section heads (`Background` / `Analysis` / `Takeaways`)
   12pt bold · sub-heads inside Analysis 11pt bold. Body Georgia 12pt. Byline 11pt italic.
   Endnotes 10pt.
@@ -100,7 +100,7 @@ diversity rule.
   never plain text. Generation detail: set color/underline directly on the hyperlink's `TextRun`;
   do **not** declare a `Hyperlink` paragraph style (it collides with docx-js and renders links
   black). See `references/article-template.md`.
-- **Length/structure:** 600–700 words; Title → Lead → `Background` → `Analysis` (sub-heads) →
+- **Length/structure:** **600 words maximum** (hard ceiling, aim ~500–600); Title → Lead → `Background` → `Analysis` (sub-heads) →
   `Takeaways` bullets. Takeaways is the only post-Analysis section and stays descriptive — **no
   advice, no predictions, no "what counsel should do."**
 
@@ -111,9 +111,10 @@ diversity rule.
 > Run the AI Legal News weekly writeup. This is an unattended scheduled run — do not ask me anything
 > and do not wait for input. Read this week's entries (Monday through today) from the most recent
 > `master-log_*` snapshot in the `AI-legal-log` folder on Google Drive, rank them by hotness, and
-> automatically select and draft the top 2 (different practice areas where possible) as 600–700 word
-> .docx files with no more than 3 endnotes, a closing Takeaways bullet list, Bluebook-italic case
-> names, blue hyperlinks to primary sources, and the fixed byline `AI Legal News · [Date]`. Save them
+> automatically select and draft the top 2 (different practice areas where possible) as .docx files of
+> no more than 600 words each, with black headings, no more than 3 endnotes, a closing Takeaways
+> bullet list, Bluebook-italic case names, blue hyperlinks to primary sources, and the fixed byline
+> `AI Legal News · [Date]`. Save them
 > to the `articles` subfolder by folder ID.
 
 ---

@@ -89,10 +89,10 @@ Also ranked: #3 [Headline] (10) · #4 [Headline] (9) · #5 [Headline] (8)
 
 ### Overall specs
 
-- **Length:** 600–700 words in the body, including the Takeaways bullets (title, byline, and endnotes don't count).
+- **Length:** **600 words maximum** in the body, including the Takeaways bullets (title, byline, and endnotes don't count). 600 is a hard ceiling, not a target — aim for ~500–600. If the section budgets below would push the total over 600, trim from Analysis first.
 - **Endnote cap:** no more than 3 endnotes per article. Reserve endnotes for the sources that are directly essential to the article's main points — typically the case or agency action being analyzed, any parallel proceeding central to the analysis, and the controlling statute or regulation. **Do not cite like a law review.** Do not endnote every factual claim. If a point can be stated and attributed inline in the prose (e.g., "the statute defines supply chain risk as an adversary's potential to sabotage a covered system"), state it inline without an endnote.
 - **Takeaways:** required closing section of 4–6 bullets, each no more than 2 sentences. See Structure below.
-- **Font:** Body in **Georgia 12pt**. Headings bold Georgia at the locked scale: Title 14pt, section heads (Heading 2) 12pt, subsection heads (Heading 3) 11pt. No color on headings.
+- **Font:** Body in **Georgia 12pt**. Headings bold Georgia at the locked scale: Title 14pt, section heads (Heading 2) 12pt, subsection heads (Heading 3) 11pt. **Headings are black (`000000`), never blue** — Word's default Heading styles are blue, so set the color explicitly.
 - **Margins:** 1" all sides; US Letter (12240 × 15840 DXA).
 - **Endnotes (not footnotes):** Word endnotes, placed at the end of the document. The article uses endnotes rather than footnotes so that prose pages read uninterrupted by citation blocks at the bottom. Full legal citation format (see below). docx-js supports endnotes natively via `EndnoteReferenceRun` and the Document's `endnotes: {}` config (parallel to its footnotes API); see the workflow below for the pattern.
 - **Filename:** `AILegalNews_YYYY-MM-DD_short-slug.docx` (date = Friday of the week)
@@ -116,10 +116,10 @@ Also ranked: #3 [Headline] (10) · #4 [Headline] (9) · #5 [Headline] (8)
    - Sentence 2: why the development is legally significant — describe the doctrinal or procedural importance, not what it means for any particular reader.
    - Sentence 3 (optional): the analytical thesis — the legal question or doctrinal issue the piece will examine, framed descriptively.
 
-4. **Background** (Heading 2, 12pt bold; body 130–170 words)
+4. **Background** (Heading 2, 12pt bold; body 110–150 words)
    - One paragraph. Procedural posture (for litigation) or regulatory context (for rules/EOs/IPOs). Parties, forum, prior rulings or comment record. Written entirely in your own words from primary sources. No firm-article paraphrasing.
 
-5. **Analysis** (Heading 2, 12pt bold; body 300–400 words, split into 2–3 subsections with Heading 3 subheads)
+5. **Analysis** (Heading 2, 12pt bold; body 240–320 words, split into 2–3 subsections with Heading 3 subheads)
    - Each subsection has its own descriptive subheading (Heading 3, 11pt bold) — not a question, not a call to action.
    - Walk through what the opinion/rule/order actually says. Identify the novel or disputed element(s). Compare to prior law where helpful. Describe disagreements — dissents, prior contrary authority. Identify the legal questions the development leaves open, framed analytically rather than as things for the reader to monitor.
    - Prefer three tight subsections over four thin ones given the tight word budget.
@@ -234,7 +234,7 @@ Before delivering, re-read the draft with one question: **Does any sentence tell
 
 ## Worked article skeleton
 
-For a hypothetical article on a Ninth Circuit training-data fair-use ruling, targeting ~650 words (body + Takeaways) and 3 endnotes:
+For a hypothetical article on a Ninth Circuit training-data fair-use ruling, targeting ~560 words (body + Takeaways, under the 600 ceiling) and 3 endnotes:
 
 ```
 Title: The Ninth Circuit's Training-Data Fair-Use Ruling in Kadrey v. Meta
@@ -250,7 +250,7 @@ will govern training-data infringement cases in the circuit where most frontier
 AI developers are based and sets up a potential split with the Second Circuit's
 approach in the pending New York Times litigation.
 
-Background (Heading 2, 130–170 words)
+Background (Heading 2, 110–150 words)
 [One paragraph — case history, who sued, prior rulings, posture]
 
 Analysis (Heading 2)
@@ -306,10 +306,25 @@ Before writing either of the two chosen articles:
 Use the docx skill at `/mnt/skills/public/docx/SKILL.md`. Key points:
 
 1. Create the .docx in `/home/claude/` using the docx skill's scripted approach (don't hand-write XML).
-2. Apply the structure above. Title is Heading 1 (14pt); section heads (Background / Analysis / Takeaways) are Heading 2 (12pt); subsection heads inside Analysis are Heading 3 (11pt). Body is Georgia 12pt; all headings bold Georgia, no color.
+2. Apply the structure above. Title is Heading 1 (14pt); section heads (Background / Analysis / Takeaways) are Heading 2 (12pt); subsection heads inside Analysis are Heading 3 (11pt). Body is Georgia 12pt; all headings **bold Georgia in black (`000000`)** — never blue. Word's default Heading styles are blue, so you must set the color explicitly (see step 5).
 3. Insert Word endnotes (docx skill supports this).
 4. **Embed URLs in endnotes as active `ExternalHyperlink` elements, not plain text.** Apply `color: "0563C1"` and `underline: { type: "single", color: "0563C1" }` directly on the child `TextRun` of each hyperlink. **Do not** declare a `Hyperlink` paragraph style in the Document's `styles.paragraphStyles` — that creates a collision with docx-js's auto-generated `Hyperlink` character style and causes Word to render links as plain black text (the links look "lost" to users). Direct run properties are the robust approach.
-5. Set the document default font to **Georgia** (e.g., in `styles.default.document` / `run: { font: "Georgia", size: 24 }`, where size is half-points so 24 = 12pt) and define Heading 1/2/3 as bold Georgia at sizes 28/24/22 half-points (14/12/11pt).
+5. Set the document default font to **Georgia** and define Heading 1/2/3 as **bold Georgia, color `000000` (black)** at sizes 28/24/22 half-points (14/12/11pt). **Word's built-in Heading styles default to blue — you MUST set `color: "000000"` on each heading style, or the headings render blue.** Defining Heading paragraph styles is fine; the step-4 rule only forbids declaring a *Hyperlink* paragraph style. Pattern:
+
+```javascript
+styles: {
+  default: { document: { run: { font: "Georgia", size: 24 } } },   // body Georgia 12pt
+  paragraphStyles: [
+    { id: "Heading1", name: "Heading 1", basedOn: "Normal", next: "Normal", quickFormat: true,
+      run: { font: "Georgia", bold: true, color: "000000", size: 28 } },   // Title 14pt
+    { id: "Heading2", name: "Heading 2", basedOn: "Normal", next: "Normal", quickFormat: true,
+      run: { font: "Georgia", bold: true, color: "000000", size: 24 } },   // section 12pt
+    { id: "Heading3", name: "Heading 3", basedOn: "Normal", next: "Normal", quickFormat: true,
+      run: { font: "Georgia", bold: true, color: "000000", size: 22 } }    // sub-head 11pt
+  ]
+  // Do NOT add a "Hyperlink" paragraph style here (see step 4).
+}
+```
 6. Save locally first to verify; run `python /mnt/skills/public/docx/scripts/office/validate.py` on the output before delivering.
 7. After validating, inspect `word/_rels/endnotes.xml.rels` (via `unpack.py`) to confirm all expected `TargetMode="External"` hyperlink relationships are present.
 8. Upload to the Google Drive **`articles` subfolder by folder ID** `13sq6qNqdVz144cN576Zq-7NDcYRh8CXw` (never by path, never to My Drive root). Filename `AILegalNews_YYYY-MM-DD_short-slug.docx`.
