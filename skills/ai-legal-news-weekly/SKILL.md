@@ -58,7 +58,7 @@ docx-js generation pattern (including the endnote hyperlink fix). Generate with 
 (`/mnt/skills/public/docx/SKILL.md`); do not hand-write XML and do not improvise typography. Locked
 essentials are summarized under "House style" below.
 
-**6. Save** each `.docx` to the `articles` subfolder **by ID** with `create_file`:
+**6. Check length, then save.** **Before saving, count the body words (lede + Background + Analysis + Takeaways bullets). If over 600, trim Analysis until the total is ≤600 — never save or upload an article over 600 words.** Then save each `.docx` to the `articles` subfolder **by ID** with `create_file`:
 `parentId = '13sq6qNqdVz144cN576Zq-7NDcYRh8CXw'`,
 `title = 'AILegalNews_YYYY-MM-DD_short-slug.docx'` (date = Friday of the week; slug =
 lowercase-hyphen topic). Never write by path and never to My Drive root.
@@ -100,7 +100,7 @@ diversity rule.
   never plain text. Generation detail: set color/underline directly on the hyperlink's `TextRun`;
   do **not** declare a `Hyperlink` paragraph style (it collides with docx-js and renders links
   black). See `references/article-template.md`.
-- **Length/structure:** **600 words maximum** (hard ceiling, aim ~500–600); Title → Lead → `Background` → `Analysis` (sub-heads) →
+- **Length/structure:** **600 words maximum** — a hard cap measured by actual word count (aim ~500–580). Count before saving; trim Analysis if over; never save >600. Title → Lead → `Background` → `Analysis` (sub-heads) →
   `Takeaways` bullets. Takeaways is the only post-Analysis section and stays descriptive — **no
   advice, no predictions, no "what counsel should do."**
 

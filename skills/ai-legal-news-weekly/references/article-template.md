@@ -89,9 +89,9 @@ Also ranked: #3 [Headline] (10) · #4 [Headline] (9) · #5 [Headline] (8)
 
 ### Overall specs
 
-- **Length:** **600 words maximum** in the body, including the Takeaways bullets (title, byline, and endnotes don't count). 600 is a hard ceiling, not a target — aim for ~500–600. If the section budgets below would push the total over 600, trim from Analysis first.
+- **Length:** **600 words maximum** in the body — lede + Background + Analysis + Takeaways bullets (title, byline, and endnotes don't count). This is a hard cap measured by actual word count, not a stylistic target — aim ~500–580. **Before saving, count the body words; if the total exceeds 600, cut from Analysis until it is ≤600. Never save or upload an article over 600 words.** The section budgets below are deliberately set to sum under 600.
 - **Endnote cap:** no more than 3 endnotes per article. Reserve endnotes for the sources that are directly essential to the article's main points — typically the case or agency action being analyzed, any parallel proceeding central to the analysis, and the controlling statute or regulation. **Do not cite like a law review.** Do not endnote every factual claim. If a point can be stated and attributed inline in the prose (e.g., "the statute defines supply chain risk as an adversary's potential to sabotage a covered system"), state it inline without an endnote.
-- **Takeaways:** required closing section of 4–6 bullets, each no more than 2 sentences. See Structure below.
+- **Takeaways:** required closing section of **4–5 bullets, one sentence each (~15–20 words)**. See Structure below.
 - **Font:** Body in **Georgia 12pt**. Headings bold Georgia at the locked scale: Title 14pt, section heads (Heading 2) 12pt, subsection heads (Heading 3) 11pt. **Headings are black (`000000`), never blue** — Word's default Heading styles are blue, so set the color explicitly.
 - **Margins:** 1" all sides; US Letter (12240 × 15840 DXA).
 - **Endnotes (not footnotes):** Word endnotes, placed at the end of the document. The article uses endnotes rather than footnotes so that prose pages read uninterrupted by citation blocks at the bottom. Full legal citation format (see below). docx-js supports endnotes natively via `EndnoteReferenceRun` and the Document's `endnotes: {}` config (parallel to its footnotes API); see the workflow below for the pattern.
@@ -110,21 +110,21 @@ Also ranked: #3 [Headline] (10) · #4 [Headline] (9) · #5 [Headline] (8)
    - Format: **`AI Legal News · [Date]`** — no author name. `[Date]` = Friday of the ISO week, formatted `Month D, YYYY` (e.g., `April 24, 2026`).
    - There is no `[AUTHOR]` token and nothing to swap before publishing.
 
-3. **Lede** (75–100 words, no heading)
+3. **Lede** (60–85 words, no heading)
    - One paragraph.
    - Sentence 1: what happened (the news).
    - Sentence 2: why the development is legally significant — describe the doctrinal or procedural importance, not what it means for any particular reader.
    - Sentence 3 (optional): the analytical thesis — the legal question or doctrinal issue the piece will examine, framed descriptively.
 
-4. **Background** (Heading 2, 12pt bold; body 110–150 words)
+4. **Background** (Heading 2, 12pt bold; body 90–120 words)
    - One paragraph. Procedural posture (for litigation) or regulatory context (for rules/EOs/IPOs). Parties, forum, prior rulings or comment record. Written entirely in your own words from primary sources. No firm-article paraphrasing.
 
-5. **Analysis** (Heading 2, 12pt bold; body 240–320 words, split into 2–3 subsections with Heading 3 subheads)
+5. **Analysis** (Heading 2, 12pt bold; body 200–260 words, split into 2–3 subsections with Heading 3 subheads)
    - Each subsection has its own descriptive subheading (Heading 3, 11pt bold) — not a question, not a call to action.
    - Walk through what the opinion/rule/order actually says. Identify the novel or disputed element(s). Compare to prior law where helpful. Describe disagreements — dissents, prior contrary authority. Identify the legal questions the development leaves open, framed analytically rather than as things for the reader to monitor.
    - Prefer three tight subsections over four thin ones given the tight word budget.
 
-6. **Takeaways** (Heading 2, 12pt bold; bullet list, 4–6 bullets, each no more than 2 sentences)
+6. **Takeaways** (Heading 2, 12pt bold; bullet list, 4–5 bullets, one sentence each ~15–20 words)
    - Descriptive summary of the article's key analytical points. Each bullet crystallizes a fact, legal conclusion, or open question that the article established. Bullets are not action items, not predictions, not advice.
    - Use the `bullets` numbering reference with `LevelFormat.BULLET` from the docx skill's bullet pattern.
    - Good: "The D.C. Circuit denied the stay but granted expedited review, with oral argument set for May 19."
@@ -241,7 +241,7 @@ Title: The Ninth Circuit's Training-Data Fair-Use Ruling in Kadrey v. Meta
 
 Byline: AI Legal News · April 24, 2026
 
-[Lede — 75–100 words]
+[Lede — 60–85 words]
 The Ninth Circuit on Tuesday reversed the Northern District of California's
 summary-judgment grant in Kadrey v. Meta, holding that intermediate copying
 during model training is not categorically transformative and requires a
@@ -250,7 +250,7 @@ will govern training-data infringement cases in the circuit where most frontier
 AI developers are based and sets up a potential split with the Second Circuit's
 approach in the pending New York Times litigation.
 
-Background (Heading 2, 110–150 words)
+Background (Heading 2, 90–120 words)
 [One paragraph — case history, who sued, prior rulings, posture]
 
 Analysis (Heading 2)
@@ -325,10 +325,12 @@ styles: {
   // Do NOT add a "Hyperlink" paragraph style here (see step 4).
 }
 ```
-6. Save locally first to verify; run `python /mnt/skills/public/docx/scripts/office/validate.py` on the output before delivering.
+6. Save locally first to verify; run `python /mnt/skills/public/docx/scripts/office/validate.py` on the output. **Then count the body words (lede + Background + Analysis + Takeaways). If the total exceeds 600, trim Analysis and regenerate — do not upload an article over 600 words.**
 7. After validating, inspect `word/_rels/endnotes.xml.rels` (via `unpack.py`) to confirm all expected `TargetMode="External"` hyperlink relationships are present.
 8. Upload to the Google Drive **`articles` subfolder by folder ID** `13sq6qNqdVz144cN576Zq-7NDcYRh8CXw` (never by path, never to My Drive root). Filename `AILegalNews_YYYY-MM-DD_short-slug.docx`.
 9. Report the Drive filename, word count, and endnote count back in chat.
+
+**XML-safety (important):** Article text and URLs frequently contain characters that are special in XML — `&`, `<`, `>` (e.g., SEC EDGAR URLs like `...?action=getcompany&CIK=...&type=S-1`, or party names like "Marsh & McLennan"). docx-js's `TextRun` and `ExternalHyperlink` escape these automatically, so **always build content through those objects — never assemble document XML by hand or by string concatenation, and never inject raw text into a template string.** This applies to the bullet helper and endnote helper too: pass every piece of text through `TextRun` and let docx-js escape it. If `validate.py` reports a parse error mentioning an entity or a stray `&`/`<`/`>`, a string bypassed `TextRun` — route it through `TextRun` rather than escaping by hand.
 
 **Reference endnote pattern (docx-js):**
 
