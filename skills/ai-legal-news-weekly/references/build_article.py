@@ -108,7 +108,7 @@ NUMBERING = f'''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <w:numbering {W} {R}><w:abstractNum w:abstractNumId="0"><w:lvl w:ilvl="0">
 <w:start w:val="1"/><w:numFmt w:val="bullet"/><w:lvlText w:val="&#8226;"/><w:lvlJc w:val="left"/>
 <w:pPr><w:ind w:left="360" w:hanging="360"/></w:pPr>
-<w:rPr><w:rFonts w:ascii="Symbol" w:hAnsi="Symbol" w:hint="default"/></w:rPr></w:lvl></w:abstractNum>
+<w:rPr><w:rFonts w:ascii="Georgia" w:hAnsi="Georgia" w:cs="Georgia" w:hint="default"/></w:rPr></w:lvl></w:abstractNum>
 <w:num w:numId="1"><w:abstractNumId w:val="0"/></w:num></w:numbering>'''
 
 STYLES = f'''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
