@@ -276,7 +276,7 @@ If two or more of the top 5 fall in the same substantive category, note it and o
 
 **5. Re-verify primary sources** for the chosen 1 or 2. Re-read the opinion, rule, order, or filing. Pull related primary documents if helpful (underlying complaint, prior opinions distinguished, agency comment record). Don't rely on the one-line summary in the log — the log was a lead, now you're writing the article.
 
-**6. Draft each article** as a separate .docx file. **Start from the bundled template `references/house-style.docx`** — it already defines every paragraph style (Title, Subtitle, Byline, Heading 1, Heading 2, List Bullet, Endnote Text) in Times New Roman at the locked sizes, and already wires up Word endnotes. Copy it, replace the bracketed placeholders with the article content, and keep the styles as-is. Target 600–700 words with no more than 3 endnotes and a closing Takeaways bullet list. Use the docx skill (`/mnt/skills/public/docx/SKILL.md`) for editing. Apply the **locked house style** below verbatim if you ever build without the template — same fonts, sizes, spacing, and structure every week. This is the single most important rule for week-to-week consistency: do not improvise typography or section order. **Byline is fixed: `AI Legal News · [Date]` — no author name, no placeholder.** `[Date]` = Friday of the current ISO week, formatted like `April 24, 2026`.
+**6. Draft each article** as a separate .docx file. **Start from the bundled template `references/house-style.docx`** — it already defines every paragraph style (Title, Subtitle, Byline, Heading 1, Heading 2, List Bullet, Endnote Text) in Georgia at the locked sizes, and already wires up Word endnotes. Copy it, replace the bracketed placeholders with the article content, and keep the styles as-is. Target 600–700 words with no more than 3 endnotes and a closing Takeaways bullet list. Use the docx skill (`/mnt/skills/public/docx/SKILL.md`) for editing. Apply the **locked house style** below verbatim if you ever build without the template — same fonts, sizes, spacing, and structure every week. This is the single most important rule for week-to-week consistency: do not improvise typography or section order. **Byline is fixed: `AI Legal News · [Date]` — no author name, no placeholder.** `[Date]` = Friday of the current ISO week, formatted like `April 24, 2026`.
 
 **7. Save** each .docx into the `articles` subfolder **by ID** with `create_file`: `parentId = '13sq6qNqdVz144cN576Zq-7NDcYRh8CXw'`, `title = 'AILegalNews_YYYY-MM-DD_short-slug.docx'`. Date = Friday of the week. Slug = lowercase-hyphen topic, e.g., `AILegalNews_2026-04-24_ninth-circuit-training-data.docx`. Never pass a path as the parent and never write to root; always use the folder ID above so the file can't land in My Drive root.
 
@@ -291,17 +291,17 @@ Every weekly `.docx` MUST be built to this exact specification so output is iden
 ### Page
 - US Letter (8.5" × 11"), portrait. Margins **1" on all four sides**.
 
-### Fonts and sizes (font: **Times New Roman** throughout; sizes in points)
+### Fonts and sizes (font: **Georgia** throughout; sizes in points)
 | Element | Font | Size | Weight | Notes |
 |---|---|---|---|---|
-| **Title** (headline) | Times New Roman | 14 | Bold | Left-aligned. Space after 4pt. |
-| **Subtitle** (optional, the longer descriptive line) | Times New Roman | 13 | Regular, *italic* | Left-aligned. Space after 8pt. Omit if the title already says it all. |
-| **Byline** | Times New Roman | 11 | Regular, *italic* | Exactly `AI Legal News · [Date]`. No author. Space after 12pt. |
-| **H1 section heading** (`Background`, `Analysis`, `Takeaways`) | Times New Roman | 12 | Bold | Space before 12pt, after 6pt. |
-| **H2 sub-heading** (e.g., "Two statutes, two outcomes") | Times New Roman | 11 | Bold | Space before 8pt, after 4pt. |
-| **Body paragraph** | Times New Roman | 12 | Regular | Left-aligned (ragged right), line spacing 1.15, space after 8pt. |
-| **Takeaways bullets** | Times New Roman | 12 | Regular | Standard round bullets, space after 4pt per item. |
-| **Endnotes** | Times New Roman | 10 | Regular | See below. |
+| **Title** (headline) | Georgia | 14 | Bold | Left-aligned. Space after 4pt. |
+| **Subtitle** (optional, the longer descriptive line) | Georgia | 13 | Regular, *italic* | Left-aligned. Space after 8pt. Omit if the title already says it all. |
+| **Byline** | Georgia | 11 | Regular, *italic* | Exactly `AI Legal News · [Date]`. No author. Space after 12pt. |
+| **H1 section heading** (`Background`, `Analysis`, `Takeaways`) | Georgia | 12 | Bold | Space before 12pt, after 6pt. |
+| **H2 sub-heading** (e.g., "Two statutes, two outcomes") | Georgia | 11 | Bold | Space before 8pt, after 4pt. |
+| **Body paragraph** | Georgia | 12 | Regular | Left-aligned (ragged right), line spacing 1.15, space after 8pt. |
+| **Takeaways bullets** | Georgia | 12 | Regular | Standard round bullets, space after 4pt per item. |
+| **Endnotes** | Georgia | 10 | Regular | See below. |
 
 - **No color** on any element. Headings are bold black, not accented.
 
@@ -317,7 +317,7 @@ Every weekly `.docx` MUST be built to this exact specification so output is iden
 ### Notes — use ENDNOTES, never footnotes
 - Use **Word endnotes** (collected at the very end of the document), **not** footnotes at the bottom of each page. Maximum 3.
 - Endnote markers are **superscript** numbers in the body text.
-- Endnote text: Times New Roman 10pt. Bluebook style; case names italicized; the citation includes a live **blue hyperlink** (the `Hyperlink` style — color `0563C1`, underlined) to the primary source. Never leave a citation URL as plain black text.
+- Endnote text: Georgia 10pt. Bluebook style; case names italicized; the citation includes a live **blue hyperlink** (the `Hyperlink` style — color `0563C1`, underlined) to the primary source. Never leave a citation URL as plain black text.
 - If the docx skill defaults to footnotes, explicitly convert/author them as endnotes before saving.
 
 ### Inline conventions

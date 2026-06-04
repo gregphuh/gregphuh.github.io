@@ -7,7 +7,7 @@ every article. Apply these values explicitly when generating with the docx skill
 
 ## Quick spec
 
-- **Font:** Times New Roman everywhere (body, headings, byline, endnotes).
+- **Font:** Georgia everywhere (body, headings, byline, endnotes).
 - **Page:** US Letter, portrait, 1" margins all sides.
 - **Color:** none. Everything is black; headings are bold, not colored.
 - **Alignment:** left-aligned (ragged right) throughout. Do not justify.
@@ -23,14 +23,14 @@ twips (1pt = 20 twips) for direct use in the docx layer.
 
 | Element | Font | Size (pt / half-pt) | Weight / style | Alignment | Spacing before / after |
 |---|---|---|---|---|---|
-| Title | Times New Roman | 14 / 28 | Bold | Left | 0 / 4pt (80 twips) |
-| Subtitle (optional) | Times New Roman | 13 / 26 | Italic, regular weight | Left | 0 / 8pt (160 twips) |
-| Byline | Times New Roman | 11 / 22 | Italic, regular weight | Left | 0 / 12pt (240 twips) |
-| H1 (Background / Analysis / Takeaways) | Times New Roman | 12 / 24 | Bold | Left | 12pt (240) / 6pt (120) |
-| H2 sub-heading | Times New Roman | 11 / 22 | Bold | Left | 8pt (160) / 4pt (80) |
-| Body paragraph | Times New Roman | 12 / 24 | Regular | Left | 0 / 8pt (160), line 1.15 |
-| Takeaways bullet | Times New Roman | 12 / 24 | Regular | Left | 0 / 4pt (80) per item |
-| Endnote text | Times New Roman | 10 / 20 | Regular | Left | 0 / 0 |
+| Title | Georgia | 14 / 28 | Bold | Left | 0 / 4pt (80 twips) |
+| Subtitle (optional) | Georgia | 13 / 26 | Italic, regular weight | Left | 0 / 8pt (160 twips) |
+| Byline | Georgia | 11 / 22 | Italic, regular weight | Left | 0 / 12pt (240 twips) |
+| H1 (Background / Analysis / Takeaways) | Georgia | 12 / 24 | Bold | Left | 12pt (240) / 6pt (120) |
+| H2 sub-heading | Georgia | 11 / 22 | Bold | Left | 8pt (160) / 4pt (80) |
+| Body paragraph | Georgia | 12 / 24 | Regular | Left | 0 / 8pt (160), line 1.15 |
+| Takeaways bullet | Georgia | 12 / 24 | Regular | Left | 0 / 4pt (80) per item |
+| Endnote text | Georgia | 10 / 20 | Regular | Left | 0 / 0 |
 
 Body line spacing 1.15 = `<w:spacing w:line="276" w:lineRule="auto"/>`.
 
@@ -90,7 +90,7 @@ Takeaways                            ← 12pt bold H1
 
 `references/house-style.docx` is bundled with this skill. Its paragraph styles — `Title`,
 `Subtitle`, `Byline`, `Heading 1`, `Heading 2`, `List Bullet`, `Normal`, and `Endnote Text` — are
-already defined to the values above in Times New Roman, and it already contains a working Word
+already defined to the values above in Georgia, and it already contains a working Word
 endnote (no footnotes part). It also includes a placeholder skeleton in the correct section order.
 
 **Build every weekly article by copying this template and replacing the bracketed placeholders.**
