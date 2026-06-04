@@ -294,11 +294,11 @@ Every weekly `.docx` MUST be built to this exact specification so output is iden
 ### Fonts and sizes (font: **Times New Roman** throughout; sizes in points)
 | Element | Font | Size | Weight | Notes |
 |---|---|---|---|---|
-| **Title** (headline) | Times New Roman | 16 | Bold | Left-aligned. Space after 4pt. |
+| **Title** (headline) | Times New Roman | 14 | Bold | Left-aligned. Space after 4pt. |
 | **Subtitle** (optional, the longer descriptive line) | Times New Roman | 13 | Regular, *italic* | Left-aligned. Space after 8pt. Omit if the title already says it all. |
 | **Byline** | Times New Roman | 11 | Regular, *italic* | Exactly `AI Legal News · [Date]`. No author. Space after 12pt. |
-| **H1 section heading** (`Background`, `Analysis`, `Takeaways`) | Times New Roman | 14 | Bold | Space before 12pt, after 6pt. |
-| **H2 sub-heading** (e.g., "Two statutes, two outcomes") | Times New Roman | 12 | Bold | Space before 8pt, after 4pt. |
+| **H1 section heading** (`Background`, `Analysis`, `Takeaways`) | Times New Roman | 12 | Bold | Space before 12pt, after 6pt. |
+| **H2 sub-heading** (e.g., "Two statutes, two outcomes") | Times New Roman | 11 | Bold | Space before 8pt, after 4pt. |
 | **Body paragraph** | Times New Roman | 12 | Regular | Left-aligned (ragged right), line spacing 1.15, space after 8pt. |
 | **Takeaways bullets** | Times New Roman | 12 | Regular | Standard round bullets, space after 4pt per item. |
 | **Endnotes** | Times New Roman | 10 | Regular | See below. |
@@ -317,12 +317,12 @@ Every weekly `.docx` MUST be built to this exact specification so output is iden
 ### Notes — use ENDNOTES, never footnotes
 - Use **Word endnotes** (collected at the very end of the document), **not** footnotes at the bottom of each page. Maximum 3.
 - Endnote markers are **superscript** numbers in the body text.
-- Endnote text: Times New Roman 10pt. Bluebook style; case names italicized; include a live hyperlink to the primary source.
+- Endnote text: Times New Roman 10pt. Bluebook style; case names italicized; the citation includes a live **blue hyperlink** (the `Hyperlink` style — color `0563C1`, underlined) to the primary source. Never leave a citation URL as plain black text.
 - If the docx skill defaults to footnotes, explicitly convert/author them as endnotes before saving.
 
 ### Inline conventions
 - **Case names** italicized wherever they appear (body and endnotes).
-- **Primary-source citations** carry a live hyperlink (standard blue underline).
+- **Every primary-source citation is a live hyperlink in blue** — the `Hyperlink` character style (color `0563C1`, underlined). Applies to endnote citations and any inline source mention. No plain-text URLs.
 - Em dashes for asides; no double spaces after periods.
 
 ### Consistency guarantee

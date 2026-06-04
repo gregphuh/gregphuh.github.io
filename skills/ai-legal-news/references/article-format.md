@@ -23,11 +23,11 @@ twips (1pt = 20 twips) for direct use in the docx layer.
 
 | Element | Font | Size (pt / half-pt) | Weight / style | Alignment | Spacing before / after |
 |---|---|---|---|---|---|
-| Title | Times New Roman | 16 / 32 | Bold | Left | 0 / 4pt (80 twips) |
+| Title | Times New Roman | 14 / 28 | Bold | Left | 0 / 4pt (80 twips) |
 | Subtitle (optional) | Times New Roman | 13 / 26 | Italic, regular weight | Left | 0 / 8pt (160 twips) |
 | Byline | Times New Roman | 11 / 22 | Italic, regular weight | Left | 0 / 12pt (240 twips) |
-| H1 (Background / Analysis / Takeaways) | Times New Roman | 14 / 28 | Bold | Left | 12pt (240) / 6pt (120) |
-| H2 sub-heading | Times New Roman | 12 / 24 | Bold | Left | 8pt (160) / 4pt (80) |
+| H1 (Background / Analysis / Takeaways) | Times New Roman | 12 / 24 | Bold | Left | 12pt (240) / 6pt (120) |
+| H2 sub-heading | Times New Roman | 11 / 22 | Bold | Left | 8pt (160) / 4pt (80) |
 | Body paragraph | Times New Roman | 12 / 24 | Regular | Left | 0 / 8pt (160), line 1.15 |
 | Takeaways bullet | Times New Roman | 12 / 24 | Regular | Left | 0 / 4pt (80) per item |
 | Endnote text | Times New Roman | 10 / 20 | Regular | Left | 0 / 0 |
@@ -37,22 +37,22 @@ Body line spacing 1.15 = `<w:spacing w:line="276" w:lineRule="auto"/>`.
 ## Fixed structure (same order every article)
 
 ```
-[Title]                              ← 16pt bold
+[Title]                              ← 14pt bold
 [Subtitle]                           ← 13pt italic (optional; omit if redundant)
 AI Legal News · April 24, 2026       ← 11pt italic byline, no author
 
 [Lead paragraph — no heading]        ← 12pt body; states what happened
 
-Background                           ← 14pt bold H1
+Background                           ← 12pt bold H1
 [1–2 body paragraphs]
 
-Analysis                             ← 14pt bold H1
-[Optional H2 sub-heading]            ← 12pt bold
+Analysis                             ← 12pt bold H1
+[Optional H2 sub-heading]            ← 11pt bold
 [body paragraphs]
 [Optional H2 sub-heading]
 [body paragraphs]
 
-Takeaways                            ← 14pt bold H1
+Takeaways                            ← 12pt bold H1
 • [descriptive bullet]               ← 12pt body bullets, 3–5 items
 • [descriptive bullet]
 • [descriptive bullet]
@@ -65,15 +65,16 @@ Takeaways                            ← 14pt bold H1
 - Insert **endnotes** (Word "endnotes", rendered together at the end of the document). Never use
   page-bottom footnotes.
 - Body markers are superscript numbers.
-- Endnote content is Bluebook-style: case names italicized, full citation, and a **live hyperlink**
-  to the primary source (court opinion, Federal Register, agency release, SEC filing, etc.).
+- Endnote content is Bluebook-style: case names italicized, full citation, and a **live blue
+  hyperlink** (the `Hyperlink` style — color `0563C1`, underlined) to the primary source (court
+  opinion, Federal Register, agency release, SEC filing, etc.). Never a plain black URL.
 - If the generation path produces footnotes by default, explicitly author them as endnotes (or move
   them) before saving. Verify the final file has an endnotes part and no footnotes part.
 
 ## Inline conventions
 
 - **Case names** italicized everywhere they appear.
-- **Primary-source citations** hyperlinked (standard blue underline).
+- **Primary-source citations** are live blue hyperlinks (`Hyperlink` style, color `0563C1`, underlined) — never plain text.
 - Em dashes for asides; single space after periods.
 - No advice/recommendations anywhere (see the strict no-advice rule in `SKILL.md`). Takeaways are
   descriptive statements of fact, doctrine, posture, or open questions — not action items.
