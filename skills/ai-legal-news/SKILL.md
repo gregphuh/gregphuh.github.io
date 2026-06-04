@@ -1,6 +1,6 @@
 ---
 name: ai-legal-news
-description: Produces the "AI Legal News" daily log and weekly writeup for an in-house-counsel audience, covering US AI-related legal developments. Use whenever the user or a Claude Routine mentions AI Legal News, the AI legal daily log, weekly AI legal writeup, AI hot topics, or asks for recent US AI legal news — court decisions, agency rules, executive orders, FTC/SEC/DOJ/state-AG enforcement, state AI laws, copyright/training-data litigation, chatbot liability, AI antitrust, USPTO/PTAB matters, AI company S-1s and IPOs, employment AI rules, or legal-ethics guidance. Two modes. LOG mode searches the last 24–36 hours, picks 5 developments, verifies from primary sources, and writes a new dated snapshot of the master log on Google Drive. ARTICLE mode reads the week's log, proposes the top 5 candidates by category, waits for the user to pick up to 2, and drafts 600–700 word .docx articles with Word endnotes. Do NOT use for general AI news unrelated to law or for non-US developments.
+description: Produces the "AI Legal News" daily log and weekly writeup for an in-house-counsel audience, covering US AI-related legal developments. Use whenever the user or a Claude Routine mentions AI Legal News, the AI legal daily log, weekly AI legal writeup, AI hot topics, or asks for recent US AI legal news — court decisions, agency rules, executive orders, FTC/SEC/DOJ/state-AG enforcement, state AI laws, copyright/training-data litigation, chatbot liability, AI antitrust, USPTO/PTAB matters, AI company S-1s and IPOs, employment AI rules, or legal-ethics guidance. Two unattended, non-interactive modes. LOG mode searches the last 24–36 hours, picks 5 developments, verifies from primary sources, and writes a new dated snapshot of the master log on Google Drive. ARTICLE mode reads the week's log, ranks it, and automatically drafts the top 2 as 600–700 word .docx articles with Word endnotes. Neither mode asks for input. Do NOT use for general AI news unrelated to law or for non-US developments.
 ---
 
 # AI Legal News
@@ -12,7 +12,7 @@ The skill runs in one of two modes, selected from the prompt sent by the calling
 | Mode | Trigger phrases in prompt | Output |
 |---|---|---|
 | **LOG** | "daily log", "daily AI legal", "today's AI legal news", "daily roundup" | A new dated snapshot `master-log_YYYY-MM-DD.md` (full running log, today's 5 entries on top) in the `AI-legal-log` folder on Google Drive |
-| **ARTICLE** | "weekly writeup", "weekly AI article", "hot topics", "top 5 for the week" | Interactive: propose top 5 grouped by category → user picks up to 2 → produce .docx files in the `articles` subfolder |
+| **ARTICLE** | "weekly writeup", "weekly AI article", "hot topics", "top 5 for the week" | Unattended: rank the week's log → auto-select top 2 → produce .docx files in the `articles` subfolder (never waits for input) |
 
 Detect the mode from the incoming prompt and jump to the matching section.
 
@@ -147,6 +147,8 @@ Use the most specific substantive tag that fits. If two apply roughly equally, p
 ### Trigger
 Routine prompt contains "daily log," "today's AI legal news," "daily roundup," or similar.
 
+> **Unattended — fully non-interactive.** This runs on a schedule with no human watching. NEVER ask the user a question, present options (A/B/C), or wait for input. Always complete the snapshot write autonomously. If you find duplicate or legacy log files, do **not** ask about them — apply "newest-modified wins" and proceed. If there are no new items, still write the snapshot (carry the prior entries forward and add a one-line `> Run [time] — no new items` note). Reaching the end of a run without having written a file is a failure.
+
 ### Workflow
 
 **1. Search.** Cover the core list (1–13). Use web_search with targeted queries covering the last 24–36 hours:
@@ -222,6 +224,8 @@ Template details and worked examples: `references/log-entry-template.md`
 ### Trigger
 Routine prompt contains "weekly writeup," "hot topics," "top 5 for the week," or similar.
 
+> **Unattended — fully non-interactive.** This runs on a schedule with no human watching. NEVER ask the user which articles to write, present a menu, or wait for a selection. Rank the week's candidates, **auto-select the top 2**, write both, and save them autonomously. Reaching the end of a run without having written and saved 2 articles (or fewer only if the week genuinely has fewer than 2 rankable stories) is a failure.
+
 ### Workflow
 
 **1. Read the week's log.** Resolve the current log with the "newest-modified wins" procedure (`search_files` in the `AI-legal-log` folder for `title contains 'master-log'`, take the most recently modified, `read_file_content`). Pull entries from Monday of the current ISO week through the current day (Friday). Typically 25 entries (5 × 5 days), may be fewer.
@@ -237,46 +241,11 @@ Routine prompt contains "weekly writeup," "hot topics," "top 5 for the week," or
 
 Full scoring rubric (0–16 scale) in `references/article-template.md`.
 
-**3. Propose top 5, grouped by substantive category.** Present in chat like this:
+**3. Auto-select the top 2.** Score every candidate with the rubric in `references/article-template.md` and pick the **2 highest-scoring** stories. **Diversity rule:** if the top 2 fall in the same substantive category, swap the lower of the two for the next-highest-scoring story in a *different* category, so the two articles cover different practice areas. Do not ask the user and do not wait. You may print the ranked shortlist in the chat reply for the record, but proceed straight to drafting the selected 2.
 
-```
-TOP 5 CANDIDATES — Week of 2026-04-20 through 2026-04-24
+**4. Proceed directly to drafting** — never pause for input. (If the week genuinely has only one rankable story, write one article; if none, write none and say so — but never stop to ask.)
 
-Category: COPYRIGHT / LITIGATION
-  #1  [Headline]
-      Logged: Mon 2026-04-20
-      Why it ranks: [one-line rationale]
-      Proposed angle: [what the 600–700 word piece would actually argue]
-
-Category: ANTITRUST / DOJ
-  #2  [Headline]
-      Logged: Tue 2026-04-21
-      Why it ranks: …
-      Proposed angle: …
-
-Category: IPO / SEC
-  #3  [Headline]
-      Logged: Wed 2026-04-22
-      Why it ranks: …
-      Proposed angle: …
-
-Category: EXEC-ORDER / FEDERAL
-  #4  [Headline]
-      …
-
-Category: USPTO / GUIDANCE
-  #5  [Headline]
-      …
-
-Pick up to 2 to write up. You can pick by rank number, category, or mix
-(e.g., #1 plus #3 for variety across practice areas).
-```
-
-If two or more of the top 5 fall in the same substantive category, note it and offer an alternative from a different category as a swap, so Greg always has diversity available.
-
-**4. Stop and wait for Greg's choice.** Do not proceed to drafting until he responds with his selection.
-
-**5. Re-verify primary sources** for the chosen 1 or 2. Re-read the opinion, rule, order, or filing. Pull related primary documents if helpful (underlying complaint, prior opinions distinguished, agency comment record). Don't rely on the one-line summary in the log — the log was a lead, now you're writing the article.
+**5. Re-verify primary sources** for the auto-selected 2 (or 1). Re-read the opinion, rule, order, or filing. Pull related primary documents if helpful (underlying complaint, prior opinions distinguished, agency comment record). Don't rely on the one-line summary in the log — the log was a lead, now you're writing the article.
 
 **6. Draft each article** as a separate .docx file following **`references/article-template.md`** — the authoritative spec for structure, voice, the no-advice rule, citation/endnote format, and the docx-js generation pattern (including the endnote hyperlink fix). Generate programmatically with the docx skill (`/mnt/skills/public/docx/SKILL.md`); do not hand-write XML and do not improvise typography or section order. Locked essentials: **Georgia** font; heading scale **14 / 12 / 11** (Title 14, section heads 12, sub-heads 11); body Georgia 12; **endnotes, not footnotes** (max 3); every citation a live **blue** hyperlink (`0563C1`, underlined); fixed byline **`AI Legal News · [Date]`** (no author), `[Date]` = Friday of the current ISO week (e.g., `April 24, 2026`); 600–700 words; closing Takeaways bullets (descriptive only).
 
@@ -305,11 +274,11 @@ Paste these into Greg's Claude Routines. These prompts are designed to trigger t
 
 ### Daily routine — Mon–Fri, 10:00am CT
 
-> Run today's AI Legal News daily log. Search for the top 5 US AI-related legal developments from the past 24 hours across court decisions, agency rules, executive orders, enforcement actions, AI company IPO/securities filings, antitrust developments, PTAB/USPTO AI matters, and other government initiatives. Apply the flex rule for breaking stories outside the core list. Verify each item from its primary source, tag each with the substantive and posture taxonomy, then write a new dated snapshot `master-log_YYYY-MM-DD.md` of the full running log to the `AI-legal-log` folder on Google Drive (today's 5 entries on top), using the daily log format.
+> Run today's AI Legal News daily log. This is an unattended scheduled run — do not ask me anything and do not wait for input; always finish by saving the snapshot. Search for the top 5 US AI-related legal developments from the past 24 hours across court decisions, agency rules, executive orders, enforcement actions, AI company IPO/securities filings, antitrust developments, PTAB/USPTO AI matters, and other government initiatives. Apply the flex rule for breaking stories outside the core list. Verify each item from its primary source, tag each with the substantive and posture taxonomy, then write a new dated snapshot `master-log_YYYY-MM-DD.md` of the full running log to the `AI-legal-log` folder on Google Drive (today's 5 entries on top), using the daily log format.
 
 ### Weekly routine — Friday, 11:00am CT
 
-> Run the AI Legal News weekly writeup. Read this week's entries (Monday through today) from the most recent `master-log_*` snapshot in the `AI-legal-log` folder on Google Drive. Rank them by hotness and propose the top 5 candidate articles grouped by substantive category, with a one-line ranking rationale and a proposed angle for each. Stop and wait for me to choose up to 2. Then draft the chosen articles as 600–700 word .docx files with no more than 3 endnotes, a closing Takeaways bullet list, Bluebook-italic case names, active hyperlinks to primary sources, and the fixed byline `AI Legal News · [Date]`, and save them to the `articles` subfolder.
+> Run the AI Legal News weekly writeup. This is an unattended scheduled run — do not ask me anything and do not wait for input. Read this week's entries (Monday through today) from the most recent `master-log_*` snapshot in the `AI-legal-log` folder on Google Drive, rank them by hotness, and automatically select and draft the top 2 (different practice areas where possible) as 600–700 word .docx files with no more than 3 endnotes, a closing Takeaways bullet list, Bluebook-italic case names, blue hyperlinks to primary sources, and the fixed byline `AI Legal News · [Date]`. Save them to the `articles` subfolder by folder ID.
 
 ---
 

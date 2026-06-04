@@ -66,34 +66,20 @@ If two candidates tie on the numerical score, break the tie based on how much th
 
 ---
 
-## Top-5 proposal format
+## Selecting the two articles (automatic — no user input)
 
-When presenting the top 5 to Greg in chat, group them by substantive category so he sees diversity at a glance:
+This routine runs **unattended**. Do **not** present a menu, ask which to write, or wait for a pick. Score every candidate with the rubric above, then automatically choose the **2 highest-scoring** stories to write.
+
+**Diversity rule:** if the top 2 fall in the same substantive category, swap the lower of the two for the next-highest-scoring story in a *different* category, so the two articles cover different practice areas.
+
+For the record, the run's chat reply may include a short ranked shortlist — but it then proceeds straight to drafting, never stopping for confirmation:
 
 ```
-TOP 5 CANDIDATES — Week of [Mon date] through [Fri date]
-
-Category: COPYRIGHT / LITIGATION
-  #1  [Headline, one line]
-      Logged: [Day, date]
-      Score: 13/16 (Weight 4 · Breadth 3 · Novelty 3 · Doctrine 2 · IP+1)
-      Why it ranks: [one-line analytical rationale — purely descriptive, no advice]
-      Proposed angle: [the legal question the article would examine in ~650 words — e.g., "How the panel distinguishes Recentive," not "what practitioners should do"]
-
-Category: ANTITRUST / DOJ
-  #2  [Headline]
-      Logged: [Day, date]
-      Score: 12/16
-      Why it ranks: …
-      Proposed angle: …
-
-[#3, #4, #5 same format, grouped by category]
-
-Pick up to 2 to write up. You can pick by rank number, category, or mix
-(e.g., #1 + #3 for variety across practice areas).
+SELECTED (Week of [Mon date]–[Fri date]) — writing these 2:
+  #1  [Headline] — COPYRIGHT / LITIGATION — 13/16 (Weight 4 · Breadth 3 · Novelty 3 · Doctrine 2 · IP+1)
+  #2  [Headline] — ANTITRUST / DOJ — 12/16
+Also ranked: #3 [Headline] (10) · #4 [Headline] (9) · #5 [Headline] (8)
 ```
-
-If two or more of the top 5 fall in the same substantive category, note it and offer an alternative from a different category as a swap, so Greg always has diversity available.
 
 **Angle discipline.** Proposed angles must be framed as legal questions or analytical observations, never as advice or calls to action. Good angle: "How the Ninth Circuit distinguishes training-stage copying from distribution under Kadrey." Bad angle: "What in-house counsel should do now in response to Kadrey."
 
