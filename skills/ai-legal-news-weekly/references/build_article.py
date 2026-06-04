@@ -50,7 +50,9 @@ def norm_runs(runs):
     return out
 
 def render_runs(runs, hyperlinks, scope):
-    """scope: 'doc' or 'endnote' — decides which rels list hyperlinks go to."""
+    """scope: 'doc' or 'en' — decides which rels list hyperlinks go to.
+    Body hyperlinks use rId6+ (document.xml.rels reserves rId1-5); endnote rels start at rId1."""
+    base = 5 if scope == "doc" else 0
     xml = []
     for r in runs:
         if "endnote" in r:
@@ -59,10 +61,10 @@ def render_runs(runs, hyperlinks, scope):
             continue
         text = esc(r.get("text", ""))
         if r.get("url"):
-            rid = f'{scope}HL{len(hyperlinks)+1}'
+            rid = f'rId{base + len(hyperlinks) + 1}'
             hyperlinks.append((rid, r["url"]))
-            xml.append(f'<w:hyperlink r:id="{rid}" w:history="1">'
-                       f'<w:r><w:rPr><w:rStyle w:val="Hyperlink"/></w:rPr>'
+            xml.append(f'<w:hyperlink w:history="1" r:id="{rid}">'
+                       '<w:r><w:rPr><w:color w:val="0563C1"/><w:u w:val="single" w:color="0563C1"/></w:rPr>'
                        f'<w:t xml:space="preserve">{text}</w:t></w:r></w:hyperlink>')
         else:
             rpr = "<w:i/>" if r.get("italic") else ""
@@ -72,8 +74,9 @@ def render_runs(runs, hyperlinks, scope):
 
 def para(style, runs, hyperlinks, scope="doc"):
     ps = f'<w:pStyle w:val="{style}"/>' if style else ""
+    numpr = '<w:numPr><w:ilvl w:val="0"/><w:numId w:val="1"/></w:numPr>' if style == "ListBullet" else ""
     body = render_runs(norm_runs(runs), hyperlinks, scope) if runs else ""
-    return f'<w:p><w:pPr>{ps}</w:pPr>{body}</w:p>'
+    return f'<w:p><w:pPr>{ps}{numpr}</w:pPr>{body}</w:p>'
 
 def heading_text(style, text):
     return f'<w:p><w:pPr><w:pStyle w:val="{style}"/></w:pPr><w:r><w:t xml:space="preserve">{esc(text)}</w:t></w:r></w:p>'
@@ -105,10 +108,9 @@ FONT_TABLE = f'''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <w:charset w:val="00"/><w:family w:val="roman"/><w:pitch w:val="variable"/></w:font></w:fonts>'''
 
 NUMBERING = f'''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<w:numbering {W} {R}><w:abstractNum w:abstractNumId="0"><w:lvl w:ilvl="0">
-<w:start w:val="1"/><w:numFmt w:val="bullet"/><w:lvlText w:val="&#8226;"/><w:lvlJc w:val="left"/>
-<w:pPr><w:ind w:left="360" w:hanging="360"/></w:pPr>
-<w:rPr><w:rFonts w:ascii="Georgia" w:hAnsi="Georgia" w:cs="Georgia" w:hint="default"/></w:rPr></w:lvl></w:abstractNum>
+<w:numbering {W} {R}><w:abstractNum w:abstractNumId="0"><w:multiLevelType w:val="hybridMultilevel"/><w:lvl w:ilvl="0">
+<w:start w:val="1"/><w:numFmt w:val="bullet"/><w:lvlText w:val="●"/><w:lvlJc w:val="left"/>
+<w:pPr><w:ind w:left="720" w:hanging="360"/></w:pPr></w:lvl></w:abstractNum>
 <w:num w:numId="1"><w:abstractNumId w:val="0"/></w:num></w:numbering>'''
 
 STYLES = f'''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
