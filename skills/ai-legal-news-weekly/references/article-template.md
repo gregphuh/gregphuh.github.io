@@ -91,7 +91,7 @@ Also ranked: #3 [Headline] (10) · #4 [Headline] (9) · #5 [Headline] (8)
 
 - **Length:** **600 words maximum** in the body — lede + Background + Analysis + Takeaways bullets (title, byline, and endnotes don't count). This is a hard cap measured by actual word count, not a stylistic target — aim ~500–580. **Before saving, count the body words; if the total exceeds 600, cut from Analysis until it is ≤600. Never save or upload an article over 600 words.** The section budgets below are deliberately set to sum under 600.
 - **Endnote cap:** no more than 3 endnotes per article. Reserve endnotes for the sources that are directly essential to the article's main points — typically the case or agency action being analyzed, any parallel proceeding central to the analysis, and the controlling statute or regulation. **Do not cite like a law review.** Do not endnote every factual claim. If a point can be stated and attributed inline in the prose (e.g., "the statute defines supply chain risk as an adversary's potential to sabotage a covered system"), state it inline without an endnote.
-- **Takeaways:** required closing section of **4–5 bullets, one sentence each (~15–20 words)**. See Structure below.
+- **Takeaways:** required closing section of **4–5 self-contained bullets (~20–35 words each)** that give a skimming reader the article's *point* — what the case/development means and why it matters (its holding, the rule it sets, or the key open question). Descriptive significance, never advice or a bare recap. See Structure below.
 - **Font:** Body in **Georgia 11pt**. Headings bold Georgia at the locked scale: Title 14pt, section heads (Heading 2) 12pt, subsection heads (Heading 3) 11pt **bold italic**. Single title, no subtitle. **Headings are black (`000000`), never blue** — Word's default Heading styles are blue, so set the color explicitly.
 - **Margins:** 1" all sides; US Letter (12240 × 15840 DXA).
 - **Endnotes (not footnotes):** Word endnotes, placed at the end of the document. The article uses endnotes rather than footnotes so that prose pages read uninterrupted by citation blocks at the bottom. Full legal citation format (see below). The generator (`references/build_article.py`) produces real Word endnotes automatically from the `endnotes` array — see *Generating the .docx*.
@@ -122,13 +122,15 @@ Also ranked: #3 [Headline] (10) · #4 [Headline] (9) · #5 [Headline] (8)
    - Walk through what the opinion/rule/order actually says. Identify the novel or disputed element(s). Compare to prior law where helpful. Describe disagreements — dissents, prior contrary authority. Identify the legal questions the development leaves open, framed analytically rather than as things for the reader to monitor.
    - Prefer three tight subsections over four thin ones given the tight word budget.
 
-6. **Takeaways** (Heading 2, 12pt bold; bullet list, 4–5 bullets, one sentence each ~15–20 words)
-   - Descriptive summary of the article's key analytical points. Each bullet crystallizes a fact, legal conclusion, or open question that the article established. Bullets are not action items, not predictions, not advice.
-   - The generator renders the `takeaways` array as a proper round-bullet list automatically.
-   - Good: "The D.C. Circuit denied the stay but granted expedited review, with oral argument set for May 19."
-   - Good: "FASCSA's broader reach preserves much of the designation's practical effect despite the N.D. Cal. injunction."
-   - Bad: "Counsel should watch the May 19 oral argument carefully." (prescriptive — cut)
-   - Bad: "The court will likely rule for the government." (prediction — cut)
+6. **Takeaways** (Heading 2; bullet list, 4–5 bullets, one self-contained sentence each ~20–35 words)
+   - **Give a skimming reader the article's *point*.** Each bullet is a standalone, plain-language statement of what the development means and why it matters — its holding, the rule or principle it establishes, what it changes, or the key open question. Someone who reads only the Takeaways should come away understanding what the case or development stands for.
+   - **Self-contained, not fragments.** Do not assume the reader read the body. Avoid bare procedural recaps and context-dependent shorthand; state the bottom-line significance in everyday legal English.
+   - Still **descriptive and neutral** — convey significance, never advice: no "should," no instructions, no taking a side.
+   - The generator renders the `takeaways` array as a round-bullet list automatically.
+   - Good (gives the point): "A federal appeals court will now suspend attorneys — not just fine them — for filing AI-fabricated citations, the toughest judicial response to AI hallucinations so far."
+   - Good (the principle): "The decisive factor was dishonesty, not the mistake: the court punished the attorneys' denial of AI use more than the fake citations themselves."
+   - Weak (recap with no point — avoid): "The court imposed a six-month suspension and a $2,500 fine."
+   - Bad (advice — cut): "Counsel should disclose AI use proactively."
 
 7. **Endnotes** throughout — full legal citations (see below). Cap: 3.
 
@@ -239,7 +241,7 @@ After drafting, run a **separate, adversarial Reviewer pass** before the article
 
 1. **Citations (highest priority).** For every endnote: open/verify the primary-source URL actually resolves, is the authoritative source for the proposition, and genuinely supports the exact sentence it is attached to. Reject and require fixing any citation that is unverifiable, mismatched, to a secondary source where a primary exists, or possibly fabricated. **No hallucinated or unverifiable citation may survive** — a wrong cite is worse than no cite. (Hallucinated citations are themselves a recurring AI-legal story; do not become one.)
 2. **Factual accuracy & posture.** Every claim matches the primary sources. Procedural posture is precise (motion to dismiss vs. summary judgment vs. final judgment; stay vs. merits). Dates, courts, dockets, statute sections, and party names are correct.
-3. **No advice.** No sentence gives advice, recommendations, action items, or tells the reader what to do, watch, consider, or expect. Scan **every Takeaways bullet**.
+3. **No advice — but the Takeaways must have a point.** No sentence gives advice, recommendations, action items, or tells the reader what to do, watch, consider, or expect (scan **every Takeaways bullet**). Separately, confirm each Takeaways bullet is self-contained and conveys the development's *significance* — what it means/stands for — not a bare procedural recap or a fragment that only makes sense if you read the body. Reject recap-only or out-of-context bullets.
 4. **Neutrality.** No sentence takes a position for or against any party or the government, predicts an outcome, or signals which side is right. Contested points are attributed, not asserted.
 5. **Length & structure.** ≤600 body words; exactly Title (single line) → byline → Lead → Background → Analysis (with subheadings) → Takeaways (bullets) → endnotes; no forbidden sections.
 6. **Format.** Georgia; Title 14 / section 12 / sub-head 11 / body 11; headings black; citations blue hyperlinks; **endnotes, not footnotes**; byline `AI Law Weekly · [Date]`.

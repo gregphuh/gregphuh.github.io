@@ -104,7 +104,9 @@ diversity rule.
   the generator renders it blue and underlined.
 - **Length/structure:** **600 words maximum** — a hard cap measured by actual word count (aim ~500–580). Count before saving; trim Analysis if over; never save >600. Title → Lead → `Background` → `Analysis` (sub-heads) →
   `Takeaways` bullets. Takeaways is the only post-Analysis section and stays descriptive — **no
-  advice, no predictions, no "what counsel should do."**
+  advice, no predictions, no "what counsel should do."** Each bullet is **self-contained and gives the
+  reader the point** — what the case/development stands for and why it matters (its holding or
+  significance), not a procedural recap or a context-dependent fragment.
 
 ---
 
