@@ -89,7 +89,7 @@ Also ranked: #3 [Headline] (10) · #4 [Headline] (9) · #5 [Headline] (8)
 
 ### Overall specs
 
-- **Length:** **600 words maximum** in the body — lede + Background + Analysis + Takeaways bullets (title, byline, and endnotes don't count). This is a hard cap measured by actual word count, not a stylistic target — aim ~500–580. **Before saving, count the body words; if the total exceeds 600, cut from Analysis until it is ≤600. Never save or upload an article over 600 words.** The section budgets below are deliberately set to sum under 600.
+- **Length:** **600–650 words** in the body — lede + Background + Analysis + Takeaways bullets (title, byline, and endnotes don't count). Aim to land in that range; **650 is a hard ceiling.** Before saving, count the body words; if the total exceeds 650, trim Analysis until it is within 600–650. The section budgets below are set to land in that range.
 - **Endnote cap:** no more than 3 endnotes per article. Reserve endnotes for the sources that are directly essential to the article's main points — typically the case or agency action being analyzed, any parallel proceeding central to the analysis, and the controlling statute or regulation. **Do not cite like a law review.** Do not endnote every factual claim. If a point can be stated and attributed inline in the prose (e.g., "the statute defines supply chain risk as an adversary's potential to sabotage a covered system"), state it inline without an endnote.
 - **Takeaways:** required closing section of **4–5 self-contained bullets (~20–35 words each)** that give a skimming reader the article's *point* — what the case/development means and why it matters (its holding, the rule it sets, or the key open question). Descriptive significance, never advice or a bare recap. See Structure below.
 - **Font:** Body in **Georgia 11pt**. Headings bold Georgia at the locked scale: Title 14pt, section heads (Heading 2) 12pt, subsection heads (Heading 3) 11pt **bold italic**. Single title, no subtitle. **Headings are black (`000000`), never blue** — Word's default Heading styles are blue, so set the color explicitly.
@@ -108,16 +108,16 @@ Also ranked: #3 [Headline] (10) · #4 [Headline] (9) · #5 [Headline] (8)
    - Format: **`AI Law Weekly · [Date]`** — no author name. `[Date]` = Friday of the ISO week, formatted `Month D, YYYY` (e.g., `April 24, 2026`).
    - There is no `[AUTHOR]` token and nothing to swap before publishing.
 
-3. **Lede** (60–85 words, no heading)
+3. **Lede** (70–90 words, no heading)
    - One paragraph.
    - Sentence 1: what happened (the news).
    - Sentence 2: why the development is legally significant — describe the doctrinal or procedural importance, not what it means for any particular reader.
    - Sentence 3 (optional): the analytical thesis — the legal question or doctrinal issue the piece will examine, framed descriptively.
 
-4. **Background** (Heading 2, 12pt bold; body 90–120 words)
+4. **Background** (Heading 2, 12pt bold; body 120–150 words)
    - One paragraph. Procedural posture (for litigation) or regulatory context (for rules/EOs/IPOs). Parties, forum, prior rulings or comment record. Written entirely in your own words from primary sources. No firm-article paraphrasing.
 
-5. **Analysis** (Heading 2, 12pt bold; body 200–260 words, split into 2–3 subsections with Heading 3 subheads)
+5. **Analysis** (Heading 2, 12pt bold; body 290–340 words, split into 2–3 subsections with Heading 3 subheads)
    - Each subsection has its own descriptive subheading (Heading 3, 11pt **bold italic**, black) — not a question, not a call to action.
    - Walk through what the opinion/rule/order actually says. Identify the novel or disputed element(s). Compare to prior law where helpful. Describe disagreements — dissents, prior contrary authority. Identify the legal questions the development leaves open, framed analytically rather than as things for the reader to monitor.
    - Prefer three tight subsections over four thin ones given the tight word budget.
@@ -243,7 +243,7 @@ After drafting, run a **separate, adversarial Reviewer pass** before the article
 2. **Factual accuracy & posture.** Every claim matches the primary sources. Procedural posture is precise (motion to dismiss vs. summary judgment vs. final judgment; stay vs. merits). Dates, courts, dockets, statute sections, and party names are correct.
 3. **No advice — but the Takeaways must have a point.** No sentence gives advice, recommendations, action items, or tells the reader what to do, watch, consider, or expect (scan **every Takeaways bullet**). Separately, confirm each Takeaways bullet is self-contained and conveys the development's *significance* — what it means/stands for — not a bare procedural recap or a fragment that only makes sense if you read the body. Reject recap-only or out-of-context bullets.
 4. **Neutrality.** No sentence takes a position for or against any party or the government, predicts an outcome, or signals which side is right. Contested points are attributed, not asserted.
-5. **Length & structure.** ≤600 body words; exactly Title (single line) → byline → Lead → Background → Analysis (with subheadings) → Takeaways (bullets) → endnotes; no forbidden sections.
+5. **Length & structure.** 600–650 body words (650 hard ceiling); exactly Title (single line) → byline → Lead → Background → Analysis (with subheadings) → Takeaways (bullets) → endnotes; no forbidden sections.
 6. **Format.** Georgia; Title 14 / section 12 / sub-head 11 / body 11; headings black; citations blue hyperlinks; **endnotes, not footnotes**; byline `AI Law Weekly · [Date]`.
 7. **Copyright discipline.** Under 15 verbatim words from any source; at most one direct quote per source; everything else paraphrased.
 
@@ -253,14 +253,14 @@ The Reviewer returns a concise, itemized **critical feedback list** (what is wro
 
 ## Worked article skeleton
 
-The exact format is produced by **`references/build_article.py`** (see *Generating the .docx*). The skeleton below illustrates the structure it emits — single Title line, byline, Lead, Background, Analysis with descriptive subheadings, Takeaways bullets, ≤3 endnotes — targeting ~560 words under the 600 ceiling:
+The exact format is produced by **`references/build_article.py`** (see *Generating the .docx*). The skeleton below illustrates the structure it emits — single Title line, byline, Lead, Background, Analysis with descriptive subheadings, Takeaways bullets, ≤3 endnotes — targeting 600–650 words:
 
 ```
 Title: The Ninth Circuit's Training-Data Fair-Use Ruling in Kadrey v. Meta
 
 Byline: AI Law Weekly · April 24, 2026
 
-[Lede — 60–85 words]
+[Lede — 70–90 words]
 The Ninth Circuit on Tuesday reversed the Northern District of California's
 summary-judgment grant in Kadrey v. Meta, holding that intermediate copying
 during model training is not categorically transformative and requires a
@@ -269,7 +269,7 @@ will govern training-data infringement cases in the circuit where most frontier
 AI developers are based and sets up a potential split with the Second Circuit's
 approach in the pending New York Times litigation.
 
-Background (Heading 2, 90–120 words)
+Background (Heading 2, 120–150 words)
 [One paragraph — case history, who sued, prior rulings, posture]
 
 Analysis (Heading 2)

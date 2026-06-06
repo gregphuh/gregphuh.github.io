@@ -1,6 +1,6 @@
 ---
 name: ai-legal-news-weekly
-description: Writes the WEEKLY "AI Law Weekly" articles only — the second of two AI Law Weekly skills. Use when the user or a Claude Routine asks for the AI Law Weekly weekly writeup, weekly AI article, hot topics, or top stories of the week. Runs unattended and non-interactively: reads the most recent daily-log snapshot on Google Drive, ranks the week's entries by a hotness rubric, automatically selects the top 2 (different practice areas where possible), and drafts them as .docx articles of 600 words max each (Georgia font, black headings, Word endnotes, blue hyperlinked citations, fixed "AI Law Weekly · [Date]" byline) saved to the articles folder — never asking which to write. Do NOT use for the daily log capture (use the ai-legal-news-log skill) or for non-US / non-legal AI news.
+description: Writes the WEEKLY "AI Law Weekly" articles only — the second of two AI Law Weekly skills. Use when the user or a Claude Routine asks for the AI Law Weekly weekly writeup, weekly AI article, hot topics, or top stories of the week. Runs unattended and non-interactively: reads the most recent daily-log snapshot on Google Drive, ranks the week's entries by a hotness rubric, automatically selects the top 2 (different practice areas where possible), and drafts them as .docx articles of 600–650 words each (Georgia font, black headings, Word endnotes, blue hyperlinked citations, fixed "AI Law Weekly · [Date]" byline) saved to the articles folder — never asking which to write. Do NOT use for the daily log capture (use the ai-legal-news-log skill) or for non-US / non-legal AI news.
 ---
 
 # AI Law Weekly — Weekly Articles
@@ -62,7 +62,7 @@ This standalone script (Python standard library only) hardcodes the entire house
    - **Confirm every citation.** Re-open/verify each endnote's primary-source URL actually resolves and genuinely supports the sentence it is attached to. Flag any citation that cannot be verified, does not match the proposition, or looks fabricated — **no hallucinated or unverifiable citations may remain** (a wrong cite is worse than no cite).
    - **Check accuracy and posture** against the primary sources (e.g., don't call a motion-to-dismiss ruling a "final decision").
    - **Enforce no advice / neutrality** in every sentence, especially each Takeaways bullet: no advice, recommendations, predictions, or any position for/against a party or the government.
-   - **Enforce limits:** ≤600 body words; ≤3 endnotes; copyright discipline (<15 verbatim words per source, ≤1 quote per source); structure, format, and byline match the template.
+   - **Enforce limits:** 600–650 body words (650 hard ceiling); ≤3 endnotes; copyright discipline (<15 verbatim words per source, ≤1 quote per source); structure, format, and byline match the template.
    The Reviewer writes a short, **critical feedback list**; the writer revises to address every item; **loop until the Reviewer signs off with zero open issues.** Full checklist: `references/article-template.md` (Adversarial review).
 
 **7. Save** each reviewed article. The generator wrote `AILawWeekly_YYYY-MM-DD_slug.docx` plus a `.b64` sidecar; upload it to the `articles` subfolder **by ID** with `create_file`: `parentId = '13sq6qNqdVz144cN576Zq-7NDcYRh8CXw'`, `title = 'AILawWeekly_YYYY-MM-DD_slug.docx'` (date = Friday of the week; slug = lowercase-hyphen topic), `contentMimeType = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'`, `disableConversionToGoogleType = true`, `base64Content =` the full contents of the `.b64` file. Never write by path, never to My Drive root. Only upload a draft that passed review.
@@ -102,7 +102,7 @@ diversity rule.
 - **Citations:** every primary-source citation is a live **blue** hyperlink (`0563C1`, underlined) —
   never plain text. In the article JSON, mark a citation run as `{"text": "…", "url": "https://…"}`;
   the generator renders it blue and underlined.
-- **Length/structure:** **600 words maximum** — a hard cap measured by actual word count (aim ~500–580). Count before saving; trim Analysis if over; never save >600. Title → Lead → `Background` → `Analysis` (sub-heads) →
+- **Length/structure:** **600–650 words** (650 is the hard ceiling). Count before saving; if over 650, trim Analysis; aim to land in 600–650. Title → Lead → `Background` → `Analysis` (sub-heads) →
   `Takeaways` bullets. Takeaways is the only post-Analysis section and stays descriptive — **no
   advice, no predictions, no "what counsel should do."** Each bullet is **self-contained and gives the
   reader the point** — what the case/development stands for and why it matters (its holding or
@@ -116,7 +116,7 @@ diversity rule.
 > and do not wait for input. Read this week's entries (Monday through today) from the most recent
 > `master-log_*` snapshot in the `AI-legal-log` folder on Google Drive, rank them by hotness, and
 > automatically select and draft the top 2 (different practice areas where possible) as .docx files of
-> no more than 600 words each, with black headings, no more than 3 endnotes, a closing Takeaways
+> 600–650 words each, with black headings, no more than 3 endnotes, a closing Takeaways
 > bullet list, Bluebook-italic case names, blue hyperlinks to primary sources, and the fixed byline
 > `AI Law Weekly · [Date]`. Save them
 > to the `articles` subfolder by folder ID.
