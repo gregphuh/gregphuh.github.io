@@ -8,7 +8,7 @@ description: Writes the WEEKLY "AI Law Weekly" articles only — the second of t
 This is **one of two** AI Law Weekly skills. It does **only** the weekly article writeup for Greg's
 "AI Law Weekly" series. The daily log capture is a **separate** skill (`ai-legal-news-log`) — do not
 search for or write daily log entries here. This skill **reads** the log the other skill produced
-and turns the week's top stories into finished `.docx` articles.
+and turns the week's top stories into finished Word articles (`.doc` files built from the fixed HTML template `references/article-template.html`).
 
 > **Unattended — fully non-interactive.** This runs on a schedule with no human watching. NEVER ask
 > the user which articles to write, present a menu, or wait for a selection. Rank the week's
@@ -52,11 +52,7 @@ filing — don't rely on the one-line log summary. Pull related primary document
 depends on them (underlying complaint, distinguished opinions, agency comment record, latest S-1
 amendment). Re-check pin cites and any short quotes.
 
-**5. Draft each article, then generate it with the bundled script.** Compose the article as `article.json` (schema in `references/article-template.md` → *Generating the .docx*), then run:
-```
-python3 references/build_article.py article.json AILawWeekly_YYYY-MM-DD_slug.docx
-```
-This standalone script (Python standard library only) hardcodes the entire house style — Georgia; single Title 14pt; section heads (Background/Analysis/Takeaways) 12pt bold black; Analysis sub-heads 11pt bold italic black; round bullets; real Word **endnotes** (not footnotes); blue (`0563C1`) underlined citation hyperlinks; XML-safe text. **Do NOT call `/mnt/skills/public/docx`, docx-js, python-docx, or any external skill — they are not available in the run environment and produce a broken file (no styles, no headings, square bullets, fake endnotes). The script is the only generator.** **Voice — report, never advise, never take sides:** describe what happened, what the law says, and what each side argued; never give legal advice or recommendations, and never take a position for or against any party or the government.
+**5. Build each article from the HTML template — you have NO discretion over formatting.** The document format is fully predefined in **`references/article-template.html`**. Copy that file's HTML **verbatim** and replace **only the visible text** (title, byline date, paragraph text, sub-headings, bullet text, endnote text + URLs) with the new article's content. To add a paragraph/sub-section/bullet/endnote, **copy the exact existing tag** (`<p class="body">`, `<p class="subhead">`, `<li class="take">`, `<li class="en">`) and change only the text. **Never change, add, or remove any tag, class, or style attribute, and never write your own document, OOXML, docx, or generator code.** Inline citation markers are `<sup>1</sup>`… matched to numbered `<li class="en">` endnotes; URLs go in `<a class="lnk" href="URL">URL</a>`. The format is locked by the template (Georgia; Title 14pt bold black; Background/Analysis/Takeaways 12pt bold black; Analysis sub-heads 11pt bold italic black; body 11pt; round bullets; numbered Endnotes 10pt; blue underlined links). **Voice — report, never advise, never take sides:** describe what happened, what the law says, and what each side argued; never give legal advice or recommendations, and never take a position for or against any party or the government.
 
 **6. Adversarial review (mandatory — a second, skeptical pass).** Before anything is saved, switch into a separate **Reviewer** role and review each draft adversarially: assume it is wrong until proven otherwise; do not rubber-stamp. If the runtime supports subagents, run this as a separate agent for independence. The Reviewer must, at minimum:
    - **Confirm every citation.** Re-open/verify each endnote's primary-source URL actually resolves and genuinely supports the sentence it is attached to. Flag any citation that cannot be verified, does not match the proposition, or looks fabricated — **no hallucinated or unverifiable citations may remain** (a wrong cite is worse than no cite).
@@ -65,7 +61,7 @@ This standalone script (Python standard library only) hardcodes the entire house
    - **Enforce limits:** body **600–650 words — reject and fix if under 600 or over 650** (a short draft that merely resembles an example is not acceptable); ≤3 endnotes; copyright discipline (<15 verbatim words per source, ≤1 quote per source); structure, format, and byline match the template.
    The Reviewer writes a short, **critical feedback list**; the writer revises to address every item; **loop until the Reviewer signs off with zero open issues.** Full checklist: `references/article-template.md` (Adversarial review).
 
-**7. Save** each reviewed article. The generator wrote `AILawWeekly_YYYY-MM-DD_slug.docx` plus a `.b64` sidecar; upload it to the `articles` subfolder **by ID** with `create_file`: `parentId = '13sq6qNqdVz144cN576Zq-7NDcYRh8CXw'`, `title = 'AILawWeekly_YYYY-MM-DD_slug.docx'` (date = Friday of the week; slug = lowercase-hyphen topic), `contentMimeType = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'`, `disableConversionToGoogleType = true`, `base64Content =` the full contents of the `.b64` file. Never write by path, never to My Drive root. Only upload a draft that passed review.
+**7. Save** each reviewed article to the `articles` subfolder **by ID** with `create_file`, passing the full HTML as **text** (no base64, no script): `parentId = '13sq6qNqdVz144cN576Zq-7NDcYRh8CXw'`, `title = 'AILawWeekly_YYYY-MM-DD_slug.doc'` (note **.doc**; date = Friday of the week; slug = lowercase-hyphen topic), `contentMimeType = 'application/msword'`, `disableConversionToGoogleType = true`, `textContent =` the complete filled-in HTML document. Never write by path, never to My Drive root. Only upload a draft that passed review.
 
 **8. Report in chat** (brief, no questions): the two article titles, word counts, endnote counts, the `articles/` filenames, and a one-line note that the adversarial review passed (and what it caught/fixed).
 
@@ -115,11 +111,11 @@ diversity rule.
 > Run the AI Law Weekly weekly writeup. This is an unattended scheduled run — do not ask me anything
 > and do not wait for input. Read this week's entries (Monday through today) from the most recent
 > `master-log_*` snapshot in the `AI-legal-log` folder on Google Drive, rank them by hotness, and
-> automatically select and draft the top 2 (different practice areas where possible) as .docx files of
-> 600–650 words each, with black headings, no more than 3 endnotes, a closing Takeaways
-> bullet list, Bluebook-italic case names, blue hyperlinks to primary sources, and the fixed byline
-> `AI Law Weekly · [Date]`. Save them
-> to the `articles` subfolder by folder ID.
+> automatically select and draft the top 2 (different practice areas where possible), each 600–650 words.
+> Build each by copying `references/article-template.html` verbatim and replacing only the text content —
+> do not change any formatting and do not write your own document or generator code. Run the adversarial
+> review, then save each to the `articles` subfolder (by folder ID) with create_file as a .doc:
+> textContent = the HTML, contentMimeType = application/msword, disableConversionToGoogleType = true.
 
 ---
 

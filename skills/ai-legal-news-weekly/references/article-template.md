@@ -1,6 +1,6 @@
 # Weekly Article Template — AI Law Weekly
 
-This file defines the hotness ranking rubric for picking weekly candidates, the .docx article format (structure, voice, citation style, length), and a worked skeleton.
+This file defines the hotness ranking rubric for picking weekly candidates, the article content rules (structure, voice, citation style, length), and a complete worked example. The document **format** is defined entirely by `references/article-template.html` (Word-openable HTML).
 
 > **House style is locked.** Font is **Georgia** throughout; heading scale is **14 / 12 / 11**
 > (Title 14, section heads 12, subsection heads 11); body is **Georgia 11pt**. The byline is the
@@ -85,7 +85,7 @@ Also ranked: #3 [Headline] (10) · #4 [Headline] (9) · #5 [Headline] (8)
 
 ---
 
-## Article format (.docx)
+## Article format
 
 ### Overall specs
 
@@ -94,8 +94,8 @@ Also ranked: #3 [Headline] (10) · #4 [Headline] (9) · #5 [Headline] (8)
 - **Takeaways:** required closing section of **4–5 self-contained bullets (~20–35 words each)** that give a skimming reader the article's *point* — what the case/development means and why it matters (its holding, the rule it sets, or the key open question). Descriptive significance, never advice or a bare recap. See Structure below.
 - **Font:** Body in **Georgia 11pt**. Headings bold Georgia at the locked scale: Title 14pt, section heads (Heading 2) 12pt, subsection heads (Heading 3) 11pt **bold italic**. Single title, no subtitle. **Headings are black (`000000`), never blue** — Word's default Heading styles are blue, so set the color explicitly.
 - **Margins:** 1" all sides; US Letter (12240 × 15840 DXA).
-- **Endnotes (not footnotes):** Word endnotes, placed at the end of the document. The article uses endnotes rather than footnotes so that prose pages read uninterrupted by citation blocks at the bottom. Full legal citation format (see below). The generator (`references/build_article.py`) produces real Word endnotes automatically from the `endnotes` array — see *Generating the .docx*.
-- **Filename:** `AILawWeekly_YYYY-MM-DD_short-slug.docx` (date = Friday of the week)
+- **Endnotes:** a numbered "Endnotes" section at the end of the document (the `<ol class="endnotes">` in the template), with inline `<sup>` markers in the text. Full legal citation format (see below). Max 3.
+- **Filename:** `AILawWeekly_YYYY-MM-DD_short-slug.doc` (date = Friday of the week)
 
 ### Structure
 
@@ -179,7 +179,7 @@ Use Bluebook-style endnote citations. Two formatting rules apply to every citati
 
 **URL discipline:** Use the most authoritative and durable URL. Prefer primary sources to secondary. Never link to firm-alert or news articles as the cited source — the citation is to the primary document, with the URL pointing to that document's authoritative host.
 
-Examples in the required format. In the rendered .docx: italic portions are italicized; URL portions are active hyperlinks. In this markdown reference, italics are shown with asterisks.
+Examples in the required format. In the rendered document: italic portions are italicized (`<i>…</i>`); URL portions are active blue hyperlinks (`<a class="lnk" href="URL">URL</a>`). In this markdown reference, italics are shown with asterisks.
 
 **Case (first citation, long form):**
 > *Kadrey v. Meta Platforms, Inc.*, No. 3:23-cv-03417 (N.D. Cal. Apr. 21, 2026) (order on motion for summary judgment), slip op. at 14, docket available at https://www.courtlistener.com/docket/XXXXXX/kadrey-v-meta-platforms-inc/.
@@ -253,7 +253,7 @@ The Reviewer returns a concise, itemized **critical feedback list** (what is wro
 
 ## Worked example article (~620 words — a complete, in-range article)
 
-This is a **complete** example, not a skeleton. Match its **depth and length** (~600–650 words of body) as well as its structure. **Do not treat any shorter text as the length target** — every article must be 600–650 words of body. The format is produced by `references/build_article.py`.
+This is a **complete** example, not a skeleton. Match its **depth and length** (~600–650 words of body) as well as its structure. **Do not treat any shorter text as the length target** — every article must be 600–650 words of body. The document format is defined by `references/article-template.html` (the same article, as the Word-openable HTML you actually produce).
 
 ```
 Ninth Circuit Suspends Two Attorneys and Imposes a Two-Year AI-Disclosure Order for a Hallucinated Brief
@@ -299,44 +299,26 @@ Before writing either of the two chosen articles:
 
 ---
 
-## Generating the .docx (self-contained — NO external skill)
+## Generating the document (HTML → Word .doc — no script, no judgment)
 
-> **Do not use `/mnt/skills/public/docx`, docx-js, python-docx, or any other external skill/library — they are NOT guaranteed to exist in the run environment, and relying on them yields a broken file (no styles.xml, no heading styles, square bullets, fake endnotes). Generate the document only with the bundled, dependency-free script `references/build_article.py` (Python standard library only). It hardcodes the entire house style, so the output is correct every time.**
+> **The format is 100% predefined in `references/article-template.html`. You have no discretion over formatting.** Do not write your own document, do not build OOXML/.docx, do not run any script, and do not use `/mnt/skills/public/docx`, docx-js, or python-docx. Produce the article as Word-openable HTML by copying the template and changing only text.
 
 **Steps:**
 
-1. Compose the article as `article.json` following this schema:
-
-```json
-{
-  "title": "single-line title",
-  "date": "Month D, YYYY",
-  "lead": [ run, ... ],
-  "background": [ [run, ...], ... ],
-  "analysis": [ { "subhead": "string", "paras": [ [run, ...], ... ] }, ... ],
-  "takeaways": [ [run, ...], ... ],
-  "endnotes": [ [run, ...], ... ]
-}
-```
-
-A **run** is a plain string, or one of:
-- `{"text": "…", "italic": true}` — italic (case names, Bluebook signals like *See*, *Id.*)
-- `{"text": "…", "url": "https://…"}` — blue underlined hyperlink (primary-source citations)
-- `{"endnote": N}` — superscript marker that points to endnote N
-
-2. Run the generator (it writes the .docx **and** a `.b64` sidecar for upload):
-
-```
-python3 references/build_article.py article.json AILawWeekly_YYYY-MM-DD_slug.docx
-```
-
-3. Upload to Google Drive with the connector's `create_file`:
-   - `parentId = '13sq6qNqdVz144cN576Zq-7NDcYRh8CXw'`  (the `articles` folder)
-   - `title = 'AILawWeekly_YYYY-MM-DD_slug.docx'`  (date = Friday of the week)
-   - `contentMimeType = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'`
+1. Open **`references/article-template.html`** and copy its entire HTML verbatim.
+2. Replace **only the visible text** with the new article's content:
+   - the `<p class="title">` text (single-line title);
+   - the date in `<p class="byline">AI Law Weekly &middot; DATE</p>`;
+   - the `<p class="body">` lead and Background/Analysis paragraphs;
+   - the `<p class="subhead">` Analysis sub-headings;
+   - the `<li class="take">` Takeaways bullets;
+   - the `<li class="en">` endnotes and their `<a class="lnk" href="URL">URL</a>`.
+3. To add a paragraph, sub-section, bullet, or endnote, **copy the exact existing tag** and change only its text. **Never alter any tag, class, style, or the `<head>`/`<style>` block.** Italicize case names with `<i>...</i>`; place citation markers as `<sup>1</sup>`, `<sup>2</sup>`... matched to the numbered endnotes.
+4. Upload with `create_file` (text, not base64):
+   - `parentId = '13sq6qNqdVz144cN576Zq-7NDcYRh8CXw'` (the `articles` folder)
+   - `title = 'AILawWeekly_YYYY-MM-DD_slug.doc'` (note **.doc**; date = Friday of the week)
+   - `contentMimeType = 'application/msword'`
    - `disableConversionToGoogleType = true`
-   - `base64Content =` the full contents of `AILawWeekly_YYYY-MM-DD_slug.docx.b64`
+   - `textContent =` the complete filled-in HTML
 
-The script guarantees: Georgia; Title 14 bold black; Background/Analysis/Takeaways 12 bold black; Analysis sub-heads 11 bold italic black; round bullets; real Word ENDNOTES (never footnotes); blue (`0563C1`) underlined citation hyperlinks; XML-safe text (escapes `&`, `<`, `>`). Do not hand-build a .docx, do not restyle, do not post-process.
-
-`build_article.py` is the single source of truth for format — if the house style ever changes, edit that script (its `STYLES`, `NUMBERING`, and endnote builders).
+The template — not the model — defines every visual detail: Georgia throughout; Title 14pt bold black; section headings 12pt bold black; Analysis sub-headings 11pt bold italic black; body 11pt; round bullets; numbered Endnotes 10pt; citation links `#0563C1` underlined. `references/article-template.html` is the single source of truth for format; to change the look, edit that file, never the per-run output.
