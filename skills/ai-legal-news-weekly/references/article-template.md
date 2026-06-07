@@ -1,6 +1,6 @@
 # Weekly Article Template — AI Law Weekly
 
-This file defines the hotness ranking rubric for picking weekly candidates, the article content rules (structure, voice, citation style, length), and a complete worked example. The document **format** is defined entirely by `references/article-template.txt` (Word-openable HTML).
+This file defines the hotness ranking rubric for picking weekly candidates, the article content rules (structure, voice, citation style, length), and a complete worked example. The document **format** is defined entirely by the embedded HTML template (see *Generating the document*) (Word-openable HTML).
 
 > **House style is locked.** Font is **Georgia** throughout; heading scale is **14 / 12 / 11**
 > (Title 14, section heads 12, subsection heads 11); body is **Georgia 11pt**. The byline is the
@@ -244,7 +244,7 @@ After drafting, run a **separate, adversarial Reviewer pass** before the article
 3. **No advice — but the Takeaways must have a point.** No sentence gives advice, recommendations, action items, or tells the reader what to do, watch, consider, or expect (scan **every Takeaways bullet**). Separately, confirm each Takeaways bullet is self-contained and conveys the development's *significance* — what it means/stands for — not a bare procedural recap or a fragment that only makes sense if you read the body. Reject recap-only or out-of-context bullets.
 4. **Neutrality.** No sentence takes a position for or against any party or the government, predicts an outcome, or signals which side is right. Contested points are attributed, not asserted.
 5. **Length & structure.** Body must be **600–650 words — reject and fix if under 600 or over 650** (expand or trim Analysis; do not accept a short draft just because it resembles an example). Exactly Title (single line) → byline → Lead → Background → Analysis (with subheadings) → Takeaways (bullets) → endnotes; no forbidden sections.
-6. **Format integrity (template not altered).** The produced HTML must be `references/article-template.txt` with **only the text content changed**. Verify: the `<head>` and entire `<style>` block are **byte-for-byte identical** to the template; every element uses the template's exact classes (`title`, `byline`, `body`, `section`, `subhead`, `take`, `take`→`ul.takeaways`, `en`→`ol.endnotes`, `lnk`) with **no added or modified `style`/`class`/tag**; the byline reads exactly `AI Law Weekly · [Date]`; the section headings `Background`, `Analysis`, and `Takeaways` and an `Endnotes` list are all present and in order; the file is saved as `.doc` with `contentMimeType application/msword`. Reject if any tag, class, or style was changed, or any required section is missing. (This guarantees Georgia; Title 14 / section 12 / sub-head 11 / body 11; black headings; round bullets; blue links — those live in the template, not the draft.)
+6. **Format integrity (template not altered).** The produced HTML must be the embedded HTML template (see *Generating the document*) with **only the text content changed**. Verify: the `<head>` and entire `<style>` block are **byte-for-byte identical** to the template; every element uses the template's exact classes (`title`, `byline`, `body`, `section`, `subhead`, `take`, `take`→`ul.takeaways`, `en`→`ol.endnotes`, `lnk`) with **no added or modified `style`/`class`/tag**; the byline reads exactly `AI Law Weekly · [Date]`; the section headings `Background`, `Analysis`, and `Takeaways` and an `Endnotes` list are all present and in order; the file is saved as `.doc` with `contentMimeType application/msword`. Reject if any tag, class, or style was changed, or any required section is missing. (This guarantees Georgia; Title 14 / section 12 / sub-head 11 / body 11; black headings; round bullets; blue links — those live in the template, not the draft.)
 7. **Copyright discipline.** Under 15 verbatim words from any source; at most one direct quote per source; everything else paraphrased.
 
 The Reviewer returns a concise, itemized **critical feedback list** (what is wrong and why). The writer fixes each item and re-submits. Do not save until the list is empty.
@@ -253,7 +253,7 @@ The Reviewer returns a concise, itemized **critical feedback list** (what is wro
 
 ## Worked example article (~620 words — a complete, in-range article)
 
-This is a **complete** example, not a skeleton. Match its **depth and length** (~600–650 words of body) as well as its structure. **Do not treat any shorter text as the length target** — every article must be 600–650 words of body. The document format is defined by `references/article-template.txt` (the same article, as the Word-openable HTML you actually produce).
+This is a **complete** example, not a skeleton. Match its **depth and length** (~600–650 words of body) as well as its structure. **Do not treat any shorter text as the length target** — every article must be 600–650 words of body. The document format is defined by the embedded HTML template (see *Generating the document*) (the same article, as the Word-openable HTML you actually produce).
 
 ```
 Ninth Circuit Suspends Two Attorneys and Imposes a Two-Year AI-Disclosure Order for a Hallucinated Brief
@@ -301,11 +301,11 @@ Before writing either of the two chosen articles:
 
 ## Generating the document (HTML → Word .doc — no script, no judgment)
 
-> **The format is 100% predefined in `references/article-template.txt`. You have no discretion over formatting.** Do not write your own document, do not build OOXML/.docx, do not run any script, and do not use `/mnt/skills/public/docx`, docx-js, or python-docx. Produce the article as Word-openable HTML by copying the template and changing only text.
+> **The format is 100% predefined by the HTML template in the fenced block below. You have no discretion over formatting.** Do not write your own document, do not build OOXML/.docx, do not run any script, and do not use `/mnt/skills/public/docx`, docx-js, or python-docx.
 
 **Steps:**
 
-1. Open **`references/article-template.txt`** and copy its entire HTML verbatim.
+1. Copy the **HTML template** in the fenced block below **verbatim**.
 2. Replace **only the visible text** with the new article's content:
    - the `<p class="title">` text (single-line title);
    - the date in `<p class="byline">AI Law Weekly &middot; DATE</p>`;
@@ -313,7 +313,7 @@ Before writing either of the two chosen articles:
    - the `<p class="subhead">` Analysis sub-headings;
    - the `<li class="take">` Takeaways bullets;
    - the `<li class="en">` endnotes and their `<a class="lnk" href="URL">URL</a>`.
-3. To add a paragraph, sub-section, bullet, or endnote, **copy the exact existing tag** and change only its text. **Never alter any tag, class, style, or the `<head>`/`<style>` block.** Italicize case names with `<i>...</i>`; place citation markers as `<sup>1</sup>`, `<sup>2</sup>`... matched to the numbered endnotes.
+3. To add a paragraph, sub-section, bullet, or endnote, **copy the exact existing tag** and change only its text. **Never alter any tag, class, style, the `<head>`, or the `<style>` block.** Italicize case names with `<i>...</i>`; place citation markers as `<sup>1</sup>`, `<sup>2</sup>`... matched to the numbered endnotes.
 4. Upload with `create_file` (text, not base64):
    - `parentId = '13sq6qNqdVz144cN576Zq-7NDcYRh8CXw'` (the `articles` folder)
    - `title = 'AILawWeekly_YYYY-MM-DD_slug.doc'` (note **.doc**; date = Friday of the week)
@@ -321,4 +321,72 @@ Before writing either of the two chosen articles:
    - `disableConversionToGoogleType = true`
    - `textContent =` the complete filled-in HTML
 
-The template — not the model — defines every visual detail: Georgia throughout; Title 14pt bold black; section headings 12pt bold black; Analysis sub-headings 11pt bold italic black; body 11pt; round bullets; numbered Endnotes 10pt; citation links `#0563C1` underlined. `references/article-template.txt` is the single source of truth for format; to change the look, edit that file, never the per-run output.
+The template — not the model — defines every visual detail (Georgia; Title 14pt bold black; section headings 12pt bold black; Analysis sub-headings 11pt bold italic black; body 11pt; round bullets; numbered Endnotes 10pt; links `#0563C1` underlined). This fenced HTML block is the single source of truth for format; to change the look, edit it here.
+
+### HTML template (copy verbatim; change only the text)
+
+```html
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="ProgId" content="Word.Document">
+<meta name="Generator" content="Microsoft Word">
+<!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View><w:Zoom>100</w:Zoom></w:WordDocument></xml><![endif]-->
+<style>
+@page WordSection1 { size: 8.5in 11.0in; margin: 1.0in 1.0in 1.0in 1.0in; }
+div.WordSection1 { page: WordSection1; }
+body { font-family: 'Georgia', serif; font-size: 11.0pt; color: #000000; }
+p.title   { margin: 0in 0in 4.0pt 0in;  font-family: 'Georgia', serif; font-size: 14.0pt; font-weight: bold; color: #000000; }
+p.byline  { margin: 0in 0in 12.0pt 0in; font-family: 'Georgia', serif; font-size: 11.0pt; font-style: italic; color: #000000; }
+p.body    { margin: 0in 0in 8.0pt 0in;  font-family: 'Georgia', serif; font-size: 11.0pt; color: #000000; line-height: 115%; text-align: left; }
+p.section { margin: 12.0pt 0in 6.0pt 0in; font-family: 'Georgia', serif; font-size: 12.0pt; font-weight: bold; color: #000000; }
+p.subhead { margin: 8.0pt 0in 4.0pt 0in;  font-family: 'Georgia', serif; font-size: 11.0pt; font-weight: bold; font-style: italic; color: #000000; }
+ul.takeaways { margin: 0in 0in 8.0pt 0.25in; }
+li.take   { margin: 0in 0in 4.0pt 0in; font-family: 'Georgia', serif; font-size: 11.0pt; color: #000000; }
+ol.endnotes { margin: 0in 0in 0in 0.20in; }
+li.en     { margin: 0in 0in 4.0pt 0in; font-family: 'Georgia', serif; font-size: 10.0pt; color: #000000; }
+a.lnk     { color: #0563C1; text-decoration: underline; }
+sup       { vertical-align: super; font-size: 8.0pt; }
+</style>
+</head>
+<body>
+<div class="WordSection1">
+
+<p class="title">Ninth Circuit Suspends Two Attorneys and Imposes a Two-Year AI-Disclosure Order for a Hallucinated Brief</p>
+
+<p class="byline">AI Law Weekly &middot; June 5, 2026</p>
+
+<p class="body">On June 3, 2026, a published Ninth Circuit opinion suspended two California immigration attorneys from practice before the court for six months, fined each $2,500, and ordered them to disclose any use of generative AI in every filing before the court for the next two years, after their opening brief cited nonexistent cases and misattributed quotations.<sup>1</sup> It is the first published federal court of appeals decision to pair an attorney suspension with a forward-looking AI-disclosure obligation.</p>
+
+<p class="section">Background</p>
+
+<p class="body">The sanctions arose from a petition for review of an immigration ruling. According to the opinion, counsel Mike Singh Sethi and William Rounds filed an opening brief that cited at least two cases that do not exist &mdash; styled <i>Eduardo v. Garland</i> and <i>Lay v. Holder</i> &mdash; and twice attributed quotations to real decisions, including <i>Kamalthas v. INS</i>, where the quoted language never appeared. When the panel ordered the attorneys to explain the discrepancies, both denied that generative AI had produced the errors and described them as &ldquo;typographical.&rdquo; The court found that explanation implausible given the pattern of fabricated authorities and invented quotations, and concluded that the brief reflected unverified reliance on a generative model followed by a failure to be candid once the problem surfaced.</p>
+
+<p class="section">Analysis</p>
+
+<p class="subhead">What the court ordered</p>
+<p class="body">The opinion imposes three measures: $2,500 in monetary sanctions on each attorney, a six-month suspension from practice before the Ninth Circuit, and a two-year requirement to disclose any use of generative AI in every filing before the court.<sup>1</sup> The panel framed the order not as a one-off but as a bar-wide signal, warning that overreliance on generative tools combined with a failure to verify their output threatens the reliability of the appellate record. It tied each component of the sanction to that concern, treating mandatory disclosure as a way to let the court and opposing parties test AI-assisted filings. The sanction goes well beyond the monetary fines and Rule 11-style admonitions that had been the usual response to AI-fabricated citations in the trial courts.</p>
+
+<p class="subhead">Candor, not the hallucination, drove the result</p>
+<p class="body">The opinion is explicit that the severity flowed from the attorneys&rsquo; conduct after the fabrications were flagged, not from the fabrications alone. The court indicated that a prompt acknowledgment and correction would have drawn a far lighter response. Instead, the repeated denials that AI was involved converted a correctable error into a duty-of-candor violation, and the panel treated that lack of candor as the aggravating factor that justified suspension on top of monetary sanctions.</p>
+
+<p class="subhead">Questions the opinion leaves open</p>
+<p class="body">The opinion does not specify what verification an attorney must complete before filing &mdash; whether a citation-by-citation check, independent database confirmation, or some other standard. Nor does it say whether the two-year disclosure duty reaches AI assistance that never touches citations, such as drafting or summarization, or how the individualized obligation operates when a sanctioned attorney signs a multi-lawyer brief. Those questions are left for future cases and any forthcoming bar guidance.</p>
+
+<p class="section">Takeaways</p>
+<ul class="takeaways">
+<li class="take">A federal appeals court will now suspend attorneys &mdash; not just fine them &mdash; for filing briefs built on AI-fabricated citations, the toughest judicial response to AI hallucinations so far.</li>
+<li class="take">The decisive factor was dishonesty, not the mistake: the court treated the attorneys&rsquo; repeated denials that they used AI as a worse violation than the fake citations themselves.</li>
+<li class="take">Courts can impose ongoing, individualized AI-disclosure duties as punishment &mdash; here, a two-year order to flag any generative-AI use in every filing before the court.</li>
+<li class="take">As the first published appellate decision of its kind, it becomes the leading authority other federal courts will look to on sanctions for AI-fabricated citations.</li>
+</ul>
+
+<p class="section">Endnotes</p>
+<ol class="endnotes">
+<li class="en">Opinion, No. 24-4790 (9th Cir. June 3, 2026), available at <a class="lnk" href="https://cdn.ca9.uscourts.gov/datastore/opinions/2026/06/03/24-4790.pdf">https://cdn.ca9.uscourts.gov/datastore/opinions/2026/06/03/24-4790.pdf</a>.</li>
+</ol>
+
+</div>
+</body>
+</html>
+```
