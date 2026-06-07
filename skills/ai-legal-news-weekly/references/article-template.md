@@ -1,6 +1,6 @@
 # Weekly Article Template — AI Law Weekly
 
-This file defines the hotness ranking rubric for picking weekly candidates, the article content rules (structure, voice, citation style, length), and a complete worked example. The document **format** is defined entirely by `references/article-template.html` (Word-openable HTML).
+This file defines the hotness ranking rubric for picking weekly candidates, the article content rules (structure, voice, citation style, length), and a complete worked example. The document **format** is defined entirely by `references/article-template.txt` (Word-openable HTML).
 
 > **House style is locked.** Font is **Georgia** throughout; heading scale is **14 / 12 / 11**
 > (Title 14, section heads 12, subsection heads 11); body is **Georgia 11pt**. The byline is the
@@ -244,7 +244,7 @@ After drafting, run a **separate, adversarial Reviewer pass** before the article
 3. **No advice — but the Takeaways must have a point.** No sentence gives advice, recommendations, action items, or tells the reader what to do, watch, consider, or expect (scan **every Takeaways bullet**). Separately, confirm each Takeaways bullet is self-contained and conveys the development's *significance* — what it means/stands for — not a bare procedural recap or a fragment that only makes sense if you read the body. Reject recap-only or out-of-context bullets.
 4. **Neutrality.** No sentence takes a position for or against any party or the government, predicts an outcome, or signals which side is right. Contested points are attributed, not asserted.
 5. **Length & structure.** Body must be **600–650 words — reject and fix if under 600 or over 650** (expand or trim Analysis; do not accept a short draft just because it resembles an example). Exactly Title (single line) → byline → Lead → Background → Analysis (with subheadings) → Takeaways (bullets) → endnotes; no forbidden sections.
-6. **Format integrity (template not altered).** The produced HTML must be `references/article-template.html` with **only the text content changed**. Verify: the `<head>` and entire `<style>` block are **byte-for-byte identical** to the template; every element uses the template's exact classes (`title`, `byline`, `body`, `section`, `subhead`, `take`, `take`→`ul.takeaways`, `en`→`ol.endnotes`, `lnk`) with **no added or modified `style`/`class`/tag**; the byline reads exactly `AI Law Weekly · [Date]`; the section headings `Background`, `Analysis`, and `Takeaways` and an `Endnotes` list are all present and in order; the file is saved as `.doc` with `contentMimeType application/msword`. Reject if any tag, class, or style was changed, or any required section is missing. (This guarantees Georgia; Title 14 / section 12 / sub-head 11 / body 11; black headings; round bullets; blue links — those live in the template, not the draft.)
+6. **Format integrity (template not altered).** The produced HTML must be `references/article-template.txt` with **only the text content changed**. Verify: the `<head>` and entire `<style>` block are **byte-for-byte identical** to the template; every element uses the template's exact classes (`title`, `byline`, `body`, `section`, `subhead`, `take`, `take`→`ul.takeaways`, `en`→`ol.endnotes`, `lnk`) with **no added or modified `style`/`class`/tag**; the byline reads exactly `AI Law Weekly · [Date]`; the section headings `Background`, `Analysis`, and `Takeaways` and an `Endnotes` list are all present and in order; the file is saved as `.doc` with `contentMimeType application/msword`. Reject if any tag, class, or style was changed, or any required section is missing. (This guarantees Georgia; Title 14 / section 12 / sub-head 11 / body 11; black headings; round bullets; blue links — those live in the template, not the draft.)
 7. **Copyright discipline.** Under 15 verbatim words from any source; at most one direct quote per source; everything else paraphrased.
 
 The Reviewer returns a concise, itemized **critical feedback list** (what is wrong and why). The writer fixes each item and re-submits. Do not save until the list is empty.
@@ -253,7 +253,7 @@ The Reviewer returns a concise, itemized **critical feedback list** (what is wro
 
 ## Worked example article (~620 words — a complete, in-range article)
 
-This is a **complete** example, not a skeleton. Match its **depth and length** (~600–650 words of body) as well as its structure. **Do not treat any shorter text as the length target** — every article must be 600–650 words of body. The document format is defined by `references/article-template.html` (the same article, as the Word-openable HTML you actually produce).
+This is a **complete** example, not a skeleton. Match its **depth and length** (~600–650 words of body) as well as its structure. **Do not treat any shorter text as the length target** — every article must be 600–650 words of body. The document format is defined by `references/article-template.txt` (the same article, as the Word-openable HTML you actually produce).
 
 ```
 Ninth Circuit Suspends Two Attorneys and Imposes a Two-Year AI-Disclosure Order for a Hallucinated Brief
@@ -301,11 +301,11 @@ Before writing either of the two chosen articles:
 
 ## Generating the document (HTML → Word .doc — no script, no judgment)
 
-> **The format is 100% predefined in `references/article-template.html`. You have no discretion over formatting.** Do not write your own document, do not build OOXML/.docx, do not run any script, and do not use `/mnt/skills/public/docx`, docx-js, or python-docx. Produce the article as Word-openable HTML by copying the template and changing only text.
+> **The format is 100% predefined in `references/article-template.txt`. You have no discretion over formatting.** Do not write your own document, do not build OOXML/.docx, do not run any script, and do not use `/mnt/skills/public/docx`, docx-js, or python-docx. Produce the article as Word-openable HTML by copying the template and changing only text.
 
 **Steps:**
 
-1. Open **`references/article-template.html`** and copy its entire HTML verbatim.
+1. Open **`references/article-template.txt`** and copy its entire HTML verbatim.
 2. Replace **only the visible text** with the new article's content:
    - the `<p class="title">` text (single-line title);
    - the date in `<p class="byline">AI Law Weekly &middot; DATE</p>`;
@@ -321,4 +321,4 @@ Before writing either of the two chosen articles:
    - `disableConversionToGoogleType = true`
    - `textContent =` the complete filled-in HTML
 
-The template — not the model — defines every visual detail: Georgia throughout; Title 14pt bold black; section headings 12pt bold black; Analysis sub-headings 11pt bold italic black; body 11pt; round bullets; numbered Endnotes 10pt; citation links `#0563C1` underlined. `references/article-template.html` is the single source of truth for format; to change the look, edit that file, never the per-run output.
+The template — not the model — defines every visual detail: Georgia throughout; Title 14pt bold black; section headings 12pt bold black; Analysis sub-headings 11pt bold italic black; body 11pt; round bullets; numbered Endnotes 10pt; citation links `#0563C1` underlined. `references/article-template.txt` is the single source of truth for format; to change the look, edit that file, never the per-run output.
