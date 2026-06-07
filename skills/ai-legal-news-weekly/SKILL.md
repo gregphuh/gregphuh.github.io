@@ -62,7 +62,7 @@ This standalone script (Python standard library only) hardcodes the entire house
    - **Confirm every citation.** Re-open/verify each endnote's primary-source URL actually resolves and genuinely supports the sentence it is attached to. Flag any citation that cannot be verified, does not match the proposition, or looks fabricated — **no hallucinated or unverifiable citations may remain** (a wrong cite is worse than no cite).
    - **Check accuracy and posture** against the primary sources (e.g., don't call a motion-to-dismiss ruling a "final decision").
    - **Enforce no advice / neutrality** in every sentence, especially each Takeaways bullet: no advice, recommendations, predictions, or any position for/against a party or the government.
-   - **Enforce limits:** 600–650 body words (650 hard ceiling); ≤3 endnotes; copyright discipline (<15 verbatim words per source, ≤1 quote per source); structure, format, and byline match the template.
+   - **Enforce limits:** body **600–650 words — reject and fix if under 600 or over 650** (a short draft that merely resembles an example is not acceptable); ≤3 endnotes; copyright discipline (<15 verbatim words per source, ≤1 quote per source); structure, format, and byline match the template.
    The Reviewer writes a short, **critical feedback list**; the writer revises to address every item; **loop until the Reviewer signs off with zero open issues.** Full checklist: `references/article-template.md` (Adversarial review).
 
 **7. Save** each reviewed article. The generator wrote `AILawWeekly_YYYY-MM-DD_slug.docx` plus a `.b64` sidecar; upload it to the `articles` subfolder **by ID** with `create_file`: `parentId = '13sq6qNqdVz144cN576Zq-7NDcYRh8CXw'`, `title = 'AILawWeekly_YYYY-MM-DD_slug.docx'` (date = Friday of the week; slug = lowercase-hyphen topic), `contentMimeType = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'`, `disableConversionToGoogleType = true`, `base64Content =` the full contents of the `.b64` file. Never write by path, never to My Drive root. Only upload a draft that passed review.
@@ -102,7 +102,7 @@ diversity rule.
 - **Citations:** every primary-source citation is a live **blue** hyperlink (`0563C1`, underlined) —
   never plain text. In the article JSON, mark a citation run as `{"text": "…", "url": "https://…"}`;
   the generator renders it blue and underlined.
-- **Length/structure:** **600–650 words** (650 is the hard ceiling). Count before saving; if over 650, trim Analysis; aim to land in 600–650. Title → Lead → `Background` → `Analysis` (sub-heads) →
+- **Length/structure:** **600–650 words** — a hard floor of 600 and ceiling of 650. Count before saving; if under 600 expand Analysis, if over 650 trim — must land in 600–650 (the worked example in `references/article-template.md` is a full ~620-word article; match it, don't anchor on anything shorter). Title → Lead → `Background` → `Analysis` (sub-heads) →
   `Takeaways` bullets. Takeaways is the only post-Analysis section and stays descriptive — **no
   advice, no predictions, no "what counsel should do."** Each bullet is **self-contained and gives the
   reader the point** — what the case/development stands for and why it matters (its holding or

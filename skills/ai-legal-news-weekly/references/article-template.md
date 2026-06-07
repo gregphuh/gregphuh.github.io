@@ -89,7 +89,7 @@ Also ranked: #3 [Headline] (10) · #4 [Headline] (9) · #5 [Headline] (8)
 
 ### Overall specs
 
-- **Length:** **600–650 words** in the body — lede + Background + Analysis + Takeaways bullets (title, byline, and endnotes don't count). Aim to land in that range; **650 is a hard ceiling.** Before saving, count the body words; if the total exceeds 650, trim Analysis until it is within 600–650. The section budgets below are set to land in that range.
+- **Length:** **600–650 words** in the body — lede + Background + Analysis + Takeaways bullets (title, byline, and endnotes don't count). **This is a hard floor of 600 and a hard ceiling of 650.** Before saving, count the body words: if under 600, expand Analysis until at least 600; if over 650, trim Analysis. Every article must land in 600–650 — never save one under 600 or over 650. **Match the length of the full worked example below (~620 words); do not anchor on any shorter text.** The section budgets below are set to land in that range.
 - **Endnote cap:** no more than 3 endnotes per article. Reserve endnotes for the sources that are directly essential to the article's main points — typically the case or agency action being analyzed, any parallel proceeding central to the analysis, and the controlling statute or regulation. **Do not cite like a law review.** Do not endnote every factual claim. If a point can be stated and attributed inline in the prose (e.g., "the statute defines supply chain risk as an adversary's potential to sabotage a covered system"), state it inline without an endnote.
 - **Takeaways:** required closing section of **4–5 self-contained bullets (~20–35 words each)** that give a skimming reader the article's *point* — what the case/development means and why it matters (its holding, the rule it sets, or the key open question). Descriptive significance, never advice or a bare recap. See Structure below.
 - **Font:** Body in **Georgia 11pt**. Headings bold Georgia at the locked scale: Title 14pt, section heads (Heading 2) 12pt, subsection heads (Heading 3) 11pt **bold italic**. Single title, no subtitle. **Headings are black (`000000`), never blue** — Word's default Heading styles are blue, so set the color explicitly.
@@ -243,7 +243,7 @@ After drafting, run a **separate, adversarial Reviewer pass** before the article
 2. **Factual accuracy & posture.** Every claim matches the primary sources. Procedural posture is precise (motion to dismiss vs. summary judgment vs. final judgment; stay vs. merits). Dates, courts, dockets, statute sections, and party names are correct.
 3. **No advice — but the Takeaways must have a point.** No sentence gives advice, recommendations, action items, or tells the reader what to do, watch, consider, or expect (scan **every Takeaways bullet**). Separately, confirm each Takeaways bullet is self-contained and conveys the development's *significance* — what it means/stands for — not a bare procedural recap or a fragment that only makes sense if you read the body. Reject recap-only or out-of-context bullets.
 4. **Neutrality.** No sentence takes a position for or against any party or the government, predicts an outcome, or signals which side is right. Contested points are attributed, not asserted.
-5. **Length & structure.** 600–650 body words (650 hard ceiling); exactly Title (single line) → byline → Lead → Background → Analysis (with subheadings) → Takeaways (bullets) → endnotes; no forbidden sections.
+5. **Length & structure.** Body must be **600–650 words — reject and fix if under 600 or over 650** (expand or trim Analysis; do not accept a short draft just because it resembles an example). Exactly Title (single line) → byline → Lead → Background → Analysis (with subheadings) → Takeaways (bullets) → endnotes; no forbidden sections.
 6. **Format.** Georgia; Title 14 / section 12 / sub-head 11 / body 11; headings black; citations blue hyperlinks; **endnotes, not footnotes**; byline `AI Law Weekly · [Date]`.
 7. **Copyright discipline.** Under 15 verbatim words from any source; at most one direct quote per source; everything else paraphrased.
 
@@ -251,63 +251,42 @@ The Reviewer returns a concise, itemized **critical feedback list** (what is wro
 
 ---
 
-## Worked article skeleton
+## Worked example article (~620 words — a complete, in-range article)
 
-The exact format is produced by **`references/build_article.py`** (see *Generating the .docx*). The skeleton below illustrates the structure it emits — single Title line, byline, Lead, Background, Analysis with descriptive subheadings, Takeaways bullets, ≤3 endnotes — targeting 600–650 words:
+This is a **complete** example, not a skeleton. Match its **depth and length** (~600–650 words of body) as well as its structure. **Do not treat any shorter text as the length target** — every article must be 600–650 words of body. The format is produced by `references/build_article.py`.
 
 ```
-Title: The Ninth Circuit's Training-Data Fair-Use Ruling in Kadrey v. Meta
+Ninth Circuit Suspends Two Attorneys and Imposes a Two-Year AI-Disclosure Order for a Hallucinated Brief
 
-Byline: AI Law Weekly · April 24, 2026
+AI Law Weekly · June 5, 2026
 
-[Lede — 70–90 words]
-The Ninth Circuit on Tuesday reversed the Northern District of California's
-summary-judgment grant in Kadrey v. Meta, holding that intermediate copying
-during model training is not categorically transformative and requires a
-factor-by-factor fair-use analysis.¹ The decision clarifies the framework that
-will govern training-data infringement cases in the circuit where most frontier
-AI developers are based and sets up a potential split with the Second Circuit's
-approach in the pending New York Times litigation.
+On June 3, 2026, a published Ninth Circuit opinion suspended two California immigration attorneys from practice before the court for six months, fined each $2,500, and ordered them to disclose any use of generative AI in every filing before the court for the next two years, after their opening brief cited nonexistent cases and misattributed quotations.¹ It is the first published federal court of appeals decision to pair an attorney suspension with a forward-looking AI-disclosure obligation.
 
-Background (Heading 2, 120–150 words)
-[One paragraph — case history, who sued, prior rulings, posture]
+Background
+The sanctions arose from a petition for review of an immigration ruling. According to the opinion, counsel Mike Singh Sethi and William Rounds filed an opening brief that cited at least two cases that do not exist — styled Eduardo v. Garland and Lay v. Holder — and twice attributed quotations to real decisions, including Kamalthas v. INS, where the quoted language never appeared. When the panel ordered the attorneys to explain the discrepancies, both denied that generative AI had produced the errors and described them as "typographical." The court found that explanation implausible given the pattern of fabricated authorities and invented quotations, and concluded that the brief reflected unverified reliance on a generative model followed by a failure to be candid once the problem surfaced.
 
-Analysis (Heading 2)
+Analysis
 
-  The panel's transformative-use framework (Heading 3)
-  [body paragraph — core holding, how the panel treats §107 factor one]
+What the court ordered
+The opinion imposes three measures: $2,500 in monetary sanctions on each attorney, a six-month suspension from practice before the Ninth Circuit, and a two-year requirement to disclose any use of generative AI in every filing before the court.¹ The panel framed the order not as a one-off but as a bar-wide signal, warning that overreliance on generative tools combined with a failure to verify their output threatens the reliability of the appellate record. It tied each component of the sanction to that concern, treating mandatory disclosure as a way to let the court and opposing parties test AI-assisted filings. The sanction goes well beyond the monetary fines and Rule 11-style admonitions that had been the usual response to AI-fabricated citations in the trial courts.
 
-  Market-substitute analysis under factor four (Heading 3)
-  [body paragraph — fourth-factor analysis; divergence from S.D.N.Y. approach]
+Candor, not the hallucination, drove the result
+The opinion is explicit that the severity flowed from the attorneys' conduct after the fabrications were flagged, not from the fabrications alone. The court indicated that a prompt acknowledgment and correction would have drawn a far lighter response. Instead, the repeated denials that AI was involved converted a correctable error into a duty-of-candor violation, and the panel treated that lack of candor as the aggravating factor that justified suspension on top of monetary sanctions.
 
-  Questions the opinion reserves (Heading 3)
-  [body paragraph — scope and limits, open doctrinal questions for the next
-   round of cases]
+Questions the opinion leaves open
+The opinion does not specify what verification an attorney must complete before filing — whether a citation-by-citation check, independent database confirmation, or some other standard. Nor does it say whether the two-year disclosure duty reaches AI assistance that never touches citations, such as drafting or summarization, or how the individualized obligation operates when a sanctioned attorney signs a multi-lawyer brief. Those questions are left for future cases and any forthcoming bar guidance.
 
-Takeaways (Heading 2)
-  • The Ninth Circuit held that intermediate training-data copying is not
-    categorically transformative and must be evaluated factor-by-factor.
-  • The panel's fourth-factor analysis emphasizes market displacement by
-    model outputs, departing from the narrower framing adopted in the
-    S.D.N.Y.
-  • The decision reserves two doctrinal questions: how to treat torrent-based
-    data acquisition, and whether contributory liability can reach downstream
-    distribution of training corpora.
-  • The ruling creates a potential split with the pending New York Times
-    litigation on the scope of 17 U.S.C. § 107.
+Takeaways
+• A federal appeals court will now suspend attorneys — not just fine them — for filing briefs built on AI-fabricated citations, the toughest judicial response to AI hallucinations so far.
+• The decisive factor was dishonesty, not the mistake: the court treated the attorneys' repeated denials that they used AI as a worse violation than the fake citations themselves.
+• Courts can impose ongoing, individualized AI-disclosure duties as punishment — here, a two-year order to flag any generative-AI use in every filing before the court.
+• As the first published appellate decision of its kind, it becomes the leading authority other federal courts will look to on sanctions for AI-fabricated citations.
 
-[3 endnotes total:]
-¹ *Kadrey v. Meta Platforms, Inc.*, No. 24-XXXXX (9th Cir. Apr. 21, 2026),
-   slip op. at 17–24, docket at https://www.courtlistener.com/docket/XXXXXX/
-   kadrey-v-meta-platforms-inc/.
-² *Kadrey v. Meta Platforms, Inc.*, No. 3:23-cv-03417 (N.D. Cal.)
-   (summary-judgment order below).
-³ 17 U.S.C. § 107, https://www.law.cornell.edu/uscode/text/17/107.
+Endnotes
+1. Opinion, No. 24-4790 (9th Cir. June 3, 2026), available at cdn.ca9.uscourts.gov/datastore/opinions/2026/06/03/24-4790.pdf.
 ```
 
-Note the shape: Background and Analysis stay lean so Takeaways crystallizes the key points without repeating them at length. Endnotes sit on the three sources essential to the article — the opinion being analyzed, the order below, and the controlling statute. Everything else (e.g., *Campbell*, *Recentive*, the competing S.D.N.Y. case) is referenced in the prose without an endnote.
-
----
+This example is ~620 words of body (lede + Background + Analysis + Takeaways), within the required 600–650 range; endnotes do not count toward the limit. Match this length and depth.
 
 ## Re-verification before drafting
 
