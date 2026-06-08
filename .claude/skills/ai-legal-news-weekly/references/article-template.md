@@ -243,7 +243,7 @@ After drafting, run a **separate, adversarial Reviewer pass** before the article
 2. **Factual accuracy & posture.** Every claim matches the primary sources. Procedural posture is precise (motion to dismiss vs. summary judgment vs. final judgment; stay vs. merits). Dates, courts, dockets, statute sections, and party names are correct.
 3. **No advice — but the Takeaways must have a point.** No sentence gives advice, recommendations, action items, or tells the reader what to do, watch, consider, or expect (scan **every Takeaways bullet**). Separately, confirm each Takeaways bullet is self-contained and conveys the development's *significance* — what it means/stands for — not a bare procedural recap or a fragment that only makes sense if you read the body. Reject recap-only or out-of-context bullets.
 4. **Neutrality.** No sentence takes a position for or against any party or the government, predicts an outcome, or signals which side is right. Contested points are attributed, not asserted.
-5. **Length & structure.** Body must be **600–650 words — reject and fix if under 600 or over 650** (expand or trim Analysis; do not accept a short draft just because it resembles an example). Exactly Title (single line) → byline → Lead → Background → Analysis (with subheadings) → Takeaways (bullets) → endnotes; no forbidden sections.
+5. **Length & structure.** Body must be **600–650 words — reject and fix if under 600 or over 650** (expand or trim Analysis; do not accept a short draft just because it resembles an example). Exactly Title (single line) → byline → Lead → Takeaways (bullets) → Background → Analysis (with subheadings) → endnotes; no forbidden sections.
 6. **Format integrity (template not altered).** The produced HTML must be the embedded HTML template (see *Generating the document*) with **only the text content changed**. Verify: the `<head>` and entire `<style>` block are **byte-for-byte identical** to the template; every element uses the template's exact classes (`title`, `byline`, `body`, `section`, `subhead`, `take`, `take`→`ul.takeaways`, `en`→`ol.endnotes`, `lnk`) with **no added or modified `style`/`class`/tag**; the byline reads exactly `AI Law Weekly · [Date]`; the section headings `Background`, `Analysis`, and `Takeaways` and an `Endnotes` list are all present and in order; the file is saved as `.doc` with `contentMimeType application/msword`. Reject if any tag, class, or style was changed, or any required section is missing. (This guarantees Georgia; Title 14 / section 12 / sub-head 11 / body 11; black headings; round bullets; blue links — those live in the template, not the draft.)
 7. **Copyright discipline.** Under 15 verbatim words from any source; at most one direct quote per source; everything else paraphrased.
 
@@ -358,6 +358,14 @@ sup       { vertical-align: super; font-size: 8.0pt; }
 
 <p class="body">On June 3, 2026, a published Ninth Circuit opinion suspended two California immigration attorneys from practice before the court for six months, fined each $2,500, and ordered them to disclose any use of generative AI in every filing before the court for the next two years, after their opening brief cited nonexistent cases and misattributed quotations.<sup>1</sup> It is the first published federal court of appeals decision to pair an attorney suspension with a forward-looking AI-disclosure obligation.</p>
 
+<p class="section">Takeaways</p>
+<ul class="takeaways">
+<li class="take">A federal appeals court will now suspend attorneys &mdash; not just fine them &mdash; for filing briefs built on AI-fabricated citations, the toughest judicial response to AI hallucinations so far.</li>
+<li class="take">The decisive factor was dishonesty, not the mistake: the court treated the attorneys&rsquo; repeated denials that they used AI as a worse violation than the fake citations themselves.</li>
+<li class="take">Courts can impose ongoing, individualized AI-disclosure duties as punishment &mdash; here, a two-year order to flag any generative-AI use in every filing before the court.</li>
+<li class="take">As the first published appellate decision of its kind, it becomes the leading authority other federal courts will look to on sanctions for AI-fabricated citations.</li>
+</ul>
+
 <p class="section">Background</p>
 
 <p class="body">The sanctions arose from a petition for review of an immigration ruling. According to the opinion, counsel Mike Singh Sethi and William Rounds filed an opening brief that cited at least two cases that do not exist &mdash; styled <i>Eduardo v. Garland</i> and <i>Lay v. Holder</i> &mdash; and twice attributed quotations to real decisions, including <i>Kamalthas v. INS</i>, where the quoted language never appeared. When the panel ordered the attorneys to explain the discrepancies, both denied that generative AI had produced the errors and described them as &ldquo;typographical.&rdquo; The court found that explanation implausible given the pattern of fabricated authorities and invented quotations, and concluded that the brief reflected unverified reliance on a generative model followed by a failure to be candid once the problem surfaced.</p>
@@ -372,14 +380,6 @@ sup       { vertical-align: super; font-size: 8.0pt; }
 
 <p class="subhead">Questions the opinion leaves open</p>
 <p class="body">The opinion does not specify what verification an attorney must complete before filing &mdash; whether a citation-by-citation check, independent database confirmation, or some other standard. Nor does it say whether the two-year disclosure duty reaches AI assistance that never touches citations, such as drafting or summarization, or how the individualized obligation operates when a sanctioned attorney signs a multi-lawyer brief. Those questions are left for future cases and any forthcoming bar guidance.</p>
-
-<p class="section">Takeaways</p>
-<ul class="takeaways">
-<li class="take">A federal appeals court will now suspend attorneys &mdash; not just fine them &mdash; for filing briefs built on AI-fabricated citations, the toughest judicial response to AI hallucinations so far.</li>
-<li class="take">The decisive factor was dishonesty, not the mistake: the court treated the attorneys&rsquo; repeated denials that they used AI as a worse violation than the fake citations themselves.</li>
-<li class="take">Courts can impose ongoing, individualized AI-disclosure duties as punishment &mdash; here, a two-year order to flag any generative-AI use in every filing before the court.</li>
-<li class="take">As the first published appellate decision of its kind, it becomes the leading authority other federal courts will look to on sanctions for AI-fabricated citations.</li>
-</ul>
 
 <p class="section">Endnotes</p>
 <ol class="endnotes">
